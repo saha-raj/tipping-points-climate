@@ -3,6 +3,8 @@ import * as d3 from 'd3';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager';
 import { globalConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
+import { DebugLogger } from './debug/DebugLogger';
+import { DebugOverlay } from './debug/DebugOverlay';
 
 class ScrollCanvas {
     constructor(containerId) {
@@ -12,11 +14,18 @@ class ScrollCanvas {
         this.setupObjects();
         this.bindEvents();
         this.animate();
+        
+        // Initialize debug utilities
+        this.debugLogger = new DebugLogger();
+        this.debugOverlay = new DebugOverlay();
+        this.lastProgress = 0;
     }
 
     setupScene() {
         // Three.js setup
         this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0x1B2737); // 3d405b
+
         this.camera = new THREE.PerspectiveCamera(
             75,
             window.innerWidth / window.innerHeight,
@@ -59,6 +68,13 @@ class ScrollCanvas {
 
     updateObjects() {
         const visibleObjects = this.lifecycle.getVisibleObjects();
+        
+        if (this.lastProgress !== this.lifecycle.scrollProgress) {
+            visibleObjects.forEach(({ id, state }) => {
+                this.debugLogger.logObjectState(id, state);
+            });
+            this.lastProgress = this.lifecycle.scrollProgress;
+        }
         
         visibleObjects.forEach(({ id, state }) => {
             const object = this.objects.get(id);
@@ -103,10 +119,15 @@ class ScrollCanvas {
     }
 
     bindEvents() {
-        // Update scroll progress
         window.addEventListener('scroll', () => {
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = window.scrollY / scrollHeight;
+            
+            // Update debug utilities
+            this.debugLogger.logProgress(progress);
+            this.debugOverlay.updateProgress(progress);
+            this.debugOverlay.updateScene(this.getCurrentScene(progress));
+            
             this.lifecycle.updateProgress(progress);
         });
 
@@ -122,6 +143,11 @@ class ScrollCanvas {
         requestAnimationFrame(() => this.animate());
         this.updateObjects();
         this.renderer.render(this.scene, this.camera);
+    }
+
+    getCurrentScene(progress) {
+        // Placeholder scene calculation - adjust based on your needs
+        return Math.floor(progress * 3) + 1;
     }
 }
 

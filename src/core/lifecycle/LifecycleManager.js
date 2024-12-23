@@ -43,20 +43,12 @@ export class LifecycleManager {
 
         const { config } = object;
         
-        // Check visibility
-        const visible = TransitionManager.isVisible(config, this.scrollProgress);
-        
-        if (!visible) {
-            object.state.visible = false;
-            return object.state;
-        }
-
-        // Calculate position and opacity from transitions
-        const transition = TransitionManager.calculateTransition(
+        // Get transition state which now includes visibility
+        const transitionState = TransitionManager.calculateTransition(
             config, 
             this.scrollProgress
         );
-
+        
         // Calculate active transforms
         const transforms = TransformManager.getActiveTransforms(
             config.transformations, 
@@ -66,9 +58,8 @@ export class LifecycleManager {
         // Update state
         object.state = {
             ...object.state,
-            ...transition,
-            transforms,
-            visible: true
+            ...transitionState,
+            transforms
         };
 
         return object.state;

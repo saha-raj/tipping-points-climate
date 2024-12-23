@@ -26,6 +26,7 @@
 /**
  * @typedef {Object} ObjectConfig
  * @property {string} id - Unique identifier
+ * @property {string} type - "header" | "description" | "3dObject"
  * @property {string} [content] - Text content if applicable
  * @property {Position} position - Resting position
  * @property {Object} transition - Entry and exit transitions
@@ -34,39 +35,111 @@
  * @property {Transformation[]} [transformations] - Array of transformations
  */
 
+// Define constants outside of objects
+const EARTH_X = 60;
+const EARTH_Y = 60;
+const DURATION_DEFAULT = 0.2;
+
+export const defaults = {
+    transition: {
+        duration: DURATION_DEFAULT,
+        opacity: {
+            entry: 1,      // Default final opacity for entry
+            exit: 0,       // Default final opacity for exit
+            initial: 0     // Default starting opacity
+        },
+        entry: {
+            duration: DURATION_DEFAULT
+        },
+        exit: {
+            duration: DURATION_DEFAULT
+        }
+    },
+    transform: {
+        duration: DURATION_DEFAULT   
+    }
+};
+
 /** @type {ObjectConfig[]} */
+
 export const globalConfig = [
     {
         id: "header-1",
+        type: "header",
         content: "Welcome",
-        position: { x: 20, y: 30 },
+        position: { x: 10, y: 30 },
         transition: {
-            entry_from: { x: 20, y: 160, at: 0, duration: 0.05 },
-            exit_to: { x: 20, y: -160, at: 0.8, duration: 0.05 }
+            entry_from: { 
+                x: 10, 
+                y: 30, 
+                at: 0,
+                opacity: 0
+            },
+            exit_to: { 
+                x: 10, 
+                y: -10, 
+                at: 0.33,
+                opacity: 0
+            }
+        }
+    },
+    {
+        id: "header-2",
+        type: "header",
+        content: "Energy Balance",
+        position: { x: 10, y: 30 },
+        transition: {
+            entry_from: { 
+                x: 10, 
+                y: 110, 
+                at: 0.33,
+            },
+            exit_to: { 
+                x: 10, 
+                y: -10, 
+                at: 0.66,
+            }
         }
     },
     {
         id: "earth",
-        position: { x: 50, y: 85 },
+        type: "3dObject",
+        position: { x: EARTH_X, y: EARTH_Y },
         transition: {
-            entry_from: { x: 50, y: 85, at: 0, duration: 0.05},
+            entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.01},
             exit_to: null
         },
         transformations: [
             {
                 type: "scale",
                 scale_to: 3,
-                at: 0.5,
-                duration: 0.1,
+                at: 0.35,
             },
-
             {
-                type: "translation",
-                delta_x: 20,
-                delta_y: 10,
-                at: 0.2,
-                duration: 0.1
+                type: "scale",
+                scale_to: 1,
+                at: 0.75,
             }
         ]
     }
 ];
+
+export const sceneConfig = {
+    scenes: [
+        {
+            id: 1,
+            start: 0,
+            end: 0.33
+        },
+        {
+            id: 2,
+            start: 0.33,
+            end: 0.66
+        },
+        {
+            id: 3,
+            start: 0.66,
+            end: 1
+        }
+    ]
+};

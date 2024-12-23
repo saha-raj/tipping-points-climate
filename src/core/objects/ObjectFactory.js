@@ -2,14 +2,35 @@ import * as THREE from 'three';
 
 export class ObjectFactory {
     static createObject(config) {
-        switch(config.id) {
-            case 'earth':
-                return this.createEarth();
-            case 'moon':
-                return this.createMoon();
-            default:
+        switch(config.type) {
+            case '3dObject':
+                return this.create3DObject(config);
+            case 'header':
+            case 'description':
                 return this.createText(config);
+            default:
+                console.warn(`Unknown object type: ${config.type}`);
+                return null;
         }
+    }
+
+    static createText(config) {
+        const element = document.createElement('div');
+        element.className = `text-element text-type-${config.type} text-element-${config.id}`;
+        element.textContent = config.content;
+        
+        return {
+            type: 'text',
+            element: element
+        };
+    }
+
+    static create3DObject(config) {
+        if (config.id === 'earth') {
+            return this.createEarth();
+        }
+        // Add other 3D object types as needed
+        return null;
     }
 
     static createEarth() {
@@ -26,22 +47,6 @@ export class ObjectFactory {
             extras: {
                 needsLight: true
             }
-        };
-    }
-
-    static createText(config) {
-        const element = document.createElement('div');
-        element.className = `text-element text-element-${config.id}`;
-        element.textContent = config.content;
-        
-        // Add any specific styling based on config
-        if (config.style) {
-            Object.assign(element.style, config.style);
-        }
-
-        return {
-            type: 'text',
-            element: element
         };
     }
 } 
