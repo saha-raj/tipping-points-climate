@@ -83,24 +83,30 @@ class ScrollCanvas {
             const { position, opacity, transforms } = state;
 
             if (object.type === 'text') {
-                // Update DOM element directly instead of using D3
                 const element = object.element;
                 element.style.left = `${position.x}%`;
                 element.style.top = `${position.y}%`;
                 element.style.opacity = opacity;
                 element.style.transform = this.getTransformString(transforms);
             } else {
-                // Three.js object updates remain the same
+                // Convert percentage coordinates to Three.js space (-1 to 1)
+                const normalizedX = (position.x / 50) - 1;  // 50% = center (0)
+                const normalizedY = -(position.y / 50) + 1; // Invert Y axis
+                
                 object.object.position.set(
-                    position.x / 50 - 1,
-                    -position.y / 50 + 1,
+                    normalizedX,
+                    normalizedY,
                     0
                 );
+                
                 object.object.scale.setScalar(transforms.scale || 1);
+                
                 if (transforms.translation) {
+                    // Convert translation percentages to Three.js space
                     object.object.position.x += transforms.translation.x / 50;
                     object.object.position.y -= transforms.translation.y / 50;
                 }
+                
                 if (transforms.rotation) {
                     object.object.rotation.z = transforms.rotation;
                 }

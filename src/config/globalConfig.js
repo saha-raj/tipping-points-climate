@@ -35,9 +35,9 @@
  * @property {Transformation[]} [transformations] - Array of transformations
  */
 
-// Define constants outside of objects
-const EARTH_X = 60;
-const EARTH_Y = 60;
+// Define constants in percentage values (0-100)
+const EARTH_X = 50;  // Center of screen horizontally
+const EARTH_Y = 50;  // Center of screen vertically
 const DURATION_DEFAULT = 0.2;
 
 export const defaults = {
@@ -72,7 +72,7 @@ export const globalConfig = [
             entry_from: { 
                 x: 10, 
                 y: 30, 
-                at: 0,
+                at: 0.2,
                 opacity: 0
             },
             exit_to: { 
@@ -106,7 +106,7 @@ export const globalConfig = [
         type: "3dObject",
         position: { x: EARTH_X, y: EARTH_Y },
         transition: {
-            entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.01},
+            entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.1 },
             exit_to: null
         },
         transformations: [

@@ -27,26 +27,22 @@ export class ObjectFactory {
 
     static create3DObject(config) {
         if (config.id === 'earth') {
-            return this.createEarth();
+            const geometry = new THREE.SphereGeometry(1, 32, 32);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x2233ff,
+                shininess: 30
+            });
+            
+            const mesh = new THREE.Mesh(geometry, material);
+            
+            return {
+                type: '3d',
+                object: mesh,
+                extras: {
+                    needsLight: true
+                }
+            };
         }
-        // Add other 3D object types as needed
         return null;
-    }
-
-    static createEarth() {
-        const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshPhongMaterial({
-            color: 0x2233ff,
-            shininess: 30
-        });
-        
-        const mesh = new THREE.Mesh(geometry, material);
-        return {
-            type: '3d',
-            object: mesh,
-            extras: {
-                needsLight: true
-            }
-        };
     }
 } 

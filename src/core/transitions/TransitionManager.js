@@ -12,6 +12,19 @@ export class TransitionManager {
         const { position, transition } = config;
         const { entry_from, exit_to } = transition;
 
+        if (config.id === 'earth') {
+            console.log('TransitionManager Calculation:', {
+                scrollProgress,
+                initialPosition: position,
+                entryFrom: entry_from,
+                currentState: {
+                    isBeforeEntry: entry_from && scrollProgress < entry_from.at,
+                    isDuringEntry: entry_from && scrollProgress >= entry_from.at && 
+                        scrollProgress <= (entry_from.at + (entry_from.duration || defaults.transition.entry.duration)),
+                }
+            });
+        }
+
         // Before entry - object should be invisible
         if (entry_from && scrollProgress < entry_from.at) {
             return {

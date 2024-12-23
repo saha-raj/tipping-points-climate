@@ -2,6 +2,7 @@ export class DebugLogger {
     constructor() {
         this.lastLoggedProgress = -1;
         this.logThreshold = 0.01; // Log every 1% change
+        this.lastEarthPosition = null;
     }
 
     logProgress(progress) {
@@ -13,12 +14,17 @@ export class DebugLogger {
     }
 
     logObjectState(id, state) {
-        console.log(`%cObject: ${id}`, 'color: #4CAF50; font-weight: bold');
-        console.log({
-            position: state.position,
-            opacity: state.opacity,
-            transforms: state.transforms,
-            visible: state.visible
-        });
+        if (id === 'earth') {
+            // Log only when position changes
+            const currentPos = JSON.stringify(state.position);
+            if (this.lastEarthPosition !== currentPos) {
+                console.log('%cEarth Position Change:', 'color: #ff0000; font-weight: bold');
+                console.log('Previous:', this.lastEarthPosition ? JSON.parse(this.lastEarthPosition) : 'Initial');
+                console.log('Current:', state.position);
+                console.log('Scroll Progress:', this.lastLoggedProgress);
+                console.log('Transforms:', state.transforms);
+                this.lastEarthPosition = currentPos;
+            }
+        }
     }
 } 
