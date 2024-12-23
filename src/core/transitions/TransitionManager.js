@@ -25,12 +25,24 @@ export class TransitionManager {
             });
         }
 
-        // Before entry - object should be invisible
+        // Always start at configured position
+        if (scrollProgress === 0) {
+            return {
+                position: { ...position },
+                opacity: transition.entry_from?.opacity ?? 1,
+                visible: true
+            };
+        }
+
+        // Before entry
         if (entry_from && scrollProgress < entry_from.at) {
             return {
-                position: { ...entry_from },
-                opacity: entry_from.opacity ?? defaults.transition.opacity.initial,
-                visible: false
+                position: { 
+                    x: entry_from.x ?? position.x,
+                    y: entry_from.y ?? position.y
+                },
+                opacity: entry_from.opacity ?? 1,
+                visible: true
             };
         }
 

@@ -36,7 +36,7 @@
  */
 
 // Define constants in percentage values (0-100)
-const EARTH_X = 50;  // Center of screen horizontally
+const EARTH_X = 100;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
 const DURATION_DEFAULT = 0.2;
 

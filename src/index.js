@@ -10,8 +10,30 @@ class ScrollCanvas {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
         this.lifecycle = new LifecycleManager();
+        this.debugLogger = new DebugLogger();
+        this.debugOverlay = new DebugOverlay();
+        
         this.setupScene();
-        this.setupObjects();
+        
+        // Create and add objects
+        globalConfig.forEach(config => {
+            const object = ObjectFactory.createObject(config);
+            if (!object) return;
+            
+            // Set initial position for 3D objects immediately
+            if (object.type === '3d') {
+                const normalizedX = (config.position.x - 50) / 25;
+                const normalizedY = -(config.position.y - 50) / 25;
+                object.object.position.set(normalizedX, normalizedY, 0);
+                this.scene.add(object.object);
+            } else {
+                this.container.appendChild(object.element);
+            }
+            
+            this.objects.set(config.id, object);
+            this.lifecycle.registerObject(config);
+        });
+        
         this.bindEvents();
         this.animate();
         
@@ -31,10 +53,10 @@ class ScrollCanvas {
     setupScene() {
         // Three.js setup
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x1B2737); // 3d405b
+        this.scene.background = new THREE.Color(0x1B2737);
 
         this.camera = new THREE.PerspectiveCamera(
-            75,
+            45,
             window.innerWidth / window.innerHeight,
             0.1,
             1000
@@ -44,7 +66,7 @@ class ScrollCanvas {
         this.container.appendChild(this.renderer.domElement);
 
         // Position camera
-        this.camera.position.z = 5;
+        this.camera.position.z = 8;
 
         // Create objects container
         this.objects = new Map();
@@ -71,17 +93,13 @@ class ScrollCanvas {
             
             this.objects.set(config.id, object);
         });
+
+        // Immediate initial update
+        this.updateObjects();
     }
 
     updateObjects() {
         const visibleObjects = this.lifecycle.getVisibleObjects();
-        
-        if (this.lastProgress !== this.lifecycle.scrollProgress) {
-            visibleObjects.forEach(({ id, state }) => {
-                this.debugLogger.logObjectState(id, state);
-            });
-            this.lastProgress = this.lifecycle.scrollProgress;
-        }
         
         visibleObjects.forEach(({ id, state }) => {
             const object = this.objects.get(id);
@@ -89,16 +107,13 @@ class ScrollCanvas {
 
             const { position, opacity, transforms } = state;
 
-            if (object.type === 'text') {
-                const element = object.element;
-                element.style.left = `${position.x}%`;
-                element.style.top = `${position.y}%`;
-                element.style.opacity = opacity;
-                element.style.transform = this.getTransformString(transforms);
-            } else {
-                // Convert percentage coordinates to Three.js space (-1 to 1)
-                const normalizedX = (position.x / 50) - 1;  // 50% = center (0)
-                const normalizedY = -(position.y / 50) + 1; // Invert Y axis
+            if (object.type === '3d') {
+                // Convert percentage position to Three.js space
+                // 0% → -1 (left edge)
+                // 50% → 0 (center)
+                // 100% → 1 (right edge)
+                const normalizedX = (position.x - 50) / 25;  // -2 to +2 range
+                const normalizedY = -(position.y - 50) / 25;
                 
                 object.object.position.set(
                     normalizedX,
@@ -106,10 +121,11 @@ class ScrollCanvas {
                     0
                 );
                 
-                object.object.scale.setScalar(transforms.scale || 1);
+                if (transforms.scale) {
+                    object.object.scale.setScalar(transforms.scale);
+                }
                 
                 if (transforms.translation) {
-                    // Convert translation percentages to Three.js space
                     object.object.position.x += transforms.translation.x / 50;
                     object.object.position.y -= transforms.translation.y / 50;
                 }
@@ -117,6 +133,12 @@ class ScrollCanvas {
                 if (transforms.rotation) {
                     object.object.rotation.z = transforms.rotation;
                 }
+            } else {
+                // Handle text elements (unchanged)
+                object.element.style.left = `${position.x}%`;
+                object.element.style.top = `${position.y}%`;
+                object.element.style.opacity = opacity;
+                object.element.style.transform = this.getTransformString(transforms);
             }
         });
     }
