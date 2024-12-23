@@ -7,6 +7,7 @@ export class ObjectFactory {
                 return this.create3DObject(config);
             case 'header':
             case 'description':
+            case 'annotation':
                 return this.createText(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);

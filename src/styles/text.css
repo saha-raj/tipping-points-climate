@@ -21,4 +21,21 @@
     font-size: 24px;
     color: white;
     /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
+}
+
+.text-element.text-type-annotation {
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 10px;
+    background: rgba(40, 58, 82, 0.6);
+    border-radius: 4px;
+    pointer-events: none;
+    max-width: 200px;
+}
+
+/* Optional: Add a subtle animation for when annotations fade in */
+.text-element.text-type-annotation {
+    transition: opacity 0.3s ease-in-out;
 } 

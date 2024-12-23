@@ -128,6 +128,27 @@ export const globalConfig = [
                 at: 0.75,
             }
         ]
+    },
+    {
+        id: 'annotation1',
+        type: 'annotation',
+        position: {
+            x: 40,
+            y: 25
+        },
+        content: 'This is the Earth',
+        transition: {
+            entry_from: {
+                at: 0.55,
+                opacity: 0,
+                duration: 0.01
+            },
+            exit_to: {
+                at: 0.7,
+                opacity: 0,
+                duration: 0.01
+            }
+        }
     }
 ];
 
