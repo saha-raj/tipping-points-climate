@@ -163,8 +163,12 @@ class ScrollCanvas {
 
     animate() {
         requestAnimationFrame(() => this.animate());
-        this.updateObjects();
-        this.renderer.render(this.scene, this.camera);
+        
+        // Add earth rotation
+        const earth = this.objects.get('earth');
+        if (earth && earth.object) {
+            earth.object.rotation.y += 0.01;
+        }
         
         // Calculate velocity and decay it over time
         if (this.scrollVelocity > 0) {
@@ -173,13 +177,16 @@ class ScrollCanvas {
         
         // Force update if we were scrolling fast and just stopped
         if (this.lastScrollTime && Date.now() - this.lastScrollTime > 150) {
-            if (this.scrollVelocity > 0.5) { // Only force update after fast scrolls
+            if (this.scrollVelocity > 0.5) {
                 const progress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
                 this.lifecycle.forceUpdateStates(progress);
             }
             this.lastScrollTime = null;
             this.scrollVelocity = 0;
         }
+        
+        this.updateObjects();
+        this.renderer.render(this.scene, this.camera);
     }
 
     getCurrentScene(progress) {

@@ -28,9 +28,15 @@ export class ObjectFactory {
     static create3DObject(config) {
         if (config.id === 'earth') {
             const geometry = new THREE.SphereGeometry(1, 32, 32);
+            
+            // Load texture
+            const textureLoader = new THREE.TextureLoader();
+            const earthTexture = textureLoader.load('/assets/textures/map2.jpg');
+            
             const material = new THREE.MeshPhongMaterial({
-                color: 0x2233ff,
-                shininess: 30
+                map: earthTexture,
+                shininess: 100,
+                bumpScale: 0.05,           // Adjust surface bumpiness
             });
             
             const mesh = new THREE.Mesh(geometry, material);
