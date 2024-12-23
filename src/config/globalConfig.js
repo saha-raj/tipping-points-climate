@@ -119,7 +119,7 @@ export const globalConfig = [
         transformations: [
             {
                 type: "scale",
-                scale_to: 3,
+                scale_to: 2,
                 at: 0.35,
             },
             {

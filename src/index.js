@@ -20,11 +20,20 @@ class ScrollCanvas {
             const object = ObjectFactory.createObject(config);
             if (!object) return;
             
-            // Set initial position for 3D objects immediately
+            // Set initial position and rotation for 3D objects
             if (object.type === '3d') {
                 const normalizedX = (config.position.x - 50) / 25;
                 const normalizedY = -(config.position.y - 50) / 25;
                 object.object.position.set(normalizedX, normalizedY, 0);
+                
+                // Add Earth's axial tilt (23.5 degrees)
+                if (config.id === 'earth') {
+                    object.object.rotation.x = 0;
+                    object.object.rotation.y = 0;
+                    object.object.rotation.z = 0;
+
+                }
+                
                 this.scene.add(object.object);
             } else {
                 this.container.appendChild(object.element);
@@ -61,12 +70,18 @@ class ScrollCanvas {
             0.1,
             1000
         );
+        
+        // Position camera
+        this.camera.position.z = 6;
+        this.camera.position.y = 9;
+        this.camera.position.x = -5;
+        
+        // Add camera lookAt - can be removed if needed
+        this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
+
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.container.appendChild(this.renderer.domElement);
-
-        // Position camera
-        this.camera.position.z = 8;
 
         // Create objects container
         this.objects = new Map();
@@ -74,7 +89,7 @@ class ScrollCanvas {
         // Add lighting for 3D objects
         const ambientLight = new THREE.AmbientLight(0x404040);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 3, 5);
+        directionalLight.position.set(-10, 4.3, 0.5);
         this.scene.add(ambientLight);
         this.scene.add(directionalLight);
     }
@@ -186,15 +201,16 @@ class ScrollCanvas {
     animate() {
         requestAnimationFrame(() => this.animate());
         
-        // Add earth rotation
+        // Rotate Earth around Y-axis
         const earth = this.objects.get('earth');
         if (earth && earth.object) {
-            earth.object.rotation.y += 0.01;
+            const rotationSpeed = 0.02;
+            earth.object.rotation.y += rotationSpeed;
         }
         
         // Calculate velocity and decay it over time
         if (this.scrollVelocity > 0) {
-            this.scrollVelocity *= 0.95; // Decay factor
+            this.scrollVelocity *= 0.95;
         }
         
         // Force update if we were scrolling fast and just stopped
