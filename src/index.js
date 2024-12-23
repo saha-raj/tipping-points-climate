@@ -19,6 +19,10 @@ class ScrollCanvas {
         this.debugLogger = new DebugLogger();
         this.debugOverlay = new DebugOverlay();
         this.lastProgress = 0;
+        this.lastScrollTime = null;
+        this.lastScrollY = 0;
+        this.scrollVelocity = 0;
+        this.lastVerifyTime = 0;  // Track last verification time
     }
 
     setupScene() {
@@ -126,14 +130,23 @@ class ScrollCanvas {
 
     bindEvents() {
         window.addEventListener('scroll', () => {
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = window.scrollY / scrollHeight;
+            const now = Date.now();
+            const timeDelta = now - (this.lastScrollTime || now);
+            this.lastScrollTime = now;
             
-            // Update debug utilities
+            const currentScrollY = window.scrollY;
+            const scrollDelta = Math.abs(currentScrollY - this.lastScrollY);
+            this.lastScrollY = currentScrollY;
+            
+            // Calculate scroll velocity (pixels per millisecond)
+            this.scrollVelocity = scrollDelta / (timeDelta || 1);
+            
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = currentScrollY / scrollHeight;
+            
             this.debugLogger.logProgress(progress);
             this.debugOverlay.updateProgress(progress);
             this.debugOverlay.updateScene(this.getCurrentScene(progress));
-            
             this.lifecycle.updateProgress(progress);
         });
 
@@ -149,6 +162,21 @@ class ScrollCanvas {
         requestAnimationFrame(() => this.animate());
         this.updateObjects();
         this.renderer.render(this.scene, this.camera);
+        
+        // Calculate velocity and decay it over time
+        if (this.scrollVelocity > 0) {
+            this.scrollVelocity *= 0.95; // Decay factor
+        }
+        
+        // Force update if we were scrolling fast and just stopped
+        if (this.lastScrollTime && Date.now() - this.lastScrollTime > 150) {
+            if (this.scrollVelocity > 0.5) { // Only force update after fast scrolls
+                const progress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                this.lifecycle.forceUpdateStates(progress);
+            }
+            this.lastScrollTime = null;
+            this.scrollVelocity = 0;
+        }
     }
 
     getCurrentScene(progress) {

@@ -97,7 +97,7 @@ export const globalConfig = [
             exit_to: { 
                 x: 10, 
                 y: -10, 
-                at: 0.66,
+                at: 0.8,
             }
         }
     },

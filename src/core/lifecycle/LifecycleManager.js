@@ -97,4 +97,15 @@ export class LifecycleManager {
         }
         return visible;
     }
+
+    forceUpdateStates(progress) {
+        this.scrollProgress = progress;
+        for (const [id, object] of this.objects) {
+            const state = this.updateObject(id);
+            if (!state.visible) {
+                // Ensure cleanup of invisible objects
+                object.state.opacity = 0;
+            }
+        }
+    }
 }
