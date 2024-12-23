@@ -40,6 +40,13 @@ const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
 const DURATION_DEFAULT = 0.2;
 
+export const sceneConfig = {
+    totalScenes: 10,  // Number of scenes in the animation
+    heightPerScene: 100  // Viewport height percentage per scene
+};
+// Calculate total scroll height
+const TOTAL_SCROLL_HEIGHT = sceneConfig.totalScenes * sceneConfig.heightPerScene;
+
 export const defaults = {
     transition: {
         duration: DURATION_DEFAULT,
@@ -124,22 +131,3 @@ export const globalConfig = [
     }
 ];
 
-export const sceneConfig = {
-    scenes: [
-        {
-            id: 1,
-            start: 0,
-            end: 0.33
-        },
-        {
-            id: 2,
-            start: 0.33,
-            end: 0.66
-        },
-        {
-            id: 3,
-            start: 0.66,
-            end: 1
-        }
-    ]
-};

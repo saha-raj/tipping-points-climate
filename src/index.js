@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import * as d3 from 'd3';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager';
-import { globalConfig } from './config/globalConfig';
+import { globalConfig, sceneConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
 import { DebugLogger } from './debug/DebugLogger';
 import { DebugOverlay } from './debug/DebugOverlay';
@@ -23,6 +23,9 @@ class ScrollCanvas {
         this.lastScrollY = 0;
         this.scrollVelocity = 0;
         this.lastVerifyTime = 0;  // Track last verification time
+        
+        // Set scroll height based on sceneConfig
+        document.body.style.minHeight = `${sceneConfig.totalScenes * sceneConfig.heightPerScene}vh`;
     }
 
     setupScene() {
