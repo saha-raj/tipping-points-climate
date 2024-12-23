@@ -8,36 +8,42 @@ export class TransformManager {
      * @param {number} transform.at - Start progress
      * @param {number} transform.duration - Duration of transform
      */
-    static calculateTransform(transform, currentProgress) {
-        // Use default duration if not specified
+    static calculateTransform(transform, currentProgress, previousValue = null) {
         const duration = transform.duration || defaults.transform.duration;
+        const endProgress = transform.at + duration;
         
-        const progress = calculateProgress(
-            currentProgress,
-            transform.at,
-            transform.at + duration
-        );
+        let progress;
+        if (currentProgress < transform.at) {
+            progress = 0;
+        } else if (currentProgress > endProgress) {
+            progress = 1;
+        } else {
+            progress = calculateProgress(currentProgress, transform.at, endProgress);
+        }
 
         switch (transform.type) {
             case 'scale':
+                const startScale = previousValue ?? 1;
                 return {
                     type: 'scale',
-                    value: lerp(1, transform.scale_to, progress)
+                    value: lerp(startScale, transform.scale_to, progress)
                 };
             
             case 'translation':
+                const startTranslation = previousValue ?? { x: 0, y: 0 };
                 return {
                     type: 'translation',
                     value: {
-                        x: lerp(0, transform.delta_x || 0, progress),
-                        y: lerp(0, transform.delta_y || 0, progress)
+                        x: lerp(startTranslation.x, transform.delta_x || 0, progress),
+                        y: lerp(startTranslation.y, transform.delta_y || 0, progress)
                     }
                 };
             
             case 'rotation':
+                const startRotation = previousValue ?? 0;
                 return {
                     type: 'rotation',
-                    value: lerp(0, transform.rotate_to || 0, progress)
+                    value: lerp(startRotation, transform.rotate_to || 0, progress)
                 };
             
             default:
@@ -50,24 +56,29 @@ export class TransformManager {
      * @param {number} scrollProgress - Current scroll progress (0-1)
      */
     static getActiveTransforms(transformations, scrollProgress) {
-        if (!transformations?.length) return [];
+        if (!transformations?.length) return {};
 
-        const activeTransforms = {};
-
-        // Process transforms in order, allowing later ones to override
-        transformations.forEach(transform => {
-            const duration = transform.duration || defaults.transform.duration;
-            const isActive = scrollProgress >= transform.at && 
-                           scrollProgress <= (transform.at + duration);
-
-            if (isActive) {
-                const calculated = this.calculateTransform(transform, scrollProgress);
+        const finalTransforms = {};
+        const sortedTransforms = [...transformations].sort((a, b) => a.at - b.at);
+        
+        // Keep track of previous values for each transform type
+        const previousValues = {};
+        
+        sortedTransforms.forEach(transform => {
+            if (scrollProgress >= transform.at) {
+                const calculated = this.calculateTransform(
+                    transform, 
+                    scrollProgress,
+                    previousValues[transform.type]
+                );
+                
                 if (calculated) {
-                    activeTransforms[calculated.type] = calculated.value;
+                    finalTransforms[calculated.type] = calculated.value;
+                    previousValues[calculated.type] = calculated.value;
                 }
             }
         });
 
-        return activeTransforms;
+        return finalTransforms;
     }
 }
