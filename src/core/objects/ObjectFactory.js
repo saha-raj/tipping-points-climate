@@ -35,17 +35,32 @@ export class ObjectFactory {
             
             const material = new THREE.MeshPhongMaterial({
                 map: earthTexture,
-                shininess: 100,
-                bumpScale: 0.05,           // Adjust surface bumpiness
+                shininess: 30
             });
             
-            const mesh = new THREE.Mesh(geometry, material);
+            const earthMesh = new THREE.Mesh(geometry, material);
+            
+            // Create atmosphere with lighting response
+            const atmosphereGeometry = new THREE.SphereGeometry(1.1, 32, 32);
+            const atmosphereMaterial = new THREE.MeshPhongMaterial({
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.3,
+                side: THREE.FrontSide,
+                shininess: 1,       // Low shininess for softer light response
+                emissive: 0x4f9aff, // Same as color for some self-glow
+                emissiveIntensity: 0.4  // Subtle glow
+            });
+            
+            const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+            earthMesh.add(atmosphereMesh);
             
             return {
                 type: '3d',
-                object: mesh,
+                object: earthMesh,
                 extras: {
-                    needsLight: true
+                    needsLight: true,
+                    atmosphere: atmosphereMesh
                 }
             };
         }

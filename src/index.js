@@ -72,7 +72,7 @@ class ScrollCanvas {
         );
         
         // Position camera
-        this.camera.position.z = 6;
+        this.camera.position.z = 8;
         this.camera.position.y = 9;
         this.camera.position.x = -5;
         
