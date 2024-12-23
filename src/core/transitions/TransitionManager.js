@@ -12,6 +12,19 @@ export class TransitionManager {
         const { position, transition } = config;
         const { entry_from, exit_to } = transition;
 
+        // Debug only for annotation
+        if (config.id === 'annotation1') {
+            console.log('Annotation State:', {
+                scrollProgress,
+                beforeEntry: entry_from && scrollProgress < entry_from.at,
+                duringEntry: entry_from && scrollProgress >= entry_from.at && 
+                    scrollProgress <= (entry_from.at + (entry_from.duration || defaults.transition.entry.duration)),
+                duringExit: exit_to && scrollProgress >= exit_to.at && 
+                    scrollProgress <= (exit_to.at + (exit_to.duration || defaults.transition.exit.duration)),
+                afterExit: exit_to && scrollProgress > (exit_to.at + (exit_to.duration || defaults.transition.exit.duration))
+            });
+        }
+
         if (config.id === 'earth') {
             console.log('TransitionManager Calculation:', {
                 scrollProgress,
@@ -42,7 +55,7 @@ export class TransitionManager {
                     y: entry_from.y ?? position.y
                 },
                 opacity: entry_from.opacity ?? 1,
-                visible: true
+                visible: false
             };
         }
 
@@ -88,7 +101,7 @@ export class TransitionManager {
         if (exit_to && scrollProgress > (exit_to.at + (exit_to.duration || defaults.transition.exit.duration))) {
             return {
                 position: { ...exit_to },
-                opacity: exit_to.opacity ?? defaults.transition.opacity.exit,
+                opacity: 0,
                 visible: false
             };
         }

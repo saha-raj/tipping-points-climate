@@ -30,7 +30,7 @@ class ScrollCanvas {
                 if (config.id === 'earth') {
                     object.object.rotation.x = 0;
                     object.object.rotation.y = 0;
-                    object.object.rotation.z = 0;
+                    object.object.rotation.z = 23.5 * Math.PI / 180;
 
                 }
                 
@@ -93,7 +93,7 @@ class ScrollCanvas {
         // Add lighting for 3D objects
         const ambientLight = new THREE.AmbientLight(0x404040);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(-10, 4.3, 0.5);
+        directionalLight.position.set(-10, 0, 0);
         this.scene.add(ambientLight);
         this.scene.add(directionalLight);
     }
@@ -214,12 +214,27 @@ class ScrollCanvas {
         requestAnimationFrame(() => this.animate());
         
         // Rotate Earth around Y-axis
+        // const earth = this.objects.get('earth');
+        // if (earth && earth.object) {
+        //     const rotationSpeed = 0.02;
+        //     earth.object.rotation.y += rotationSpeed;
+        // }
         const earth = this.objects.get('earth');
-        if (earth && earth.object) {
-            const rotationSpeed = 0.02;
-            earth.object.rotation.y += rotationSpeed;
-        }
-        
+if (earth && earth.object) {
+    const rotationSpeed = 0.02;
+
+    // Earth tilt is around Z by -23.5°, so spin axis is original Y, tilted by -23.5° around Z.
+    const tiltAngle = 23.5 * Math.PI / 180;
+    const rotationAxis = new THREE.Vector3(0, 1, 0)
+      .applyAxisAngle(new THREE.Vector3(0, 1, 0), tiltAngle)
+      .normalize();
+
+    // Rotate around that single tilted axis
+    earth.object.rotateOnAxis(rotationAxis, rotationSpeed);
+}
+
+
+
         // Calculate velocity and decay it over time
         if (this.scrollVelocity > 0) {
             this.scrollVelocity *= 0.95;
