@@ -1,4 +1,5 @@
 import { lerp, lerpPosition, calculateProgress } from '../../utils/interpolation';
+import { defaults } from '../../config/globalConfig';
 
 export class TransformManager {
     /**
@@ -8,10 +9,13 @@ export class TransformManager {
      * @param {number} transform.duration - Duration of transform
      */
     static calculateTransform(transform, currentProgress) {
+        // Use default duration if not specified
+        const duration = transform.duration || defaults.transform.duration;
+        
         const progress = calculateProgress(
             currentProgress,
             transform.at,
-            transform.at + transform.duration
+            transform.at + duration
         );
 
         switch (transform.type) {
@@ -52,8 +56,9 @@ export class TransformManager {
 
         // Process transforms in order, allowing later ones to override
         transformations.forEach(transform => {
+            const duration = transform.duration || defaults.transform.duration;
             const isActive = scrollProgress >= transform.at && 
-                           scrollProgress <= (transform.at + transform.duration);
+                           scrollProgress <= (transform.at + duration);
 
             if (isActive) {
                 const calculated = this.calculateTransform(transform, scrollProgress);
