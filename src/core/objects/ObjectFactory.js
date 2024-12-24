@@ -32,29 +32,62 @@ export class ObjectFactory {
             
             // Load texture
             const textureLoader = new THREE.TextureLoader();
-            const earthTexture = textureLoader.load('/assets/textures/map2.jpg');
+            const earthTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
+            // const earthTexture = textureLoader.load('/assets/textures/map2.jpg');
+            // 
             
             const material = new THREE.MeshPhongMaterial({
                 map: earthTexture,
-                shininess: 30
+                // shininess: 30,
+                // emissive: 0x4f9aff,
+                // emissiveIntensity: 0.3,
+
             });
             
             const earthMesh = new THREE.Mesh(geometry, material);
             
-            // Create atmosphere with lighting response
+            // Create regular atmosphere (keep existing code)
             const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
             const atmosphereMaterial = new THREE.MeshPhongMaterial({
                 color: 0xffffff,
                 transparent: true,
-                opacity: 0.3,
+                opacity: 0.2,
                 side: THREE.FrontSide,
-                shininess: 1,       // Low shininess for softer light response
-                emissive: 0x4f9aff, // Same as color for some self-glow
-                emissiveIntensity: 0.4  // Subtle glow
+                shininess: 1,
+                emissive: 0x4f9aff,
+                emissiveIntensity: 0.4
+            });
+            const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+            
+            // Create hot atmosphere with multiple layers
+            const atmosphereHot = new THREE.Group();  // Container for all hot atmosphere layers
+            
+            const hotLayers = [
+                { radius: 1.1,  opacity: 0.2, intensity: 0.9 },
+                { radius: 1.12, opacity: 0.15, intensity: 0.4 },
+                { radius: 1.15, opacity: 0.1, intensity: 0.2 }
+            ];
+            
+            hotLayers.forEach(layer => {
+                const geometry = new THREE.SphereGeometry(layer.radius, 64, 64);
+                const material = new THREE.MeshPhongMaterial({
+                    color: 0xff4800,  // More reddish for heat
+                    transparent: true,
+                    opacity: layer.opacity,
+                    side: THREE.DoubleSide,
+                    shininess: 0,
+                    emissive: 0xff4800,
+                    emissiveIntensity: layer.intensity,
+                    blending: THREE.AdditiveBlending
+                });
+                const mesh = new THREE.Mesh(geometry, material);
+                atmosphereHot.add(mesh);
             });
             
-            const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+            // Add both to earth but hide hot atmosphere initially
             earthMesh.add(atmosphereMesh);
+            earthMesh.add(atmosphereHot);
+            atmosphereHot.visible = true;
             
             // Create shadow cylinder
             const cylinderLength = 4;  // Adjusted for visibility
@@ -92,6 +125,7 @@ export class ObjectFactory {
                 extras: {
                     needsLight: true,
                     atmosphere: atmosphereMesh,
+                    atmosphereHot: atmosphereHot,
                     shadowCylinder: shadowCylinder
                 }
             };

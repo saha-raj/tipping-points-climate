@@ -221,7 +221,7 @@ class ScrollCanvas {
         // }
         const earth = this.objects.get('earth');
 if (earth && earth.object) {
-    const rotationSpeed = 0.02;
+    const rotationSpeed = 0.01;
 
     // Earth tilt is around Z by -23.5°, so spin axis is original Y, tilted by -23.5° around Z.
     const tiltAngle = 23.5 * Math.PI / 180;

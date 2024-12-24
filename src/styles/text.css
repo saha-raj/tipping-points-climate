@@ -1,3 +1,21 @@
+:root {
+    /* OPTION 1: */
+    /* --main-font: 'Lato', sans-serif; */
+    /* OPTION 2: */
+    --main-font: 'Noto Sans', serif;
+    /* OPTION 3: */
+    /* --main-font: 'Kanit', serif; */
+}
+body {
+    margin: 0;
+}
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
 /* Base text styles */
 .text-element {
     position: absolute;
@@ -8,24 +26,22 @@
 
 /* Type-specific styles */
 .text-type-header {
-    font-family: Arial, sans-serif;
-    font-size: 48px;
-    font-weight: bold;
+    font-family: var(--main-font);
+    font-size: 42px;
+    font-weight: 700;
     color: white;
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
     letter-spacing: 2px;
 }
 
 .text-type-description {
-    font-family: Arial, sans-serif;
+    font-family: var(--main-font);
     font-size: 24px;
     color: white;
-    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
 }
 
 .text-element.text-type-annotation {
     color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--main-font);
     font-size: 14px;
     line-height: 1.4;
     padding: 10px;
