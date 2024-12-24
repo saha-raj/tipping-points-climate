@@ -153,7 +153,8 @@ export class ObjectFactory {
                     needsLight: true,
                     atmosphere: atmosphereMesh,
                     atmosphereHot: atmosphereHot,
-                    shadowCylinder: shadowCylinder
+                    shadowCylinder: shadowCylinder,
+                    material: material  // Store material reference
                 }
             };
         }

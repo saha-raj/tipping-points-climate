@@ -217,6 +217,19 @@ export const extraConfig = [
         id: "shadowCylinder",
         entry: { at: 0.1 },
         exit: { at: 0.3 }    
-    }
+    },
+    {
+        id: "earthTexture",
+        file: '/assets/textures/earth_noClouds.0330_pix_large.jpg',
+        entry: { at: 0.2 },
+        exit: { at: 0.4 }    
+    },
+    {
+        id: "earthTexture",
+        file: '/assets/textures/earth_noClouds.0330.jpg',
+        entry: { at: 0.4 },
+        exit: { at: 0.6 }    
+    },
+    
 ];
 

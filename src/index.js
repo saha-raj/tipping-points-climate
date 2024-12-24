@@ -61,6 +61,21 @@ class ScrollCanvas {
         
         // Set scroll height based on sceneConfig
         document.body.style.minHeight = `${sceneConfig.totalScenes * sceneConfig.heightPerScene}vh`;
+        
+        // Preload textures including default
+        this.earthTextures = new Map();
+        const textureLoader = new THREE.TextureLoader();
+        
+        // Load default texture first
+        const defaultTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
+        this.earthTextures.set('default', defaultTexture);
+        
+        // Load config textures
+        extraConfig.forEach(config => {
+            if (config.id === 'earthTexture') {
+                this.earthTextures.set(config.file, textureLoader.load(config.file));
+            }
+        });
     }
 
     setupScene() {
@@ -190,6 +205,8 @@ class ScrollCanvas {
     }
 
     bindEvents() {
+        const textureLoader = new THREE.TextureLoader();
+        
         window.addEventListener('scroll', () => {
             const now = Date.now();
             const timeDelta = now - (this.lastScrollTime || now);
@@ -213,12 +230,42 @@ class ScrollCanvas {
             // Get Earth object and its extras
             const earth = this.objects.get('earth');
             if (earth && earth.extras) {
+                // Handle visibility
                 extraConfig.forEach(config => {
-                    const extra = earth.extras[config.id];
-                    if (extra) {
-                        extra.visible = progress >= config.entry.at && progress <= config.exit.at;
+                    const entryAt = config.entry?.at || 0;
+                    const exitAt = config.exit?.at || 1.0;
+                    
+                    if (config.id === 'earthTexture') {
+                        if (progress >= entryAt && progress <= exitAt) {
+                            const texture = this.earthTextures.get(config.file);
+                            if (texture && earth.extras.material.map !== texture) {
+                                earth.extras.material.map = texture;
+                                earth.extras.material.needsUpdate = true;
+                            }
+                            return; // Exit once we find an active texture
+                        }
+                    } else {
+                        const extra = earth.extras[config.id];
+                        if (extra) {
+                            extra.visible = progress >= entryAt && progress <= exitAt;
+                        }
                     }
                 });
+                
+                // If no texture config is active, use default
+                const isAnyTextureActive = extraConfig.some(config => 
+                    config.id === 'earthTexture' && 
+                    progress >= (config.entry?.at || 0) && 
+                    progress <= (config.exit?.at || 1.0)
+                );
+                
+                if (!isAnyTextureActive) {
+                    const defaultTexture = this.earthTextures.get('default');
+                    if (defaultTexture && earth.extras.material.map !== defaultTexture) {
+                        earth.extras.material.map = defaultTexture;
+                        earth.extras.material.needsUpdate = true;
+                    }
+                }
             }
         });
 
