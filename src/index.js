@@ -21,7 +21,7 @@ class ScrollCanvas {
             if (!object) return;
             
             // Set initial position and rotation for 3D objects
-            if (object.type === '3d') {
+            if (object.type === '3dObject') {
                 const normalizedX = (config.position.x - 50) / 25;
                 const normalizedY = -(config.position.y - 50) / 25;
                 object.object.position.set(normalizedX, normalizedY, 0);
@@ -106,7 +106,7 @@ class ScrollCanvas {
             
             if (object.type === 'text') {
                 this.container.appendChild(object.element);
-            } else if (object.type === '3d') {
+            } else if (object.type === '3dObject') {
                 this.scene.add(object.object);
             }
             
@@ -122,7 +122,7 @@ class ScrollCanvas {
         
         // First hide all non-3D objects
         this.objects.forEach((object) => {
-            if (object.type !== '3d') {
+            if (object.type !== '3dObject') {
                 object.element.style.display = 'none';
             }
         });
@@ -133,7 +133,7 @@ class ScrollCanvas {
      
             const { position, opacity, transforms, visible } = state;
      
-            if (object.type === '3d') {
+            if (object.type === '3dObject') {
                 const normalizedX = (position.x - 50) / 25;
                 const normalizedY = -(position.y - 50) / 25;
                 

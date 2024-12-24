@@ -143,7 +143,7 @@ export class ObjectFactory {
             shadowCylinder.position.x = (cylinderLength/2);
             
             return {
-                type: '3d',
+                type: '3dObject',
                 object: earthMesh,
                 extras: {
                     needsLight: true,
