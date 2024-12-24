@@ -98,6 +98,27 @@ export const globalConfig = [
         }
     },
     {
+        id: "description-1",
+        type: "description",
+        content: "Here is some text describing the scene",
+        position: { x: HEADER_X, y: HEADER_Y + 5 },
+        transition: {
+            entry_from: { 
+                x: HEADER_X, 
+                y: 100, 
+                at: 0.05,
+                opacity: 0,
+                duration: 0.01
+            },
+            exit_to: { 
+                x: HEADER_X, 
+                y: -10, 
+                at: 0.33,
+                opacity: 0
+            }
+        }
+    },
+    {
         id: "header-2",
         type: "header",
         content: "Energy Balance",
