@@ -1,8 +1,8 @@
 :root {
     /* OPTION 1: */
-    /* --main-font: 'Lato', sans-serif; */
+    --main-font: 'Lato', sans-serif;
     /* OPTION 2: */
-    --main-font: 'Noto Sans', serif;
+    /* --main-font: 'Noto Sans', serif; */
     /* OPTION 3: */
     /* --main-font: 'Kanit', serif; */
 }
@@ -21,7 +21,6 @@ body {
     position: absolute;
     pointer-events: none;
     transform-origin: center;
-    white-space: nowrap;
 }
 
 /* Type-specific styles */
@@ -31,24 +30,27 @@ body {
     font-weight: 700;
     color: white;
     letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 .text-type-description {
     font-family: var(--main-font);
     font-size: 24px;
     color: white;
+    white-space: nowrap;
 }
 
 .text-element.text-type-annotation {
     color: #ffffff;
     font-family: var(--main-font);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
     padding: 10px;
     background: rgba(40, 58, 82, 0.6);
     border-radius: 4px;
     pointer-events: none;
-    max-width: 200px;
+    max-width: 400px;
+    white-space: normal;
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -71,5 +73,23 @@ body {
 
 /* Ensure inline math aligns with text */
 .text-element .MathJax[display="false"] {
+    vertical-align: middle;
+}
+
+/* Math-specific styles */
+.text-element mjx-container {
+    font-size: 120%;  /* Make math 20% larger than surrounding text */
+    color: inherit;
+}
+
+/* Display math ($$...$$) - even larger for displayed equations */
+.text-element mjx-container[jax="CHTML"][display="true"] {
+    margin: 1em 0;
+    font-size: 130%;  /* Make display math 30% larger */
+}
+
+/* Inline math ($...$) */
+.text-element mjx-container[jax="CHTML"]:not([display="true"]) {
+    padding: 0 0.2em;
     vertical-align: middle;
 } 
