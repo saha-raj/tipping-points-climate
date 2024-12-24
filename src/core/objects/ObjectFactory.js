@@ -18,7 +18,30 @@ export class ObjectFactory {
     static createText(config) {
         const element = document.createElement('div');
         element.className = `text-element text-type-${config.type} text-element-${config.id}`;
-        element.textContent = config.content;
+        
+        // Check if content contains LaTeX
+        if (config.content.match(/\$\$(.*?)\$\$|\$(.*?)\$/)) {
+            element.innerHTML = config.content;  // Use innerHTML for LaTeX
+            // Queue MathJax processing if it's ready
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([element]).catch((err) => {
+                    console.warn('MathJax processing failed:', err);
+                    element.textContent = config.content;  // Fallback to plain text
+                });
+            } else {
+                // If MathJax isn't ready, queue for later processing
+                window.addEventListener('load', () => {
+                    if (window.MathJax && window.MathJax.typesetPromise) {
+                        MathJax.typesetPromise([element]).catch((err) => {
+                            console.warn('MathJax processing failed:', err);
+                            element.textContent = config.content;
+                        });
+                    }
+                });
+            }
+        } else {
+            element.textContent = config.content;  // Keep existing behavior for non-LaTeX
+        }
         
         return {
             type: 'text',

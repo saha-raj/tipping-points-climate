@@ -119,6 +119,16 @@ export const globalConfig = [
         id: "earth",
         type: "3dObject",
         position: { x: EARTH_X, y: EARTH_Y },
+        config: {
+            ice: {
+                numSeeds: 10,          // Number of ice polygons
+                growthRate: 0.1,       // How fast ice grows
+                initialSize: 0.05,     // Starting size of each polygon
+                maxSize: 0.3,          // Maximum size each polygon can grow to
+                opacity: 0.8,          // Ice transparency
+                color: 0xffffff        // Ice color
+            }
+        },
         transition: {
             entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.1 },
             exit_to: null
@@ -146,7 +156,28 @@ export const globalConfig = [
         content: 'This is the Earth',
         transition: {
             entry_from: {
-                at: 0.55,
+                at: 0.2,
+                opacity: 0,
+                duration: 0.01
+            },
+            exit_to: {
+                at: 0.6,
+                opacity: 0,
+                duration: 0.01
+            }
+        }
+    },
+    {
+        id: 'mathTest',
+        type: 'annotation',
+        position: {
+            x: 60,
+            y: 35
+        },
+        content: 'The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.',
+        transition: {
+            entry_from: {
+                at: 0.3,
                 opacity: 0,
                 duration: 0.01
             },

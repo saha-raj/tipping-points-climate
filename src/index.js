@@ -120,7 +120,7 @@ class ScrollCanvas {
     updateObjects() {
         const visibleObjects = this.lifecycle.getVisibleObjects();
         
-        // First hide all objects
+        // First hide all non-3D objects
         this.objects.forEach((object) => {
             if (object.type !== '3d') {
                 object.element.style.display = 'none';
@@ -167,6 +167,13 @@ class ScrollCanvas {
                     object.element.style.top = `${position.y}%`;
                     object.element.style.opacity = opacity;
                     object.element.style.transform = this.getTransformString(transforms);
+                    
+                    // Add MathJax reprocessing only if element contains math
+                    if (object.element.innerHTML.match(/\$\$(.*?)\$\$|\$(.*?)\$/)) {
+                        MathJax.typesetPromise([object.element]).catch(err => {
+                            console.warn('MathJax reprocessing failed:', err);
+                        });
+                    }
                 }
             }
         });

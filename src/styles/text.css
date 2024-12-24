@@ -49,9 +49,27 @@ body {
     border-radius: 4px;
     pointer-events: none;
     max-width: 200px;
+    transition: opacity 0.3s ease-in-out;
 }
 
 /* Optional: Add a subtle animation for when annotations fade in */
 .text-element.text-type-annotation {
     transition: opacity 0.3s ease-in-out;
+}
+
+/* New MathJax-specific styles */
+.text-element .MathJax {
+    color: inherit;  /* Inherit text color from parent */
+    font-size: inherit;  /* Inherit font size from parent */
+}
+
+.text-element .MathJax-Display {
+    margin: 0.5em 0;  /* Add some vertical spacing for display equations */
+    overflow-x: auto;  /* Handle long equations */
+    max-width: 100%;  /* Prevent overflow */
+}
+
+/* Ensure inline math aligns with text */
+.text-element .MathJax[display="false"] {
+    vertical-align: middle;
 } 
