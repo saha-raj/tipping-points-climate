@@ -140,16 +140,7 @@ export const globalConfig = [
         id: "earth",
         type: "3dObject",
         position: { x: EARTH_X, y: EARTH_Y },
-        config: {
-            ice: {
-                numSeeds: 10,          // Number of ice polygons
-                growthRate: 0.1,       // How fast ice grows
-                initialSize: 0.05,     // Starting size of each polygon
-                maxSize: 0.3,          // Maximum size each polygon can grow to
-                opacity: 0.8,          // Ice transparency
-                color: 0xffffff        // Ice color
-            }
-        },
+        
         transition: {
             entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.1 },
             exit_to: null
@@ -208,6 +199,24 @@ export const globalConfig = [
                 duration: 0.01
             }
         }
+    }
+];
+
+export const extraConfig = [
+    {
+        id: "atmosphere",
+        entry: { at: 0.35 },
+        exit: { at: 0.5 }    
+    },
+    {
+        id: "atmosphereHot",
+        entry: { at: 0.55 },
+        exit: { at: 0.75 }    
+    },
+    {
+        id: "shadowCylinder",
+        entry: { at: 0.1 },
+        exit: { at: 0.3 }    
     }
 ];
 

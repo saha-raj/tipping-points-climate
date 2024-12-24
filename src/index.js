@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import * as d3 from 'd3';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager';
-import { globalConfig, sceneConfig } from './config/globalConfig';
+import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
 import { DebugLogger } from './debug/DebugLogger';
 import { DebugOverlay } from './debug/DebugOverlay';
@@ -209,6 +209,17 @@ class ScrollCanvas {
             this.debugOverlay.updateProgress(progress);
             this.debugOverlay.updateScene(this.getCurrentScene(progress));
             this.lifecycle.updateProgress(progress);
+            
+            // Get Earth object and its extras
+            const earth = this.objects.get('earth');
+            if (earth && earth.extras) {
+                extraConfig.forEach(config => {
+                    const extra = earth.extras[config.id];
+                    if (extra) {
+                        extra.visible = progress >= config.entry.at && progress <= config.exit.at;
+                    }
+                });
+            }
         });
 
         // Handle resize

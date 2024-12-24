@@ -107,10 +107,11 @@ export class ObjectFactory {
                 atmosphereHot.add(mesh);
             });
             
-            // Add both to earth but hide hot atmosphere initially
+            // Add both to earth but hide initially
             earthMesh.add(atmosphereMesh);
             earthMesh.add(atmosphereHot);
-            atmosphereHot.visible = true;
+            atmosphereMesh.visible = false;  // Start invisible
+            atmosphereHot.visible = false;   // Start invisible
             
             // Create shadow cylinder
             const cylinderLength = 4;  // Adjusted for visibility
@@ -141,6 +142,9 @@ export class ObjectFactory {
             shadowCylinder.rotation.z = Math.PI/2;
             // By default, cylinder is centered at origin, so we need to move it by half its length + earth radius
             shadowCylinder.position.x = (cylinderLength/2);
+            
+            shadowCylinder.visible = false;  // Start invisible
+            earthMesh.add(shadowCylinder);
             
             return {
                 type: '3dObject',
