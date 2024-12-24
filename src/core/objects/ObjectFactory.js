@@ -28,7 +28,7 @@ export class ObjectFactory {
 
     static create3DObject(config) {
         if (config.id === 'earth') {
-            const geometry = new THREE.SphereGeometry(1, 32, 32);
+            const geometry = new THREE.SphereGeometry(1, 64, 64);
             
             // Load texture
             const textureLoader = new THREE.TextureLoader();
@@ -42,7 +42,7 @@ export class ObjectFactory {
             const earthMesh = new THREE.Mesh(geometry, material);
             
             // Create atmosphere with lighting response
-            const atmosphereGeometry = new THREE.SphereGeometry(1.1, 32, 32);
+            const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
             const atmosphereMaterial = new THREE.MeshPhongMaterial({
                 color: 0xffffff,
                 transparent: true,
@@ -57,8 +57,8 @@ export class ObjectFactory {
             earthMesh.add(atmosphereMesh);
             
             // Create shadow cylinder
-            const cylinderLength = 5;  // Adjusted for visibility
-            const cylinderGeometry = new THREE.CylinderGeometry(1.01, 1.01, cylinderLength, 32);  // Slightly larger to prevent z-fighting
+            const cylinderLength = 4;  // Adjusted for visibility
+            const cylinderGeometry = new THREE.CylinderGeometry(1.01, 1.01, cylinderLength, 64);  // Slightly larger to prevent z-fighting
             const cylinderMaterial = new THREE.MeshBasicMaterial({
                 color: 0x000000,
                 transparent: true,
@@ -68,7 +68,7 @@ export class ObjectFactory {
             const shadowCylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
             
             // Create end cap
-            const capGeometry = new THREE.CircleGeometry(1, 32);
+            const capGeometry = new THREE.CircleGeometry(1, 64);
             const capMaterial = new THREE.MeshBasicMaterial({
                 color: 0x000000,
                 side: THREE.DoubleSide

@@ -40,6 +40,12 @@ const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
 const DURATION_DEFAULT = 0.2;
 
+const HEADER_X = 5;  
+const HEADER_Y = 10;
+const DESC_X = 5;  
+const DESC_Y = 15;
+
+
 export const sceneConfig = {
     totalScenes: 10,  // Number of scenes in the animation
     heightPerScene: 100  // Viewport height percentage per scene
@@ -74,16 +80,17 @@ export const globalConfig = [
         id: "header-1",
         type: "header",
         content: "Welcome",
-        position: { x: 10, y: 30 },
+        position: { x: HEADER_X, y: HEADER_Y },
         transition: {
             entry_from: { 
-                x: 10, 
-                y: 30, 
-                at: 0.2,
-                opacity: 0
+                x: HEADER_X, 
+                y: HEADER_Y, 
+                at: 0.05,
+                opacity: 0,
+                duration: 0.01
             },
             exit_to: { 
-                x: 10, 
+                x: HEADER_X, 
                 y: -10, 
                 at: 0.33,
                 opacity: 0
@@ -94,15 +101,15 @@ export const globalConfig = [
         id: "header-2",
         type: "header",
         content: "Energy Balance",
-        position: { x: 10, y: 30 },
+        position: { x: HEADER_X, y: HEADER_Y },
         transition: {
             entry_from: { 
-                x: 10, 
+                x: HEADER_X, 
                 y: 110, 
                 at: 0.33,
             },
             exit_to: { 
-                x: 10, 
+                x: HEADER_X, 
                 y: -10, 
                 at: 0.8,
             }

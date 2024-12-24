@@ -76,12 +76,12 @@ class ScrollCanvas {
         );
         
         // Position camera
-        this.camera.position.z = 8;
-        this.camera.position.y = 9;
+        this.camera.position.z = 4;
+        this.camera.position.y = 7;
         this.camera.position.x = -5;
         
         // Add camera lookAt - can be removed if needed
-        this.camera.lookAt(-2, 0, 0);  // Look at origin/center of scene
+        this.camera.lookAt(-1, 1, 0);  // Look at origin/center of scene
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -142,7 +142,7 @@ class ScrollCanvas {
                 
                 if (transforms.scale && object.extras?.shadowCylinder) {
                     const scale = transforms.scale;
-                    const cylinderLength = 5;  // Same as in ObjectFactory
+                    const cylinderLength = 4;  // Same as in ObjectFactory
                     
                     // Scale the object
                     object.object.scale.setScalar(scale);
