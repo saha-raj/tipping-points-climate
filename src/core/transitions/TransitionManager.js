@@ -39,16 +39,17 @@ export class TransitionManager {
         }
 
         // Always start at configured position
-        if (scrollProgress === 0) {
-            return {
-                position: { ...position },
-                opacity: transition.entry_from?.opacity ?? 1,
-                visible: true
-            };
-        }
+        // if (scrollProgress === 0) {
+        //     return {
+        //         position: { ...position },
+        //         opacity: transition.entry_from?.opacity ?? 1,
+        //         visible: true
+        //     };
+        // }
 
         // Before entry
-        if (entry_from && scrollProgress < entry_from.at) {
+        const EPSILON = 0.0001;
+        if (entry_from && (scrollProgress + EPSILON) < entry_from.at) {
             return {
                 position: { 
                     x: entry_from.x ?? position.x,

@@ -120,18 +120,21 @@ class ScrollCanvas {
     updateObjects() {
         const visibleObjects = this.lifecycle.getVisibleObjects();
         
+        // First hide all objects
+        this.objects.forEach((object) => {
+            if (object.type !== '3d') {
+                object.element.style.display = 'none';
+            }
+        });
+     
         visibleObjects.forEach(({ id, state }) => {
             const object = this.objects.get(id);
             if (!object) return;
-
-            const { position, opacity, transforms } = state;
-
+     
+            const { position, opacity, transforms, visible } = state;
+     
             if (object.type === '3d') {
-                // Convert percentage position to Three.js space
-                // 0% → -1 (left edge)
-                // 50% → 0 (center)
-                // 100% → 1 (right edge)
-                const normalizedX = (position.x - 50) / 25;  // -2 to +2 range
+                const normalizedX = (position.x - 50) / 25;
                 const normalizedY = -(position.y - 50) / 25;
                 
                 object.object.position.set(
@@ -142,13 +145,10 @@ class ScrollCanvas {
                 
                 if (transforms.scale && object.extras?.shadowCylinder) {
                     const scale = transforms.scale;
-                    const cylinderLength = 4;  // Same as in ObjectFactory
+                    const cylinderLength = 4;
                     
-                    // Scale the object
                     object.object.scale.setScalar(scale);
                     object.extras.shadowCylinder.scale.setScalar(scale);
-                    
-                    // Adjust cylinder position based on scale
                     object.extras.shadowCylinder.position.x = (cylinderLength/2) * scale;
                 }
                 
@@ -161,14 +161,16 @@ class ScrollCanvas {
                     object.object.rotation.z = transforms.rotation;
                 }
             } else {
-                // Handle text elements (unchanged)
-                object.element.style.left = `${position.x}%`;
-                object.element.style.top = `${position.y}%`;
-                object.element.style.opacity = opacity;
-                object.element.style.transform = this.getTransformString(transforms);
+                if (visible) {
+                    object.element.style.display = 'block';
+                    object.element.style.left = `${position.x}%`;
+                    object.element.style.top = `${position.y}%`;
+                    object.element.style.opacity = opacity;
+                    object.element.style.transform = this.getTransformString(transforms);
+                }
             }
         });
-    }
+     }
 
     getTransformString(transforms) {
         const parts = [];
