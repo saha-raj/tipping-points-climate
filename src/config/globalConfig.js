@@ -209,9 +209,9 @@ export const extraConfig = [
         exit: { at: 0.5 }    
     },
     {
-        id: "atmosphereHot",
-        entry: { at: 0.55 },
-        exit: { at: 0.75 }    
+        id: "atmosphereHotNonlinear",
+        entry: { at: 0.9 },
+        exit: { at: 1.0 }    
     },
     {
         id: "shadowCylinder",

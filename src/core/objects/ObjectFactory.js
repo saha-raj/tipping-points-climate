@@ -56,8 +56,6 @@ export class ObjectFactory {
             // Load texture
             const textureLoader = new THREE.TextureLoader();
             const earthTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
-            // const earthTexture = textureLoader.load('/assets/textures/map2.jpg');
-            // 
             
             const material = new THREE.MeshPhongMaterial({
                 map: earthTexture,
@@ -66,10 +64,11 @@ export class ObjectFactory {
                 // emissiveIntensity: 0.3,
 
             });
-            
             const earthMesh = new THREE.Mesh(geometry, material);
             
-            // Create regular atmosphere (keep existing code)
+            // ------------------------------------------------------------ 
+            // Create regular atmosphere 
+            // ------------------------------------------------------------ 
             const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
             const atmosphereMaterial = new THREE.MeshPhongMaterial({
                 color: 0xffffff,
@@ -82,7 +81,9 @@ export class ObjectFactory {
             });
             const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
             
-            // Create hot atmosphere with multiple layers
+            // ------------------------------------------------------------ 
+            // Create hot atmosphere with 3 linearly spaced layers
+            // ------------------------------------------------------------ 
             const atmosphereHot = new THREE.Group();  // Container for all hot atmosphere layers
             
             const hotLayers = [
@@ -113,7 +114,43 @@ export class ObjectFactory {
             atmosphereMesh.visible = false;  // Start invisible
             atmosphereHot.visible = false;   // Start invisible
             
-            // Create shadow cylinder
+            // ------------------------------------------------------------ 
+            // Create hot atmosphere with N nonlinearly spaced layers
+            // ------------------------------------------------------------ 
+            const atmosphereHotNonlinear = new THREE.Group();
+            const baseGeometry = new THREE.SphereGeometry(1, 64, 64);
+            const numLayers = 15;
+
+            for (let i = 0; i < numLayers; i++) {
+                const t = i / (numLayers - 1);
+                const scale = 1 + (0.15 * Math.pow(t, 2));
+                const opacity = 0.3 * (1 - Math.pow(t, 1.5));
+                
+                const layer = new THREE.Mesh(
+                    baseGeometry,
+                    new THREE.MeshPhongMaterial({
+                        // color: 0xfec89a, // warm orange
+                        // color: 0xffdab9,
+                        color: 0xe2eafc, // cool
+                        transparent: true,
+                        opacity: 0.06,
+                        // shininess: 0,
+                        emissive: 0xe2eafc,
+                        emissiveIntensity: 0.05,
+                        // side: THREE.FrontSide,
+                        // blending: THREE.AdditiveBlending
+                    })
+                );
+                layer.scale.set(scale, scale, scale);
+                atmosphereHotNonlinear.add(layer);
+            }
+            
+            atmosphereHotNonlinear.visible = false;
+            earthMesh.add(atmosphereHotNonlinear);
+
+            // ------------------------------------------------------------ 
+            // Create shadow cylinder and end cap   
+            // ------------------------------------------------------------ 
             const cylinderLength = 4;  // Adjusted for visibility
             const cylinderGeometry = new THREE.CylinderGeometry(1.01, 1.01, cylinderLength, 64);  // Slightly larger to prevent z-fighting
             const cylinderMaterial = new THREE.MeshBasicMaterial({
@@ -146,7 +183,9 @@ export class ObjectFactory {
             shadowCylinder.visible = false;  // Start invisible
             earthMesh.add(shadowCylinder);
             
+            // ------------------------------------------------------------ 
             // Create ice patches
+            // ------------------------------------------------------------ 
             const iceGroup = new THREE.Group();
             const NUM_ICE_PATCHES = 360*10;
             const SPHERE_RADIUS = 1.01; // Slightly above Earth's surface
@@ -212,6 +251,7 @@ export class ObjectFactory {
                     needsLight: true,
                     atmosphere: atmosphereMesh,
                     atmosphereHot: atmosphereHot,
+                    atmosphereHotNonlinear: atmosphereHotNonlinear, 
                     shadowCylinder: shadowCylinder,
                     material: material,
                     iceGroup: iceGroup
