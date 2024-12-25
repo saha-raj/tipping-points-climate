@@ -148,21 +148,40 @@ export class ObjectFactory {
             
             // Create ice patches
             const iceGroup = new THREE.Group();
-            const NUM_ICE_PATCHES = 360;
+            const NUM_ICE_PATCHES = 360*10;
             const SPHERE_RADIUS = 1.01; // Slightly above Earth's surface
 
-            // Generate fibonacci points on sphere
+            // Generate random points on sphere
             for (let i = 0; i < NUM_ICE_PATCHES; i++) {
-                const phi = Math.acos(1 - 2 * (i + 0.5) / NUM_ICE_PATCHES);
-                const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+                // Random spherical coordinates
+                const theta = Math.random() * Math.PI * 2; // Random longitude (0 to 2π)
+                const phi = Math.acos(2 * Math.random() - 1); // Random latitude (arccos method for uniform distribution)
                 
                 // Convert to Cartesian coordinates
                 const x = SPHERE_RADIUS * Math.cos(theta) * Math.sin(phi);
                 const y = SPHERE_RADIUS * Math.sin(theta) * Math.sin(phi);
                 const z = SPHERE_RADIUS * Math.cos(phi);
 
-                // Create circular ice patch
-                const iceGeometry = new THREE.CircleGeometry(0.1, 64);
+                // Create irregular polygon
+                const numSides = Math.floor(Math.random() * 4) + 4; // 4-7 sides
+                const vertices = [];
+                const baseRadius = 0.1;
+                
+                // Create irregular vertices
+                for (let j = 0; j < numSides; j++) {
+                    const angle = (j / numSides) * Math.PI * 2;
+                    // Vary radius between 0.7 and 1.3 of base radius
+                    const radius = baseRadius * (0.3 + Math.random() * 1.9);
+                    vertices.push(new THREE.Vector2(
+                        radius * Math.cos(angle),
+                        radius * Math.sin(angle)
+                    ));
+                }
+
+                // Create geometry from vertices
+                const shape = new THREE.Shape(vertices);
+                const iceGeometry = new THREE.ShapeGeometry(shape);
+                
                 const iceMaterial = new THREE.MeshBasicMaterial({
                     color: 0xdee2e6,
                     // transparent: true,
@@ -171,6 +190,10 @@ export class ObjectFactory {
                 });
                 
                 const icePatch = new THREE.Mesh(iceGeometry, iceMaterial);
+                
+                // Random rotation
+                const randomRotation = Math.random() * Math.PI * 2;
+                icePatch.rotation.z = randomRotation;
                 
                 // Position and orient ice patch
                 icePatch.position.set(x, y, z);
