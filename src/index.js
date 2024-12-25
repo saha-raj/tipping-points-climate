@@ -230,7 +230,7 @@ class ScrollCanvas {
             // Get Earth object and its extras
             const earth = this.objects.get('earth');
             if (earth && earth.extras) {
-                // Handle visibility
+                // Handle visibility and textures
                 extraConfig.forEach(config => {
                     const entryAt = config.entry?.at || 0;
                     const exitAt = config.exit?.at || 1.0;
@@ -243,6 +243,21 @@ class ScrollCanvas {
                                 earth.extras.material.needsUpdate = true;
                             }
                             return; // Exit once we find an active texture
+                        }
+                    } else if (config.id === 'iceGroup') {
+                        const iceGroup = earth.extras.iceGroup;
+                        if (progress >= entryAt && progress <= exitAt) {
+                            iceGroup.visible = true;
+                            // Calculate growth progress
+                            const growthProgress = (progress - entryAt) / (exitAt - entryAt);
+                            const radius = config.maxRadius * growthProgress;
+                            
+                            // Update each ice patch
+                            iceGroup.children.forEach(patch => {
+                                patch.scale.set(radius, radius, 1);
+                            });
+                        } else {
+                            iceGroup.visible = false;
                         }
                     } else {
                         const extra = earth.extras[config.id];

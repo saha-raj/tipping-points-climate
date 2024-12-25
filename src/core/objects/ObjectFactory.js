@@ -146,6 +146,42 @@ export class ObjectFactory {
             shadowCylinder.visible = false;  // Start invisible
             earthMesh.add(shadowCylinder);
             
+            // Create ice patches
+            const iceGroup = new THREE.Group();
+            const NUM_ICE_PATCHES = 360;
+            const SPHERE_RADIUS = 1.01; // Slightly above Earth's surface
+
+            // Generate fibonacci points on sphere
+            for (let i = 0; i < NUM_ICE_PATCHES; i++) {
+                const phi = Math.acos(1 - 2 * (i + 0.5) / NUM_ICE_PATCHES);
+                const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+                
+                // Convert to Cartesian coordinates
+                const x = SPHERE_RADIUS * Math.cos(theta) * Math.sin(phi);
+                const y = SPHERE_RADIUS * Math.sin(theta) * Math.sin(phi);
+                const z = SPHERE_RADIUS * Math.cos(phi);
+
+                // Create circular ice patch
+                const iceGeometry = new THREE.CircleGeometry(0.1, 64);
+                const iceMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xdee2e6,
+                    // transparent: true,
+                    // opacity: 0.4,
+                    side: THREE.DoubleSide,
+                });
+                
+                const icePatch = new THREE.Mesh(iceGeometry, iceMaterial);
+                
+                // Position and orient ice patch
+                icePatch.position.set(x, y, z);
+                icePatch.lookAt(0, 0, 0); // Orient perpendicular to surface
+                
+                iceGroup.add(icePatch);
+            }
+
+            iceGroup.visible = false;
+            earthMesh.add(iceGroup);
+
             return {
                 type: '3dObject',
                 object: earthMesh,
@@ -154,7 +190,8 @@ export class ObjectFactory {
                     atmosphere: atmosphereMesh,
                     atmosphereHot: atmosphereHot,
                     shadowCylinder: shadowCylinder,
-                    material: material  // Store material reference
+                    material: material,
+                    iceGroup: iceGroup
                 }
             };
         }
