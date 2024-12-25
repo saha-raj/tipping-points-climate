@@ -29,6 +29,18 @@ export class TransitionManager {
             ...typeDefault.transition.entry_from
         } : null;
 
+        // Merge exit_to with type defaults
+        const effectiveExitTo = exit_to ? {
+            x: position.x,
+            y: position.y,
+            ...(typeDefault?.transition?.exit_to || {}),
+            ...exit_to
+        } : typeDefault?.transition?.exit_to ? {
+            x: position.x,
+            y: position.y,
+            ...typeDefault.transition.exit_to
+        } : null;
+
         // Debug logging
         if (config.id === 'earth') {
             console.log('TransitionManager Calculation:', {
@@ -98,19 +110,19 @@ export class TransitionManager {
         }
 
         // During exit transition
-        if (exit_to && scrollProgress >= exit_to.at && 
-            scrollProgress <= (exit_to.at + (exit_to.duration || defaults.transition.exit.duration))) {
+        if (effectiveExitTo && scrollProgress >= effectiveExitTo.at && 
+            scrollProgress <= (effectiveExitTo.at + (effectiveExitTo.duration || defaults.transition.exit.duration))) {
             
             const exitProgress = calculateProgress(
                 scrollProgress,
-                exit_to.at,
-                exit_to.at + (exit_to.duration || defaults.transition.exit.duration)
+                effectiveExitTo.at,
+                effectiveExitTo.at + (effectiveExitTo.duration || defaults.transition.exit.duration)
             );
 
             return {
-                position: lerpPosition(position, exit_to, exitProgress),
-                opacity: exit_to.opacity !== undefined ?
-                    lerpPosition({ x: 1 }, { x: exit_to.opacity }, exitProgress).x :
+                position: lerpPosition(position, effectiveExitTo, exitProgress),
+                opacity: effectiveExitTo.opacity !== undefined ?
+                    lerpPosition({ x: 1 }, { x: effectiveExitTo.opacity }, exitProgress).x :
                     lerpPosition({ x: 1 }, { x: defaults.transition.opacity.exit }, exitProgress).x,
                 visible: true
             };

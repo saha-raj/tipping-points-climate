@@ -96,7 +96,7 @@ class ScrollCanvas {
         this.camera.position.x = -5;
         
         // Add camera lookAt - can be removed if needed
-        this.camera.lookAt(-2, 1, 0);  // Look at origin/center of scene
+        this.camera.lookAt(0.5, 0, 0);  // Look at origin/center of scene
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);

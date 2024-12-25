@@ -1,8 +1,8 @@
 :root {
     /* OPTION 1: */
-    --main-font: 'Lato', sans-serif;
+    /* --main-font: 'Lato', sans-serif; */
     /* OPTION 2: */
-    /* --main-font: 'Noto Sans', serif; */
+    --main-font: "Open Sans", serif;
     /* OPTION 3: */
     /* --main-font: 'Kanit', serif; */
 
@@ -29,7 +29,7 @@ body {
 .text-type-header {
     font-family: var(--main-font);
     font-size: 36px;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-color);
     letter-spacing: 2px;
     white-space: nowrap;
