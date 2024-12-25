@@ -38,109 +38,88 @@
 // Define constants in percentage values (0-100)
 const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
-const DURATION_DEFAULT = 0.2;
 
 const HEADER_X = 5;  
 const HEADER_Y = 10;
-const DESC_X = 5;  
-const DESC_Y = 15;
+
+const DESC_X = HEADER_X;
+const DESC_Y = HEADER_Y + 10;
+
+const SCROLL_dX = 0;
+const SCROLL_dY = 100;
 
 
-export const sceneConfig = {
-    totalScenes: 10,  // Number of scenes in the animation
-    heightPerScene: 100  // Viewport height percentage per scene
+
+const NUM_SCENES = 6;
+const SCENE_DURATION = 1/NUM_SCENES;          // Each scene is 1/n of total progress
+const TRANSITION_DURATION_FRAC = 0.2;         // Transitions take 10% of scene duration
+const TRANSITION_DURATION = SCENE_DURATION * TRANSITION_DURATION_FRAC;
+const HEIGHT_MULTIPLIER = 300;  
+
+
+// Scene Control
+export const sceneControl = {
+    numScenes: NUM_SCENES,
+    sceneDuration: SCENE_DURATION,
+    transitionDuration: TRANSITION_DURATION,
+    heightMultiplier: HEIGHT_MULTIPLIER
 };
-// Calculate total scroll height
-const TOTAL_SCROLL_HEIGHT = sceneConfig.totalScenes * sceneConfig.heightPerScene;
+
+// Scene Configuration
+export const sceneConfig = {
+    totalScenes: NUM_SCENES,
+    heightPerScene: HEIGHT_MULTIPLIER,
+    totalHeight: NUM_SCENES * HEIGHT_MULTIPLIER
+};
+
+// Type-specific defaults
+export const typeDefaults = {
+    header: {
+        position: { x: HEADER_X, y: HEADER_Y },
+        transition: {
+            entry_from: {
+                x: HEADER_X + SCROLL_dX,  y: HEADER_Y + SCROLL_dY,
+                opacity: 0
+            },
+            exit_to: {
+                x: HEADER_X - SCROLL_dX,  y: HEADER_Y - SCROLL_dY,
+                opacity: 0
+            }
+        }
+    },
+    description: {
+        position: { x: DESC_X, y: DESC_Y },
+        transition: {
+            entry_from: {
+                x: DESC_X + SCROLL_dX, y: DESC_Y + SCROLL_dY,
+                opacity: 0
+            },
+            exit_to: {
+                x: DESC_X - SCROLL_dX, y: DESC_Y - SCROLL_dY,
+                opacity: 0
+            }
+        }
+    }
+};
 
 export const defaults = {
     transition: {
-        duration: DURATION_DEFAULT,
-        opacity: {
-            entry: 1,      // Default final opacity for entry
-            exit: 0,       // Default final opacity for exit
-            initial: 0     // Default starting opacity
-        },
-        entry: {
-            duration: DURATION_DEFAULT
-        },
-        exit: {
-            duration: DURATION_DEFAULT
-        }
+        duration: TRANSITION_DURATION,
+        opacity: { entry: 1,  exit: 0, initial: 0  },
+        entry:   { duration: TRANSITION_DURATION },
+        exit:    { duration: TRANSITION_DURATION }
     },
-    transform: {
-        duration: DURATION_DEFAULT   
-    }
+    transform: { duration: TRANSITION_DURATION }
 };
 
 /** @type {ObjectConfig[]} */
 
 export const globalConfig = [
-    {
-        id: "header-1",
-        type: "header",
-        content: "Welcome",
-        position: { x: HEADER_X, y: HEADER_Y },
-        transition: {
-            entry_from: { 
-                x: HEADER_X, 
-                y: HEADER_Y, 
-                at: 0.05,
-                opacity: 0,
-                duration: 0.01
-            },
-            exit_to: { 
-                x: HEADER_X, 
-                y: -10, 
-                at: 0.33,
-                opacity: 0
-            }
-        }
-    },
-    {
-        id: "description-1",
-        type: "description",
-        content: "Here is some text describing the scene",
-        position: { x: HEADER_X, y: HEADER_Y + 5 },
-        transition: {
-            entry_from: { 
-                x: HEADER_X, 
-                y: 100, 
-                at: 0.05,
-                opacity: 0,
-                duration: 0.01
-            },
-            exit_to: { 
-                x: HEADER_X, 
-                y: -10, 
-                at: 0.33,
-                opacity: 0
-            }
-        }
-    },
-    {
-        id: "header-2",
-        type: "header",
-        content: "Energy Balance",
-        position: { x: HEADER_X, y: HEADER_Y },
-        transition: {
-            entry_from: { 
-                x: HEADER_X, 
-                y: 110, 
-                at: 0.33,
-            },
-            exit_to: { 
-                x: HEADER_X, 
-                y: -10, 
-                at: 0.8,
-            }
-        }
-    },
-    {
+    
+    {   // --------------------- EARTH ---------------------
         id: "earth",
         type: "3dObject",
         position: { x: EARTH_X, y: EARTH_Y },
-        
         transition: {
             entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.1 },
             exit_to: null
@@ -148,93 +127,237 @@ export const globalConfig = [
         transformations: [
             {
                 type: "scale",
-                scale_to: 2,
-                at: 0.35,
+                scale_to: 0.1,
+                at: 0.2, duration: 0.05
             },
             {
                 type: "scale",
                 scale_to: 1,
-                at: 0.75,
-            }
+                at: 0.25, duration: 0.05
+            },
+            // {
+            //     type: "scale",
+            //     scale_to: 1,
+            //     at: 0.75,
+            // }
         ]
     },
-    {
-        id: 'annotation1',
-        type: 'annotation',
-        position: {
-            x: 40,
-            y: 25
-        },
-        content: 'This is the Earth',
+
+    {   // --------------------- SCENE 1 ---------------------
+        id: "header-1",
+        type: "header",
+        content: "Climate Tipping Points",
+        position: { x: HEADER_X, y: HEADER_Y },
         transition: {
-            entry_from: {
-                at: 0.2,
-                opacity: 0,
-                duration: 0.01
+            entry_from: { 
+                x: HEADER_X, y: HEADER_Y, 
+                at: 0.01,duration: 0.01,opacity: 0
             },
-            exit_to: {
-                at: 0.6,
-                opacity: 0,
-                duration: 0.01
+            exit_to: { 
+                x: HEADER_X, y: HEADER_Y - SCROLL_dY, 
+                at: SCENE_DURATION, opacity: 0
             }
         }
     },
     {
-        id: 'mathTest',
-        type: 'annotation',
-        position: {
-            x: 60,
-            y: 35
-        },
-        content: 'The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.',
+        id: "description-1",
+        type: "description",
+        content: 
+            "Modeling the Earth's Climate is a complex affair. " +
+            "It involves many different physical processes, " + 
+            "and many different types of data.",
+        position: { x: DESC_X, y: DESC_Y },
         transition: {
-            entry_from: {
-                at: 0.3,
-                opacity: 0,
-                duration: 0.01
+            entry_from: { 
+                x: DESC_X, y: DESC_Y, 
+                at: 0.01, duration: 0.01, 
             },
-            exit_to: {
-                at: 0.7,
-                opacity: 0,
-                duration: 0.01
+            exit_to: { 
+                x: DESC_X, y: DESC_Y - SCROLL_dY, 
+                at: SCENE_DURATION, 
             }
         }
-    }
+    },
+    {   // --------------------- SCENE 2 ---------------------
+        id: "header-2",
+        type: "header",
+        content: "A Pale Blue Dot",
+        transition: {
+            entry_from: { at: SCENE_DURATION },
+            exit_to:    { at: SCENE_DURATION * 2 }
+        }
+    },
+    {
+        id: "description-2",
+        type: "description",
+        content: 
+            "What we do to simplify",
+        position: { x: DESC_X, y: DESC_Y },
+        transition: {
+            entry_from: { at: SCENE_DURATION },
+            exit_to:    { at: SCENE_DURATION * 2 }           
+        }
+    },
+    {   // --------------------- SCENE 3 ---------------------
+        id: "header-3",
+        type: "header",
+        content: "Building (the simplest) Climate Model",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 2 },
+            exit_to:    {  at: SCENE_DURATION * 3 }
+        }
+    },
+    {
+        id: "description-3",
+        type: "description",
+        content: 
+            "Energy Balance",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 2 },
+            exit_to:    {  at: SCENE_DURATION * 3 }
+        }
+    },
+    {   // --------------------- SCENE 4 ---------------------
+        id: "header-4",
+        type: "header",
+        content: "Incoming Energy",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 3 },
+            exit_to:    {  at: SCENE_DURATION * 4 }
+        }
+    },
+    {
+        id: "description-4",
+        type: "description",
+        content: 
+            "Ein, The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 3 },
+            exit_to:    {  at: SCENE_DURATION * 4 }
+        }
+    },
+    {   // --------------------- SCENE 5 ---------------------
+        id: "header-5",
+        type: "header",
+        content: "Outgoing Energy",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 4 },
+            exit_to:    {  at: SCENE_DURATION * 5 }
+        }
+    },
+    {
+        id: "description-5",
+        type: "description",
+        content: 
+            "Eout",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 4 },
+            exit_to:    {  at: SCENE_DURATION * 5 }
+        }
+    },
+    {   // --------------------- SCENE 6 ---------------------
+        id: "header-6",
+        type: "header",
+        content: "Tipping Points",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 5 },
+            exit_to:    {  at: SCENE_DURATION * 6 }
+        }
+    },
+    {
+        id: "description-6",
+        type: "description",
+        content: 
+            "Critical Transitions",
+        transition: {
+            entry_from: {  at: SCENE_DURATION * 5 },
+            exit_to:    {  at: SCENE_DURATION * 6 }
+        }
+    },
+   
+    // {
+    //     id: 'annotation1',
+    //     type: 'annotation',
+    //     position: {
+    //         x: 40,
+    //         y: 25
+    //     },
+    //     content: 'This is the Earth',
+    //     transition: {
+    //         entry_from: {
+    //             at: 0.2,
+    //             opacity: 0,
+    //             duration: 0.01
+    //         },
+    //         exit_to: {
+    //             at: 0.6,
+    //             opacity: 0,
+    //             duration: 0.01
+    //         }
+    //     }
+    // },
+    // {
+    //     id: 'mathTest',
+    //     type: 'annotation',
+    //     position: {
+    //         x: 60,
+    //         y: 35
+    //     },
+    //     content: 'The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.',
+    //     transition: {
+    //         entry_from: {
+    //             at: 0.3,
+    //             opacity: 0,
+    //             duration: 0.01
+    //         },
+    //         exit_to: {
+    //             at: 0.7,
+    //             opacity: 0,
+    //             duration: 0.01
+    //         }
+    //     }
+    // }
 ];
 
 export const extraConfig = [
     {
         id: "atmosphere",
-        entry: { at: 0.35 },
-        exit: { at: 0.5 }    
+        entry: { at: 0 },
+        exit: { at: 0.2 }    
     },
     {
         id: "atmosphereHotNonlinear",
-        entry: { at: 0.9 },
-        exit: { at: 1.0 }    
+        entry: { at: 0.2 },
+        exit: { at: 0.9 }    
     },
     {
         id: "shadowCylinder",
-        entry: { at: 0.1 },
-        exit: { at: 0.3 }    
-    },
-    {
-        id: "earthTexture",
-        file: '/assets/textures/earth_noClouds.0330_pix_large.jpg',
-        entry: { at: 0.2 },
-        exit: { at: 0.4 }    
-    },
-    {
-        id: "earthTexture",
-        file: '/assets/textures/earth_noClouds.0330.jpg',
-        entry: { at: 0.4 },
+        entry: { at: 0.5 },
         exit: { at: 0.6 }    
     },
     {
+        id: "earthTexture",
+        file: '/assets/textures/water_world_pix.jpg',
+        entry: { at: 0.25 },
+        exit: { at: 0.9 }    
+    },
+    // {
+    //     id: "earthTexture",
+    //     file: '/assets/textures/earth_noClouds.0330.jpg',
+    //     entry: { at: 0.4 },
+    //     exit: { at: 0.6 }    
+    // },
+    {
         id: "iceGroup",
-        entry: { at: 0.4 },
-        exit: { at: 0.8 },
-        maxRadius: 1  // Maximum size of ice patches
+        entry: { at: 0.27 },
+        exit: { at: 0.29 },
+        maxRadius: 0.3  // Maximum size of ice patches
+    },
+    {
+        id: "iceGroup",
+        entry: { at: 0.55 },
+        exit: { at: 0.6 },
+        maxRadius: 0.3  // Maximum size of ice patches
     }
 ];
 

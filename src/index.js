@@ -96,7 +96,7 @@ class ScrollCanvas {
         this.camera.position.x = -5;
         
         // Add camera lookAt - can be removed if needed
-        this.camera.lookAt(-1, 1, 0);  // Look at origin/center of scene
+        this.camera.lookAt(-2, 1, 0);  // Look at origin/center of scene
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -106,10 +106,10 @@ class ScrollCanvas {
         this.objects = new Map();
 
         // Add lighting for 3D objects
-        const ambientLight = new THREE.AmbientLight(0x404040);
+        // const ambientLight = new THREE.AmbientLight(0x404040);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(-10, 0, 0);
-        this.scene.add(ambientLight);
+        // this.scene.add(ambientLight);
         this.scene.add(directionalLight);
     }
 
@@ -303,7 +303,7 @@ class ScrollCanvas {
         // }
         const earth = this.objects.get('earth');
 if (earth && earth.object) {
-    const rotationSpeed = 0.01;
+    const rotationSpeed = 0.005;
 
     // Earth tilt is around Z by -23.5°, so spin axis is original Y, tilted by -23.5° around Z.
     const tiltAngle = 23.5 * Math.PI / 180;

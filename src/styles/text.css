@@ -5,6 +5,8 @@
     /* --main-font: 'Noto Sans', serif; */
     /* OPTION 3: */
     /* --main-font: 'Kanit', serif; */
+
+    --text-color: #e0e1dd;
 }
 body {
     margin: 0;
@@ -27,21 +29,23 @@ body {
 .text-type-header {
     font-family: var(--main-font);
     font-size: 36px;
-    font-weight: 700;
-    color: white;
+    font-weight: 800;
+    color: var(--text-color);
     letter-spacing: 2px;
     white-space: nowrap;
 }
 
 .text-type-description {
     font-family: var(--main-font);
-    font-size: 18px;
-    color: white;
-    white-space: nowrap;
+    font-size: 16px;
+    color: var(--text-color);
+    /* white-space: nowrap; */
+    max-width: 400px;
+    line-height: 1.4;
 }
 
 .text-element.text-type-annotation {
-    color: #ffffff;
+    color: var(--text-color);
     font-family: var(--main-font);
     font-size: 16px;
     line-height: 1.4;
