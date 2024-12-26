@@ -123,22 +123,23 @@ export class ObjectFactory {
 
             for (let i = 0; i < numLayers; i++) {
                 const t = i / (numLayers - 1);
-                const scale = 1 + (0.15 * Math.pow(t, 2));
-                const opacity = 0.3 * (1 - Math.pow(t, 1.5));
+                const scale = 1.07 + (0.25 * Math.pow(t, 2.5));
+                const opacity = 0.1 * (0.5 - Math.pow(t, 3.5));
                 
                 const layer = new THREE.Mesh(
                     baseGeometry,
                     new THREE.MeshPhongMaterial({
-                        // color: 0xfec89a, // warm orange
-                        // color: 0xffdab9,
-                        color: 0xe2eafc, // cool
+                        color: 0xbde0fe, // cool
+                        color: 0xcae9ff,
                         transparent: true,
-                        opacity: 0.06,
-                        // shininess: 0,
-                        emissive: 0xe2eafc,
-                        emissiveIntensity: 0.05,
-                        // side: THREE.FrontSide,
-                        // blending: THREE.AdditiveBlending
+                        opacity: opacity,
+                        shininess: 0,
+                        // blending: THREE.AdditiveBlending, // Adds colors together, good for glows
+                        // Other blending options:
+                        // blendingTHREE.NormalBlending //- Default
+                        // THREE.MultiplyBlending - Multiplies colors together
+                        // THREE.SubtractiveBlending - Subtracts colors
+                        // THREE.CustomBlending - Custom blend functions
                     })
                 );
                 layer.scale.set(scale, scale, scale);

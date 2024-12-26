@@ -68,12 +68,15 @@ class ScrollCanvas {
         
         // Load default texture first
         const defaultTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
+        defaultTexture.encoding = THREE.sRGBEncoding;
         this.earthTextures.set('default', defaultTexture);
         
         // Load config textures
         extraConfig.forEach(config => {
             if (config.id === 'earthTexture') {
-                this.earthTextures.set(config.file, textureLoader.load(config.file));
+                const texture = textureLoader.load(config.file);
+                texture.encoding = THREE.sRGBEncoding;
+                this.earthTextures.set(config.file, texture);
             }
         });
     }
@@ -91,15 +94,18 @@ class ScrollCanvas {
         );
         
         // Position camera
-        this.camera.position.z = 4;
-        this.camera.position.y = 7;
-        this.camera.position.x = -5;
+        this.camera.position.x = -4;
+        this.camera.position.y = 3.2;
+        this.camera.position.z = 3;
+        
+        
         
         // Add camera lookAt - can be removed if needed
-        this.camera.lookAt(0.5, 0, 0);  // Look at origin/center of scene
+        this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
         this.container.appendChild(this.renderer.domElement);
 
         // Create objects container

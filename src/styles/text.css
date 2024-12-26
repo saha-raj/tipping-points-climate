@@ -1,8 +1,8 @@
 :root {
     /* OPTION 1: */
-    /* --main-font: 'Lato', sans-serif; */
+    --main-font: 'Lato', sans-serif;
     /* OPTION 2: */
-    --main-font: "Open Sans", serif;
+    /* --main-font: "Open Sans", serif; */
     /* OPTION 3: */
     /* --main-font: 'Kanit', serif; */
 
@@ -31,17 +31,16 @@ body {
     font-size: 36px;
     font-weight: 700;
     color: var(--text-color);
-    letter-spacing: 2px;
     white-space: nowrap;
 }
 
 .text-type-description {
     font-family: var(--main-font);
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-color);
     /* white-space: nowrap; */
     max-width: 400px;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .text-element.text-type-annotation {

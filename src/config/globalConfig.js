@@ -151,7 +151,7 @@ export const globalConfig = [
         transition: {
             entry_from: { 
                 x: HEADER_X, y: HEADER_Y, 
-                at: 0.01,duration: 0.01,opacity: 0
+                at: 0,duration: 0.001,opacity: 0
             },
             exit_to: { 
                 x: HEADER_X, y: HEADER_Y - SCROLL_dY, 
@@ -170,7 +170,7 @@ export const globalConfig = [
         transition: {
             entry_from: { 
                 x: DESC_X, y: DESC_Y, 
-                at: 0.01, duration: 0.01, 
+                at: 0, duration: 0.001, 
             },
             exit_to: { 
                 x: DESC_X, y: DESC_Y - SCROLL_dY, 
@@ -320,14 +320,14 @@ export const globalConfig = [
 ];
 
 export const extraConfig = [
-    {
-        id: "atmosphere",
-        entry: { at: 0 },
-        exit: { at: 0.2 }    
-    },
+    // {
+    //     id: "atmosphere",
+    //     entry: { at: 0 },
+    //     exit: { at: 0.2 }    
+    // },
     {
         id: "atmosphereHotNonlinear",
-        entry: { at: 0.2 },
+        entry: { at: 0 },
         exit: { at: 0.9 }    
     },
     {
@@ -338,7 +338,7 @@ export const extraConfig = [
     {
         id: "earthTexture",
         file: '/assets/textures/water_world_pix.jpg',
-        entry: { at: 0.25 },
+        entry: { at: 0.32 },
         exit: { at: 0.9 }    
     },
     // {
