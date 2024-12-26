@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import { HEADER_X, HEADER_Y, DESC_X, DESC_Y } from '../../config/globalConfig.js';
-import { ClimateModel } from './climate-model.js';
+import { ClimateModel } from './ClimateModel.js';
+// import { Parameters } from './controls/Parameters.js';
 import { Plots } from './plots.js';
-import { Controls } from './controls.js';
 
 export class SimulationScene {
     constructor(container) {
@@ -54,41 +54,15 @@ export class SimulationScene {
         this.addViewContainer();
         this.addReturnButton();
         
-        // Initialize plots and controls
-        this.plots = new Plots();
-        this.controls = new Controls(this.controlsContainer, params => this.handleParameterChange(params));
+        // Initialize controls and plot
+        this.parameters = new Parameters(this.controlsContainer, this.model, () => {
+            this.potentialPlot.update();
+        });
+        
+        this.potentialPlot = new PotentialPlot(this.controlsContainer, this.model);
         
         // Start animation
         this.animate();
-    }
-
-    handleParameterChange(params) {
-        const { greenhouse, initialTemp } = params;
-
-        // Run simulation
-        const YEAR_IN_SECONDS = 365 * 24 * 3600;
-        const SIMULATION_TIME = 10 * YEAR_IN_SECONDS;
-        const timeSteps = 1000;
-        const dt = SIMULATION_TIME / timeSteps;
-
-        const simulation = this.model.simulateTemperature(
-            initialTemp, 
-            greenhouse,
-            timeSteps,
-            dt
-        );
-        const equilibriumTemp = simulation.temperatures[simulation.temperatures.length - 1];
-
-        // Update potential well plot only
-        const temps = this.model.generateTempRange();
-        const potentialValues = temps.map(t => 
-            this.model.calculatePotential(t, greenhouse)
-        );
-        this.plots.updatePotentialPlot({
-            temps,
-            values: potentialValues,
-            initialTemp
-        }, equilibriumTemp);
     }
     
     addControlsContainer() {
@@ -99,25 +73,13 @@ export class SimulationScene {
             top: '30%',
             width: '40%',
             height: '65%',
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',  // Semi-transparent dark background
             border: '1px solid white',
             zIndex: '1',
             pointerEvents: 'auto',
             padding: '20px',
-            boxSizing: 'border-box',
-            display: 'flex',
-            flexDirection: 'column'
+            boxSizing: 'border-box'
         });
-
-        // Create potential well plot container only
-        const potentialWellPlot = document.createElement('div');
-        potentialWellPlot.id = 'potential-well-plot';
-        const potentialWellPlotArea = document.createElement('div');
-        potentialWellPlotArea.className = 'plot-area';
-        potentialWellPlot.appendChild(potentialWellPlotArea);
-        potentialWellPlot.style.flex = '1';
-        controlsContainer.appendChild(potentialWellPlot);
-
         this.uiContainer.appendChild(controlsContainer);
         this.controlsContainer = controlsContainer;
     }
@@ -146,8 +108,8 @@ export class SimulationScene {
         button.style.position = 'absolute';
         button.style.top = '20px';
         button.style.left = '20px';
-        button.style.zIndex = '1';
-        button.style.pointerEvents = 'auto';
+        button.style.zIndex = '1';          // Ensure it's above canvas
+        button.style.pointerEvents = 'auto'; // Make button clickable
         button.addEventListener('click', () => {
             if (this.onReturnToStory) this.onReturnToStory();
         });
@@ -159,15 +121,12 @@ export class SimulationScene {
         Object.assign(viewContainer.style, {
             position: 'absolute',
             right: '0',
-            top: '30%',
+            top: '30%',  // Below header and description
             width: '55%',
             height: '65%',
-            backgroundColor: 'rgba(0, 255, 0, 0.2)',
+            backgroundColor: 'rgba(0, 255, 0, 0.2)',  // Semi-transparent green
             border: '1px solid white',
-            zIndex: '1',
-            pointerEvents: 'auto',
-            padding: '20px',
-            boxSizing: 'border-box'
+            zIndex: '1'
         });
         this.uiContainer.appendChild(viewContainer);
         this.viewContainer = viewContainer;

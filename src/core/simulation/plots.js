@@ -12,8 +12,6 @@ export class Plots {
     }
 
     setupPlots() {
-        this.phasePlot = this.createPlot('#equilibrium-plot .plot-area', 
-            'Temperature (K)', 'dT/dt (K/s)');
         this.potentialPlot = this.createPlot('#potential-well-plot .plot-area', 
             'Temperature (K)', 'Potential');
     }
