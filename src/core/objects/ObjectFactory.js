@@ -55,8 +55,10 @@ export class ObjectFactory {
             
             // Load texture
             const textureLoader = new THREE.TextureLoader();
-            const earthTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
-            
+            // const earthTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
+            const earthTexture = textureLoader.load('/assets/textures/1_earth_8k.jpg');
+
+
             const material = new THREE.MeshPhongMaterial({
                 map: earthTexture,
                 // shininess: 30,
@@ -71,7 +73,11 @@ export class ObjectFactory {
             // Create regular atmosphere 
             // ------------------------------------------------------------ 
             const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
+
+            const cloudsRegular = new THREE.TextureLoader().load('/assets/textures/clouds_transparent.jpg');
+
             const atmosphereMaterial = new THREE.MeshPhongMaterial({
+                map: cloudsRegular,
                 color: 0xffffff,
                 transparent: true,
                 opacity: 0.2,
@@ -120,7 +126,7 @@ export class ObjectFactory {
             // ------------------------------------------------------------ 
             const atmosphereHotNonlinear = new THREE.Group();
             const baseGeometry = new THREE.SphereGeometry(1, 64, 64);
-            const numLayers = 15;
+            const numLayers = 12;
 
             for (let i = 0; i < numLayers; i++) {
                 const t = i / (numLayers - 1);
@@ -131,23 +137,36 @@ export class ObjectFactory {
                     baseGeometry,
                     new THREE.MeshPhongMaterial({
                         // color: 0xbde0fe, // cool
-                        // color: 0xcae9ff,
-                        color: 0xffffff,
+                        color: 0xcae9ff,
+                        // color: 0xffffff,
                         transparent: true,
                         opacity: opacity,
                         shininess: 0,
-                        // blending: THREE.AdditiveBlending, // Adds colors together, good for glows
-                        // Other blending options:
-                        // blendingTHREE.NormalBlending //- Default
-                        // THREE.MultiplyBlending - Multiplies colors together
-                        // THREE.SubtractiveBlending - Subtracts colors
-                        // THREE.CustomBlending - Custom blend functions
                     })
                 );
+
                 layer.scale.set(scale, scale, scale);
                 atmosphereHotNonlinear.add(layer);
             }
             
+            // // Add separate cloud layer
+            // const cloudGeometry = new THREE.SphereGeometry(1.35, 64, 64);  // Adjust radius as needed
+            // const cloudTexture = new THREE.TextureLoader().load('/assets/textures/clouds_transparent.jpg');
+            // cloudTexture.colorSpace = 'srgb';
+            
+            // const cloudLayer = new THREE.Mesh(
+            //     cloudGeometry,
+            //     new THREE.MeshPhongMaterial({
+            //         // map: cloudTexture,
+            //         transparent: true,
+            //         // color: 0x00ff00,
+            //         opacity: 0.3,
+            //         side: THREE.DoubleSide,
+            //         blending: THREE.AdditiveBlending
+            //     })
+            // );
+            // atmosphereHotNonlinear.add(cloudLayer);
+
             atmosphereHotNonlinear.visible = true;
             earthMesh.add(atmosphereHotNonlinear);
 

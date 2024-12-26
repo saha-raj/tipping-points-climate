@@ -72,7 +72,7 @@ class ScrollCanvas {
         const textureLoader = new THREE.TextureLoader();
         
         // Load default texture first
-        const defaultTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg', 
+        const defaultTexture = textureLoader.load('/assets/textures/2_no_clouds_8k.jpg', 
             // Add success callback
             (texture) => {
                 texture.colorSpace = 'srgb';
@@ -120,6 +120,7 @@ class ScrollCanvas {
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.outputColorSpace = 'srgb';
         THREE.ColorManagement.enabled = true;
         // this.renderer.useLegacyLights = false;
