@@ -39,11 +39,11 @@
 const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
 
-const HEADER_X = 5;  
-const HEADER_Y = 10;
+export const HEADER_X = 5;  
+export const HEADER_Y = 10;
 
-const DESC_X = HEADER_X;
-const DESC_Y = HEADER_Y + 10;
+export const DESC_X = HEADER_X;
+export const DESC_Y = HEADER_Y + 10;
 
 const SCROLL_dX = 0;
 const SCROLL_dY = 100;
@@ -274,49 +274,16 @@ export const globalConfig = [
             exit_to:    {  at: SCENE_DURATION * 6 }
         }
     },
-   
-    // {
-    //     id: 'annotation1',
-    //     type: 'annotation',
-    //     position: {
-    //         x: 40,
-    //         y: 25
-    //     },
-    //     content: 'This is the Earth',
-    //     transition: {
-    //         entry_from: {
-    //             at: 0.2,
-    //             opacity: 0,
-    //             duration: 0.01
-    //         },
-    //         exit_to: {
-    //             at: 0.6,
-    //             opacity: 0,
-    //             duration: 0.01
-    //         }
-    //     }
-    // },
-    // {
-    //     id: 'mathTest',
-    //     type: 'annotation',
-    //     position: {
-    //         x: 60,
-    //         y: 35
-    //     },
-    //     content: 'The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.',
-    //     transition: {
-    //         entry_from: {
-    //             at: 0.3,
-    //             opacity: 0,
-    //             duration: 0.01
-    //         },
-    //         exit_to: {
-    //             at: 0.7,
-    //             opacity: 0,
-    //             duration: 0.01
-    //         }
-    //     }
-    // }
+    {   
+        id: "simulation-button",
+        type: "button",
+        content: "Enter Simulation",
+        position: { x: 50, y: 50 },
+        transition: {
+            entry_from: { at: 0.98, opacity: 0 },
+            exit_to: { at: 1, opacity: 0 }
+        }
+    }
 ];
 
 export const extraConfig = [

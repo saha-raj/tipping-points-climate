@@ -9,6 +9,8 @@ export class ObjectFactory {
             case 'description':
             case 'annotation':
                 return this.createText(config);
+            case 'button':
+                return this.createButton(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -284,5 +286,21 @@ export class ObjectFactory {
             };
         }
         return null;
+    }
+
+    static createButton(config) {
+        const button = document.createElement('button');
+        button.textContent = config.content;
+        button.className = 'simulation-button';
+        button.style.position = 'absolute';
+        button.style.left = `${config.position.x}%`;
+        button.style.top = `${config.position.y}%`;
+        button.style.transform = 'translate(-50%, -50%)';
+        button.style.opacity = '0';
+        
+        return {
+            type: 'button',
+            element: button
+        };
     }
 } 

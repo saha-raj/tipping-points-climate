@@ -6,6 +6,7 @@ import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
 import { DebugLogger } from './debug/DebugLogger';
 import { DebugOverlay } from './debug/DebugOverlay';
+import { SimulationScene } from './core/simulation/SimulationScene.js';
 
 // Set color management before anything else
 THREE.ColorManagement.enabled = true;
@@ -94,6 +95,22 @@ class ScrollCanvas {
                 this.earthTextures.set(config.file, texture);
             }
         });
+
+        // Add simulation button handler
+        const simButton = this.objects.get('simulation-button');
+        if (simButton && simButton.element) {
+            simButton.element.addEventListener('click', () => {
+                this.initSimulation();
+                this.enterSimulation();
+            });
+        }
+
+        // Check for return scroll position
+        const returnScroll = sessionStorage.getItem('returnScroll');
+        if (returnScroll) {
+            window.scrollTo(0, parseFloat(returnScroll));
+            sessionStorage.removeItem('returnScroll');
+        }
     }
 
     setupScene() {
@@ -363,6 +380,49 @@ if (earth && earth.object) {
     getCurrentScene(progress) {
         // Placeholder scene calculation - adjust based on your needs
         return Math.floor(progress * 3) + 1;
+    }
+
+    initSimulation() {
+        if (!this.simulationScene) {
+            this.simulationScene = new SimulationScene(this.container);
+            this.simulationScene.onReturnToStory = () => this.exitSimulation();
+        }
+    }
+    
+    enterSimulation() {
+        // Fade out current scene
+        this.container.style.opacity = 0;
+        
+        setTimeout(() => {
+            // Hide scroll scene
+            this.container.style.display = 'none';
+            document.body.style.overflow = 'hidden';  // Disable scrolling
+            
+            // Show and fade in simulation
+            this.container.style.display = 'block';
+            this.simulationScene.activate();
+            this.container.style.opacity = 1;
+        }, 500);  // Match fade duration
+    }
+    
+    exitSimulation() {
+        // Fade out simulation
+        this.container.style.opacity = 0;
+        
+        setTimeout(() => {
+            // Hide simulation
+            this.simulationScene.deactivate();
+            
+            // Force scene refresh by reloading the page and setting scroll position
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const targetScroll = scrollHeight * 0.9;
+            
+            // Store target scroll position in sessionStorage
+            sessionStorage.setItem('returnScroll', targetScroll);
+            
+            // Reload page
+            window.location.reload();
+        }, 500);
     }
 }
 
