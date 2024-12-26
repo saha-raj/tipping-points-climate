@@ -243,11 +243,14 @@ export class ObjectFactory {
                 const shape = new THREE.Shape(vertices);
                 const iceGeometry = new THREE.ShapeGeometry(shape);
                 
-                const iceMaterial = new THREE.MeshBasicMaterial({
+                const iceMaterial = new THREE.MeshPhongMaterial({
                     color: 0xdee2e6,
                     // transparent: true,
-                    // opacity: 0.4,
+                    // opacity: 0.2,
                     side: THREE.DoubleSide,
+                    blending: THREE.NoBlending,
+                    depthWrite: true,    // write to the depth buffer
+                    alphaTest: 0.5       // discard fragments with low alpha
                 });
                 
                 const icePatch = new THREE.Mesh(iceGeometry, iceMaterial);
