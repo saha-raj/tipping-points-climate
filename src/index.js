@@ -1,10 +1,15 @@
 import * as THREE from 'three';
 import * as d3 from 'd3';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager';
 import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
 import { DebugLogger } from './debug/DebugLogger';
 import { DebugOverlay } from './debug/DebugOverlay';
+
+// Set color management before anything else
+THREE.ColorManagement.enabled = true;
+THREE.ColorManagement.legacyMode = false;
 
 class ScrollCanvas {
     constructor(containerId) {
@@ -67,15 +72,25 @@ class ScrollCanvas {
         const textureLoader = new THREE.TextureLoader();
         
         // Load default texture first
-        const defaultTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
-        defaultTexture.encoding = THREE.sRGBEncoding;
+        const defaultTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg', 
+            // Add success callback
+            (texture) => {
+                texture.colorSpace = 'srgb';
+                const earth = this.objects.get('earth');
+                if (earth && earth.extras) {
+                    earth.extras.material.map = texture;
+                    earth.extras.material.needsUpdate = true;
+                    this.renderer.render(this.scene, this.camera);  // Force initial render
+                }
+            }
+        );
         this.earthTextures.set('default', defaultTexture);
         
         // Load config textures
         extraConfig.forEach(config => {
             if (config.id === 'earthTexture') {
                 const texture = textureLoader.load(config.file);
-                texture.encoding = THREE.sRGBEncoding;
+                texture.colorSpace = 'srgb';
                 this.earthTextures.set(config.file, texture);
             }
         });
@@ -105,7 +120,9 @@ class ScrollCanvas {
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.outputColorSpace = 'srgb';
+        THREE.ColorManagement.enabled = true;
+        // this.renderer.useLegacyLights = false;
         this.container.appendChild(this.renderer.domElement);
 
         // Create objects container

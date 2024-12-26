@@ -7,6 +7,7 @@ export class Earth3D {
         
         const textureLoader = new THREE.TextureLoader();
         const earthTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
+        earthTexture.colorSpace = 'srgb';
         
         const material = new THREE.MeshPhongMaterial({
             map: earthTexture

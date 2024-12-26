@@ -65,7 +65,8 @@ export class ObjectFactory {
 
             });
             const earthMesh = new THREE.Mesh(geometry, material);
-            
+            // earthMesh.visible = true;
+
             // ------------------------------------------------------------ 
             // Create regular atmosphere 
             // ------------------------------------------------------------ 
@@ -129,8 +130,9 @@ export class ObjectFactory {
                 const layer = new THREE.Mesh(
                     baseGeometry,
                     new THREE.MeshPhongMaterial({
-                        color: 0xbde0fe, // cool
-                        color: 0xcae9ff,
+                        // color: 0xbde0fe, // cool
+                        // color: 0xcae9ff,
+                        color: 0xffffff,
                         transparent: true,
                         opacity: opacity,
                         shininess: 0,
@@ -146,7 +148,7 @@ export class ObjectFactory {
                 atmosphereHotNonlinear.add(layer);
             }
             
-            atmosphereHotNonlinear.visible = false;
+            atmosphereHotNonlinear.visible = true;
             earthMesh.add(atmosphereHotNonlinear);
 
             // ------------------------------------------------------------ 
