@@ -15,38 +15,50 @@ export class Controls {
 
         // Create greenhouse control
         const greenhouseDiv = document.createElement('div');
-        greenhouseDiv.style.marginBottom = '20px';
+        greenhouseDiv.className = 'slider-container';
+        
+        // Create label container for label and value side by side
+        const labelContainer = document.createElement('div');
+        labelContainer.className = 'label-container';
         
         const greenhouseLabel = document.createElement('div');
-        greenhouseLabel.textContent = 'Greenhouse Parameter:';
-        greenhouseLabel.style.color = 'white';
+        greenhouseLabel.textContent = 'Greenhouse Effect (g)';
+        greenhouseLabel.className = 'slider-label';
         
         this.greenhouseValue = document.createElement('span');
-        this.greenhouseValue.style.color = 'white';
-        this.greenhouseValue.style.marginLeft = '10px';
+        this.greenhouseValue.className = 'value-display';
+        
+        // Add label and value to label container
+        labelContainer.appendChild(greenhouseLabel);
+        labelContainer.appendChild(this.greenhouseValue);
         
         this.greenhouseSlider = document.createElement('input');
         this.greenhouseSlider.type = 'range';
-        this.greenhouseSlider.min = '0';
-        this.greenhouseSlider.max = '0.8';
+        this.greenhouseSlider.min = '0.3';
+        this.greenhouseSlider.max = '0.45';
         this.greenhouseSlider.step = '0.01';
         this.greenhouseSlider.value = MODEL_PARAMS.DEFAULT_GREENHOUSE;
         
-        greenhouseDiv.appendChild(greenhouseLabel);
-        greenhouseDiv.appendChild(this.greenhouseValue);
+        // Add components to container
+        greenhouseDiv.appendChild(labelContainer);
         greenhouseDiv.appendChild(this.greenhouseSlider);
-        
+
         // Create temperature control
         const tempDiv = document.createElement('div');
-        tempDiv.style.marginBottom = '20px';
+        tempDiv.className = 'slider-container';
+        
+        const tempLabelContainer = document.createElement('div');
+        tempLabelContainer.className = 'label-container';
         
         const tempLabel = document.createElement('div');
-        tempLabel.textContent = 'Initial Temperature (K):';
-        tempLabel.style.color = 'white';
+        tempLabel.textContent = 'Temperature (K)';
+        tempLabel.className = 'slider-label';
         
         this.tempValue = document.createElement('span');
-        this.tempValue.style.color = 'white';
-        this.tempValue.style.marginLeft = '10px';
+        this.tempValue.className = 'value-display';
+        
+        tempLabelContainer.appendChild(tempLabel);
+        tempLabelContainer.appendChild(this.tempValue);
         
         this.tempSlider = document.createElement('input');
         this.tempSlider.type = 'range';
@@ -55,8 +67,7 @@ export class Controls {
         this.tempSlider.step = '0.1';
         this.tempSlider.value = MODEL_PARAMS.DEFAULT_TEMP;
 
-        tempDiv.appendChild(tempLabel);
-        tempDiv.appendChild(this.tempValue);
+        tempDiv.appendChild(tempLabelContainer);
         tempDiv.appendChild(this.tempSlider);
 
         // Add controls to container

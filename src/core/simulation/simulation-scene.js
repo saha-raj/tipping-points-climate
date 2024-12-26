@@ -99,17 +99,22 @@ export class SimulationScene {
             top: '30%',
             width: '40%',
             height: '65%',
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
             border: '1px solid white',
             zIndex: '1',
             pointerEvents: 'auto',
             padding: '20px',
             boxSizing: 'border-box',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            gap: '20px'
         });
 
-        // Create potential well plot container only
+        // Create controls div first (will be at top)
+        const controlsDiv = document.createElement('div');
+        controlsDiv.className = 'controls-div';
+        controlsContainer.appendChild(controlsDiv);
+
+        // Create potential well plot container second (will be below)
         const potentialWellPlot = document.createElement('div');
         potentialWellPlot.id = 'potential-well-plot';
         const potentialWellPlotArea = document.createElement('div');
@@ -119,7 +124,7 @@ export class SimulationScene {
         controlsContainer.appendChild(potentialWellPlot);
 
         this.uiContainer.appendChild(controlsContainer);
-        this.controlsContainer = controlsContainer;
+        this.controlsContainer = controlsDiv; // Point to the controls div instead
     }
     
     addHeader() {

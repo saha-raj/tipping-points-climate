@@ -19,7 +19,7 @@ export class Plots {
     createPlot(selector, xLabel, yLabel) {
         const container = d3.select(selector);
         const width = container.node().getBoundingClientRect().width;
-        const height = width * 0.5;  // Reduced height to width ratio
+        const height = width * 0.8;  // Reduced height to width ratio
 
         const svg = container.append('svg')
             .attr('width', width)
@@ -160,11 +160,29 @@ export class Plots {
         const plotWidth = width - this.margins.left - this.margins.right;
         const plotHeight = height - this.margins.top - this.margins.bottom;
 
+        const PotentialValues = potentialData.values;
+        const temps = potentialData.temps;
+
+        // // Debug logging for specific temperatures
+        // const tempIndices = {
+        //     245: temps.findIndex(t => t >= 245),
+        //     255: temps.findIndex(t => t >= 255),
+        //     310: temps.findIndex(t => t >= 310),
+        //     320: temps.findIndex(t => t >= 320)
+        // };
+
+        // console.log('Potential values at temperatures:');
+        // for (const [temp, index] of Object.entries(tempIndices)) {
+        //     console.log(`T = ${temp}K: ${PotentialValues[index]}`);
+        // }
+
         const x = d3.scaleLinear()
-            .domain([MODEL_PARAMS.MIN_TEMP, MODEL_PARAMS.MAX_TEMP])
+            // .domain([MODEL_PARAMS.MIN_TEMP, MODEL_PARAMS.MAX_TEMP])
+            .domain([220, 320])
             .range([0, plotWidth]);
 
         const y = d3.scaleLinear()
+            // .domain([-0.00024, 0])
             .domain(d3.extent(potentialData.values))
             .range([plotHeight, 0]);
 
