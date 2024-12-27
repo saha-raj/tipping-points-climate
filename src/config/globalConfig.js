@@ -313,6 +313,36 @@ export const globalConfig = [
                 duration: 0.2
             }
         }
+    },
+    {
+        id: 'forward-to-story',
+        type: 'button',
+        content: '↓',
+        position: {
+            x: 50,
+            y: 95  // Positioned at bottom
+        },
+        style: {
+            fontSize: '24px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            color: '#FFFFFF',
+            backgroundColor: 'transparent',
+            border: 'none',
+            padding: '10px'
+        },
+        transition: {
+            entry_from: {
+                at: 0.85,
+                opacity: 0,
+                duration: 0.2
+            },
+            exit_to: {
+                at: 0.98,
+                opacity: 0,
+                duration: 0.2
+            }
+        }
     }
 ];
 

@@ -249,14 +249,12 @@ class ScrollCanvas {
         let forceUnlocked = false;
         let lastScrollY = window.scrollY;
         let scrollVelocity = 0;
-        let lockedPosition = null;  // Store the initial lock position
+        let lockedPosition = null;
 
-        // Handle both wheel and touch events for scroll lock
         const handleScroll = (e) => {
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = window.scrollY / scrollHeight;
             
-            // Calculate scroll velocity
             scrollVelocity = Math.abs(window.scrollY - lastScrollY);
             lastScrollY = window.scrollY;
             
@@ -264,18 +262,16 @@ class ScrollCanvas {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Store initial lock position if not set
                 if (!lockedPosition) {
                     lockedPosition = window.scrollY;
                 }
                 
-                // Force to locked position
                 window.scrollTo(0, lockedPosition);
                 return false;
             }
             
-            // Reset lock when outside range
-            if (progress < 0.94) {
+            // Reset lock when outside range on EITHER side
+            if (progress < 0.94 || progress > 0.96) {
                 forceUnlocked = false;
                 lockedPosition = null;
             }
@@ -292,7 +288,20 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    top: Math.floor(0.97 * scrollHeight),
+                    top: Math.floor(0.80 * scrollHeight),
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Add new forward button handler
+        const forwardButton = this.objects.get('forward-to-story');
+        if (forwardButton && forwardButton.element) {
+            forwardButton.element.addEventListener('click', () => {
+                forceUnlocked = true;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                window.scrollTo({
+                    top: Math.floor(0.98 * scrollHeight),
                     behavior: 'smooth'
                 });
             });
