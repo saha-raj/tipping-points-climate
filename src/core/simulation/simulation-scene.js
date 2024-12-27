@@ -91,23 +91,23 @@ export class SimulationScene {
         const controlsContainer = document.createElement('div');
         Object.assign(controlsContainer.style, {
             position: 'absolute',
-            left: '0',
+            left: `${HEADER_X}%`,
             top: '30%',
             width: '40%',
-            height: '65%',
-            border: '1px solid white',
+            height: 'auto',
             zIndex: '1',
             pointerEvents: 'auto',
             padding: '20px',
             boxSizing: 'border-box'
         });
 
-        // Create a flex container for controls
         const controlsDiv = document.createElement('div');
+        controlsDiv.className = 'controls-div';
         Object.assign(controlsDiv.style, {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px'
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            gap: '20px',
+            marginBottom: '20px'
         });
 
         // Slider container
@@ -116,7 +116,7 @@ export class SimulationScene {
 
         // Run button
         const runButton = document.createElement('button');
-        runButton.textContent = 'Run Simulation';
+        runButton.textContent = 'Run';
         runButton.className = 'simulation-run-button';
 
         // Event listeners for button
@@ -191,10 +191,9 @@ export class SimulationScene {
             top: '30%',
             width: '55%',
             height: '65%',
-            border: '1px solid white',
             zIndex: '1',
             pointerEvents: 'auto',
-            padding: '20px',
+            padding: '10px',
             boxSizing: 'border-box'
         });
         this.uiContainer.appendChild(viewContainer);
