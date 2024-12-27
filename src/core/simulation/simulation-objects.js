@@ -19,19 +19,18 @@ export class SimulationObjects {
         
         // Create ice patches with initial zero scale
         const iceGroup = this.createIcePatches();
-        
-        // Set initial scale of ice patches to zero
-        iceGroup.children.forEach(icePatch => {
-            icePatch.scale.set(0, 0, 1);
-        });
-        
         earthMesh.add(iceGroup);
         
         // Add method to update ice caps
         earthMesh.updateIceCaps = (albedo) => {
-            console.log('Updating ice caps with albedo:', albedo);
+            const MIN_ALBEDO = 0.13;
+            const MAX_ALBEDO = 0.57;
+            const scale = Math.max(0, Math.min(1, 
+                (albedo - MIN_ALBEDO) / (MAX_ALBEDO - MIN_ALBEDO)
+            ));
+            
             iceGroup.children.forEach(icePatch => {
-                icePatch.scale.set(albedo, albedo, 1);
+                icePatch.scale.set(scale, scale, 1);
             });
         };
         
@@ -95,7 +94,7 @@ export class SimulationObjects {
             iceGroup.add(icePatch);
         }
 
-        iceGroup.visible = true;  // Start visible
+        iceGroup.visible = true;
         return iceGroup;
     }
     
@@ -135,5 +134,20 @@ export class SimulationObjects {
         const light = new THREE.DirectionalLight(0xffffff, 1.0);
         light.position.set(-10, 0, 0);  // Updated to match index.js
         return light;
+    }
+
+    scaleIceRadius(albedo) {
+        const MIN_ALBEDO = 0.13;
+        const MAX_ALBEDO = 0.57;
+        return Math.max(0, Math.min(1, 
+            (albedo - MIN_ALBEDO) / (MAX_ALBEDO - MIN_ALBEDO)
+        ));
+    }
+
+    updateIceCaps(albedo) {
+        const scale = this.scaleIceRadius(albedo);
+        this.children.forEach(icePatch => {
+            icePatch.scale.set(scale, scale, 1);
+        });
     }
 } 
