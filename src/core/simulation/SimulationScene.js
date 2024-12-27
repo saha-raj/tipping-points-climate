@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { HEADER_X, HEADER_Y, DESC_X, DESC_Y } from '../../config/globalConfig.js';
-import { ClimateModel } from './ClimateModel.js';
+import { ClimateModel } from './climate-model.js';
 // import { Parameters } from './controls/Parameters.js';
 import { Plots } from './plots.js';
 

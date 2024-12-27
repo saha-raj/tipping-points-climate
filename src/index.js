@@ -6,7 +6,7 @@ import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
 import { DebugLogger } from './debug/DebugLogger';
 import { DebugOverlay } from './debug/DebugOverlay';
-import { SimulationScene } from './core/simulation/SimulationScene.js';
+import { SimulationScene } from './core/simulation/simulation-scene.js';
 
 // Set color management before anything else
 THREE.ColorManagement.enabled = true;
