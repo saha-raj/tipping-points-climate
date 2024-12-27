@@ -5,6 +5,9 @@ export class LifecycleManager {
     constructor() {
         this.objects = new Map();
         this.scrollProgress = 0;
+        this.isScrollLocked = false;
+        this.LOCK_START = 0.9;
+        this.LOCK_END = 0.98;
     }
 
     /**
@@ -28,7 +31,20 @@ export class LifecycleManager {
      * @param {number} progress - Current scroll progress (0-1)
      */
     updateProgress(progress) {
+        const previousProgress = this.scrollProgress;
         this.scrollProgress = progress;
+
+        if (this.shouldLockScroll(progress)) {
+            console.log('Scroll locked at:', progress);
+            this.isScrollLocked = true;
+            
+            if (progress < previousProgress) {
+                this.updateAllObjects();
+            }
+            return;
+        }
+
+        this.isScrollLocked = false;
         this.updateAllObjects();
     }
 
@@ -107,5 +123,9 @@ export class LifecycleManager {
                 object.state.opacity = 0;
             }
         }
+    }
+
+    shouldLockScroll(progress) {
+        return progress >= this.LOCK_START && progress <= this.LOCK_END;
     }
 }

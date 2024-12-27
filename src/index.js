@@ -248,83 +248,53 @@ class ScrollCanvas {
     bindEvents() {
         const textureLoader = new THREE.TextureLoader();
         
-        window.addEventListener('scroll', () => {
-            const now = Date.now();
-            const timeDelta = now - (this.lastScrollTime || now);
-            this.lastScrollTime = now;
-            
-            const currentScrollY = window.scrollY;
-            const scrollDelta = Math.abs(currentScrollY - this.lastScrollY);
-            this.lastScrollY = currentScrollY;
-            
-            // Calculate scroll velocity (pixels per millisecond)
-            this.scrollVelocity = scrollDelta / (timeDelta || 1);
-            
+        // Define lock range
+        const LOCK_START = 0.91;
+        const LOCK_END = 0.95;
+        let isLocked = false;
+        let lockedPosition = null;
+        
+        // Handle all scroll-related events
+        const handleScroll = (e) => {
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = currentScrollY / scrollHeight;
+            const progress = window.scrollY / scrollHeight;
             
-            this.debugLogger.logProgress(progress);
-            this.debugOverlay.updateProgress(progress);
-            this.debugOverlay.updateScene(this.getCurrentScene(progress));
-            this.lifecycle.updateProgress(progress);
-            
-            // Get Earth object and its extras
-            const earth = this.objects.get('earth');
-            if (earth && earth.extras) {
-                // Handle visibility and textures
-                extraConfig.forEach(config => {
-                    const entryAt = config.entry?.at || 0;
-                    const exitAt = config.exit?.at || 1.0;
-                    
-                    if (config.id === 'earthTexture') {
-                        if (progress >= entryAt && progress <= exitAt) {
-                            const texture = this.earthTextures.get(config.file);
-                            if (texture && earth.extras.material.map !== texture) {
-                                earth.extras.material.map = texture;
-                                earth.extras.material.needsUpdate = true;
-                            }
-                            return; // Exit once we find an active texture
-                        }
-                    } else if (config.id === 'iceGroup') {
-                        const iceGroup = earth.extras.iceGroup;
-                        if (progress >= entryAt && progress <= exitAt) {
-                            iceGroup.visible = true;
-                            // Calculate growth progress
-                            const growthProgress = (progress - entryAt) / (exitAt - entryAt);
-                            const radius = config.maxRadius * growthProgress;
-                            
-                            // Update each ice patch
-                            iceGroup.children.forEach(patch => {
-                                patch.scale.set(radius, radius, 1);
-                            });
-                        } else {
-                            iceGroup.visible = false;
-                        }
-                    } else {
-                        const extra = earth.extras[config.id];
-                        if (extra) {
-                            extra.visible = progress >= entryAt && progress <= exitAt;
-                        }
-                    }
-                });
-                
-                // If no texture config is active, use default
-                const isAnyTextureActive = extraConfig.some(config => 
-                    config.id === 'earthTexture' && 
-                    progress >= (config.entry?.at || 0) && 
-                    progress <= (config.exit?.at || 1.0)
-                );
-                
-                if (!isAnyTextureActive) {
-                    const defaultTexture = this.earthTextures.get('default');
-                    if (defaultTexture && earth.extras.material.map !== defaultTexture) {
-                        earth.extras.material.map = defaultTexture;
-                        earth.extras.material.needsUpdate = true;
-                    }
+            // Check if we're entering lock range
+            if (progress >= LOCK_START && progress <= LOCK_END) {
+                if (!isLocked) {
+                    // First time entering lock range
+                    isLocked = true;
+                    lockedPosition = window.scrollY;
+                    console.log('Scroll locked at:', progress); // Debug
                 }
+                
+                // Force position to locked point
+                window.scrollTo(0, lockedPosition);
+                
+                // Prevent any scroll
+                e?.preventDefault();
+                e?.stopPropagation();
+                return false;
+            } else {
+                // Outside lock range
+                isLocked = false;
+                lockedPosition = null;
             }
-        });
-
+            
+            // Only update if not locked
+            if (!isLocked) {
+                this.debugLogger.logProgress(progress);
+                this.debugOverlay.updateProgress(progress);
+                this.debugOverlay.updateScene(this.getCurrentScene(progress));
+                this.lifecycle.updateProgress(progress);
+            }
+        };
+        
+        // Bind to multiple events to catch all scroll triggers
+        window.addEventListener('wheel', handleScroll, { passive: false });
+        window.addEventListener('touchmove', handleScroll, { passive: false });
+        window.addEventListener('scroll', handleScroll);
+        
         // Handle resize
         window.addEventListener('resize', () => {
             this.camera.aspect = window.innerWidth / window.innerHeight;

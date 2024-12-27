@@ -274,16 +274,16 @@ export const globalConfig = [
             exit_to:    {  at: SCENE_DURATION * 6 }
         }
     },
-    {   
-        id: "simulation-button",
-        type: "button",
-        content: "Enter Simulation",
-        position: { x: 50, y: 50 },
-        transition: {
-            entry_from: { at: 0.98, opacity: 0 },
-            exit_to: { at: 1, opacity: 0 }
-        }
-    }
+    // {   
+    //     id: "simulation-button",
+    //     type: "button",
+    //     content: "Enter Simulation",
+    //     position: { x: 50, y: 50 },
+    //     transition: {
+    //         entry_from: { at: 0.98, opacity: 0 },
+    //         exit_to: { at: 1, opacity: 0 }
+    //     }
+    // }
 ];
 
 export const extraConfig = [

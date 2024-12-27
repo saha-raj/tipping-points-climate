@@ -1,720 +1,196 @@
-DebugLogger.js:11 Scroll Progress: 0.07%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0006798756428253956, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0006798756428253956, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0012626262811514047, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0012626262811514047, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0038850038479536007, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0038850038479536007, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.009421134198832715, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.009421134198832715, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 1.67%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.016705516260913295, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.016705516260913295, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.024669774373372397, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.024669774373372397, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 3.37%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.03370240692399506, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.03370240692399506, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.04001553853352865, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.04001553853352865, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 4.56%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.045648793277577454, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.045648793277577454, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 5.63%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.05633255396133814, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.05633255396133814, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0633255591759315, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0633255591759315, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 7.05%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.07051282051282051, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.07051282051282051, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0777000753288595, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0777000753288595, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 8.47%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.08469308054345286, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.08469308054345286, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09139471461630275, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09139471461630275, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 9.89%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09887334709493523, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09887334709493523, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.10586635230952858, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.10586635230952858, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 11.24%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1123737302600828, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1123737302600828, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.11829836592715011, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.11829836592715011, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 12.37%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.12373736780932826, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.12373736780932826, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1286907489483173, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1286907489483173, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.13325563088441505, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.13325563088441505, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 13.74%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.13743201361762153, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.13743201361762153, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.14121988410623665, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.14121988410623665, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.14471638997395833, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.14471638997395833, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 14.80%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.14801863971938434, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.14801863971938434, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.15093240330361912, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.15093240330361912, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.15365189772385818, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.15365189772385818, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1561771490635016, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1561771490635016, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 15.85%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.15850815732254941, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.15850815732254941, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.16064490945930154, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.16064490945930154, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.16258740547375802, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.16258740547375802, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.16433565840761885, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.16433565840761885, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1659867898011819, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1659867898011819, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.16754078661274707, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.16754078661274707, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 16.90%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1689976618840144, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1689976618840144, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17026029407468615, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17026029407468615, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17142579168336003, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17142579168336003, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17249416775173612, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17249416775173612, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1735625438201122, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1735625438201122, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17453379834819044, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17453379834819044, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17540791829427083, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17540791829427083, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1755050528762687, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1755050528762687, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17676767202524038, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17676767202524038, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 18.11%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.18113829783904248, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.18113829783904248, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1888111864399706, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1888111864399706, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 19.79%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.19794093727046608, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.19794093727046608, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 20.79%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.20794483413044204, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.20794483413044204, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.21445221208099627, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.21445221208099627, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 21.92%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.21921133709768964, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.21921133709768964, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2215423323150374, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2215423323150374, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.22668996957632212, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.22668996957632212, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 23.23%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.23232322758079593, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.23232322758079593, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.23805362016726764, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.23805362016726764, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 24.38%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2437839866703392, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2437839866703392, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.24932011009281518, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.24932011009281518, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 25.47%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2546619904346955, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2546619904346955, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2605866261017628, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2605866261017628, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 26.62%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.26621988410623665, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.26621988410623665, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.27136752136752135, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.27136752136752135, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.27612664638421475, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.27612664638421475, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 28.05%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2804972852397169, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2804972852397169, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2844794118506277, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2844794118506277, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.28807302621694714, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.28807302621694714, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 29.14%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.29137528900407317, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.29137528900407317, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2944832826272035, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2944832826272035, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.29729992467114047, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.29729992467114047, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.29992229755108174, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.29992229755108174, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 30.23%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3022532927684295, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3022532927684295, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.30448717948717946, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.30448717948717946, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.30652679704193375, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.30652679704193375, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.30846930609809026, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.30846930609809026, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3086635491786859, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3086635491786859, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3095376821664663, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3095376821664663, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.31186867738381413, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.31186867738381413, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 31.63%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.316336424737914, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.316336424737914, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 32.74%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.327408697666266, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.327408697666266, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.336829839201055, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.336829839201055, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 34.35%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.34353147327390493, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.34353147327390493, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3486790844517895, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3486790844517895, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 35.83%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.35829446906717416, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.35829446906717416, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 36.89%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3688811212523371, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3688811212523371, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 37.97%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3796619904346955, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3796619904346955, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 39.02%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3902486426198584, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3902486426198584, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 40.05%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.40054389105902777, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.40054389105902777, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.41035351875500803, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.41035351875500803, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 42.06%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4206487932775775, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4206487932775775, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4304584209735577, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4304584209735577, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 43.95%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.43949105026375535, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.43949105026375535, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4478437896467682, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4478437896467682, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 45.57%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4557109604533921, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4557109604533921, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.462898189186031, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.462898189186031, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 46.94%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.46940558017828526, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.46940558017828526, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4755244850093483, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4755244850093483, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 48.12%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.48115771693042203, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.48115771693042203, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.486208245693109, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.486208245693109, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4907731015458066, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4907731015458066, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 49.49%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.49494947123731303, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.49494947123731303, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.49883448934962604, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.49883448934962604, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5024281037159455, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5024281037159455, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 50.57%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5057303665030716, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5057303665030716, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5058275010850695, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5058275010850695, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5070901463174412, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5070901463174412, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5099067361945779, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5099067361945779, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5128205128205128, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5128205128205128, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 52.33%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5233100043402777, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5233100043402777, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5316627958900908, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5316627958900908, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 53.68%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5368104070679754, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5368104070679754, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5428321773170406, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5428321773170406, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5466200608473558, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5466200608473558, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 55.38%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5538072895799947, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5538072895799947, beforeEntry: false, duringEntry: true, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5617715428018163, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5617715428018163, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 57.00%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5700271997696315, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5700271997696315, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5781856699886485, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5781856699886485, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 58.61%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5861499232104701, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5861499232104701, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5939199594350961, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5939199594350961, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 60.25%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6024669679821048, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6024669679821048, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6105283557859241, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6105283557859241, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 61.79%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6179098536825588, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6179098536825588, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6247085962540064, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6247085962540064, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 63.10%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6310217180822649, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6310217180822649, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6367521367521367, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6367521367521367, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 64.20%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6419968825120193, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6419968825120193, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6467560075287127, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6467560075287127, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6511266463842147, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6511266463842147, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 65.51%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6551087469117254, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6551087469117254, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6587994958600427, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6587994958600427, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6621988932291667, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6621988932291667, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 66.81%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6681235288962339, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6681235288962339, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6682206634782318, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6682206634782318, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6683177980602297, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6683177980602297, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.669774660289797, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.669774660289797, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6748251368856838, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6748251368856838, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 68.24%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6824009039463141, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6824009039463141, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6883255396133814, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6883255396133814, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 69.33%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6932789337940705, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6932789337940705, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 70.42%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7041569636418269, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7041569636418269, beforeEntry: false, duringEntry: false, duringExit: true, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7075563088441507, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7075563088441507, beforeEntry: false, duringEntry: false, duringExit: true, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 71.44%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7143550514155983, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7143550514155983, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7218336838942307, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7218336838942307, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 72.95%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.729506585536859, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.729506585536859, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7371794871794872, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7371794871794872, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 74.48%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7447552542401176, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7447552542401176, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7519424829727565, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7519424829727565, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 75.99%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7599067361945779, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7599067361945779, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7674825032552083, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7674825032552083, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 77.45%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7744755149906517, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7744755149906517, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7807886368189103, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7807886368189103, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 78.66%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7866161379039797, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7866161379039797, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7920551528278579, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7920551528278579, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 79.70%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7970085470085471, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7970085470085471, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8015734028612447, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8015734028612447, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.805749772552751, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.805749772552751, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 80.95%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8095376560830663, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8095376560830663, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.813034188034188, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.813034188034188, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8161421816573183, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8161421816573183, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.819055906116453, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.819055906116453, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 82.17%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8216782789963942, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8216782789963942, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8217754135783921, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8217754135783921, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8234265449719551, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8234265449719551, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8252719455295139, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8252719455295139, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8313907981937767, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8313907981937767, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 84.39%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8439199594350961, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8439199594350961, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 85.39%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8539238302116721, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8539238302116721, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8621794871794872, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8621794871794872, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 86.61%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.866064453125, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.866064453125, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 87.63%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8762626452323717, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8762626452323717, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 88.77%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.887723378238515, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.887723378238515, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 89.96%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8995726495726496, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8995726495726496, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 91.12%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9112276517427884, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9112276517427884, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 92.26%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9225912501669338, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9225912501669338, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 93.35%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9334692800146902, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9334692800146902, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 94.49%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9449300130208333, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9449300130208333, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 95.59%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9559051774505876, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9559051774505876, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 96.60%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9660062349759615, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9660062349759615, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9754273504273504, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9754273504273504, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 98.42%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9841686281383547, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9841686281383547, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.992229963775374, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.992229963775374, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 99.97%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9997085962540064, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9997085962540064, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 1, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 1, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9992230276776175, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9992230276776175, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9982516818576389, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9982516818576389, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9962120643028847, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9962120643028847, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9923270983573718, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9923270983573718, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 98.67%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9866938142694979, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9866938142694979, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.981740472255609, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.981740472255609, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 97.52%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9752330812633547, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9752330812633547, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9678515833667201, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9678515833667201, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 95.67%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9566821497729701, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9566821497729701, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 94.56%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9456099550948184, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9456099550948184, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 92.71%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9270590236044337, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9270590236044337, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 90.38%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.9038461538461539, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.9038461538461539, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 88.04%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8804390149238782, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8804390149238782, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 85.78%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8578088483239851, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8578088483239851, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 83.62%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.836247057792468, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.836247057792468, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 81.57%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.8156565609141293, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.8156565609141293, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 79.61%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7961343879373665, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7961343879373665, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 77.78%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7777777777777778, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7777777777777778, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 76.05%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.760489491519765, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.760489491519765, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 74.39%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.743881095168937, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.743881095168937, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 72.81%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7281468578892896, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7281468578892896, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 71.32%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.7131895929320246, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.7131895929320246, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: true}
-DebugLogger.js:11 Scroll Progress: 69.90%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6990093002971421, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6990093002971421, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 68.55%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6855088975694444, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6855088975694444, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 67.28%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6727855193309294, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6727855193309294, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 66.09%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6609362479967948, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6609362479967948, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 65.00%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6499611357338408, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6499611357338408, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 63.97%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6396658612112713, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6396658612112713, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6302447457598824, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6302447457598824, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 62.15%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6215034680488782, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6215034680488782, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6134420802450588, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6134420802450588, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 60.59%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.6058663653512286, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.6058663653512286, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5988733536157853, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5988733536157853, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 59.26%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5925601796207265, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5925601796207265, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.586732678535657, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.586732678535657, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 58.14%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5813907981937767, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5813907981937767, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5764374561798878, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5764374561798878, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5718725481603899, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5718725481603899, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 56.77%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5676961784688835, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5676961784688835, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5639082949385684, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5639082949385684, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5604118151542468, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5604118151542468, beforeEntry: false, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 55.73%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5573037693643162, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5573037693643162, beforeEntry: false, duringEntry: true, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5543900449051816, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5543900449051816, beforeEntry: false, duringEntry: true, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5517676720252404, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5517676720252404, beforeEntry: false, duringEntry: true, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5493395161424947, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5493395161424947, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 54.70%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5470085470085471, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5470085470085471, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5449689294537927, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5449689294537927, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.544774660289797, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.544774660289797, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5435120150574252, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5435120150574252, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5407925075954861, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5407925075954861, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 53.68%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5368104070679754, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5368104070679754, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5300116644965278, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5300116644965278, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 52.07%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5206876314603366, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5206876314603366, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.5124320266593215, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.5124320266593215, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 49.45%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.49446385049412395, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.49446385049412395, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 45.65%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4564879327757746, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4564879327757746, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 43.39%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.4338577922592815, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.4338577922592815, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 41.17%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.41171327248597755, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.41171327248597755, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 39.05%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.39053999419905183, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.39053999419905183, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 37.03%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3703379834819044, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3703379834819044, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 35.11%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.35110721425113517, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.35110721425113517, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 33.30%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.33304195567073985, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.33304195567073985, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 31.60%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.3160450470753205, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.3160450470753205, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 29.98%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.29982516296908385, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.29982516296908385, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 28.44%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.2843822772686298, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.2843822772686298, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 26.96%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.26961925539196047, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.26961925539196047, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 25.57%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.25573036650307157, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.25573036650307157, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 24.26%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.24261847601996528, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.24261847601996528, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 23.04%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.23038071852463943, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.23038071852463943, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 21.89%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.21891995943509615, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.21891995943509615, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 20.82%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.20823619875133548, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.20823619875133548, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.19832944951505743, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.19832944951505743, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 18.91%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1891025641025641, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1891025641025641, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.18055555555555555, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.18055555555555555, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 17.27%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.17268842387403177, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.17268842387403177, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1653069129356971, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1653069129356971, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 15.86%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.15860527886284723, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.15860527886284723, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1524864001151843, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1524864001151843, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 14.69%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.14685314211071046, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.14685314211071046, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.14170551789112582, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.14170551789112582, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.13694637983273236, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.13694637983273236, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 13.26%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1325757540189303, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1325757540189303, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.1285936274080195, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.1285936274080195, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.125, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.125, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 12.17%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.12169775025457398, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.12169775025457398, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.11858974358974358, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.11858974358974358, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.11577311458750668, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.11577311458750668, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.11315074170756544, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.11315074170756544, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 11.08%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.11081973344851763, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.11081973344851763, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.10858585325061766, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.10858585325061766, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.10654622917501336, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.10654622917501336, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.10460372663970686, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.10460372663970686, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.10285547370584602, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.10285547370584602, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.101204348833133, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.101204348833133, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 9.97%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09965034550071782, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09965034550071782, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09819347022945045, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09819347022945045, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09693084455962873, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09693084455962873, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09576534043010483, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09576534043010483, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09566821888980702, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09566821888980702, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09450271476028312, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09450271476028312, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0932400890904614, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0932400890904614, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.09042346660907452, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.09042346660907452, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 8.60%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.08595570621327457, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.08595570621327457, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.07828282413319644, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.07828282413319644, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 7.14%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.07138694697975094, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.07138694697975094, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.062451439229851094, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.062451439229851094, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 4.69%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.04691142220782418, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.04691142220782418, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 2.75%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.027486403375609307, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.027486403375609307, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-DebugLogger.js:11 Scroll Progress: 0.27%
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0.0027195025713015824, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0.0027195025713015824, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
-TransitionManager.js:29 TransitionManager Calculation: {scrollProgress: 0, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
-TransitionManager.js:17 Annotation State: {scrollProgress: 0, beforeEntry: true, duringEntry: false, duringExit: false, afterExit: false}
+DebugLogger.js:11 Scroll Progress: 86.72%
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8672171605437999, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8672171605437999, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8672679215112221, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8675724873157556, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8678262376298085, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8680800424669197, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8683337927809726, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8685368366506616, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8686891195529284, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8688413479321366, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8690443918018257, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8691966747040925, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8693489576063592, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8695011859855676, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8696534688878343, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.869805751790101, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8699579801693094, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8701102630715761, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8702625459738429, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8704148288761097, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8705670572553179, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8706685791901625, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.870770101125007, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8708208620924293, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8709223840272737, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8710239059621182, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8710746124064821, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8711761343413266, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.871277656276171, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8713791782110156, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8714807001458601, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8715822220807046, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8716836894924906, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8717852114273351, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8718867333621797, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8719882552970242, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8720390162644465, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8721405381992909, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8721912446436547, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.872242005611077, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8722927665784993, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8723435275459215, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8723942885133438, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.872445049480766, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8724958104481882, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8725465714156105, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.872648093350455, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8727495607622411, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8728510826970856, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8729526046319301, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8730541265667746, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8731556485016191, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8732064094690414, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8733078768808274, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8733586378482496, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8734601597830942, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8735616817179387, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.873612442685361, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8737139646202055, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8737647255876277, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8738154865550499, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8738661929994138, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.873916953966836, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8740184759016806, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8740692368691028, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.874119997836525, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8742215197713695, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8742722807387918, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8743230417062141, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8743738026736363, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8744752700854224, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8745767920202668, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8746783139551114, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8747798358899559, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8749321187922227, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8750335862040087, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8751351081388532, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8752366300736977, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8753889129759644, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8755411413551728, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8756934242574396, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8758457071597063, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8760487510293954, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8763025013434481, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8765055452131372, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8767085345597677, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8769115784294568, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8770638613317235, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8772160897109318, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+DebugLogger.js:11 Scroll Progress: 87.74%
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8773683726131986, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8775206555154653, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8776221774503099, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8777744058295182, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8778759277643626, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8780282106666294, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8781804935688962, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8782820155037407, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8783834829155268, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8785357658177936, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8786880487200603, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8788910380666909, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8791448429038021, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8793986477409134, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8797539199898108, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8801599532061303, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8806675083572943, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8810735960966725, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8814288683455698, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8817841405944671, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8820887063990006, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8822916957456312, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8823932176804757, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.882647022517587, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8827992508967952, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.882951533799062, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8831038167013288, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8832560996035955, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8834083279828039, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8835606108850707, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8836621328199151, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8837636547547596, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8838651766896042, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8839666441013903, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8840681660362347, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8841696879710792, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8842712099059238, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8843727318407683, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8844234928081905, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8844741992525543, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8845249602199765, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8845757211873988, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8846264821548211, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8846772431222433, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8847280040896656, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8847787650570879, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.88482952602451, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8848802869919323, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8851847982734075, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.885590831489727, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8864029524454246, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8873165408129082, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+DebugLogger.js:11 Scroll Progress: 88.84%
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8883824120826587, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8894483378754676, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8904634481777958, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8914785584801239, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8923413858801854, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.893356550705572, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8942701390730556, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8951329664731171, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8959958483962369, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8968586757962984, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.897670796751996, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+DebugLogger.js:11 Scroll Progress: 89.85%
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.8984828631846351, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.899345745107755, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+DebugLogger.js:11 Scroll Progress: 92.32%
+LifecycleManager.js:38 Scroll locked at: 0.9231502943372788
+LifecycleManager.js:38 Scroll locked at: 0.923099587892915
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.923099587892915, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9230487724024342
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9230487724024342, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9229980659580704
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9229980659580704, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.922896544023226
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.922896544023226, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9227950220883815
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9227950220883815, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9227442065979007
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9227442065979007, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9226935001535369
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9226935001535369, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9226427937091731
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9226427937091731, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9225412717743287
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9225412717743287, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9224397498394841
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9224397498394841, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9223889343490034
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9223889343490034, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9223382279046396
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9223382279046396, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9222874124141589
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9222874124141589, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9222367059697951
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9222367059697951, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9221858904793144
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9221858904793144, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9221351840349505
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9221351840349505, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9220844775905868
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9220844775905868, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
+LifecycleManager.js:38 Scroll locked at: 0.9220336621001061
+TransitionManager.js:46 TransitionManager Calculation: {scrollProgress: 0.9220336621001061, initialPosition: {…}, entryFrom: {…}, currentState: {…}}
