@@ -108,4 +108,8 @@ export class LifecycleManager {
             }
         }
     }
+
+    // isInLockRange(progress) {
+    //     return progress >= 0.9 && progress <= 0.95;
+    // }
 }

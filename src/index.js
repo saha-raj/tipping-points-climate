@@ -246,8 +246,58 @@ class ScrollCanvas {
     }
 
     bindEvents() {
-        const textureLoader = new THREE.TextureLoader();
-        
+        let forceUnlocked = false;
+        let lastScrollY = window.scrollY;
+        let scrollVelocity = 0;
+        let lockedPosition = null;  // Store the initial lock position
+
+        // Handle both wheel and touch events for scroll lock
+        const handleScroll = (e) => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = window.scrollY / scrollHeight;
+            
+            // Calculate scroll velocity
+            scrollVelocity = Math.abs(window.scrollY - lastScrollY);
+            lastScrollY = window.scrollY;
+            
+            if (progress >= 0.94 && progress <= 0.96 && !forceUnlocked) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Store initial lock position if not set
+                if (!lockedPosition) {
+                    lockedPosition = window.scrollY;
+                }
+                
+                // Force to locked position
+                window.scrollTo(0, lockedPosition);
+                return false;
+            }
+            
+            // Reset lock when outside range
+            if (progress < 0.94) {
+                forceUnlocked = false;
+                lockedPosition = null;
+            }
+        };
+
+        // Bind to both wheel and touch events
+        window.addEventListener('wheel', handleScroll, { passive: false });
+        window.addEventListener('touchmove', handleScroll, { passive: false });
+
+        // Button handler stays the same
+        const returnButton = this.objects.get('return-to-story');
+        if (returnButton && returnButton.element) {
+            returnButton.element.addEventListener('click', () => {
+                forceUnlocked = true;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                window.scrollTo({
+                    top: Math.floor(0.97 * scrollHeight),
+                    behavior: 'smooth'
+                });
+            });
+        }
+
         window.addEventListener('scroll', () => {
             const now = Date.now();
             const timeDelta = now - (this.lastScrollTime || now);
