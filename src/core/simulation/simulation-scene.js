@@ -46,6 +46,9 @@ export class SimulationScene {
     }
 
     handleParameterChange(params) {
+        // Reset simulation when parameters change
+        this.scene3d.isSimulationRunning = false;
+        
         const { greenhouse, initialTemp } = params;
 
         // Run simulation
@@ -75,7 +78,11 @@ export class SimulationScene {
 
         // Update 3D visualization
         this.scene3d.updateObjects({
-            temperature: equilibriumTemp,
+            temperature: {
+                initial: initialTemp,
+                equilibrium: equilibriumTemp,
+                temperatures: simulation.temperatures
+            },
             greenhouse: greenhouse
         });
     }
@@ -92,28 +99,56 @@ export class SimulationScene {
             zIndex: '1',
             pointerEvents: 'auto',
             padding: '20px',
-            boxSizing: 'border-box',
+            boxSizing: 'border-box'
+        });
+
+        // Create a flex container for controls
+        const controlsDiv = document.createElement('div');
+        Object.assign(controlsDiv.style, {
             display: 'flex',
             flexDirection: 'column',
             gap: '20px'
         });
 
-        // Create controls div first (will be at top)
-        const controlsDiv = document.createElement('div');
-        controlsDiv.className = 'controls-div';
+        // Slider container
+        const sliderContainer = document.createElement('div');
+        this.sliderContainer = sliderContainer;
+
+        // Run button
+        const runButton = document.createElement('button');
+        runButton.textContent = 'Run Simulation';
+        runButton.className = 'simulation-run-button';
+
+        // Event listeners for button
+        runButton.addEventListener('click', () => {
+            Array.from(sliderContainer.getElementsByTagName('input'))
+                .forEach(slider => slider.disabled = true);
+            runButton.disabled = true;
+            
+            this.scene3d.onSimulationComplete = () => {
+                Array.from(sliderContainer.getElementsByTagName('input'))
+                    .forEach(slider => slider.disabled = false);
+                runButton.disabled = false;
+            };
+            
+            this.scene3d.runSimulation();
+        });
+
+        // Add elements in order
+        controlsDiv.appendChild(sliderContainer);
+        controlsDiv.appendChild(runButton);
         controlsContainer.appendChild(controlsDiv);
 
-        // Create potential well plot container second (will be below)
-        const potentialWellPlot = document.createElement('div');
-        potentialWellPlot.id = 'potential-well-plot';
-        const potentialWellPlotArea = document.createElement('div');
-        potentialWellPlotArea.className = 'plot-area';
-        potentialWellPlot.appendChild(potentialWellPlotArea);
-        potentialWellPlot.style.flex = '1';
-        controlsContainer.appendChild(potentialWellPlot);
+        // Plot container
+        const plotContainer = document.createElement('div');
+        plotContainer.id = 'potential-well-plot';
+        const plotArea = document.createElement('div');
+        plotArea.className = 'plot-area';
+        plotContainer.appendChild(plotArea);
+        controlsContainer.appendChild(plotContainer);
 
         this.uiContainer.appendChild(controlsContainer);
-        this.controlsContainer = controlsDiv; // Point to the controls div instead
+        this.controlsContainer = sliderContainer;
     }
     
     addHeader() {
