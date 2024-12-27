@@ -3,29 +3,15 @@ import { HEADER_X, HEADER_Y, DESC_X, DESC_Y } from '../../config/globalConfig.js
 import { ClimateModel } from './climate-model.js';
 import { Plots } from './plots.js';
 import { Controls } from './controls.js';
+import { Scene3D } from './scene3d.js';
 
 export class SimulationScene {
     constructor(container) {
         this.container = container;
+        this.container.style.backgroundColor = '#1b263b';
         
         // Initialize climate model
         this.model = new ClimateModel();
-        
-        // Setup THREE.js scene
-        this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color('#1a759f');
-        
-        this.camera = new THREE.PerspectiveCamera(
-            45,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000
-        );
-        this.camera.position.set(0, 0, 5);
-        
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
     }
     
     activate() {
@@ -33,9 +19,6 @@ export class SimulationScene {
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
-        
-        // Add renderer's canvas
-        this.container.appendChild(this.renderer.domElement);
         
         // Create and add UI container
         this.uiContainer = document.createElement('div');
@@ -54,12 +37,12 @@ export class SimulationScene {
         this.addViewContainer();
         this.addReturnButton();
         
+        // Initialize 3D scene in view container
+        this.scene3d = new Scene3D(this.viewContainer);
+        
         // Initialize plots and controls
         this.plots = new Plots();
         this.controls = new Controls(this.controlsContainer, params => this.handleParameterChange(params));
-        
-        // Start animation
-        this.animate();
     }
 
     handleParameterChange(params) {
@@ -79,7 +62,7 @@ export class SimulationScene {
         );
         const equilibriumTemp = simulation.temperatures[simulation.temperatures.length - 1];
 
-        // Update potential well plot only
+        // Update plots
         const temps = this.model.generateTempRange();
         const potentialValues = temps.map(t => 
             this.model.calculatePotential(t, greenhouse)
@@ -89,6 +72,12 @@ export class SimulationScene {
             values: potentialValues,
             initialTemp
         }, equilibriumTemp);
+
+        // Update 3D visualization
+        this.scene3d.updateObjects({
+            temperature: equilibriumTemp,
+            greenhouse: greenhouse
+        });
     }
     
     addControlsContainer() {
@@ -167,7 +156,6 @@ export class SimulationScene {
             top: '30%',
             width: '55%',
             height: '65%',
-            backgroundColor: 'rgba(0, 255, 0, 0.2)',
             border: '1px solid white',
             zIndex: '1',
             pointerEvents: 'auto',
