@@ -10,7 +10,7 @@ export class SimulationObjects {
         
         // Load texture
         const textureLoader = new THREE.TextureLoader();
-        const earthTexture = textureLoader.load('/assets/textures/1_earth_8k.jpg');
+        const earthTexture = textureLoader.load('/assets/textures/water_world_pix.jpg');
 
         const material = new THREE.MeshPhongMaterial({
             map: earthTexture,
@@ -29,17 +29,21 @@ export class SimulationObjects {
         for (let i = 0; i < numLayers; i++) {
             const t = i / (numLayers - 1);
             const scale = 1.07 + (0.25 * Math.pow(t, 2.5));
-            const opacity = 0.1 * (0.5 - Math.pow(t, 3.5));
+            const baseOpacityFunction = 0.5 - Math.pow(t, 3.5);
             
+            // k0 will be set dynamically in updateObjects
             const layer = new THREE.Mesh(
                 baseGeometry,
                 new THREE.MeshPhongMaterial({
                     color: 0xcae9ff,
                     transparent: true,
-                    opacity: opacity,
+                    opacity: 0.1 * baseOpacityFunction,  // Initial opacity with k0 = 0.1
                     shininess: 0
                 })
             );
+
+            // Store the base opacity function for later scaling
+            layer.userData.baseOpacityFunction = baseOpacityFunction;
 
             layer.scale.set(scale, scale, scale);
             atmosphereHotNonlinear.add(layer);

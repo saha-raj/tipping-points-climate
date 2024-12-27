@@ -52,11 +52,12 @@ export class Scene3D {
     }
     
     updateObjects({ temperature, greenhouse }) {
+        // Linear interpolation for k0 based on greenhouse value
+        const k0 = 0.1 + (0.4 * (greenhouse - 0.3) / (0.45 - 0.3));
+        
         // Update atmosphere opacity based on greenhouse
         this.atmosphere.children.forEach(layer => {
-            const baseOpacity = layer.material.opacity;  // Keep original relative opacity
-            const scale = (greenhouse - 0.3) / (0.45 - 0.3);  // Scale greenhouse to 0-1
-            layer.material.opacity = baseOpacity * scale;
+            layer.material.opacity = k0 * layer.userData.baseOpacityFunction;
         });
         
         // Update ice caps based on temperature
