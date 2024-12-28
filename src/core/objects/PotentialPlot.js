@@ -134,12 +134,12 @@ export class PotentialPlot {
             .attr('stroke-linecap', 'round')
             .attr('d', potentialLine);
 
-        // Add equilibrium point
+        // Add equilibrium point - remove both classes first
         const eqIndex = d3.bisector(d => d).left(potentialData.temps, equilibriumTemp);
         const eqPotential = potentialData.values[eqIndex];
-        plotArea.selectAll('.equilibrium-point').remove();
+        plotArea.selectAll('.equilibrium-point-hot, .equilibrium-point-ice').remove();
         plotArea.append('circle')
-            .attr('class', 'equilibrium-point')
+            .attr('class', equilibriumTemp > 273 ? 'equilibrium-point-hot' : 'equilibrium-point-ice')
             .attr('cx', x(equilibriumTemp))
             .attr('cy', y(eqPotential));
 
@@ -246,11 +246,9 @@ export class PotentialPlot {
         // Remove existing tracking dot if it exists
         this.plot.plotArea.selectAll('.tracking-dot').remove();
         
-        // Add new tracking dot to plotArea, just like other points
+        // Add new tracking dot to plotArea using CSS class
         this.trackingDot = this.plot.plotArea.append('circle')
             .attr('class', 'tracking-dot')
-            .attr('r', 5)
-            .attr('fill', 'red')
             .attr('cx', this.xScale(temp))
             .attr('cy', this.yScale(potential));
     }

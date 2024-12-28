@@ -1,5 +1,6 @@
 :root {
     --dot-radius: 0.75rem;
+    --tracking-dot-radius: 0.5rem;
     --main-font: 'Lato', sans-serif;
     --text-color: #e0e1dd;
     --plot-line-color: white;
@@ -13,11 +14,30 @@
 }
 
 /* D3 plot elements */
-.equilibrium-point {
-    fill: #f07167;
+/* .equilibrium-point { */
+    /* fill: #f07167; */
     /* stroke: white;
     stroke-width: 1px; */
+    /* r: var(--dot-radius); */
+/* } */
+
+.equilibrium-point-hot {
     r: var(--dot-radius);
+    fill: #f07167;  /* red */
+    stroke: none;
+}
+
+.equilibrium-point-ice {
+    r: var(--dot-radius);
+    fill: #4d79ff;  /* blue */
+    stroke: none;
+}
+
+.tracking-dot {
+    r: var(--tracking-dot-radius);
+    fill: #ffd700;  /* gold color */
+    stroke: #000;
+    stroke-width: 1;
 }
 
 .initial-point {
