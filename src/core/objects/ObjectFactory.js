@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { PotentialPlot } from './PotentialPlot.js';
+import { MODEL_PARAMS } from '../simulation/constants.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -13,6 +15,8 @@ export class ObjectFactory {
                 return this.createButton(config);
             case 'sim-controls':
                 return this.createSimControls(config);
+            case 'sim-v-plot':
+                return this.createVPlot(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -415,7 +419,7 @@ export class ObjectFactory {
         slider1.max = '0.45';
         slider1.step = '0.01';
         slider1.value = '0.3';
-        slider1.className = 'sim-slider';
+        slider1.className = 'simulation-slider g-slider';
         slider1.style.display = 'block';
         slider1.style.width = '200px';
         
@@ -435,17 +439,26 @@ export class ObjectFactory {
         slider2Group.style.marginBottom = '20px';
         
         const slider2Label = document.createElement('label');
-        slider2Label.textContent = 'Time Scale';
+        slider2Label.textContent = 'Initial Temperature (K)';
         slider2Label.style.display = 'block';
         
         const slider2 = document.createElement('input');
         slider2.type = 'range';
-        slider2.min = '0';
-        slider2.max = '100';
-        slider2.value = '50';
-        slider2.className = 'sim-slider';
-        slider2.style.display = 'block';
-        slider2.style.width = '200px';
+        slider2.min = '220';
+        slider2.max = '320';
+        slider2.value = '270';  // Temporarily back to hardcoded value until we fix imports
+        slider2.className = 'simulation-slider temp-slider';
+        
+        const slider2Value = document.createElement('span');
+        slider2Value.textContent = slider2.value;
+        
+        slider2.addEventListener('input', () => {
+            slider2Value.textContent = slider2.value;
+            // Dispatch event for temperature changes
+            document.dispatchEvent(new CustomEvent('temp-slider-change', {
+                detail: { value: slider2.value }
+            }));
+        });
         
         // Create run button
         const runButton = document.createElement('button');
@@ -460,6 +473,7 @@ export class ObjectFactory {
         
         slider2Group.appendChild(slider2Label);
         slider2Group.appendChild(slider2);
+        slider2Group.appendChild(slider2Value);
         container.appendChild(slider2Group);
         
         container.appendChild(runButton);
@@ -470,8 +484,21 @@ export class ObjectFactory {
             element: container,
             controls: {
                 gSlider: slider1,
-                timeScaleSlider: slider2,
+                tempSlider: slider2,
                 runButton: runButton
+            }
+        };
+    }
+
+    static createVPlot(config) {
+        const plot = new PotentialPlot(config);
+        console.log('Plot element:', plot.element);
+        console.log('Is Node:', plot.element instanceof Node);
+        return {
+            type: 'plot',
+            object: plot.element,  // Should be a DOM element
+            extras: {
+                plot: plot        // Keep reference to plot object
             }
         };
     }

@@ -419,6 +419,30 @@ export const globalConfig = [
                 duration: 0.01 
             }
         }
+    },
+    {   // --------------------- POTENTIAL PLOT ---------------------
+        id: "sim-v-plot",
+        type: "sim-v-plot",
+        position: { 
+            x: HEADER_X,    
+            y: HEADER_Y + 40    
+        },
+        transition: {
+            entry_from: { 
+                x: HEADER_X, 
+                y: HEADER_Y + SCROLL_dY, 
+                at: 0.9,        // Appear with simulation scene
+                opacity: 0,
+                duration: 0.01 
+            },
+            exit_to: { 
+                x: HEADER_X, 
+                y: HEADER_Y - SCROLL_dY, 
+                at: 0.96,       // Disappear when leaving simulation
+                opacity: 0,
+                duration: 0.01 
+            }
+        }
     }
 ];
 

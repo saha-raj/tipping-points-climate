@@ -6,7 +6,8 @@ import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
 import { DebugLogger } from './debug/DebugLogger';
 import { DebugOverlay } from './debug/DebugOverlay';
-import { SimulationScene } from './core/simulation/simulation-scene.js';
+import { ClimateModel } from './core/simulation/climate-model.js';
+// import { SimulationScene } from './core/simulation/simulation-scene.js';
 
 // Set color management before anything else
 THREE.ColorManagement.enabled = true;
@@ -21,7 +22,40 @@ class ScrollCanvas {
         
         this.setupScene();
         
+        // Common function for updating plot
+        const updatePotentialPlot = (gValue, tempValue) => {
+            const simVPlot = this.objects.get('sim-v-plot');
+            if (simVPlot && simVPlot.extras.plot) {
+                const climateModel = new ClimateModel();
+                
+                // Calculate potential data using model's temperature range
+                const temps = climateModel.generateTempRange();
+                const potentialData = {
+                    temps: temps,
+                    values: temps.map(T => 
+                        climateModel.calculatePotential(T, parseFloat(gValue))
+                    ),
+                    initialTemp: parseFloat(tempValue)
+                };
+
+                // Simulate from the actual initial temperature
+                const simulation = climateModel.simulateTemperature(
+                    parseFloat(tempValue),  // Use actual initial temperature
+                    parseFloat(gValue),
+                    1000,  // timeSteps
+                    1000000    // dt
+                );
+                
+                // Use the final temperature as equilibrium
+                const equilibriumTemp = simulation.temperatures[simulation.temperatures.length - 1];
+                
+                // Update the plot with actual simulation results
+                simVPlot.extras.plot.updatePlot(potentialData, equilibriumTemp);
+            }
+        };
+
         // Create and add objects
+        let simControls = null;  // Store reference to sim controls
         globalConfig.forEach(config => {
             const object = ObjectFactory.createObject(config);
             if (!object) return;
@@ -45,12 +79,22 @@ class ScrollCanvas {
                 if (object.extras?.shadowCylinder) {
                     this.scene.add(object.extras.shadowCylinder);
                 }
+            } else if (object.type === 'plot') {
+                this.container.appendChild(object.object);
             } else {
                 this.container.appendChild(object.element);
             }
             
             this.objects.set(config.id, object);
             this.lifecycle.registerObject(config);
+
+            // Initialize plot right after sim controls are created
+            if (config.id === 'sim-controls') {
+                simControls = object;  // Store reference
+                const gValue = object.controls.gSlider.value;
+                const tempValue = object.controls.tempSlider.value;
+                updatePotentialPlot(gValue, tempValue);
+            }
         });
         
         this.bindEvents();
@@ -112,24 +156,19 @@ class ScrollCanvas {
             sessionStorage.removeItem('returnScroll');
         }
 
-        let currentGValue = 0.3;  // Store slider value
-
-        // Add listener for g-slider changes
+        // Event listeners
         document.addEventListener('g-slider-change', (event) => {
+            if (!simControls) return;
             const gValue = event.detail.value;
-            
-            // Get Earth object and its extras
-            const earth = this.objects.get('earth');
-            if (earth && earth.extras) {
-                const simAtmosphere = earth.extras.simAtmosphereHotNonlinear;
-                if (simAtmosphere) {
-                    simAtmosphere.children.forEach((layer, i) => {
-                        const t = i / (simAtmosphere.children.length - 1);
-                        const baseOpacity = 0.1 * (0.5 - Math.pow(t, 3.5));
-                        layer.material.opacity = baseOpacity + (gValue - 0.3) * 0.5;
-                    });
-                }
-            }
+            const tempValue = simControls.controls.tempSlider.value;
+            updatePotentialPlot(gValue, tempValue);
+        });
+
+        document.addEventListener('temp-slider-change', (event) => {
+            if (!simControls) return;
+            const tempValue = event.detail.value;
+            const gValue = simControls.controls.gSlider.value;
+            updatePotentialPlot(gValue, tempValue);
         });
 
         // Modify updateObjects to handle atmosphere switching
@@ -227,7 +266,10 @@ class ScrollCanvas {
         
         // First hide all non-3D objects
         this.objects.forEach((object) => {
-            if (object.type !== '3dObject') {
+            if (object.type === '3dObject') return;  // Skip 3D objects
+            if (object.type === 'plot') {  // Handle plots
+                object.object.style.display = 'none';
+            } else {  // Handle other DOM elements
                 object.element.style.display = 'none';
             }
         });
@@ -271,7 +313,15 @@ class ScrollCanvas {
                     const look = transforms.camera_look;
                     this.camera.lookAt(look.x, look.y, look.z);
                 }
-            } else {
+            } else if (object.type === 'plot') {  // Handle plots
+                if (visible) {
+                    object.object.style.display = 'block';
+                    object.object.style.left = `${position.x}%`;
+                    object.object.style.top = `${position.y}%`;
+                    object.object.style.opacity = opacity;
+                    object.object.style.transform = this.getTransformString(transforms);
+                }
+            } else {  // Handle other DOM elements
                 if (visible) {
                     object.element.style.display = 'block';
                     object.element.style.left = `${position.x}%`;
