@@ -54,31 +54,19 @@ class ScrollCanvas {
             }
         };
 
+        let simControls = null;
+        
         // Create and add objects
-        let simControls = null;  // Store reference to sim controls
         globalConfig.forEach(config => {
             const object = ObjectFactory.createObject(config);
             if (!object) return;
             
-            // Set initial position and rotation for 3D objects
+            if (config.id === 'sim-controls') {
+                simControls = object;
+            }
+            
             if (object.type === '3dObject') {
-                const normalizedX = (config.position.x - 50) / 25;
-                const normalizedY = -(config.position.y - 50) / 25;
-                object.object.position.set(normalizedX, normalizedY, 0);
-                
-                // Add Earth's axial tilt (23.5 degrees)
-                if (config.id === 'earth') {
-                    object.object.rotation.x = 0;
-                    object.object.rotation.y = 0;
-                    object.object.rotation.z = 23.5 * Math.PI / 180;
-
-                }
-                
                 this.scene.add(object.object);
-                // Add shadow cylinder to scene if it exists
-                if (object.extras?.shadowCylinder) {
-                    this.scene.add(object.extras.shadowCylinder);
-                }
             } else if (object.type === 'plot') {
                 this.container.appendChild(object.object);
             } else {
@@ -87,15 +75,14 @@ class ScrollCanvas {
             
             this.objects.set(config.id, object);
             this.lifecycle.registerObject(config);
-
-            // Initialize plot right after sim controls are created
-            if (config.id === 'sim-controls') {
-                simControls = object;  // Store reference
-                const gValue = object.controls.gSlider.value;
-                const tempValue = object.controls.tempSlider.value;
-                updatePotentialPlot(gValue, tempValue);
-            }
         });
+
+        // Initialize plot after all objects are created and registered
+        if (simControls) {
+            const gValue = simControls.controls.gSlider.value;
+            const tempValue = simControls.controls.tempSlider.value;
+            updatePotentialPlot(gValue, tempValue);
+        }
         
         this.bindEvents();
         this.animate();
