@@ -22,7 +22,9 @@ class ScrollCanvas {
         
         this.setupScene();
         
-        // Common function for updating plot
+        // Store simulation results at class level
+        let currentSimulation = null;
+
         const updatePotentialPlot = (gValue, tempValue) => {
             const simVPlot = this.objects.get('sim-v-plot');
             if (simVPlot && simVPlot.extras.plot) {
@@ -45,11 +47,14 @@ class ScrollCanvas {
                     1000,  // timeSteps
                     1000000    // dt
                 );
+
+                // Store simulation results with albedo values
+                currentSimulation = {
+                    ...simulation,
+                    albedos: simulation.temperatures.map(T => climateModel.calculateAlbedo(T))
+                };
                 
-                // Use the final temperature as equilibrium
                 const equilibriumTemp = simulation.temperatures[simulation.temperatures.length - 1];
-                
-                // Update the plot with actual simulation results
                 simVPlot.extras.plot.updatePlot(potentialData, equilibriumTemp);
             }
         };
@@ -212,6 +217,41 @@ class ScrollCanvas {
                 }
             }
         };
+
+        // Add animation button handler
+        document.addEventListener('run-animation-click', () => {
+            if (!currentSimulation) return;
+
+            const earth = this.objects.get('earth');
+            if (!earth || !earth.extras || !earth.extras.simIceGroup) return;
+
+            const simIceGroup = earth.extras.simIceGroup;
+            simIceGroup.visible = true;
+
+            const { temperatures, albedos } = currentSimulation;
+            const startTime = performance.now();
+            const duration = 100000; // 3 seconds for full animation
+
+            const animate = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1.0);
+                
+                if (progress < 1.0) {
+                    // Get the current frame index based on progress
+                    const frameIndex = Math.floor(progress * (albedos.length - 1));
+                    const albedo = albedos[frameIndex];
+                    const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                    
+                    simIceGroup.children.forEach(icePatch => {
+                        icePatch.scale.set(scale, scale, 1);
+                    });
+                    
+                    requestAnimationFrame(animate);
+                }
+            };
+
+            requestAnimationFrame(animate);
+        });
     }
 
     setupScene() {

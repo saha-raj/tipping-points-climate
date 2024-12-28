@@ -468,6 +468,11 @@ export class ObjectFactory {
         runButton.textContent = 'Run Simulation';
         runButton.className = 'sim-button';
         
+        // Add click handler to dispatch the event
+        runButton.addEventListener('click', () => {
+            document.dispatchEvent(new CustomEvent('run-animation-click'));
+        });
+        
         // Add everything to container
         slider1Group.appendChild(slider1Label);
         slider1Group.appendChild(slider1);
