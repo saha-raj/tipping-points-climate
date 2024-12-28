@@ -223,14 +223,21 @@ class ScrollCanvas {
             if (!currentSimulation) return;
 
             const earth = this.objects.get('earth');
-            if (!earth || !earth.extras || !earth.extras.simIceGroup) return;
+            const simVPlot = this.objects.get('sim-v-plot');
+            
+            if (!earth || !earth.extras || !earth.extras.simIceGroup || 
+                !simVPlot || !simVPlot.extras.plot) return;
 
             const simIceGroup = earth.extras.simIceGroup;
             simIceGroup.visible = true;
 
             const { temperatures, albedos } = currentSimulation;
             const startTime = performance.now();
-            const duration = 100000; // 3 seconds for full animation
+            const duration = 100000; 
+            
+            // Get initial and final states for the dot
+            const climateModel = new ClimateModel();
+            const gValue = this.objects.get('sim-controls').controls.gSlider.value;
 
             const animate = (currentTime) => {
                 const elapsed = currentTime - startTime;
@@ -239,16 +246,27 @@ class ScrollCanvas {
                 if (progress < 1.0) {
                     // Get the current frame index based on progress
                     const frameIndex = Math.floor(progress * (albedos.length - 1));
-                    const albedo = albedos[frameIndex];
-                    const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
                     
+                    // Update ice
+                    const albedo = albedos[frameIndex];
+                    const scale = Math.min(Math.max((albedo - 0.13) / (0.85 - 0.13), 0), 1.2);
                     simIceGroup.children.forEach(icePatch => {
                         icePatch.scale.set(scale, scale, 1);
                     });
                     
+                    // Update tracking dot
+                    const currentTemp = temperatures[frameIndex];
+                    const currentPotential = climateModel.calculatePotential(currentTemp, parseFloat(gValue));
+                    simVPlot.extras.plot.updateTrackingDot(currentTemp, currentPotential);
+                    
                     requestAnimationFrame(animate);
                 }
             };
+
+            // Initialize tracking dot at starting position
+            const initialTemp = temperatures[0];
+            const initialPotential = climateModel.calculatePotential(initialTemp, parseFloat(gValue));
+            simVPlot.extras.plot.initTrackingDot(initialTemp, initialPotential);
 
             requestAnimationFrame(animate);
         });

@@ -154,6 +154,15 @@ export class PotentialPlot {
 
         // Add arrow functionality
         this.addArrow(plotArea, potentialData, equilibriumTemp, x, y);
+
+        // Store scales for use in tracking dot
+        this.xScale = x;
+        this.yScale = y;
+
+        // Create the line generator
+        const line = d3.line()
+            .x(d => x(d.temp))
+            .y(d => y(d.potential));
     }
 
     addArrow(plotArea, potentialData, equilibriumTemp, x, y) {
@@ -231,5 +240,26 @@ export class PotentialPlot {
         // Update only the initial point position
         this.plot.plotArea.select('.initial-point')
             .attr('cx', x(newTemp));
+    }
+
+    initTrackingDot(temp, potential) {
+        // Remove existing tracking dot if it exists
+        this.plot.plotArea.selectAll('.tracking-dot').remove();
+        
+        // Add new tracking dot to plotArea, just like other points
+        this.trackingDot = this.plot.plotArea.append('circle')
+            .attr('class', 'tracking-dot')
+            .attr('r', 5)
+            .attr('fill', 'red')
+            .attr('cx', this.xScale(temp))
+            .attr('cy', this.yScale(potential));
+    }
+
+    updateTrackingDot(temp, potential) {
+        if (this.trackingDot) {
+            this.trackingDot
+                .attr('cx', this.xScale(temp))
+                .attr('cy', this.yScale(potential));
+        }
     }
 } 
