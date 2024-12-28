@@ -77,6 +77,9 @@ export class ObjectFactory {
             const earthMesh = new THREE.Mesh(geometry, material);
             // earthMesh.visible = true;
 
+            // Add Earth's axial tilt (23.5 degrees)
+            earthMesh.rotation.z = 23.5 * Math.PI / 180;
+            
             // ------------------------------------------------------------ 
             // Create regular atmosphere 
             // ------------------------------------------------------------ 

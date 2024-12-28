@@ -67,6 +67,10 @@ class ScrollCanvas {
             
             if (object.type === '3dObject') {
                 this.scene.add(object.object);
+                // Add shadow cylinder to scene if it exists
+                if (object.extras && object.extras.shadowCylinder) {
+                    this.scene.add(object.extras.shadowCylinder);
+                }
             } else if (object.type === 'plot') {
                 this.container.appendChild(object.object);
             } else {

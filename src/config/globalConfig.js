@@ -269,6 +269,26 @@ export const globalConfig = [
             exit_to:    {  at: SCENE_DURATION * 4 }
         }
     },
+    {
+        id: "my-annotation",
+        type: "annotation",
+        content: "Your annotation text here",
+        position: { x: 40, y: 20 },  // Screen coordinates
+        transition: {
+            entry_from: { 
+                x: 40, y: 20,  // Starting position
+                at: 0.53,  // When to start appearing
+                duration: 0.01,
+                opacity: 0 
+            },
+            exit_to: { 
+                x: 40, y: 20,  // Exit position (typically moves up)
+                at: 0.58,  // When to start disappearing
+                duration: 0.01,
+                opacity: 0 
+            }
+        }
+    },
     {   // --------------------- SCENE 5 ---------------------
         id: "header-5",
         type: "header",
