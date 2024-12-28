@@ -224,42 +224,65 @@ class ScrollCanvas {
 
             const earth = this.objects.get('earth');
             const simVPlot = this.objects.get('sim-v-plot');
+            const simControls = this.objects.get('sim-controls');
             
             if (!earth || !earth.extras || !earth.extras.simIceGroup || 
-                !simVPlot || !simVPlot.extras.plot) return;
+                !simVPlot || !simVPlot.extras.plot || !simControls) return;
 
+            const tempSlider = simControls.controls.tempSlider;
+            const gValue = simControls.controls.gSlider.value;
+            
+            // Create climate model instance for potential calculations
+            const climateModel = new ClimateModel();
+            
+            // Disable slider during animation
+            tempSlider.disabled = true;
+            
             const simIceGroup = earth.extras.simIceGroup;
             simIceGroup.visible = true;
 
             const { temperatures, albedos } = currentSimulation;
             const startTime = performance.now();
-            const duration = 100000; 
+            const duration = 100000; // 3 seconds for full animation
+            const TEMP_THRESHOLD = 0.01; // Stop when within 0.01K of equilibrium
             
-            // Get initial and final states for the dot
-            const climateModel = new ClimateModel();
-            const gValue = this.objects.get('sim-controls').controls.gSlider.value;
-
+            let animationFrame;
+            const equilibriumTemp = temperatures[temperatures.length - 1];
+            
             const animate = (currentTime) => {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1.0);
                 
-                if (progress < 1.0) {
-                    // Get the current frame index based on progress
-                    const frameIndex = Math.floor(progress * (albedos.length - 1));
-                    
+                // Get the current frame index based on progress
+                const frameIndex = Math.floor(progress * (albedos.length - 1));
+                const currentTemp = temperatures[frameIndex];
+                
+                // Check if we're close enough to equilibrium
+                if (progress < 1.0 && Math.abs(currentTemp - equilibriumTemp) > TEMP_THRESHOLD) {
                     // Update ice
                     const albedo = albedos[frameIndex];
-                    const scale = Math.min(Math.max((albedo - 0.13) / (0.85 - 0.13), 0), 1.2);
+                    const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
                     simIceGroup.children.forEach(icePatch => {
                         icePatch.scale.set(scale, scale, 1);
                     });
                     
                     // Update tracking dot
-                    const currentTemp = temperatures[frameIndex];
                     const currentPotential = climateModel.calculatePotential(currentTemp, parseFloat(gValue));
                     simVPlot.extras.plot.updateTrackingDot(currentTemp, currentPotential);
                     
-                    requestAnimationFrame(animate);
+                    // Update slider position without triggering simulation
+                    tempSlider.value = currentTemp;
+                    
+                    animationFrame = requestAnimationFrame(animate);
+                } else {
+                    // Animation complete or reached equilibrium - cleanup
+                    cancelAnimationFrame(animationFrame);
+                    tempSlider.disabled = false;
+                    
+                    // Set final values
+                    tempSlider.value = equilibriumTemp;
+                    const finalPotential = climateModel.calculatePotential(equilibriumTemp, parseFloat(gValue));
+                    simVPlot.extras.plot.updateTrackingDot(equilibriumTemp, finalPotential);
                 }
             };
 
@@ -268,7 +291,7 @@ class ScrollCanvas {
             const initialPotential = climateModel.calculatePotential(initialTemp, parseFloat(gValue));
             simVPlot.extras.plot.initTrackingDot(initialTemp, initialPotential);
 
-            requestAnimationFrame(animate);
+            animationFrame = requestAnimationFrame(animate);
         });
     }
 

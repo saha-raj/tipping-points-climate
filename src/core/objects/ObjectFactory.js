@@ -456,11 +456,13 @@ export class ObjectFactory {
         slider2Value.textContent = slider2.value;
         
         slider2.addEventListener('input', () => {
-            slider2Value.textContent = slider2.value;
-            // Dispatch event for temperature changes
-            document.dispatchEvent(new CustomEvent('temp-slider-change', {
-                detail: { value: slider2.value }
-            }));
+            if (!slider2.disabled) {  // Only trigger if not disabled
+                slider2Value.textContent = slider2.value;
+                // Dispatch event for temperature changes
+                document.dispatchEvent(new CustomEvent('temp-slider-change', {
+                    detail: { value: slider2.value }
+                }));
+            }
         });
         
         // Create run button

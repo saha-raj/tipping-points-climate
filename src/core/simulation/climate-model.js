@@ -54,6 +54,8 @@ export class ClimateModel {
         };
     }
 
+    
+
     findEquilibrium(albedo, greenhouse) {
         const tempRange = this.generateTempRange();
         const deltaTs = tempRange.map(t => this.calculateDeltaT(t, greenhouse));
