@@ -432,6 +432,21 @@ class ScrollCanvas {
                                 isVisible: simAtmosphere.visible
                             });
                         }
+                    } else if (config.id === 'simIceGroup') {
+                        const simIceGroup = earth.extras.simIceGroup;
+                        if (progress >= entryAt && progress <= exitAt) {
+                            simIceGroup.visible = true;
+                            // Calculate growth progress
+                            const growthProgress = (progress - entryAt) / (exitAt - entryAt);
+                            const radius = config.maxRadius * growthProgress;
+                            
+                            // Update each ice patch
+                            simIceGroup.children.forEach(patch => {
+                                patch.scale.set(radius, radius, 1);
+                            });
+                        } else {
+                            simIceGroup.visible = false;
+                        }
                     } else {
                         const extra = earth.extras[config.id];
                         if (extra) {

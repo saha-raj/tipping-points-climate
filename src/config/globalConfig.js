@@ -471,7 +471,13 @@ export const extraConfig = [
         id: "iceGroup",
         entry: { at: 0.55 },
         exit: { at: 0.85 },
-        maxRadius:1  // Maximum size of ice patches
+        maxRadius:0.9  // Maximum size of ice patches
+    },
+    {
+        id: "simIceGroup",
+        entry: { at: 0.9 },
+        exit: { at: 0.96 },
+        maxRadius:0.2  // Maximum size of ice patches
     }
 ];
 
