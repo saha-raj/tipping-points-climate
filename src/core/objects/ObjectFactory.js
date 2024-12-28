@@ -11,6 +11,8 @@ export class ObjectFactory {
                 return this.createText(config);
             case 'button':
                 return this.createButton(config);
+            case 'sim-controls':
+                return this.createSimControls(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -301,6 +303,90 @@ export class ObjectFactory {
         return {
             type: 'button',
             element: button
+        };
+    }
+
+    static createSimControls(config) {
+        console.log("Creating sim controls...");
+        const container = document.createElement('div');
+        container.className = 'sim-controls';
+        
+        // Basic styling to make it visible
+        container.style.position = 'absolute';
+        container.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+        container.style.padding = '20px';
+        container.style.borderRadius = '5px';
+        
+        // Create first slider group
+        const slider1Group = document.createElement('div');
+        slider1Group.style.marginBottom = '20px';
+        
+        const slider1Label = document.createElement('label');
+        slider1Label.textContent = 'Greenhouse Gas Parameter (g)';
+        slider1Label.style.display = 'block';
+        
+        const slider1Value = document.createElement('span');
+        slider1Value.textContent = '0.3';
+        slider1Value.style.marginLeft = '10px';
+        
+        const slider1 = document.createElement('input');
+        slider1.type = 'range';
+        slider1.min = '0.3';
+        slider1.max = '0.45';
+        slider1.step = '0.01';
+        slider1.value = '0.3';
+        slider1.className = 'sim-slider';
+        slider1.style.display = 'block';
+        slider1.style.width = '200px';
+        
+        // Update value display when slider moves
+        slider1.addEventListener('input', () => {
+            slider1Value.textContent = slider1.value;
+        });
+        
+        // Create second slider group
+        const slider2Group = document.createElement('div');
+        slider2Group.style.marginBottom = '20px';
+        
+        const slider2Label = document.createElement('label');
+        slider2Label.textContent = 'Time Scale';
+        slider2Label.style.display = 'block';
+        
+        const slider2 = document.createElement('input');
+        slider2.type = 'range';
+        slider2.min = '0';
+        slider2.max = '100';
+        slider2.value = '50';
+        slider2.className = 'sim-slider';
+        slider2.style.display = 'block';
+        slider2.style.width = '200px';
+        
+        // Create run button
+        const runButton = document.createElement('button');
+        runButton.textContent = 'Run Simulation';
+        runButton.className = 'sim-button';
+        
+        // Add everything to container
+        slider1Group.appendChild(slider1Label);
+        slider1Group.appendChild(slider1);
+        slider1Group.appendChild(slider1Value);
+        container.appendChild(slider1Group);
+        
+        slider2Group.appendChild(slider2Label);
+        slider2Group.appendChild(slider2);
+        container.appendChild(slider2Group);
+        
+        container.appendChild(runButton);
+        
+        console.log("Sim controls created:", container);
+        return {
+            type: 'sim-controls',
+            element: container,
+            controls: {
+                gSlider: slider1,
+                timeScaleSlider: slider2,
+                runButton: runButton
+            }
         };
     }
 } 

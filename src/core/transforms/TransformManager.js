@@ -46,6 +46,19 @@ export class TransformManager {
                     value: lerp(startRotation, transform.rotate_to || 0, progress)
                 };
             
+            case 'camera_look':
+                const startLook = previousValue ?? { x: 0, y: 0, z: 0 };
+                const worldX = (transform.look_x - 50) / 25;
+                const worldY = -(transform.look_y - 50) / 25;
+                return {
+                    type: 'camera_look',
+                    value: {
+                        x: lerp(startLook.x, worldX, progress),
+                        y: lerp(startLook.y, worldY, progress),
+                        z: lerp(startLook.z, transform.look_z || 0, progress)
+                    }
+                };
+            
             default:
                 return null;
         }

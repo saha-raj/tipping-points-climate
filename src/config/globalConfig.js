@@ -123,6 +123,7 @@ export const globalConfig = [
         transition: {
             entry_from: { x: EARTH_X, y: EARTH_Y, at: 0, duration: 0.1 },
             exit_to: null
+            // exit_to: { x: EARTH_X, y: EARTH_Y - SCROLL_dY, at: 0.9, duration: 0.01 }
         },
         transformations: [
             {
@@ -136,12 +137,44 @@ export const globalConfig = [
                 at: 0.25, duration: 0.05
             },
             // {
+            //     type: "translation",
+            //     delta_x: 150, 
+            //     delta_y: 100,
+            //     at: 0.05, duration: 0.05
+            // },
+            { 
+                type: "camera_look",
+                look_x: 20,     // Look 2 units right
+                look_y: 38,     // Keep vertical look same
+                look_z: 0,     // Keep depth same
+                at: 0.9,       // Start at 20% scroll
+                duration: 0.05  // Take 5% of scroll to complete
+            }
+            // { 
+            //     type: "camera_look",
+            //     look_x: -1.6,     // Look 2 units right
+            //     look_y: 0.63,     // Keep vertical look same
+            //     look_z: 0,     // Keep depth same
+            //     at: 0.1,       // Start at 20% scroll
+            //     duration: 0.05  // Take 5% of scroll to complete
+            // },
+            // {
+            //     type: "camera_look",
+            //     look_x: 0,     // Return to center
+            //     look_y: 0,
+            //     look_z: 0,
+            //     at: 0.2,      // Start at 25% scroll
+            //     duration: 0.05
+            // }
+            // {
             //     type: "scale",
             //     scale_to: 1,
             //     at: 0.75,
             // }
         ]
     },
+
+    
 
     {   // --------------------- SCENE 1 ---------------------
         id: "header-1",
@@ -261,7 +294,7 @@ export const globalConfig = [
         content: "Tipping Points",
         transition: {
             entry_from: {  at: SCENE_DURATION * 5 },
-            exit_to:    {  at: SCENE_DURATION * 6 }
+            exit_to:    {  at: 0.9 }
         }
     },
     {
@@ -271,7 +304,7 @@ export const globalConfig = [
             "Critical Transitions",
         transition: {
             entry_from: {  at: SCENE_DURATION * 5 },
-            exit_to:    {  at: SCENE_DURATION * 6 }
+            exit_to:    {  at: 0.9 }
         }
     },
     // {   
@@ -343,6 +376,49 @@ export const globalConfig = [
                 duration: 0.2
             }
         }
+    },
+    {   // --------------------- SIMULATION ---------------------
+        id: "header-simulation",
+        type: "header",
+        content: "Simulation",
+        transition: {
+            entry_from: {  at: 0.9 },
+            exit_to:    {  at: 0.96 }
+        }
+    },
+    {
+        id: "description-simulation",
+        type: "description",
+        content: 
+            "Use the sliders to change the parameters of the simulation.",
+        transition: {
+            entry_from: {  at: 0.9 },
+            exit_to:    {  at: 0.96 }
+        }
+    },
+    {   // --------------------- SIMULATION CONTROLS ---------------------
+        id: "sim-controls",
+        type: "sim-controls",
+        position: { 
+            x: HEADER_X,    // Position on right side of screen
+            y: HEADER_Y + 30     // Vertically centered
+        },
+        transition: {
+            entry_from: { 
+                x: HEADER_X, 
+                y: HEADER_Y + SCROLL_dY, 
+                at: 0.9,        // Appear with simulation scene
+                opacity: 0,
+                duration: 0.01 
+            },
+            exit_to: { 
+                x: HEADER_X, 
+                y: HEADER_Y - SCROLL_dY, 
+                at: 0.96,       // Disappear when leaving simulation
+                opacity: 0,
+                duration: 0.01 
+            }
+        }
     }
 ];
 
@@ -355,7 +431,7 @@ export const extraConfig = [
     {
         id: "atmosphereHotNonlinear",
         entry: { at: 0 },
-        exit: { at: 0.95 }    
+        exit: { at: 0.90 }    
     },
     {
         id: "shadowCylinder",
@@ -367,6 +443,17 @@ export const extraConfig = [
         file: '/assets/textures/water_world_pix.jpg',
         entry: { at: 0.32 },
         exit: { at: 0.9 }    
+    },
+    {
+        id: "atmosphereHotNonlinear",
+        entry: { at: 0.90 },
+        exit: { at: 0.96 }    
+    },
+    {
+        id: "earthTexture",
+        file: '/assets/textures/cartoon.jpg',
+        entry: { at: 0.9 },
+        exit: { at: 0.96 }    
     },
     // {
     //     id: "earthTexture",

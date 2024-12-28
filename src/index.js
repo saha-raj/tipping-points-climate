@@ -216,6 +216,12 @@ class ScrollCanvas {
                 if (transforms.rotation) {
                     object.object.rotation.z = transforms.rotation;
                 }
+                
+                // Add camera look handling
+                if (transforms.camera_look) {
+                    const look = transforms.camera_look;
+                    this.camera.lookAt(look.x, look.y, look.z);
+                }
             } else {
                 if (visible) {
                     object.element.style.display = 'block';
