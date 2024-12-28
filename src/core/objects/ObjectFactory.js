@@ -140,9 +140,7 @@ export class ObjectFactory {
                 const layer = new THREE.Mesh(
                     baseGeometry,
                     new THREE.MeshPhongMaterial({
-                        // color: 0xbde0fe, // cool
                         color: 0xcae9ff,
-                        // color: 0xffffff,
                         transparent: true,
                         opacity: opacity,
                         shininess: 0,
@@ -153,26 +151,36 @@ export class ObjectFactory {
                 atmosphereHotNonlinear.add(layer);
             }
             
-            // // Add separate cloud layer
-            // const cloudGeometry = new THREE.SphereGeometry(1.35, 64, 64);  // Adjust radius as needed
-            // const cloudTexture = new THREE.TextureLoader().load('/assets/textures/clouds_transparent.jpg');
-            // cloudTexture.colorSpace = 'srgb';
+            // ------------------------------------------------------------ 
+            // Create simulation atmosphere (new)
+            // ------------------------------------------------------------ 
+            const simAtmosphereHotNonlinear = new THREE.Group();
             
-            // const cloudLayer = new THREE.Mesh(
-            //     cloudGeometry,
-            //     new THREE.MeshPhongMaterial({
-            //         // map: cloudTexture,
-            //         transparent: true,
-            //         // color: 0x00ff00,
-            //         opacity: 0.3,
-            //         side: THREE.DoubleSide,
-            //         blending: THREE.AdditiveBlending
-            //     })
-            // );
-            // atmosphereHotNonlinear.add(cloudLayer);
+            for (let i = 0; i < numLayers; i++) {
+                const t = i / (numLayers - 1);
+                const scale = 1.07 + (0.25 * Math.pow(t, 2.5));
+                const opacity = 0.1 * (0.5 - Math.pow(t, 3.5));
+                
+                const layer = new THREE.Mesh(
+                    baseGeometry,
+                    new THREE.MeshPhongMaterial({
+                        color: 0xcae9ff,
+                        transparent: true,
+                        opacity: opacity,
+                        shininess: 0,
+                    })
+                );
 
+                layer.scale.set(scale, scale, scale);
+                simAtmosphereHotNonlinear.add(layer);
+            }
+            
+            simAtmosphereHotNonlinear.visible = false;  // Start invisible
+            
+            // Add both to earth
             atmosphereHotNonlinear.visible = true;
             earthMesh.add(atmosphereHotNonlinear);
+            earthMesh.add(simAtmosphereHotNonlinear);
 
             // ------------------------------------------------------------ 
             // Create shadow cylinder and end cap   
@@ -280,7 +288,8 @@ export class ObjectFactory {
                     needsLight: true,
                     atmosphere: atmosphereMesh,
                     atmosphereHot: atmosphereHot,
-                    atmosphereHotNonlinear: atmosphereHotNonlinear, 
+                    atmosphereHotNonlinear: atmosphereHotNonlinear,
+                    simAtmosphereHotNonlinear: simAtmosphereHotNonlinear,
                     shadowCylinder: shadowCylinder,
                     material: material,
                     iceGroup: iceGroup
@@ -340,8 +349,14 @@ export class ObjectFactory {
         slider1.style.width = '200px';
         
         // Update value display when slider moves
-        slider1.addEventListener('input', () => {
+        slider1.addEventListener('input', (event) => {
             slider1Value.textContent = slider1.value;
+            
+            // Dispatch custom event with slider value
+            const sliderEvent = new CustomEvent('g-slider-change', {
+                detail: { value: parseFloat(slider1.value) }
+            });
+            document.dispatchEvent(sliderEvent);
         });
         
         // Create second slider group

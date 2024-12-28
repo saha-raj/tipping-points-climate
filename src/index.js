@@ -111,6 +111,55 @@ class ScrollCanvas {
             window.scrollTo(0, parseFloat(returnScroll));
             sessionStorage.removeItem('returnScroll');
         }
+
+        let currentGValue = 0.3;  // Store slider value
+
+        // Add listener for g-slider changes
+        document.addEventListener('g-slider-change', (event) => {
+            const gValue = event.detail.value;
+            
+            // Get Earth object and its extras
+            const earth = this.objects.get('earth');
+            if (earth && earth.extras) {
+                const simAtmosphere = earth.extras.simAtmosphereHotNonlinear;
+                if (simAtmosphere) {
+                    simAtmosphere.children.forEach((layer, i) => {
+                        const t = i / (simAtmosphere.children.length - 1);
+                        const baseOpacity = 0.1 * (0.5 - Math.pow(t, 3.5));
+                        layer.material.opacity = baseOpacity + (gValue - 0.3) * 0.5;
+                    });
+                }
+            }
+        });
+
+        // Modify updateObjects to handle atmosphere switching
+        const originalUpdateObjects = this.updateObjects.bind(this);
+        this.updateObjects = () => {
+            // Run original update first
+            originalUpdateObjects();
+
+            // Then handle simulation atmosphere visibility
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = window.scrollY / scrollHeight;
+            
+            const earth = this.objects.get('earth');
+            if (earth && earth.extras) {
+                const regularAtmosphere = earth.extras.atmosphereHotNonlinear;
+                const simAtmosphere = earth.extras.simAtmosphereHotNonlinear;
+                
+                if (regularAtmosphere && simAtmosphere) {
+                    // In simulation scene
+                    if (progress >= 0.9 && progress <= 0.96) {
+                        regularAtmosphere.visible = false;
+                        simAtmosphere.visible = true;
+                    } else {
+                        // Outside simulation scene
+                        regularAtmosphere.visible = true;
+                        simAtmosphere.visible = false;
+                    }
+                }
+            }
+        };
     }
 
     setupScene() {
@@ -364,6 +413,24 @@ class ScrollCanvas {
                             });
                         } else {
                             iceGroup.visible = false;
+                        }
+                    } else if (config.id === 'atmosphereHotNonlinear') {
+                        const regularAtmosphere = earth.extras.atmosphereHotNonlinear;
+                        if (regularAtmosphere) {
+                            regularAtmosphere.visible = progress >= entryAt && progress <= exitAt;
+                        }
+                    } else if (config.id === 'simAtmosphereHotNonlinear') {
+                        const simAtmosphere = earth.extras.simAtmosphereHotNonlinear;
+                        if (simAtmosphere) {
+                            const shouldBeVisible = progress >= entryAt && progress <= exitAt;
+                            simAtmosphere.visible = shouldBeVisible;
+                            console.log('Sim atmosphere visibility:', {
+                                progress,
+                                entryAt,
+                                exitAt,
+                                shouldBeVisible,
+                                isVisible: simAtmosphere.visible
+                            });
                         }
                     } else {
                         const extra = earth.extras[config.id];

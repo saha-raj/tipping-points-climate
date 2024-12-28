@@ -401,7 +401,7 @@ export const globalConfig = [
         type: "sim-controls",
         position: { 
             x: HEADER_X,    // Position on right side of screen
-            y: HEADER_Y + 30     // Vertically centered
+            y: HEADER_Y + 20     // Vertically centered
         },
         transition: {
             entry_from: { 
@@ -445,7 +445,7 @@ export const extraConfig = [
         exit: { at: 0.9 }    
     },
     {
-        id: "atmosphereHotNonlinear",
+        id: "simAtmosphereHotNonlinear",
         entry: { at: 0.90 },
         exit: { at: 0.96 }    
     },
