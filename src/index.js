@@ -148,7 +148,29 @@ class ScrollCanvas {
             if (!simControls) return;
             const gValue = event.detail.value;
             const tempValue = simControls.controls.tempSlider.value;
+            
+            // Update plot
             updatePotentialPlot(gValue, tempValue);
+            
+            // Update atmosphere opacity with proper checks
+            const earth = this.objects.get('earth');
+            if (earth && earth.extras && earth.extras.simAtmosphereHotNonlinear) {
+                const simAtmosphere = earth.extras.simAtmosphereHotNonlinear;
+                
+                // First make sure atmosphere is visible
+                simAtmosphere.visible = true;
+                
+                // Calculate base opacity from g value
+                const baseOpacity = (parseFloat(gValue) - 0.3) / (0.45 - 0.3);  // normalize to [0,1]
+                
+                // Update opacity for each layer in the atmosphere group
+                simAtmosphere.children.forEach((layer, i) => {
+                    if (layer.material) {
+                        const t = i / (simAtmosphere.children.length - 1);
+                        layer.material.opacity = baseOpacity * (0.1 * (0.5 - Math.pow(t, 3.5)));
+                    }
+                });
+            }
         });
 
         document.addEventListener('temp-slider-change', (event) => {
@@ -527,19 +549,18 @@ class ScrollCanvas {
         //     earth.object.rotation.y += rotationSpeed;
         // }
         const earth = this.objects.get('earth');
-if (earth && earth.object) {
-    const rotationSpeed = 0.005;
+            if (earth && earth.object) {
+                const rotationSpeed = 0.005;
 
-    // Earth tilt is around Z by -23.5°, so spin axis is original Y, tilted by -23.5° around Z.
-    const tiltAngle = 23.5 * Math.PI / 180;
-    const rotationAxis = new THREE.Vector3(0, 1, 0)
-      .applyAxisAngle(new THREE.Vector3(0, 1, 0), tiltAngle)
-      .normalize();
+                // Earth tilt is around Z by -23.5°, so spin axis is original Y, tilted by -23.5° around Z.
+                const tiltAngle = 23.5 * Math.PI / 180;
+                const rotationAxis = new THREE.Vector3(0, 1, 0)
+                .applyAxisAngle(new THREE.Vector3(0, 1, 0), tiltAngle)
+                .normalize();
 
-    // Rotate around that single tilted axis
-    earth.object.rotateOnAxis(rotationAxis, rotationSpeed);
-}
-
+                // Rotate around that single tilted axis
+                earth.object.rotateOnAxis(rotationAxis, rotationSpeed);
+            }
 
 
         // Calculate velocity and decay it over time
