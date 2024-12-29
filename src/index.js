@@ -112,7 +112,7 @@ class ScrollCanvas {
         const textureLoader = new THREE.TextureLoader();
         
         // Load default texture first
-        const defaultTexture = textureLoader.load('/assets/textures/2_no_clouds_8k.jpg', 
+        const defaultTexture = textureLoader.load('public/assets/textures/2_no_clouds_8k.jpg', 
             // Add success callback
             (texture) => {
                 texture.colorSpace = 'srgb';

@@ -63,8 +63,8 @@ export class ObjectFactory {
             
             // Load texture
             const textureLoader = new THREE.TextureLoader();
-            // const earthTexture = textureLoader.load('/assets/textures/earth_noClouds.0330_cutout.jpg');
-            const earthTexture = textureLoader.load('/assets/textures/1_earth_8k.jpg');
+            // const earthTexture = textureLoader.load('public/assets/textures/earth_noClouds.0330_cutout.jpg');
+            const earthTexture = textureLoader.load('public/assets/textures/1_earth_8k.jpg');
 
 
             const material = new THREE.MeshPhongMaterial({
@@ -85,7 +85,7 @@ export class ObjectFactory {
             // ------------------------------------------------------------ 
             const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
 
-            const cloudsRegular = new THREE.TextureLoader().load('/assets/textures/clouds_transparent.jpg');
+            const cloudsRegular = new THREE.TextureLoader().load('public/assets/textures/clouds_transparent.png');
 
             const atmosphereMaterial = new THREE.MeshPhongMaterial({
                 map: cloudsRegular,

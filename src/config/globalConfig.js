@@ -484,7 +484,7 @@ export const extraConfig = [
     },
     {
         id: "earthTexture",
-        file: '/assets/textures/water_world_pix.jpg',
+        file: 'public/assets/textures/water_world_pix.jpg',
         entry: { at: 0.32 },
         exit: { at: 0.9 }    
     },
@@ -495,13 +495,13 @@ export const extraConfig = [
     },
     {
         id: "earthTexture",
-        file: '/assets/textures/cartoon.jpg',
+        file: 'public/assets/textures/cartoon.jpg',
         entry: { at: 0.9 },
         exit: { at: 0.96 }    
     },
     // {
     //     id: "earthTexture",
-    //     file: '/assets/textures/earth_noClouds.0330.jpg',
+    //     file: 'public/assets/textures/earth_noClouds.0330.jpg',
     //     entry: { at: 0.4 },
     //     exit: { at: 0.6 }    
     // },
