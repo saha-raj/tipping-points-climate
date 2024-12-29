@@ -1,6 +1,5 @@
 import * as d3 from 'd3';
 import { MODEL_PARAMS } from '../simulation/constants.js';
-import '../../styles/plots.css';
 
 export class PotentialPlot {
     constructor(config) {
