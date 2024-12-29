@@ -429,14 +429,14 @@ export const globalConfig = [
                 y: HEADER_Y + SCROLL_dY, 
                 at: 0.9,        // Appear with simulation scene
                 opacity: 0,
-                duration: 0.01 
+                // duration: 0.01 
             },
             exit_to: { 
                 x: HEADER_X, 
                 y: HEADER_Y - SCROLL_dY, 
                 at: 0.96,       // Disappear when leaving simulation
                 opacity: 0,
-                duration: 0.01 
+                // duration: 0.01 
             }
         }
     },
@@ -453,14 +453,14 @@ export const globalConfig = [
                 y: HEADER_Y + SCROLL_dY, 
                 at: 0.9,        // Appear with simulation scene
                 opacity: 0,
-                duration: 0.01 
+                // duration: 0.01 
             },
             exit_to: { 
                 x: HEADER_X, 
                 y: HEADER_Y - SCROLL_dY, 
                 at: 0.96,       // Disappear when leaving simulation
                 opacity: 0,
-                duration: 0.01 
+                // duration: 0.01 
             }
         }
     }
