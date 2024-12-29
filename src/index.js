@@ -296,6 +296,26 @@ class ScrollCanvas {
 
             animationFrame = requestAnimationFrame(animate);
         });
+
+        // Add temperature slider handler
+        document.addEventListener('temp-slider-change', (event) => {
+            const tempValue = event.detail.value;
+            
+            // Add immediate ice size update
+            const earth = this.objects.get('earth');
+            if (earth && earth.extras && earth.extras.simIceGroup) {
+                const climateModel = new ClimateModel();
+                const albedo = climateModel.calculateAlbedo(parseFloat(tempValue));
+                const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                
+                // Only update if not in animation
+                if (!earth.extras.simIceGroup.children[0]?.userData.isAnimating) {
+                    earth.extras.simIceGroup.children.forEach(icePatch => {
+                        icePatch.scale.set(scale, scale, 1);
+                    });
+                }
+            }
+        });
     }
 
     setupScene() {
