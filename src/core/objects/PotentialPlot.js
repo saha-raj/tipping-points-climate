@@ -108,6 +108,10 @@ export class PotentialPlot {
             .domain(d3.extent(potentialData.values))
             .range([plotHeight, 0]);
 
+        // Store scales for use in tracking dot
+        this.xScale = x;
+        this.yScale = y;
+
         // Update axes
         plotArea.select('.x-axis')
             .call(d3.axisBottom(x)
@@ -155,9 +159,18 @@ export class PotentialPlot {
         // Add arrow functionality
         this.addArrow(plotArea, potentialData, equilibriumTemp, x, y);
 
-        // Store scales for use in tracking dot
-        this.xScale = x;
-        this.yScale = y;
+        // Remove tracking dot during slider changes
+        this.removeTrackingDot();
+
+        // Update tracking dot if it exists
+        if (this.trackingDot) {
+            const currentTemp = parseFloat(this.trackingDot.attr('cx')) / x.range()[1] * (x.domain()[1] - x.domain()[0]) + x.domain()[0];
+            const dotIndex = d3.bisector(d => d).left(potentialData.temps, currentTemp);
+            const newPotential = potentialData.values[dotIndex];
+            this.trackingDot
+                .attr('cx', x(currentTemp))
+                .attr('cy', y(newPotential));
+        }
 
         // Create the line generator
         const line = d3.line()
@@ -243,10 +256,9 @@ export class PotentialPlot {
     }
 
     initTrackingDot(temp, potential) {
-        // Remove existing tracking dot if it exists
-        this.plot.plotArea.selectAll('.tracking-dot').remove();
+        this.removeTrackingDot();
         
-        // Add new tracking dot to plotArea using CSS class
+        // Add new tracking dot
         this.trackingDot = this.plot.plotArea.append('circle')
             .attr('class', 'tracking-dot')
             .attr('cx', this.xScale(temp))
@@ -258,6 +270,13 @@ export class PotentialPlot {
             this.trackingDot
                 .attr('cx', this.xScale(temp))
                 .attr('cy', this.yScale(potential));
+        }
+    }
+
+    removeTrackingDot() {
+        if (this.trackingDot) {
+            this.trackingDot.remove();
+            this.trackingDot = null;
         }
     }
 } 

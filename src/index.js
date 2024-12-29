@@ -248,6 +248,9 @@ class ScrollCanvas {
             
             let animationFrame;
             const equilibriumTemp = temperatures[temperatures.length - 1];
+
+            // Force remove any existing tracking dot before starting
+            simVPlot.extras.plot.removeTrackingDot();
             
             const animate = (currentTime) => {
                 const elapsed = currentTime - startTime;
