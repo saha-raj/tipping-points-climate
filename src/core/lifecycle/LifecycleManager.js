@@ -16,9 +16,9 @@ export class LifecycleManager {
             config,
             state: {
                 position: { ...config.position },
-                opacity: 0,
+                opacity: config.initiallyVisible ? 1 : 0,
                 transforms: {},
-                visible: false
+                visible: config.initiallyVisible || false
             }
         });
     }

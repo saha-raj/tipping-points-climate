@@ -39,8 +39,11 @@
 const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
 
-export const HEADER_X = 5;  
+export const HEADER_X = 5;
 export const HEADER_Y = 10;
+
+export const TITLE_X = 5;
+export const TITLE_Y = 45;
 
 export const DESC_X = HEADER_X;
 export const DESC_Y = HEADER_Y + 10;
@@ -51,10 +54,10 @@ const SCROLL_dY = 100;
 
 
 const NUM_SCENES = 6;
-const SCENE_DURATION = 1/NUM_SCENES;          // Each scene is 1/n of total progress
+const SCENE_DURATION = 1 / NUM_SCENES;          // Each scene is 1/n of total progress
 const TRANSITION_DURATION_FRAC = 0.2;         // Transitions take 10% of scene duration
 const TRANSITION_DURATION = SCENE_DURATION * TRANSITION_DURATION_FRAC;
-const HEIGHT_MULTIPLIER = 300;  
+const HEIGHT_MULTIPLIER = 300;
 
 
 // Scene Control
@@ -78,11 +81,11 @@ export const typeDefaults = {
         position: { x: HEADER_X, y: HEADER_Y },
         transition: {
             entry_from: {
-                x: HEADER_X + SCROLL_dX,  y: HEADER_Y + SCROLL_dY,
+                x: HEADER_X + SCROLL_dX, y: HEADER_Y + SCROLL_dY,
                 opacity: 0
             },
             exit_to: {
-                x: HEADER_X - SCROLL_dX,  y: HEADER_Y - SCROLL_dY,
+                x: HEADER_X - SCROLL_dX, y: HEADER_Y - SCROLL_dY,
                 opacity: 0
             }
         }
@@ -105,9 +108,9 @@ export const typeDefaults = {
 export const defaults = {
     transition: {
         duration: TRANSITION_DURATION,
-        opacity: { entry: 1,  exit: 0, initial: 0  },
-        entry:   { duration: TRANSITION_DURATION },
-        exit:    { duration: TRANSITION_DURATION }
+        opacity: { entry: 1, exit: 0, initial: 0 },
+        entry: { duration: TRANSITION_DURATION },
+        exit: { duration: TRANSITION_DURATION }
     },
     transform: { duration: TRANSITION_DURATION }
 };
@@ -115,7 +118,7 @@ export const defaults = {
 /** @type {ObjectConfig[]} */
 
 export const globalConfig = [
-    
+
     {   // --------------------- EARTH ---------------------
         id: "earth",
         type: "3dObject",
@@ -142,7 +145,7 @@ export const globalConfig = [
             //     delta_y: 100,
             //     at: 0.05, duration: 0.05
             // },
-            { 
+            {
                 type: "camera_look",
                 look_x: 20,     // Look 2 units right
                 look_y: 38,     // Keep vertical look same
@@ -174,7 +177,23 @@ export const globalConfig = [
         ]
     },
 
-    
+    {   // --------------------- SCENE 0 ---------------------
+        id: "title",
+        type: "titleText",
+        content: "Tipping Points in Climate",
+        initiallyVisible: true,
+        position: { x: TITLE_X, y: TITLE_Y },
+        transition: {
+            entry_from: {
+                x: TITLE_X, y: TITLE_Y,
+                at: 0, duration: 0.001, opacity: 1, duration: 0.05
+            },
+            exit_to: {
+                x: TITLE_X, y: TITLE_Y - SCROLL_dY,
+                at: SCENE_DURATION, opacity: 1
+            }
+        }
+    },
 
     {   // --------------------- SCENE 1 ---------------------
         id: "header-1",
@@ -182,12 +201,12 @@ export const globalConfig = [
         content: "Climate Tipping Points",
         position: { x: HEADER_X, y: HEADER_Y },
         transition: {
-            entry_from: { 
-                x: HEADER_X, y: HEADER_Y, 
-                at: 0,duration: 0.001,opacity: 0
+            entry_from: {
+                x: HEADER_X, y: HEADER_Y,
+                at: 0.05, duration: 0.001, opacity: 0, duration: 0.05
             },
-            exit_to: { 
-                x: HEADER_X, y: HEADER_Y - SCROLL_dY, 
+            exit_to: {
+                x: HEADER_X, y: HEADER_Y - SCROLL_dY,
                 at: SCENE_DURATION, opacity: 0
             }
         }
@@ -195,19 +214,19 @@ export const globalConfig = [
     {
         id: "description-1",
         type: "description",
-        content: 
+        content:
             "Modeling the Earth's Climate is a complex affair. " +
-            "It involves many different physical processes, " + 
+            "It involves many different physical processes, " +
             "and many different types of data.",
         position: { x: DESC_X, y: DESC_Y },
         transition: {
-            entry_from: { 
-                x: DESC_X, y: DESC_Y, 
-                at: 0, duration: 0.001, 
+            entry_from: {
+                x: DESC_X, y: DESC_Y,
+                at: 0, duration: 0.001, duration: 0.05
             },
-            exit_to: { 
-                x: DESC_X, y: DESC_Y - SCROLL_dY, 
-                at: SCENE_DURATION, 
+            exit_to: {
+                x: DESC_X, y: DESC_Y - SCROLL_dY,
+                at: SCENE_DURATION,
             }
         }
     },
@@ -217,18 +236,18 @@ export const globalConfig = [
         content: "A Pale Blue Dot",
         transition: {
             entry_from: { at: SCENE_DURATION },
-            exit_to:    { at: SCENE_DURATION * 2 }
+            exit_to: { at: SCENE_DURATION * 2 }
         }
     },
     {
         id: "description-2",
         type: "description",
-        content: 
+        content:
             "What we do to simplify",
         position: { x: DESC_X, y: DESC_Y },
         transition: {
             entry_from: { at: SCENE_DURATION },
-            exit_to:    { at: SCENE_DURATION * 2 }           
+            exit_to: { at: SCENE_DURATION * 2 }
         }
     },
     {   // --------------------- SCENE 3 ---------------------
@@ -236,18 +255,18 @@ export const globalConfig = [
         type: "header",
         content: "Building (the simplest) Climate Model",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 2 },
-            exit_to:    {  at: SCENE_DURATION * 3 }
+            entry_from: { at: SCENE_DURATION * 2 },
+            exit_to: { at: SCENE_DURATION * 3 }
         }
     },
     {
         id: "description-3",
         type: "description",
-        content: 
+        content:
             "Energy Balance",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 2 },
-            exit_to:    {  at: SCENE_DURATION * 3 }
+            entry_from: { at: SCENE_DURATION * 2 },
+            exit_to: { at: SCENE_DURATION * 3 }
         }
     },
     {   // --------------------- SCENE 4 ---------------------
@@ -255,18 +274,18 @@ export const globalConfig = [
         type: "header",
         content: "Incoming Energy",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 3 },
-            exit_to:    {  at: SCENE_DURATION * 4 }
+            entry_from: { at: SCENE_DURATION * 3 },
+            exit_to: { at: SCENE_DURATION * 4 }
         }
     },
     {
         id: "description-4",
         type: "description",
-        content: 
+        content:
             "Ein, The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 3 },
-            exit_to:    {  at: SCENE_DURATION * 4 }
+            entry_from: { at: SCENE_DURATION * 3 },
+            exit_to: { at: SCENE_DURATION * 4 }
         }
     },
     {
@@ -275,17 +294,17 @@ export const globalConfig = [
         content: "Your annotation text here",
         position: { x: 40, y: 20 },  // Screen coordinates
         transition: {
-            entry_from: { 
+            entry_from: {
                 x: 40, y: 20,  // Starting position
                 at: 0.53,  // When to start appearing
                 duration: 0.01,
-                opacity: 0 
+                opacity: 0
             },
-            exit_to: { 
+            exit_to: {
                 x: 40, y: 20,  // Exit position (typically moves up)
                 at: 0.58,  // When to start disappearing
                 duration: 0.01,
-                opacity: 0 
+                opacity: 0
             }
         }
     },
@@ -294,18 +313,18 @@ export const globalConfig = [
         type: "header",
         content: "Outgoing Energy",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 4 },
-            exit_to:    {  at: SCENE_DURATION * 5 }
+            entry_from: { at: SCENE_DURATION * 4 },
+            exit_to: { at: SCENE_DURATION * 5 }
         }
     },
     {
         id: "description-5",
         type: "description",
-        content: 
+        content:
             "Eout",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 4 },
-            exit_to:    {  at: SCENE_DURATION * 5 }
+            entry_from: { at: SCENE_DURATION * 4 },
+            exit_to: { at: SCENE_DURATION * 5 }
         }
     },
     {   // --------------------- SCENE 6 ---------------------
@@ -313,18 +332,18 @@ export const globalConfig = [
         type: "header",
         content: "Tipping Points",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 5 },
-            exit_to:    {  at: 0.9 }
+            entry_from: { at: SCENE_DURATION * 5 },
+            exit_to: { at: 0.9 }
         }
     },
     {
         id: "description-6",
         type: "description",
-        content: 
+        content:
             "Critical Transitions",
         transition: {
-            entry_from: {  at: SCENE_DURATION * 5 },
-            exit_to:    {  at: 0.9 }
+            entry_from: { at: SCENE_DURATION * 5 },
+            exit_to: { at: 0.9 }
         }
     },
     // {   
@@ -340,19 +359,17 @@ export const globalConfig = [
     {
         id: 'return-to-story',
         type: 'button',
-        content: '↑',
+        content: '⌃',
         position: {
             x: 50,
             y: 5
         },
         style: {
-            fontSize: '24px',
-            fontWeight: 'bold',
+            // fontSize: '96px',
             cursor: 'pointer',
-            color: '#FFFFFF',
-            backgroundColor: 'transparent',
             border: 'none',
-            padding: '10px'
+            padding: '10px',
+            className: 'scroll-button scroll-button-up'
         },
         transition: {
             entry_from: {
@@ -370,19 +387,17 @@ export const globalConfig = [
     {
         id: 'forward-to-story',
         type: 'button',
-        content: '↓',
+        content: '⌃',
         position: {
             x: 50,
-            y: 95  // Positioned at bottom
+            y: 90
         },
         style: {
-            fontSize: '24px',
-            fontWeight: 'bold',
+            // fontSize: '96px',
             cursor: 'pointer',
-            color: '#FFFFFF',
-            backgroundColor: 'transparent',
             border: 'none',
-            padding: '10px'
+            padding: '10px',
+            className: 'scroll-button scroll-button-down'
         },
         transition: {
             entry_from: {
@@ -402,38 +417,38 @@ export const globalConfig = [
         type: "header",
         content: "Simulation",
         transition: {
-            entry_from: {  at: 0.9 },
-            exit_to:    {  at: 0.96 }
+            entry_from: { at: 0.9 },
+            exit_to: { at: 0.96 }
         }
     },
     {
         id: "description-simulation",
         type: "description",
-        content: 
+        content:
             "Use the sliders to change the parameters of the simulation.",
         transition: {
-            entry_from: {  at: 0.9 },
-            exit_to:    {  at: 0.96 }
+            entry_from: { at: 0.9 },
+            exit_to: { at: 0.96 }
         }
     },
     {   // --------------------- SIMULATION CONTROLS ---------------------
         id: "sim-controls",
         type: "sim-controls",
-        position: { 
+        position: {
             x: HEADER_X,    // Position on right side of screen
             y: HEADER_Y + 20     // Vertically centered
         },
         transition: {
-            entry_from: { 
-                x: HEADER_X, 
-                y: HEADER_Y + SCROLL_dY, 
+            entry_from: {
+                x: HEADER_X,
+                y: HEADER_Y + SCROLL_dY,
                 at: 0.9,        // Appear with simulation scene
                 opacity: 0,
                 // duration: 0.01 
             },
-            exit_to: { 
-                x: HEADER_X, 
-                y: HEADER_Y - SCROLL_dY, 
+            exit_to: {
+                x: HEADER_X,
+                y: HEADER_Y - SCROLL_dY,
                 at: 0.96,       // Disappear when leaving simulation
                 opacity: 0,
                 // duration: 0.01 
@@ -443,21 +458,21 @@ export const globalConfig = [
     {   // --------------------- POTENTIAL PLOT ---------------------
         id: "sim-v-plot",
         type: "sim-v-plot",
-        position: { 
-            x: HEADER_X,    
-            y: HEADER_Y + 40    
+        position: {
+            x: HEADER_X,
+            y: HEADER_Y + 40
         },
         transition: {
-            entry_from: { 
-                x: HEADER_X, 
-                y: HEADER_Y + SCROLL_dY, 
+            entry_from: {
+                x: HEADER_X,
+                y: HEADER_Y + SCROLL_dY,
                 at: 0.9,        // Appear with simulation scene
                 opacity: 0,
                 // duration: 0.01 
             },
-            exit_to: { 
-                x: HEADER_X, 
-                y: HEADER_Y - SCROLL_dY, 
+            exit_to: {
+                x: HEADER_X,
+                y: HEADER_Y - SCROLL_dY,
                 at: 0.96,       // Disappear when leaving simulation
                 opacity: 0,
                 // duration: 0.01 
@@ -475,29 +490,29 @@ export const extraConfig = [
     {
         id: "atmosphereHotNonlinear",
         entry: { at: 0 },
-        exit: { at: 0.90 }    
+        exit: { at: 0.90 }
     },
     {
         id: "shadowCylinder",
         entry: { at: 0.5 },
-        exit: { at: 0.6 }    
+        exit: { at: 0.6 }
     },
     {
         id: "earthTexture",
         file: 'public/assets/textures/water_world_pix.jpg',
         entry: { at: 0.32 },
-        exit: { at: 0.9 }    
+        exit: { at: 0.9 }
     },
     {
         id: "simAtmosphereHotNonlinear",
         entry: { at: 0.90 },
-        exit: { at: 0.96 }    
+        exit: { at: 0.96 }
     },
     {
         id: "earthTexture",
         file: 'public/assets/textures/cartoon.jpg',
         entry: { at: 0.9 },
-        exit: { at: 0.96 }    
+        exit: { at: 0.96 }
     },
     // {
     //     id: "earthTexture",
@@ -515,13 +530,13 @@ export const extraConfig = [
         id: "iceGroup",
         entry: { at: 0.55 },
         exit: { at: 0.85 },
-        maxRadius:0.9  // Maximum size of ice patches
+        maxRadius: 0.9  // Maximum size of ice patches
     },
     {
         id: "simIceGroup",
         entry: { at: 0.9 },
         exit: { at: 0.96 },
-        maxRadius:0.2  // Maximum size of ice patches
+        maxRadius: 0.2  // Maximum size of ice patches
     }
 ];
 

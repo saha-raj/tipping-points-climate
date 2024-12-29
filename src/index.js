@@ -543,9 +543,11 @@ class ScrollCanvas {
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = currentScrollY / scrollHeight;
             
-            this.debugLogger.logProgress(progress);
+            // Comment out debug logging
+            // this.debugLogger.logProgress(progress);
             this.debugOverlay.updateProgress(progress);
-            this.debugOverlay.updateScene(this.getCurrentScene(progress));
+            // this.debugOverlay.updateScene(this.getCurrentScene(progress));
+            
             this.lifecycle.updateProgress(progress);
             
             // Get Earth object and its extras
@@ -590,13 +592,13 @@ class ScrollCanvas {
                         if (simAtmosphere) {
                             const shouldBeVisible = progress >= entryAt && progress <= exitAt;
                             simAtmosphere.visible = shouldBeVisible;
-                            console.log('Sim atmosphere visibility:', {
-                                progress,
-                                entryAt,
-                                exitAt,
-                                shouldBeVisible,
-                                isVisible: simAtmosphere.visible
-                            });
+                            // console.log('Sim atmosphere visibility:', {
+                            //     progress,
+                            //     entryAt,
+                            //     exitAt,
+                            //     shouldBeVisible,
+                            //     isVisible: simAtmosphere.visible
+                            // });
                         }
                     } else if (config.id === 'simIceGroup') {
                         const simIceGroup = earth.extras.simIceGroup;

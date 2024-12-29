@@ -25,6 +25,16 @@ body {
     transform-origin: center;
 }
 
+/* Add after other text-type styles */
+.text-type-titleText {
+    font-family: var(--main-font);
+    font-size: 64px;  /* Larger than header */
+    font-weight: 500;
+    color: var(--text-color);
+    white-space: nowrap;
+    text-align: center;
+}
+
 /* Type-specific styles */
 .text-type-header {
     font-family: var(--main-font);
@@ -93,6 +103,59 @@ body {
 
 /* Inline math ($...$) */
 .text-element mjx-container[jax="CHTML"]:not([display="true"]) {
-    padding: 0 0.2em;
+    /* padding: 0 0.2em; */
     vertical-align: middle;
+}
+
+/* Add these new styles */
+.scroll-button {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    color: var(--text-color);
+    opacity: 0.1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background: transparent;
+}
+
+/* .scroll-button-up {
+    transform: scaleX(2) scaleY(0.5);  
+} */
+
+.scroll-button-up:hover {
+    opacity: 1;
+    animation: bounceUp 1s ease infinite;
+}
+
+.scroll-button-down {
+    transform: rotate(180deg);  
+}
+
+.scroll-button-down:hover {
+    opacity: 1;
+    animation: bounceDown 1s ease infinite;
+}
+
+@keyframes bounceUp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.sim-controls-visibility {
+    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;  /* Start hidden */
+}
+
+.sim-controls-visibility[style*="opacity: 0"] {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sim-controls-visibility[style*="opacity: 1"] {
+    visibility: visible;
+    pointer-events: auto;
 } 

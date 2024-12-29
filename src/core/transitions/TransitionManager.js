@@ -41,32 +41,32 @@ export class TransitionManager {
             ...typeDefault.transition.exit_to
         } : null;
 
-        // Debug logging
-        if (config.id === 'earth') {
-            console.log('TransitionManager Calculation:', {
-                scrollProgress,
-                initialPosition: position,
-                entryFrom: effectiveEntryFrom,
-                currentState: {
-                    isBeforeEntry: effectiveEntryFrom && scrollProgress < effectiveEntryFrom.at,
-                    isDuringEntry: effectiveEntryFrom && scrollProgress >= effectiveEntryFrom.at && 
-                        scrollProgress <= (effectiveEntryFrom.at + (effectiveEntryFrom.duration || defaults.transition.entry.duration)),
-                }
-            });
-        }
+        // // Debug logging
+        // if (config.id === 'earth') {
+        //     console.log('TransitionManager Calculation:', {
+        //         scrollProgress,
+        //         initialPosition: position,
+        //         entryFrom: effectiveEntryFrom,
+        //         currentState: {
+        //             isBeforeEntry: effectiveEntryFrom && scrollProgress < effectiveEntryFrom.at,
+        //             isDuringEntry: effectiveEntryFrom && scrollProgress >= effectiveEntryFrom.at && 
+        //                 scrollProgress <= (effectiveEntryFrom.at + (effectiveEntryFrom.duration || defaults.transition.entry.duration)),
+        //         }
+        //     });
+        // }
 
-        // Debug only for annotation
-        if (config.id === 'annotation1') {
-            console.log('Annotation State:', {
-                scrollProgress,
-                beforeEntry: entry_from && scrollProgress < entry_from.at,
-                duringEntry: entry_from && scrollProgress >= entry_from.at && 
-                    scrollProgress <= (entry_from.at + (entry_from.duration || defaults.transition.entry.duration)),
-                duringExit: exit_to && scrollProgress >= exit_to.at && 
-                    scrollProgress <= (exit_to.at + (exit_to.duration || defaults.transition.exit.duration)),
-                afterExit: exit_to && scrollProgress > (exit_to.at + (exit_to.duration || defaults.transition.exit.duration))
-            });
-        }
+        // // Debug only for annotation
+        // if (config.id === 'annotation1') {
+        //     console.log('Annotation State:', {
+        //         scrollProgress,
+        //         beforeEntry: entry_from && scrollProgress < entry_from.at,
+        //         duringEntry: entry_from && scrollProgress >= entry_from.at && 
+        //             scrollProgress <= (entry_from.at + (entry_from.duration || defaults.transition.entry.duration)),
+        //         duringExit: exit_to && scrollProgress >= exit_to.at && 
+        //             scrollProgress <= (exit_to.at + (exit_to.duration || defaults.transition.exit.duration)),
+        //         afterExit: exit_to && scrollProgress > (exit_to.at + (exit_to.duration || defaults.transition.exit.duration))
+        //     });
+        // }
 
         // Always start at configured position
         // if (scrollProgress === 0) {

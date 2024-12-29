@@ -7,6 +7,7 @@ export class ObjectFactory {
         switch(config.type) {
             case '3dObject':
                 return this.create3DObject(config);
+            case 'titleText':
             case 'header':
             case 'description':
             case 'annotation':
@@ -380,12 +381,23 @@ export class ObjectFactory {
     static createButton(config) {
         const button = document.createElement('button');
         button.textContent = config.content;
-        button.className = 'simulation-button';
         button.style.position = 'absolute';
         button.style.left = `${config.position.x}%`;
         button.style.top = `${config.position.y}%`;
         button.style.transform = 'translate(-50%, -50%)';
         button.style.opacity = '0';
+        
+        // Apply any additional styles from config
+        if (config.style) {
+            if (config.style.className) {
+                button.className = config.style.className;
+            }
+            Object.entries(config.style).forEach(([key, value]) => {
+                if (key !== 'className') {
+                    button.style[key] = value;
+                }
+            });
+        }
         
         return {
             type: 'button',
@@ -396,7 +408,7 @@ export class ObjectFactory {
     static createSimControls(config) {
         console.log("Creating sim controls...");
         const container = document.createElement('div');
-        container.className = 'sim-controls';
+        container.className = 'sim-controls sim-controls-visibility';  // Add visibility class
         
         // Add sliderGroup right after container
         const sliderGroup = document.createElement('div');
