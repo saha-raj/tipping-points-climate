@@ -1,10 +1,11 @@
 :root {
-    --dot-radius: 0.75rem;
-    --tracking-dot-radius: 0.5rem;
+    --dot-radius: 0.6rem;
+    --dot-radius-initial: 0.5rem;
+    --tracking-dot-radius: 0.4rem;
     --main-font: 'Lato', sans-serif;
     --text-color: #e0e1dd;
     --plot-line-color: white;
-    --plot-line-width: 0.5rem;
+    --plot-line-width: 0.3rem;
 }
 
 /* Plot containers */
@@ -23,28 +24,28 @@
 
 .equilibrium-point-hot {
     r: var(--dot-radius);
-    fill: #f07167;  /* red */
+    fill: #fb8500;  /* red */
     stroke: none;
 }
 
 .equilibrium-point-ice {
     r: var(--dot-radius);
-    fill: #4d79ff;  /* blue */
+    fill: #8ecae6;  /* blue */
     stroke: none;
 }
 
 .tracking-dot {
     r: var(--tracking-dot-radius);
-    fill: #ffd700;  /* gold color */
-    stroke: #000;
-    stroke-width: 1;
+    fill: #99d98c;  /* gold color */
+    /* stroke: #000;
+    stroke-width: 1; */
 }
 
 .initial-point {
-    fill: #90be6d;
-    /* stroke: white;
-    stroke-width: 1px; */
-    r: var(--dot-radius);
+    fill: #ffffff;
+    stroke: #99d98c;
+    stroke-width: 0.3rem;
+    r: var(--dot-radius-initial);
 }
 
 .sim-point {
@@ -88,125 +89,152 @@
     fill: #666;
 } 
 
-.controls-div {
+
+
+
+.slider-group {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    /* gap: 35px; */
-    margin-left: -20px;
-    padding-left: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    width: 100%;
+    gap: 10px;
+    margin: 0px;1
 }
-
-/* Slider container */
-.slider-container {
+.slider-group label {
+    display: block;
+}
+.slider-group div {  /* container for each slider+value pair */
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-left: -10px;
-    width: 100%;  
-    float: left;  
+    align-items: center;  /* vertical centering */
+    gap: 10px;  /* consistent gap between slider and value */
+}
+.slider-group input[type="range"] {
+    width: 200px;
+    margin: 0;
 }
 
-.label-container {
-    display: flex;
-    justify-content: space-between;  
-    align-items: center;
-    /* gap: 0px; */
-    /* max-width: 100%;   */
-    /* width: 100%; */
+.slider-group span {  /* the value display */
+    min-width: 40px;
+    line-height: 1;  /* align text vertically */
+    margin-top: -2px;
+    text-align: right;
 }
 
-/* Labels */
-.slider-label {
+
+.sim-controls {
+    background: #313949 !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
     color: var(--text-color);
-    font-size: 0.9rem;
-    font-weight: 500;
     font-family: var(--main-font);
-    margin-top: 0px;
-    /* padding-top: 10px; */
-    /* padding-bottom: 10px; */
-    /* width: 100%; */
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
 }
 
-
-.value-display {
+.sim-controls label {
     color: var(--text-color);
     font-size: 0.9rem;
     font-family: var(--main-font);
-    /* align-items: left; */
-    /* inline-size: 100%;   */
-    min-width: 50px;  
-    text-align: right;  
+    /* margin-bottom: 2px;
+    margin-top: 10px; */
 }
 
+.sim-controls span {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-family: var(--main-font);
+}
 
-.simulation-run-button {
-    padding: 10px 20px;
+.sim-button {
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
-    /* float: right;  Float right */
-    width: 100%; 
-    /* margin-right: 20px;  Add some right margin */
-    /* margin-top: 20px;  Remove top margin */
-    /* max-width: 50%; */
+    font-size: 0.9rem;
+    font-family: var(--main-font);
+    /* width: 100%; */
+    width: auto !important;  
+    height: auto !important;
+    align-self: flex-start;
+    /* margin-top: 20px;  Align with first slider */
 }
 
-.simulation-run-button:disabled {
+.sim-button:disabled {
     background-color: #cccccc;
     cursor: default;
+}
+.sim-button:hover {
+    background-color: #45a049;  /* Slightly darker green */
 }
 
 /* Slider styling */
 input[type="range"] {
-    max-width: 100%;
-    height: 5px;
-    border-radius: 5px;
-    background: #4a4a4a;
-    outline: none;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    -webkit-appearance: none;
+    -webkit-appearance: none;  /* Remove default appearance */
+    appearance: none;
+    background: transparent;
+    width: 200px;
+    margin: 0;
 }
 
+/* Track styling */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #4a4a4a;
+    border-radius: 2px;
+    border: none;
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    background: #4a4a4a;
+    border-radius: 2px;
+    border: none;
+}
+
+/* Thumb styling */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
+    height: 16px;
+    width: 16px;
     border-radius: 50%;
-    background: #ffffff;
+    background: #4CAF50;
     cursor: pointer;
-    border: none;
+    margin-top: -6px;  /* Center thumb on track */
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }
 
 input[type="range"]::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
+    height: 16px;
+    width: 16px;
     border-radius: 50%;
-    background: #ffffff;
+    background: #4CAF50;
     cursor: pointer;
     border: none;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }
 
+/* Hover effects */
 input[type="range"]:hover::-webkit-slider-thumb {
-    background: #e0e0e0;
+    background: #45a049;
 }
 
 input[type="range"]:hover::-moz-range-thumb {
-    background: #e0e0e0;
+    background: #45a049;
 }
 
+input[type="range"]:disabled::-webkit-slider-thumb {
+    background: #cccccc;  /* Gray color */
+    cursor: default;
+}
 
-
-
-
-
+input[type="range"]:disabled::-moz-range-thumb {
+    background: #cccccc;  /* Gray color */
+    cursor: default;
+}
 

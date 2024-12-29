@@ -398,15 +398,19 @@ export class ObjectFactory {
         const container = document.createElement('div');
         container.className = 'sim-controls';
         
+        // Add sliderGroup right after container
+        const sliderGroup = document.createElement('div');
+        sliderGroup.className = 'slider-group';
+        
         // Basic styling to make it visible
         container.style.position = 'absolute';
-        container.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-        container.style.padding = '20px';
-        container.style.borderRadius = '5px';
+        // container.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+        // container.style.padding = '20px';
+        // container.style.borderRadius = '5px';
         
         // Create first slider group
         const slider1Group = document.createElement('div');
-        slider1Group.style.marginBottom = '20px';
+        // slider1Group.style.marginBottom = '20px';
         
         const slider1Label = document.createElement('label');
         slider1Label.textContent = 'Greenhouse Gas Parameter (g)';
@@ -414,7 +418,7 @@ export class ObjectFactory {
         
         const slider1Value = document.createElement('span');
         slider1Value.textContent = '0.3';
-        slider1Value.style.marginLeft = '10px';
+        // slider1Value.style.marginLeft = '10px';
         
         const slider1 = document.createElement('input');
         slider1.type = 'range';
@@ -423,8 +427,8 @@ export class ObjectFactory {
         slider1.step = '0.01';
         slider1.value = '0.3';
         slider1.className = 'simulation-slider g-slider';
-        slider1.style.display = 'block';
-        slider1.style.width = '200px';
+        // slider1.style.display = 'block';
+        // slider1.style.width = '200px';
         
         // Update value display when slider moves
         slider1.addEventListener('input', (event) => {
@@ -439,7 +443,7 @@ export class ObjectFactory {
         
         // Create second slider group
         const slider2Group = document.createElement('div');
-        slider2Group.style.marginBottom = '20px';
+        // slider2Group.style.marginBottom = '200px';
         
         const slider2Label = document.createElement('label');
         slider2Label.textContent = 'Initial Temperature (K)';
@@ -467,7 +471,7 @@ export class ObjectFactory {
         
         // Create run button
         const runButton = document.createElement('button');
-        runButton.textContent = 'Run Simulation';
+        runButton.textContent = 'Run';
         runButton.className = 'sim-button';
         
         // Add click handler to dispatch the event
@@ -476,16 +480,19 @@ export class ObjectFactory {
         });
         
         // Add everything to container
-        slider1Group.appendChild(slider1Label);
-        slider1Group.appendChild(slider1);
-        slider1Group.appendChild(slider1Value);
-        container.appendChild(slider1Group);
-        
-        slider2Group.appendChild(slider2Label);
-        slider2Group.appendChild(slider2);
-        slider2Group.appendChild(slider2Value);
-        container.appendChild(slider2Group);
-        
+        const slider1Container = document.createElement('div');
+        slider1Container.appendChild(slider1);
+        slider1Container.appendChild(slider1Value);
+
+        const slider2Container = document.createElement('div');
+        slider2Container.appendChild(slider2);
+        slider2Container.appendChild(slider2Value);
+
+        sliderGroup.appendChild(slider1Label);
+        sliderGroup.appendChild(slider1Container);
+        sliderGroup.appendChild(slider2Label);
+        sliderGroup.appendChild(slider2Container);
+        container.appendChild(sliderGroup);
         container.appendChild(runButton);
         
         console.log("Sim controls created:", container);

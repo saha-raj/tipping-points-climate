@@ -179,6 +179,9 @@ export class PotentialPlot {
     }
 
     addArrow(plotArea, potentialData, equilibriumTemp, x, y) {
+        // skip drawing for now
+        return;
+
         // Add arrow marker definition
         plotArea.selectAll('defs').remove();
         const defs = plotArea.append('defs');
