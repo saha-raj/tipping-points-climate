@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as d3 from 'd3';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager';
 import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
 import { ObjectFactory } from './core/objects/ObjectFactory';
