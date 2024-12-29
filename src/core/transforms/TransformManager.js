@@ -1,5 +1,5 @@
-import { lerp, lerpPosition, calculateProgress } from '../../utils/interpolation';
-import { defaults } from '../../config/globalConfig';
+import { lerp, lerpPosition, calculateProgress } from '../../utils/interpolation.js';
+import { defaults } from '../../config/globalConfig.js';
 
 export class TransformManager {
     /**

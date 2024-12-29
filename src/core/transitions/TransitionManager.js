@@ -1,5 +1,5 @@
-import { lerpPosition, calculateProgress } from '../../utils/interpolation';
-import { defaults, typeDefaults } from '../../config/globalConfig';
+import { lerpPosition, calculateProgress } from '../../utils/interpolation.js';
+import { defaults, typeDefaults } from '../../config/globalConfig.js';
 
 export class TransitionManager {
     /**

@@ -1,13 +1,12 @@
 import * as THREE from 'three';
 import * as d3 from 'd3';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { LifecycleManager } from './core/lifecycle/LifecycleManager';
-import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig';
-import { ObjectFactory } from './core/objects/ObjectFactory';
-import { DebugLogger } from './debug/DebugLogger';
-import { DebugOverlay } from './debug/DebugOverlay';
+import { LifecycleManager } from './core/lifecycle/LifecycleManager.js';
+import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig.js';
+import { ObjectFactory } from './core/objects/ObjectFactory.js';
+import { DebugLogger } from './debug/DebugLogger.js';
+import { DebugOverlay } from './debug/DebugOverlay.js';
 import { ClimateModel } from './core/simulation/climate-model.js';
-// import { SimulationScene } from './core/simulation/simulation-scene.js';
 
 // Set color management before anything else
 THREE.ColorManagement.enabled = true;

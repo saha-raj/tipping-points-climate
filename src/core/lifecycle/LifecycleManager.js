@@ -1,5 +1,5 @@
-import { TransformManager } from '../transforms/TransformManager';
-import { TransitionManager } from '../transitions/TransitionManager';
+import { TransformManager } from '../transforms/TransformManager.js';
+import { TransitionManager } from '../transitions/TransitionManager.js';
 
 export class LifecycleManager {
     constructor() {
