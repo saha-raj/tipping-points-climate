@@ -8,20 +8,20 @@ def convert_md_to_js():
     # Initialize output structure
     output = {}
     
-    # Find the first h1 title
+    # Find the first h1 title and map to header-0
     title_match = re.search(r'^# (.+)$', content, re.MULTILINE)
     if title_match:
-        output['title'] = title_match.group(1).strip()
+        output['header-0'] = title_match.group(1).strip()
     
-    # Get content between title and first h2 as description-title-1
+    # Get content between title and first h2 as description-0
     title_content_match = re.search(r'^# .+\n+([\s\S]+?)(?=\n## |$)', content)
     if title_content_match:
-        output['description-title-1'] = title_content_match.group(1).strip()
+        output['description-0'] = title_content_match.group(1).strip()
     
     # Find all h2 sections
     sections = re.findall(r'## (.+)\n+([\s\S]+?)(?=\n## |$)', content)
     
-    # Process each section
+    # Process each section starting from index 1
     for i, (header, desc) in enumerate(sections, 1):
         output[f'header-{i}'] = header.strip()
         output[f'description-{i}'] = desc.strip()
@@ -29,17 +29,15 @@ def convert_md_to_js():
     # Generate JavaScript file content
     js_content = 'export const sceneContent = {\n'
     
-    # Add title
-    if 'title' in output:
-        js_content += f'    "title": "{output["title"]}",\n'
-    
-    # Add description-title-1
-    if 'description-title-1' in output:
+    # Add header-0 and description-0 first
+    if 'header-0' in output:
+        js_content += f'    "header-0": "{output["header-0"]}",\n'
+    if 'description-0' in output:
         # Escape backslashes
-        desc = output['description-title-1'].replace('\\', '\\\\')
-        js_content += f'    "description-title-1": `{desc}`,\n\n'
+        desc = output['description-0'].replace('\\', '\\\\')
+        js_content += f'    "description-0": `{desc}`,\n\n'
     
-    # Add all headers and descriptions
+    # Add all other headers and descriptions
     for i in range(1, len(sections) + 1):
         header_key = f'header-{i}'
         desc_key = f'description-{i}'
@@ -49,13 +47,12 @@ def convert_md_to_js():
         if desc_key in output:
             # Escape backslashes
             desc = output[desc_key].replace('\\', '\\\\')
-            js_content += f'    "{desc_key}": `{desc}`,\n\n'
-
-    # Add static elements
-    js_content += '    "return-to-story": "⌃",\n'
-    js_content += '    "forward-to-story": "⌃"\n'
+            js_content += f'    "{desc_key}": `{desc}`'
+            # Add comma and newline if not the last item
+            if i < len(sections):
+                js_content += ',\n\n'
     
-    js_content += '};'
+    js_content += '\n};'
     
     # Write to file
     with open('src/content/contentForExport.js', 'w', encoding='utf-8') as file:

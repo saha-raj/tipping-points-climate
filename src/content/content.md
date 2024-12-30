@@ -1,10 +1,12 @@
 # Tipping Points in Climate
 
-An interactive visualization exploring how small shifts in key variables can trigger large changes in Earth's climate. This simple model with three interacting components demonstrates the mechanisms behind extreme climatic shifts - the interplay between amplifying mechanisms and braking mechanisms in the climate system.
+An interactive visualization exploring how small shifts in key variables can trigger large changes in Earth's climate. 
 
-Earth's modern climate exists in an intermediate state, maintained by negative feedbacks from the climate-biosphere system.
+This simple model with just *three* interacting components demonstrates the mechanisms behind extreme climatic shifts - the interplay between amplifying mechanisms and braking mechanisms in the climate system.
 
-## The pale blue dot
+The modern climate exists in a moderate intermediate state, maintained by the negative feedbacks from the climate-biosphere system.
+
+## A pale blue dot
 
 The climate system is driven by solar energy input, energy stored in land, air, and water, and energy radiated to space. Viewed from space over geological time, Earth's appearance has changed dramatically - from complete ice coverage to periods without polar ice caps. These shifts occurred through positive feedbacks overwhelming negative feedbacks.
 
@@ -44,15 +46,15 @@ $$\frac{dE}{dt}=E_{in} - E_{out} =S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \
 
 Converting to temperature change:
 
-$$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 $$
+$$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
 
 This '1-dimensional climate model' uses temperature as its sole dynamic variable, connecting radiative loss, ice-albedo effect, and greenhouse effect.
 
 ## etc
-[placeholder]
+some placeholder text
 
 ## Simulation
 Use the slider to change the amount of greenhouse gases in the atmosphere.
 
-## etc
+## Summary
 Earth's climate balances solar input with energy reflection and retention. Ice acts as a positive feedback mechanism - more ice increases energy loss, lowering temperature and creating more ice. This cycle works similarly in reverse. These amplifying trends are ultimately limited by total Earth coverage.

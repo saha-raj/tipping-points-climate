@@ -351,8 +351,7 @@ class ScrollCanvas {
         this.camera.position.y = 3.2;
         this.camera.position.z = 3;
         
-        
-        
+
         // Add camera lookAt - can be removed if needed
         this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
 
@@ -526,7 +525,8 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    top: Math.floor(SIM_SCENE_RETURN_BACK_AT * scrollHeight),
+                    // top: Math.floor(SIM_SCENE_RETURN_BACK_AT * scrollHeight),
+                    top: SIM_SCENE_RETURN_BACK_AT * scrollHeight,
                     behavior: 'smooth'
                 });
             });
@@ -539,7 +539,8 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    top: Math.floor(SIM_SCENE_FORWARD_TO_AT * scrollHeight),
+                    // top: Math.floor(SIM_SCENE_FORWARD_TO_AT * scrollHeight),
+                    top: SIM_SCENE_FORWARD_TO_AT * scrollHeight,
                     behavior: 'smooth'
                 });
             });
