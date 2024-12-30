@@ -2,7 +2,17 @@ import * as THREE from 'three';
 import * as d3 from 'd3';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager.js';
-import { globalConfig, sceneConfig, extraConfig } from './config/globalConfig.js';
+import { 
+    globalConfig, 
+    sceneConfig, 
+    extraConfig,
+    SIM_SCENE_START_AT,
+    SIM_SCENE_END_AT,
+    SIM_SCENE_LOCK_START_AT,
+    SIM_SCENE_LOCK_END_AT,
+    SIM_SCENE_RETURN_BACK_AT,
+    SIM_SCENE_FORWARD_TO_AT 
+} from './config/globalConfig.js';
 import { ObjectFactory } from './core/objects/ObjectFactory.js';
 import { DebugLogger } from './debug/DebugLogger.js';
 import { DebugOverlay } from './debug/DebugOverlay.js';
@@ -205,7 +215,7 @@ class ScrollCanvas {
                 
                 if (regularAtmosphere && simAtmosphere) {
                     // In simulation scene
-                    if (progress >= 0.9 && progress <= 0.96) {
+                    if (progress >= SIM_SCENE_START_AT && progress <= SIM_SCENE_END_AT) {
                         regularAtmosphere.visible = false;
                         simAtmosphere.visible = true;
                     } else {
@@ -486,7 +496,7 @@ class ScrollCanvas {
             scrollVelocity = Math.abs(window.scrollY - lastScrollY);
             lastScrollY = window.scrollY;
             
-            if (progress >= 0.94 && progress <= 0.96 && !forceUnlocked) {
+            if (progress >= SIM_SCENE_LOCK_START_AT && progress <= SIM_SCENE_LOCK_END_AT && !forceUnlocked) {
                 e.preventDefault();
                 e.stopPropagation();
                 
@@ -499,7 +509,7 @@ class ScrollCanvas {
             }
             
             // Reset lock when outside range on EITHER side
-            if (progress < 0.94 || progress > 0.96) {
+            if (progress < SIM_SCENE_LOCK_START_AT || progress > SIM_SCENE_LOCK_END_AT) {
                 forceUnlocked = false;
                 lockedPosition = null;
             }
@@ -516,7 +526,7 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    top: Math.floor(0.80 * scrollHeight),
+                    top: Math.floor(SIM_SCENE_RETURN_BACK_AT * scrollHeight),
                     behavior: 'smooth'
                 });
             });
@@ -529,7 +539,7 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    top: Math.floor(0.98 * scrollHeight),
+                    top: Math.floor(SIM_SCENE_FORWARD_TO_AT * scrollHeight),
                     behavior: 'smooth'
                 });
             });

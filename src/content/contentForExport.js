@@ -54,6 +54,4 @@ This '1-dimensional climate model' uses temperature as its sole dynamic variable
     "header-8": "etc",
     "description-8": `Earth's climate balances solar input with energy reflection and retention. Ice acts as a positive feedback mechanism - more ice increases energy loss, lowering temperature and creating more ice. This cycle works similarly in reverse. These amplifying trends are ultimately limited by total Earth coverage.`,
 
-    "return-to-story": "⌃",
-    "forward-to-story": "⌃"
 };

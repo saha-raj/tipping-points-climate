@@ -32,8 +32,8 @@ body {
 /* Add after other text-type styles */
 .text-type-intro-header {
     font-family: var(--header-font);
-    font-size: 64px;  /* Larger than header */
-    font-weight: 500;
+    font-size: 56px;  /* Larger than header */
+    font-weight: 400;
     color: var(--text-color);
     white-space: nowrap;
     text-align: left;
@@ -42,8 +42,7 @@ body {
     font-family: var(--body-font);
     font-size: var(--body-font-size);
     color: var(--text-color);
-    font-weight: normal;
-    /* white-space: nowrap; */
+    font-weight: var(--body-font-weight);
     max-width: 500px;
     line-height: 1.5;
 }
@@ -62,7 +61,6 @@ body {
     font-size: var(--body-font-size);
     color: var(--text-color);
     font-weight: var(--body-font-weight);
-    /* white-space: nowrap; */
     max-width: 500px;
     line-height: 1.5;
 }

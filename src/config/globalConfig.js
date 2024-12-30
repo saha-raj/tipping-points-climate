@@ -38,15 +38,24 @@ import { sceneContent } from '../content/contentForExport.js';
  * @property {Transformation[]} [transformations] - Array of transformations
  */
 
-// Define constants in percentage values (0-100)
+
+
+
+
+// -----------------------------------------
+// --------------- CONSTANTS ---------------    
+// -----------------------------------------
+
+const TRANSITION_DURATION_FRAC = 0.1;
+const HEIGHT_MULTIPLIER = 300;
+
 const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
 
-
 export const INTRO_HEAD_X = 5;
-export const INTRO_HEAD_Y = 20;
+export const INTRO_HEAD_Y = 40;
 export const INTRO_DESC_X = 5;
-export const INTRO_DESC_Y = 55;
+export const INTRO_DESC_Y = 60;
 
 export const HEAD_X = 5;
 export const HEAD_Y = 10;
@@ -56,17 +65,45 @@ export const DESC_Y = HEAD_Y + 10;
 const SCROLL_dX = 0;
 const SCROLL_dY = 100;
 
-const NUM_SCENES = 8;
-const SCENE_DURATION = 1 / NUM_SCENES;          // Each scene is 1/n of total progress
-const TRANSITION_DURATION_FRAC = 0.2;         // Transitions take 10% of scene duration
-const TRANSITION_DURATION = SCENE_DURATION * TRANSITION_DURATION_FRAC;
-const HEIGHT_MULTIPLIER = 300;
+const SIM_SCENE_NUM = 7; // as in contentForExport.js
 
-// Scene Configuration
+// -----------------------------------------
+// -----------------------------------------
+
+
+
+const NUM_SCENES = Math.max(
+    ...Object.keys(sceneContent)
+        .map(id => parseInt(id.split('-')[1]))
+    ) + 1;  // +1 because we start counting from 0
+
+
+const SCENE_DURATION = 1 / NUM_SCENES;
+const TRANSITION_DURATION = SCENE_DURATION * TRANSITION_DURATION_FRAC;
+
+export const SIM_SCENE_START_AT = (SIM_SCENE_NUM / NUM_SCENES);
+export const SIM_SCENE_END_AT   = (SIM_SCENE_NUM + 1) / NUM_SCENES;
+export const SIM_SCENE_LOCK_START_AT = SIM_SCENE_START_AT + TRANSITION_DURATION;
+export const SIM_SCENE_LOCK_END_AT   = SIM_SCENE_END_AT;
+
+
+export const SIM_SCENE_RETURN_BACK_AT = (SIM_SCENE_NUM - 1) / NUM_SCENES;
+export const SIM_SCENE_FORWARD_TO_AT = SIM_SCENE_END_AT + TRANSITION_DURATION;
+
 export const sceneConfig = {
     totalScenes: NUM_SCENES,
     heightPerScene: HEIGHT_MULTIPLIER,
     totalHeight: NUM_SCENES * HEIGHT_MULTIPLIER
+};
+
+export const defaults = {
+    transition: {
+        duration: TRANSITION_DURATION,
+        opacity: { entry: 1, exit: 0, initial: 0 },
+        entry: { duration: TRANSITION_DURATION },
+        exit: { duration: TRANSITION_DURATION }
+    },
+    transform: { duration: TRANSITION_DURATION }
 };
 
 // Type-specific defaults
@@ -127,15 +164,7 @@ export const typeDefaults = {
     }
 };
 
-export const defaults = {
-    transition: {
-        duration: TRANSITION_DURATION,
-        opacity: { entry: 1, exit: 0, initial: 0 },
-        entry: { duration: TRANSITION_DURATION },
-        exit: { duration: TRANSITION_DURATION }
-    },
-    transform: { duration: TRANSITION_DURATION }
-};
+
 
 /** @type {ObjectConfig[]} */
 
@@ -169,11 +198,11 @@ const configObjects = [
             // },
             {
                 type: "camera_look",
-                look_x: 20,     // Look 2 units right
-                look_y: 38,     // Keep vertical look same
-                look_z: 0,     // Keep depth same
-                at: 0.9,       // Start at 20% scroll
-                duration: 0.05  // Take 5% of scroll to complete
+                look_x: 20,     
+                look_y: 38,     
+                look_z: 0,     
+                at: 0.9,       
+                duration: 0.05 
             }
 
         ]
@@ -216,12 +245,12 @@ const configObjects = [
         },
         transition: {
             entry_from: {
-                at: 0.89,
+                at: SIM_SCENE_START_AT + TRANSITION_DURATION,
                 opacity: 0,
                 duration: 0.001
             },
             exit_to: {
-                at: 0.98,
+                at: SIM_SCENE_END_AT,
                 opacity: 0,
                 duration: 0.001
             }
@@ -244,12 +273,12 @@ const configObjects = [
         },
         transition: {
             entry_from: {
-                at: 0.89,
+                at: SIM_SCENE_START_AT + TRANSITION_DURATION,
                 opacity: 0,
                 duration: 0.001
             },
             exit_to: {
-                at: 0.98,
+                at: SIM_SCENE_END_AT,
                 opacity: 0,
                 duration: 0.001
             }
@@ -266,14 +295,14 @@ const configObjects = [
             entry_from: {
                 x: HEAD_X,
                 y: HEAD_Y + SCROLL_dY,
-                at: 0.9,        // Appear with simulation scene
+                at: SIM_SCENE_START_AT,        
                 opacity: 0,
                 // duration: 0.01 
             },
             exit_to: {
                 x: HEAD_X,
                 y: HEAD_Y - SCROLL_dY,
-                at: 0.96,       // Disappear when leaving simulation
+                at: SIM_SCENE_END_AT,
                 opacity: 0,
                 // duration: 0.01 
             }
@@ -290,67 +319,20 @@ const configObjects = [
             entry_from: {
                 x: HEAD_X,
                 y: HEAD_Y + SCROLL_dY,
-                at: 0.9,        // Appear with simulation scene
+                at: SIM_SCENE_START_AT,       
                 opacity: 0,
                 // duration: 0.01 
             },
             exit_to: {
                 x: HEAD_X,
                 y: HEAD_Y - SCROLL_dY,
-                at: 0.96,       // Disappear when leaving simulation
+                at: SIM_SCENE_END_AT,       
                 opacity: 0,
                 // duration: 0.01 
             }
         }
     }
 ];
-
-// Debug: log the content we're working with
-console.log('Scene content:', sceneContent);
-
-// Only add timing to numbered header and description text objects
-const textConfigObjects = Object.entries(sceneContent)
-    .filter(([id]) => id.startsWith('header-') || id.startsWith('description-'))
-    .map(([id, content]) => {
-        const sceneNum = parseInt(id.split('-')[1]);
-        const type = id === 'header-0' ? 'intro-header' : 
-                  id === 'description-0' ? 'intro-description' :
-                  id.startsWith('header') ? 'header' : 'description';
-        
-        // Set position based on type
-        let position;
-        if (type === 'intro-header') {
-            position = { x: INTRO_HEAD_X, y: INTRO_HEAD_Y };
-        } else if (type === 'intro-description') {
-            position = { x: INTRO_DESC_X, y: INTRO_DESC_Y };
-        } else if (type === 'header') {
-            position = { x: HEAD_X, y: HEAD_Y };
-        } else {
-            position = { x: DESC_X, y: DESC_Y };
-        }
-
-        return {
-            id,
-            type,
-            initiallyVisible: sceneNum === 0,
-            position,  // Add the position
-            content: content || '',
-            transition: {
-                entry_from: { at: SCENE_DURATION * sceneNum },
-                exit_to: { at: SCENE_DURATION * (sceneNum + 1) }
-            }
-        };
-    });
-
-// Debug: log the final arrays
-console.log('Config objects:', configObjects);
-console.log('Text config objects:', textConfigObjects);
-
-// Combine arrays, keeping original objects unchanged
-export const globalConfig = [...configObjects, ...textConfigObjects];
-
-// Debug: log the final config
-console.log('Final global config:', globalConfig);
 
 export const extraConfig = [
 
@@ -402,14 +384,63 @@ export const extraConfig = [
     {
         id: "iceGroup",
         entry: { at: 0.55 },
-        exit: { at: 0.85 },
+        exit: { at: 0.65 },
         maxRadius: 0.9  // Maximum size of ice patches
     },
     {
         id: "simIceGroup",
-        entry: { at: 0.9 },
-        exit: { at: 0.96 },
+        entry: { at: SIM_SCENE_START_AT },
+        exit: { at: SIM_SCENE_END_AT },
         maxRadius: 0.2  // Maximum size of ice patches
     }
 ];
+
+
+// Debug: log the content we're working with
+// console.log('Scene content:', sceneContent);
+
+// Only add timing to numbered header and description text objects
+const textConfigObjects = Object.entries(sceneContent)
+    .filter(([id]) => id.startsWith('header-') || id.startsWith('description-'))
+    .map(([id, content]) => {
+        const sceneNum = parseInt(id.split('-')[1]);
+        const type = id === 'header-0' ? 'intro-header' : 
+                  id === 'description-0' ? 'intro-description' :
+                  id.startsWith('header') ? 'header' : 'description';
+        
+        // Set position based on type
+        let position;
+        if (type === 'intro-header') {
+            position = { x: INTRO_HEAD_X, y: INTRO_HEAD_Y };
+        } else if (type === 'intro-description') {
+            position = { x: INTRO_DESC_X, y: INTRO_DESC_Y };
+        } else if (type === 'header') {
+            position = { x: HEAD_X, y: HEAD_Y };
+        } else {
+            position = { x: DESC_X, y: DESC_Y };
+        }
+
+        return {
+            id,
+            type,
+            initiallyVisible: sceneNum === 0,
+            position,  // Add the position
+            content: content || '',
+            transition: {
+                entry_from: { at: SCENE_DURATION * sceneNum },
+                exit_to: { at: SCENE_DURATION * (sceneNum + 1) }
+            }
+        };
+    });
+
+// Combine arrays, keeping original objects unchanged
+export const globalConfig = [...configObjects, ...textConfigObjects];
+
+// Debug: log the final arrays
+// console.log('Config objects:', configObjects);
+// console.log('Text config objects:', textConfigObjects);
+// Debug: log the final config
+// console.log('Final global config:', globalConfig);
+
+
 
