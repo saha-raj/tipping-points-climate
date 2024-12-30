@@ -112,7 +112,7 @@ class ScrollCanvas {
         const textureLoader = new THREE.TextureLoader();
         
         // Load default texture first
-        const defaultTexture = textureLoader.load('public/assets/textures/2_no_clouds_8k.jpg', 
+        const defaultTexture = textureLoader.load('public/assets/textures/rodinia_unpix.png', 
             // Add success callback
             (texture) => {
                 texture.colorSpace = 'srgb';
@@ -241,9 +241,12 @@ class ScrollCanvas {
             simIceGroup.visible = true;
 
             const { temperatures, albedos } = currentSimulation;
-            const startTime = performance.now();
-            const duration = 100000; // 3 seconds for full animation
-            const TEMP_THRESHOLD = 0.01; // Stop when within 0.01K of equilibrium
+            const FPS = 60;
+            const FRAME_TIME = 1000 / FPS;
+            let lastFrameTime = 0;
+            let frameIndex = 0;
+            const FRAMES_TOTAL = albedos.length;
+            const TEMP_THRESHOLD = 0.01;
             
             let animationFrame;
             const equilibriumTemp = temperatures[temperatures.length - 1];
@@ -252,15 +255,15 @@ class ScrollCanvas {
             simVPlot.extras.plot.removeTrackingDot();
             
             const animate = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1.0);
+                // Skip frame if too early
+                if (currentTime - lastFrameTime < FRAME_TIME) {
+                    animationFrame = requestAnimationFrame(animate);
+                    return;
+                }
                 
-                // Get the current frame index based on progress
-                const frameIndex = Math.floor(progress * (albedos.length - 1));
                 const currentTemp = temperatures[frameIndex];
                 
-                // Check if we're close enough to equilibrium
-                if (progress < 1.0 && Math.abs(currentTemp - equilibriumTemp) > TEMP_THRESHOLD) {
+                if (frameIndex < FRAMES_TOTAL && Math.abs(currentTemp - equilibriumTemp) > TEMP_THRESHOLD) {
                     // Update ice
                     const albedo = albedos[frameIndex];
                     const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
@@ -272,12 +275,16 @@ class ScrollCanvas {
                     const currentPotential = climateModel.calculatePotential(currentTemp, parseFloat(gValue));
                     simVPlot.extras.plot.updateTrackingDot(currentTemp, currentPotential);
                     
-                    // Update slider position without triggering simulation
+                    // Update slider position
                     tempSlider.value = currentTemp;
+                    
+                    // Increment frame
+                    frameIndex++;
+                    lastFrameTime = currentTime;
                     
                     animationFrame = requestAnimationFrame(animate);
                 } else {
-                    // Animation complete or reached equilibrium - cleanup
+                    // Animation complete
                     cancelAnimationFrame(animationFrame);
                     tempSlider.disabled = false;
                     

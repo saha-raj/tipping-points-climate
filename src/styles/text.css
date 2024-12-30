@@ -49,7 +49,7 @@ body {
     font-size: 18px;
     color: var(--text-color);
     /* white-space: nowrap; */
-    max-width: 400px;
+    max-width: 500px;
     line-height: 1.5;
 }
 

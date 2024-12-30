@@ -1,3 +1,6 @@
+import { sceneContent } from './contentManager.js';
+
+
 /**
  * @typedef {Object} Position
  * @property {number} x
@@ -117,7 +120,7 @@ export const defaults = {
 
 /** @type {ObjectConfig[]} */
 
-export const globalConfig = [
+const configObjects = [
 
     {   // --------------------- EARTH ---------------------
         id: "earth",
@@ -180,7 +183,6 @@ export const globalConfig = [
     {   // --------------------- SCENE 0 ---------------------
         id: "title",
         type: "titleText",
-        content: "Tipping Points in Climate",
         initiallyVisible: true,
         position: { x: TITLE_X, y: TITLE_Y },
         transition: {
@@ -194,11 +196,59 @@ export const globalConfig = [
             }
         }
     },
+    {   // --------------------- SCENE 0 ---------------------
+        id: "description-title-1",
+        type: "description",
+        initiallyVisible: true,
+        position: { x: TITLE_X, y: TITLE_Y + 10 },
+        transition: {
+            entry_from: {
+                x: TITLE_X, y: TITLE_Y + 10,
+                at: 0, duration: 0.001, opacity: 1, duration: 0.05
+            },
+            exit_to: {
+                x: TITLE_X, y: TITLE_Y + 10 - SCROLL_dY,
+                at: SCENE_DURATION, opacity: 1
+            }
+        }
+    },
+    {   
+        id: "description-title-2",
+        type: "description",
+        initiallyVisible: true,
+        position: { x: TITLE_X, y: TITLE_Y + 20 },
+        transition: {
+            entry_from: {
+                x: TITLE_X, y: TITLE_Y + 20,
+                at: 0, duration: 0.001, opacity: 1, duration: 0.05
+            },
+            exit_to: {
+                x: TITLE_X, y: TITLE_Y + 20 - SCROLL_dY,
+                at: SCENE_DURATION, opacity: 1
+            }
+        }
+    },
+    {   
+        id: "description-title-3",
+        type: "description",
+        initiallyVisible: true,
+        position: { x: TITLE_X, y: TITLE_Y + 40 },
+        transition: {
+            entry_from: {
+                x: TITLE_X, y: TITLE_Y + 40,
+                at: 0, duration: 0.001, opacity: 1, duration: 0.05
+            },
+            exit_to: {
+                x: TITLE_X, y: TITLE_Y + 40 - SCROLL_dY,
+                at: SCENE_DURATION, opacity: 1
+            }
+        }
+    },
 
     {   // --------------------- SCENE 1 ---------------------
         id: "header-1",
         type: "header",
-        content: "Climate Tipping Points",
+        // content: "Climate Tipping Points",
         position: { x: HEADER_X, y: HEADER_Y },
         transition: {
             entry_from: {
@@ -214,10 +264,10 @@ export const globalConfig = [
     {
         id: "description-1",
         type: "description",
-        content:
-            "Modeling the Earth's Climate is a complex affair. " +
-            "It involves many different physical processes, " +
-            "and many different types of data.",
+        // content:
+        //     "Modeling the Earth's Climate is a complex affair. " +
+        //     "It involves many different physical processes, " +
+        //     "and many different types of data.",
         position: { x: DESC_X, y: DESC_Y },
         transition: {
             entry_from: {
@@ -233,7 +283,7 @@ export const globalConfig = [
     {   // --------------------- SCENE 2 ---------------------
         id: "header-2",
         type: "header",
-        content: "A Pale Blue Dot",
+        // content: "A Pale Blue Dot",
         transition: {
             entry_from: { at: SCENE_DURATION },
             exit_to: { at: SCENE_DURATION * 2 }
@@ -242,8 +292,8 @@ export const globalConfig = [
     {
         id: "description-2",
         type: "description",
-        content:
-            "What we do to simplify",
+        // content:
+        //     "What we do to simplify",
         position: { x: DESC_X, y: DESC_Y },
         transition: {
             entry_from: { at: SCENE_DURATION },
@@ -253,7 +303,7 @@ export const globalConfig = [
     {   // --------------------- SCENE 3 ---------------------
         id: "header-3",
         type: "header",
-        content: "Building (the simplest) Climate Model",
+        // content: "Building (the simplest) Climate Model",
         transition: {
             entry_from: { at: SCENE_DURATION * 2 },
             exit_to: { at: SCENE_DURATION * 3 }
@@ -262,8 +312,8 @@ export const globalConfig = [
     {
         id: "description-3",
         type: "description",
-        content:
-            "Energy Balance",
+        // content:
+        //     "Energy Balance",
         transition: {
             entry_from: { at: SCENE_DURATION * 2 },
             exit_to: { at: SCENE_DURATION * 3 }
@@ -272,7 +322,7 @@ export const globalConfig = [
     {   // --------------------- SCENE 4 ---------------------
         id: "header-4",
         type: "header",
-        content: "Incoming Energy",
+        // content: "Incoming Energy",
         transition: {
             entry_from: { at: SCENE_DURATION * 3 },
             exit_to: { at: SCENE_DURATION * 4 }
@@ -281,8 +331,8 @@ export const globalConfig = [
     {
         id: "description-4",
         type: "description",
-        content:
-            "Ein, The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.",
+        // content:
+        //     "Ein, The Stefan-Boltzmann equation: $$P = \\beta A T^4$$ where $\\sigma$ is the Stefan-Boltzmann constant.",
         transition: {
             entry_from: { at: SCENE_DURATION * 3 },
             exit_to: { at: SCENE_DURATION * 4 }
@@ -291,7 +341,7 @@ export const globalConfig = [
     {
         id: "my-annotation",
         type: "annotation",
-        content: "Your annotation text here",
+        // content: "Your annotation text here",
         position: { x: 40, y: 20 },  // Screen coordinates
         transition: {
             entry_from: {
@@ -311,7 +361,7 @@ export const globalConfig = [
     {   // --------------------- SCENE 5 ---------------------
         id: "header-5",
         type: "header",
-        content: "Outgoing Energy",
+        // content: "Outgoing Energy",
         transition: {
             entry_from: { at: SCENE_DURATION * 4 },
             exit_to: { at: SCENE_DURATION * 5 }
@@ -320,8 +370,8 @@ export const globalConfig = [
     {
         id: "description-5",
         type: "description",
-        content:
-            "Eout",
+        // content:
+        //     "Eout",
         transition: {
             entry_from: { at: SCENE_DURATION * 4 },
             exit_to: { at: SCENE_DURATION * 5 }
@@ -330,7 +380,7 @@ export const globalConfig = [
     {   // --------------------- SCENE 6 ---------------------
         id: "header-6",
         type: "header",
-        content: "Tipping Points",
+        // content: "Tipping Points",
         transition: {
             entry_from: { at: SCENE_DURATION * 5 },
             exit_to: { at: 0.9 }
@@ -339,8 +389,8 @@ export const globalConfig = [
     {
         id: "description-6",
         type: "description",
-        content:
-            "Critical Transitions",
+        // content:
+        //     "Critical Transitions",
         transition: {
             entry_from: { at: SCENE_DURATION * 5 },
             exit_to: { at: 0.9 }
@@ -359,7 +409,7 @@ export const globalConfig = [
     {
         id: 'return-to-story',
         type: 'button',
-        content: '⌃',
+        // content: '⌃',
         position: {
             x: 50,
             y: 5
@@ -387,7 +437,7 @@ export const globalConfig = [
     {
         id: 'forward-to-story',
         type: 'button',
-        content: '⌃',
+        // content: '⌃',
         position: {
             x: 50,
             y: 90
@@ -415,7 +465,7 @@ export const globalConfig = [
     {   // --------------------- SIMULATION ---------------------
         id: "header-simulation",
         type: "header",
-        content: "Simulation",
+        // content: "Simulation",
         transition: {
             entry_from: { at: 0.9 },
             exit_to: { at: 0.96 }
@@ -424,8 +474,8 @@ export const globalConfig = [
     {
         id: "description-simulation",
         type: "description",
-        content:
-            "Use the sliders to change the parameters of the simulation.",
+        // content:
+        //     "Use the sliders to change the parameters of the simulation.",
         transition: {
             entry_from: { at: 0.9 },
             exit_to: { at: 0.96 }
@@ -481,6 +531,20 @@ export const globalConfig = [
     }
 ];
 
+export const globalConfig = configObjects.map(obj => {
+    // Only check for content if it's a text-based type
+    const needsContent = ['titleText', 'header', 'description', 'annotation', 'button'].includes(obj.type);
+    
+    if (needsContent && !sceneContent[obj.id]) {
+        console.warn(`No content found for text element with id: ${obj.id}`);
+    }
+
+    return {
+        ...obj,
+        content: sceneContent[obj.id] || ''
+    };
+});
+
 export const extraConfig = [
     // {
     //     id: "atmosphere",
@@ -497,12 +561,12 @@ export const extraConfig = [
         entry: { at: 0.5 },
         exit: { at: 0.6 }
     },
-    {
-        id: "earthTexture",
-        file: 'public/assets/textures/water_world_pix.jpg',
-        entry: { at: 0.32 },
-        exit: { at: 0.9 }
-    },
+    // {
+    //     id: "earthTexture",
+    //     file: 'public/assets/textures/water_world_pix.jpg',
+    //     entry: { at: 0.32 },
+    //     exit: { at: 0.88 }
+    // },
     {
         id: "simAtmosphereHotNonlinear",
         entry: { at: 0.90 },
@@ -510,8 +574,14 @@ export const extraConfig = [
     },
     {
         id: "earthTexture",
-        file: 'public/assets/textures/cartoon.jpg',
-        entry: { at: 0.9 },
+        file: 'public/assets/textures/earth_noClouds.0330.png',
+        entry: { at: 0.0 },
+        exit: { at: 0.3 }
+    },
+    {
+        id: "earthTexture",
+        file: 'public/assets/textures/rodinia_unpix.png',
+        entry: { at: 0.3 },
         exit: { at: 0.96 }
     },
     // {
