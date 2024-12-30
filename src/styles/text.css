@@ -2,9 +2,12 @@
     /* OPTION 1: */
     --header-font: 'Lato', sans-serif;
     --body-font: 'PT Serif', serif;
-    /* OPTION 2: */
+    /* --body-font: 'Libre Baskerville', serif; */
+    /* --body-font: 'Noto Serif', serif; */
+    --body-font-size: 18px;
+    --body-font-weight: 400;
+
     /* --header-font: "Open Sans", serif; */
-    /* OPTION 3: */
     /* --header-font: 'Kanit', serif; */
 
     --text-color: #e0e1dd;
@@ -37,7 +40,7 @@ body {
 }
 .text-type-intro-description {
     font-family: var(--body-font);
-    font-size: 18px;
+    font-size: var(--body-font-size);
     color: var(--text-color);
     font-weight: normal;
     /* white-space: nowrap; */
@@ -56,9 +59,9 @@ body {
 
 .text-type-description {
     font-family: var(--body-font);
-    font-size: 18px;
+    font-size: var(--body-font-size);
     color: var(--text-color);
-    font-weight: normal;
+    font-weight: var(--body-font-weight);
     /* white-space: nowrap; */
     max-width: 500px;
     line-height: 1.5;

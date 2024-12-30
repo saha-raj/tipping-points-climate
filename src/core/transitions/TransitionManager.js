@@ -30,25 +30,25 @@ export class TransitionManager {
             ...typeDefault.transition.entry_from
         } : null;
 
-        // Add debug logging for intro elements AFTER effectiveEntryFrom is defined
-        if (config.type === 'intro-header' || config.type === 'intro-description') {
-            console.log('TransitionManager calculating for:', {
-                id: config.id,
-                type: config.type,
-                initiallyVisible: config.initiallyVisible,
-                scrollProgress,
-                position: config.position,
-                effectiveEntryFrom,
-                returnValue: {
-                    position: effectiveEntryFrom ? { 
-                        x: effectiveEntryFrom.x ?? position.x,
-                        y: effectiveEntryFrom.y ?? position.y
-                    } : position,
-                    opacity: config.initiallyVisible ? 1 : (effectiveEntryFrom?.opacity ?? 0),
-                    visible: config.initiallyVisible || false
-                }
-            });
-        }
+        // // Add debug logging for intro elements AFTER effectiveEntryFrom is defined
+        // if (config.type === 'intro-header' || config.type === 'intro-description') {
+        //     console.log('TransitionManager calculating for:', {
+        //         id: config.id,
+        //         type: config.type,
+        //         initiallyVisible: config.initiallyVisible,
+        //         scrollProgress,
+        //         position: config.position,
+        //         effectiveEntryFrom,
+        //         returnValue: {
+        //             position: effectiveEntryFrom ? { 
+        //                 x: effectiveEntryFrom.x ?? position.x,
+        //                 y: effectiveEntryFrom.y ?? position.y
+        //             } : position,
+        //             opacity: config.initiallyVisible ? 1 : (effectiveEntryFrom?.opacity ?? 0),
+        //             visible: config.initiallyVisible || false
+        //         }
+        //     });
+        // }
 
         // Merge exit_to with type defaults
         const effectiveExitTo = exit_to ? {

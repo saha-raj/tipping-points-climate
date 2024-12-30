@@ -68,7 +68,7 @@ export class ObjectFactory {
             // Load texture
             const textureLoader = new THREE.TextureLoader();
             // const earthTexture = textureLoader.load('public/assets/textures/earth_noClouds.0330_cutout.jpg');
-            const earthTexture = textureLoader.load('public/assets/textures/rodinia_unpix.png');
+            const earthTexture = textureLoader.load('public/assets/textures/1_earth_8k.jpg');
 
 
             const material = new THREE.MeshPhongMaterial({

@@ -6,7 +6,7 @@ This simple model with just *three* interacting components demonstrates the mech
 
 Earth's modern climate exists in an intermediate state, maintained by negative feedbacks from the climate-biosphere system.`,
 
-    "header-1": "The pale blue dot",
+    "header-1": "A pale blue dot",
     "description-1": `The climate system is driven by solar energy input, energy stored in land, air, and water, and energy radiated to space. Viewed from space over geological time, Earth's appearance has changed dramatically - from complete ice coverage to periods without polar ice caps. These shifts occurred through positive feedbacks overwhelming negative feedbacks.`,
 
     "header-2": "The simplest model",

@@ -44,9 +44,9 @@ const EARTH_Y = 50;  // Center of screen vertically
 
 
 export const INTRO_HEAD_X = 5;
-export const INTRO_HEAD_Y = 35;
+export const INTRO_HEAD_Y = 20;
 export const INTRO_DESC_X = 5;
-export const INTRO_DESC_Y = INTRO_HEAD_Y + 15;
+export const INTRO_DESC_Y = 55;
 
 export const HEAD_X = 5;
 export const HEAD_Y = 10;
@@ -202,7 +202,7 @@ const configObjects = [
     {
         id: 'return-to-story',
         type: 'button',
-        // content: '⌃',
+        content: '⌃',
         position: {
             x: 50,
             y: 5
@@ -216,21 +216,21 @@ const configObjects = [
         },
         transition: {
             entry_from: {
-                at: 0.85,
+                at: 0.89,
                 opacity: 0,
-                duration: 0.2
+                duration: 0.001
             },
             exit_to: {
                 at: 0.98,
                 opacity: 0,
-                duration: 0.2
+                duration: 0.001
             }
         }
     },
     {
         id: 'forward-to-story',
         type: 'button',
-        // content: '⌃',
+        content: '⌃',
         position: {
             x: 50,
             y: 90
@@ -244,14 +244,14 @@ const configObjects = [
         },
         transition: {
             entry_from: {
-                at: 0.85,
+                at: 0.89,
                 opacity: 0,
-                duration: 0.2
+                duration: 0.001
             },
             exit_to: {
                 at: 0.98,
                 opacity: 0,
-                duration: 0.2
+                duration: 0.001
             }
         }
     },
@@ -353,11 +353,7 @@ export const globalConfig = [...configObjects, ...textConfigObjects];
 console.log('Final global config:', globalConfig);
 
 export const extraConfig = [
-    // {
-    //     id: "atmosphere",
-    //     entry: { at: 0 },
-    //     exit: { at: 0.9 }    
-    // },
+
     {
         id: "atmosphereHotNonlinear",
         entry: { at: 0 },
@@ -379,16 +375,16 @@ export const extraConfig = [
         entry: { at: 0.90 },
         exit: { at: 0.96 }
     },
-    {
-        id: "earthTexture",
-        file: 'public/assets/textures/earth_noClouds.0330.jpg',
-        entry: { at: 0.0 },
-        exit: { at: 0.3 }
-    },
+    // {
+    //     id: "earthTexture",
+    //     file: 'public/assets/textures/earth_noClouds.0330.jpg',
+    //     entry: { at: 0.0 },
+    //     exit: { at: 0.3 }
+    // },
     {
         id: "earthTexture",
         file: 'public/assets/textures/rodinia_unpix.png',
-        entry: { at: 0.3 },
+        entry: { at: 0.254 },
         exit: { at: 0.96 }
     },
     // {
