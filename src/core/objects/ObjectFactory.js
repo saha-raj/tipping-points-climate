@@ -8,7 +8,8 @@ export class ObjectFactory {
         switch(config.type) {
             case '3dObject':
                 return this.create3DObject(config);
-            case 'titleText':
+            case 'intro-header':     // Changed from titleText
+            case 'intro-description':// Added new type            case 'header':
             case 'header':
             case 'description':
             case 'annotation':

@@ -1,6 +1,8 @@
 export const sceneContent = {
-    "title": "Tipping Points in Climate",
-    "description-title-1": `An interactive visualization exploring how small shifts in key variables can trigger large changes in Earth's climate. This simple model with three interacting components demonstrates the mechanisms behind extreme climatic shifts - the interplay between amplifying mechanisms and braking mechanisms in the climate system.
+    "header-0": "Tipping Points in Climate",
+    "description-0": `An interactive visualization to explore how small shifts in key variables can trigger large changes in Earth's climate. 
+    
+This simple model with just *three* interacting components demonstrates the mechanisms behind extreme climatic shifts - the interplay between amplifying mechanisms and braking mechanisms in the climate system.
 
 Earth's modern climate exists in an intermediate state, maintained by negative feedbacks from the climate-biosphere system.`,
 

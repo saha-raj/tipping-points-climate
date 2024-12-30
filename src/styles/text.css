@@ -1,10 +1,11 @@
 :root {
     /* OPTION 1: */
-    --main-font: 'Lato', sans-serif;
+    --header-font: 'Lato', sans-serif;
+    --body-font: 'PT Serif', serif;
     /* OPTION 2: */
-    /* --main-font: "Open Sans", serif; */
+    /* --header-font: "Open Sans", serif; */
     /* OPTION 3: */
-    /* --main-font: 'Kanit', serif; */
+    /* --header-font: 'Kanit', serif; */
 
     --text-color: #e0e1dd;
 }
@@ -26,18 +27,27 @@ body {
 }
 
 /* Add after other text-type styles */
-.text-type-titleText {
-    font-family: var(--main-font);
+.text-type-intro-header {
+    font-family: var(--header-font);
     font-size: 64px;  /* Larger than header */
     font-weight: 500;
     color: var(--text-color);
     white-space: nowrap;
     text-align: left;
 }
+.text-type-intro-description {
+    font-family: var(--body-font);
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: normal;
+    /* white-space: nowrap; */
+    max-width: 500px;
+    line-height: 1.5;
+}
 
 /* Type-specific styles */
 .text-type-header {
-    font-family: var(--main-font);
+    font-family: var(--header-font);
     font-size: 36px;
     font-weight: 700;
     color: var(--text-color);
@@ -45,9 +55,10 @@ body {
 }
 
 .text-type-description {
-    font-family: var(--main-font);
+    font-family: var(--body-font);
     font-size: 18px;
     color: var(--text-color);
+    font-weight: normal;
     /* white-space: nowrap; */
     max-width: 500px;
     line-height: 1.5;
@@ -55,7 +66,7 @@ body {
 
 .text-element.text-type-annotation {
     color: var(--text-color);
-    font-family: var(--main-font);
+    font-family: var(--header-font);
     font-size: 16px;
     line-height: 1.4;
     padding: 10px;
@@ -109,7 +120,7 @@ body {
 
 /* Add these new styles */
 .scroll-button {
-    font-family: var(--main-font);
+    font-family: var(--header-font);
     font-size: 1.5rem;
     color: var(--text-color);
     opacity: 0.1;

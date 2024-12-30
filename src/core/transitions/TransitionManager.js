@@ -12,9 +12,10 @@ export class TransitionManager {
         // Get type defaults first
         const typeDefault = typeDefaults[config.type];
         
-        // Merge position with type defaults
+        // Merge position with type defaults and ensure a default position exists
         const defaultPosition = typeDefault?.position || { x: 0, y: 0 };
-        const { position = defaultPosition, transition = {} } = config;
+        const position = config.position || defaultPosition;  // Ensure we always have a position
+        const { transition = {} } = config;
         const { entry_from, exit_to } = transition;
         
         // Merge entry_from with type defaults
@@ -28,6 +29,26 @@ export class TransitionManager {
             y: position.y,
             ...typeDefault.transition.entry_from
         } : null;
+
+        // Add debug logging for intro elements AFTER effectiveEntryFrom is defined
+        if (config.type === 'intro-header' || config.type === 'intro-description') {
+            console.log('TransitionManager calculating for:', {
+                id: config.id,
+                type: config.type,
+                initiallyVisible: config.initiallyVisible,
+                scrollProgress,
+                position: config.position,
+                effectiveEntryFrom,
+                returnValue: {
+                    position: effectiveEntryFrom ? { 
+                        x: effectiveEntryFrom.x ?? position.x,
+                        y: effectiveEntryFrom.y ?? position.y
+                    } : position,
+                    opacity: config.initiallyVisible ? 1 : (effectiveEntryFrom?.opacity ?? 0),
+                    visible: config.initiallyVisible || false
+                }
+            });
+        }
 
         // Merge exit_to with type defaults
         const effectiveExitTo = exit_to ? {
@@ -77,16 +98,13 @@ export class TransitionManager {
         //     };
         // }
 
-        // Before entry
+        // Before entry - but respect initiallyVisible
         const EPSILON = 0.0001;
-        if (effectiveEntryFrom && (scrollProgress + EPSILON) < effectiveEntryFrom.at) {
+        if (!effectiveEntryFrom || (scrollProgress + EPSILON) < effectiveEntryFrom.at) {
             return {
-                position: { 
-                    x: effectiveEntryFrom.x ?? position.x,
-                    y: effectiveEntryFrom.y ?? position.y
-                },
-                opacity: effectiveEntryFrom.opacity ?? 1,
-                visible: false
+                position: position,  // Use the guaranteed position
+                opacity: config.initiallyVisible ? 1 : (effectiveEntryFrom?.opacity ?? 0),
+                visible: config.initiallyVisible || false
             };
         }
 
