@@ -46,7 +46,7 @@ export const HEADER_X = 5;
 export const HEADER_Y = 10;
 
 export const TITLE_X = 5;
-export const TITLE_Y = 45;
+export const TITLE_Y = 15;
 
 export const DESC_X = HEADER_X;
 export const DESC_Y = HEADER_Y + 10;
@@ -200,50 +200,19 @@ const configObjects = [
         id: "description-title-1",
         type: "description",
         initiallyVisible: true,
-        position: { x: TITLE_X, y: TITLE_Y + 10 },
+        position: { x: TITLE_X, y: TITLE_Y + 15 },
         transition: {
             entry_from: {
-                x: TITLE_X, y: TITLE_Y + 10,
+                x: TITLE_X, y: TITLE_Y + 15,
                 at: 0, duration: 0.001, opacity: 1, duration: 0.05
             },
             exit_to: {
-                x: TITLE_X, y: TITLE_Y + 10 - SCROLL_dY,
+                x: TITLE_X, y: TITLE_Y + 15 - SCROLL_dY,
                 at: SCENE_DURATION, opacity: 1
             }
         }
     },
-    {   
-        id: "description-title-2",
-        type: "description",
-        initiallyVisible: true,
-        position: { x: TITLE_X, y: TITLE_Y + 20 },
-        transition: {
-            entry_from: {
-                x: TITLE_X, y: TITLE_Y + 20,
-                at: 0, duration: 0.001, opacity: 1, duration: 0.05
-            },
-            exit_to: {
-                x: TITLE_X, y: TITLE_Y + 20 - SCROLL_dY,
-                at: SCENE_DURATION, opacity: 1
-            }
-        }
-    },
-    {   
-        id: "description-title-3",
-        type: "description",
-        initiallyVisible: true,
-        position: { x: TITLE_X, y: TITLE_Y + 40 },
-        transition: {
-            entry_from: {
-                x: TITLE_X, y: TITLE_Y + 40,
-                at: 0, duration: 0.001, opacity: 1, duration: 0.05
-            },
-            exit_to: {
-                x: TITLE_X, y: TITLE_Y + 40 - SCROLL_dY,
-                at: SCENE_DURATION, opacity: 1
-            }
-        }
-    },
+    
 
     {   // --------------------- SCENE 1 ---------------------
         id: "header-1",

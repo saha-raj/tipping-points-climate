@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { PotentialPlot } from './PotentialPlot.js';
 import { MODEL_PARAMS } from '../simulation/constants.js';
+import { marked } from '../../../node_modules/marked/lib/marked.esm.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -26,32 +27,33 @@ export class ObjectFactory {
 
     static createText(config) {
         const element = document.createElement('div');
-        element.className = `text-element text-type-${config.type} text-element-${config.id}`;
         
-        // Check if content contains LaTeX
-        if (config.content.match(/\$\$(.*?)\$\$|\$(.*?)\$/)) {
-            element.innerHTML = config.content;  // Use innerHTML for LaTeX
-            // Queue MathJax processing if it's ready
+        // First convert markdown to HTML, but preserve LaTeX delimiters
+        const tempContent = config.content.replace(/\$\$(.*?)\$\$|\$(.*?)\$/g, match => {
+            // Replace LaTeX with a temporary placeholder
+            return `###LATEX${encodeURIComponent(match)}###`;
+        });
+        
+        // Parse markdown
+        let htmlContent = marked.parse(tempContent);
+        
+        // Restore LaTeX
+        htmlContent = htmlContent.replace(/###LATEX(.*?)###/g, match => {
+            return decodeURIComponent(match.replace('###LATEX', '').replace('###', ''));
+        });
+        
+        element.innerHTML = htmlContent;
+        
+        // Process LaTeX if present
+        if (htmlContent.match(/\$\$(.*?)\$\$|\$(.*?)\$/)) {
             if (window.MathJax && window.MathJax.typesetPromise) {
                 MathJax.typesetPromise([element]).catch((err) => {
                     console.warn('MathJax processing failed:', err);
-                    element.textContent = config.content;  // Fallback to plain text
-                });
-            } else {
-                // If MathJax isn't ready, queue for later processing
-                window.addEventListener('load', () => {
-                    if (window.MathJax && window.MathJax.typesetPromise) {
-                        MathJax.typesetPromise([element]).catch((err) => {
-                            console.warn('MathJax processing failed:', err);
-                            element.textContent = config.content;
-                        });
-                    }
                 });
             }
-        } else {
-            element.textContent = config.content;  // Keep existing behavior for non-LaTeX
         }
         
+        element.className = `text-element text-type-${config.type}`;
         return {
             type: 'text',
             element: element

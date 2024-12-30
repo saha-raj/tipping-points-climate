@@ -1,14 +1,15 @@
 export const sceneContent = {
     "title": "Tipping Points in Climate",
-    "description-title-1": "An interactive visualization to explore how small shifts in key variables can bring about " +
-                            "large shifts in Earth's climate. ",
+    "description-title-1": `An *interactive* visualization to explore how small shifts in key variables can bring about large shifts in Earth's climate.
 
-    "description-title-2": "The model used here is very simple, with only three partially interacting components. " +
-                            "Still it demonstrates the core underlying mechanisms behind some extreme climatic shifts " +
-                            "in Earth's past - the amplifying mechanisms, or positive feedbacks in the climate system. ",
+A second paragraph with some **bold** text and an inline equation: $E = mc^2$ and a block equation:
 
-    "description-title-3": "Earth's climate in the modern geological era sits in an intermediate state, held in place by the " +
-                            "overall negative feedbacks, or brakes, due to the complex and co-evolved climate-biosphere system.",
+$$
+E = mc^2
+$$
+
+followed by another paragraph with some **bold** text.
+    `,
 
     "header-1": "Climate Tipping Points",
     "description-1":"Modeling the Earth's Climate is a complex affair. " +
