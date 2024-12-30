@@ -1,4 +1,4 @@
-import { sceneContent } from './contentManager.js';
+import { sceneContent } from '../content/contentForExport.js';
 
 
 /**
@@ -432,7 +432,7 @@ const configObjects = [
         }
     },
     {   // --------------------- SIMULATION ---------------------
-        id: "header-simulation",
+        id: "header-7",
         type: "header",
         // content: "Simulation",
         transition: {
@@ -441,7 +441,7 @@ const configObjects = [
         }
     },
     {
-        id: "description-simulation",
+        id: "description-7",
         type: "description",
         // content:
         //     "Use the sliders to change the parameters of the simulation.",
