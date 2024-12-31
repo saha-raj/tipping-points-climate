@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { PotentialPlot } from './PotentialPlot.js';
 import { MODEL_PARAMS } from '../simulation/constants.js';
-import { marked } from '../../../node_modules/marked/lib/marked.esm.js';
+import { marked } from '../../../public/assets/lib/marked.esm.js';
 
 export class ObjectFactory {
     static createObject(config) {
