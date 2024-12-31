@@ -225,6 +225,38 @@ class ScrollCanvas {
                     }
                 }
             }
+
+            // Handle snowballEarthGroup transitions
+            if (earth && earth.extras.snowballEarthGroup) {
+                const config = extraConfig.find(c => c.id === 'snowballEarthGroup');
+                if (config) {
+                    const { entry, exit, startDecrease, startSize, endSize, entryDuration } = config;
+                    
+                    if (progress >= entry.at && progress <= exit.at) {
+                        earth.extras.snowballEarthGroup.visible = true;
+                        
+                        let scale;
+                        // Grow in
+                        if (progress <= entry.at + config.entryDuration) {
+                            scale = (progress - entry.at) / config.entryDuration;
+                        }
+                        // Shrink out
+                        else if (progress >= exit.at - config.exitDuration) {
+                            scale = (exit.at - progress) / config.exitDuration;
+                        }
+                        // Hold at full size
+                        else {
+                            scale = 1.0;
+                        }
+                        
+                        earth.extras.snowballEarthGroup.children.forEach(patch => {
+                            patch.scale.set(scale, scale, 1);
+                        });
+                    } else {
+                        earth.extras.snowballEarthGroup.visible = false;
+                    }
+                }
+            }
         };
 
         // Add animation button handler
@@ -587,8 +619,20 @@ class ScrollCanvas {
                         }
                     } else if (config.id === 'iceGroup') {
                         const iceGroup = earth.extras.iceGroup;
+                        // console.log('Ice Group Check:', {
+                        //     progress,
+                        //     entryAt,
+                        //     exitAt,
+                        //     shouldBeVisible: progress >= entryAt && progress <= exitAt
+                        // });
                         if (progress >= entryAt && progress <= exitAt) {
                             iceGroup.visible = true;
+                            // console.log('Setting ice visible:', {
+                            //     progress,
+                            //     entryAt,
+                            //     exitAt,
+                            //     actualVisibility: iceGroup.visible
+                            // });
                             // Calculate growth progress
                             const growthProgress = (progress - entryAt) / (exitAt - entryAt);
                             const radius = config.maxRadius * growthProgress;

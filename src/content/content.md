@@ -6,6 +6,15 @@ This simple model with just *three* interacting components demonstrates the prin
 
 The modern climate exists in a moderate intermediate state, maintained in large part by the stabilizing role of the climate-biosphere system.
 
+## Snowball and Hothouse Earths
+
+More than once in Earth's history, the planet was likely completely covered in ice. These are the so-called *Snowball Earth* events that happened during the late Proterozoic and early Cambrian periods, between 700 and 600 million years ago.
+
+There were also extended *Hothouse Earth* periods, characterized by high greenhouse gas concentrations, high temperatures, and little to no ice on the surface.
+
+There are several hypotheses for what caused these events and the research is ongoing. However, regardless of the chain of physical processes that led to these events, they ultimately involved the climate system reaching a *tipping point*.
+
+
 ## A pale blue dot
 
 To simplify the enormously complex climate system, let's first zoom far out into space from where the Earth only appears as a *pale blue dot*.

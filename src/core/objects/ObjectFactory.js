@@ -2,14 +2,18 @@ import * as THREE from 'three';
 import { PotentialPlot } from './PotentialPlot.js';
 import { MODEL_PARAMS } from '../simulation/constants.js';
 import { marked } from '../../../public/assets/lib/marked.esm.js';
+import { createIceGroup } from './ice.js';
+import { createShadowCylinder } from './shadowCylinder.js';
+import { createAtmosphereNonLinear } from './atmosphereNonLinear.js';
+import { createAtmosphereSingleLayer } from './atmosphereSingleLayer.js';
 
 export class ObjectFactory {
     static createObject(config) {
         switch(config.type) {
             case '3dObject':
                 return this.create3DObject(config);
-            case 'intro-header':     // Changed from titleText
-            case 'intro-description':// Added new type            case 'header':
+            case 'intro-header':     
+            case 'intro-description':
             case 'header':
             case 'description':
             case 'annotation':
@@ -84,283 +88,32 @@ export class ObjectFactory {
             // Add Earth's axial tilt (23.5 degrees)
             earthMesh.rotation.z = 23.5 * Math.PI / 180;
             
-            // ------------------------------------------------------------ 
-            // Create regular atmosphere 
-            // ------------------------------------------------------------ 
-            const atmosphereGeometry = new THREE.SphereGeometry(1.1, 64, 64);
+            // create atmosphere models
+            const atmosphereMesh = createAtmosphereSingleLayer();
+            const atmosphereHotNonlinear = createAtmosphereNonLinear(12, 0.1, 0xcae9ff);
+            const simAtmosphereHotNonlinear = createAtmosphereNonLinear(12, 0.1, 0xcae9ff);
 
-            const cloudsRegular = new THREE.TextureLoader().load('public/assets/textures/clouds_transparent.png');
-
-            const atmosphereMaterial = new THREE.MeshPhongMaterial({
-                map: cloudsRegular,
-                color: 0xffffff,
-                transparent: true,
-                opacity: 0.2,
-                side: THREE.FrontSide,
-                shininess: 1,
-                emissive: 0x4f9aff,
-                emissiveIntensity: 0.4
-            });
-            const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
-            
-            // ------------------------------------------------------------ 
-            // Create hot atmosphere with 3 linearly spaced layers
-            // ------------------------------------------------------------ 
-            const atmosphereHot = new THREE.Group();  // Container for all hot atmosphere layers
-            
-            const hotLayers = [
-                { radius: 1.1,  opacity: 0.2, intensity: 0.9 },
-                { radius: 1.12, opacity: 0.15, intensity: 0.4 },
-                { radius: 1.15, opacity: 0.1, intensity: 0.2 }
-            ];
-            
-            hotLayers.forEach(layer => {
-                const geometry = new THREE.SphereGeometry(layer.radius, 64, 64);
-                const material = new THREE.MeshPhongMaterial({
-                    color: 0xff4800,  // More reddish for heat
-                    transparent: true,
-                    opacity: layer.opacity,
-                    side: THREE.DoubleSide,
-                    shininess: 0,
-                    emissive: 0xff4800,
-                    emissiveIntensity: layer.intensity,
-                    blending: THREE.AdditiveBlending
-                });
-                const mesh = new THREE.Mesh(geometry, material);
-                atmosphereHot.add(mesh);
-            });
-            
-            // Add both to earth but hide initially
+            // Add atmosphere models to earth mesh
             earthMesh.add(atmosphereMesh);
-            earthMesh.add(atmosphereHot);
-            atmosphereMesh.visible = false;  // Start invisible
-            atmosphereHot.visible = false;   // Start invisible
-            
-            // ------------------------------------------------------------ 
-            // Create hot atmosphere with N nonlinearly spaced layers
-            // ------------------------------------------------------------ 
-            const atmosphereHotNonlinear = new THREE.Group();
-            const baseGeometry = new THREE.SphereGeometry(1, 64, 64);
-            const numLayers = 12;
-
-            for (let i = 0; i < numLayers; i++) {
-                const t = i / (numLayers - 1);
-                const scale = 1.07 + (0.25 * Math.pow(t, 2.5));
-                const opacity = 0.1 * (0.5 - Math.pow(t, 3.5));
-                
-                const layer = new THREE.Mesh(
-                    baseGeometry,
-                    new THREE.MeshPhongMaterial({
-                        color: 0xcae9ff,
-                        transparent: true,
-                        opacity: opacity,
-                        shininess: 0,
-                    })
-                );
-
-                layer.scale.set(scale, scale, scale);
-                atmosphereHotNonlinear.add(layer);
-            }
-            
-            // ------------------------------------------------------------ 
-            // Create simulation atmosphere (new)
-            // ------------------------------------------------------------ 
-            const simAtmosphereHotNonlinear = new THREE.Group();
-            
-            for (let i = 0; i < numLayers; i++) {
-                const t = i / (numLayers - 1);
-                const scale = 1.07 + (0.25 * Math.pow(t, 2.5));
-                const opacity = 0.1 * (0.5 - Math.pow(t, 3.5));
-                
-                const layer = new THREE.Mesh(
-                    baseGeometry,
-                    new THREE.MeshPhongMaterial({
-                        color: 0xcae9ff,
-                        transparent: true,
-                        opacity: opacity,
-                        shininess: 0,
-                    })
-                );
-
-                layer.scale.set(scale, scale, scale);
-                simAtmosphereHotNonlinear.add(layer);
-            }
-            
-            simAtmosphereHotNonlinear.visible = false;  // Start invisible
-            
-            // Add both to earth
-            atmosphereHotNonlinear.visible = true;
             earthMesh.add(atmosphereHotNonlinear);
             earthMesh.add(simAtmosphereHotNonlinear);
 
-            // ------------------------------------------------------------ 
-            // Create shadow cylinder and end cap   
-            // ------------------------------------------------------------ 
-            const cylinderLength = 4;  // Adjusted for visibility
-            const cylinderGeometry = new THREE.CylinderGeometry(1.01, 1.01, cylinderLength, 64);  // Slightly larger to prevent z-fighting
-            const cylinderMaterial = new THREE.MeshBasicMaterial({
-                color: 0x000000,
-                transparent: true,
-                opacity: 0.3,
-                side: THREE.DoubleSide
-            });
-            const shadowCylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
-            
-            // Create end cap
-            const capGeometry = new THREE.CircleGeometry(1, 64);
-            const capMaterial = new THREE.MeshBasicMaterial({
-                color: 0x000000,
-                side: THREE.DoubleSide
-            });
-            const endCap = new THREE.Mesh(capGeometry, capMaterial);
-            
-            // Position at far end of cylinder
-            endCap.position.y = -cylinderLength/2;  // Move to far end
-            endCap.rotation.x = Math.PI/2;  // Rotate to face outward
-            
-            shadowCylinder.add(endCap);
-            
-            // Rotate cylinder to align with X axis and position it
-            shadowCylinder.rotation.z = Math.PI/2;
-            // By default, cylinder is centered at origin, so we need to move it by half its length + earth radius
-            shadowCylinder.position.x = (cylinderLength/2);
-            
-            shadowCylinder.visible = false;  // Start invisible
+            // create shadow cylinder
+            const shadowCylinder = createShadowCylinder(4, 1.01);
             earthMesh.add(shadowCylinder);
-            
-            // ------------------------------------------------------------ 
-            // Create ice patches
-            // ------------------------------------------------------------ 
-            const iceGroup = new THREE.Group();
-            const NUM_ICE_PATCHES = 360*10;
-            const SPHERE_RADIUS = 1.01; // Slightly above Earth's surface
 
-            // Generate random points on sphere
-            for (let i = 0; i < NUM_ICE_PATCHES; i++) {
-                // Random spherical coordinates
-                const theta = Math.random() * Math.PI * 2; // Random longitude (0 to 2π)
-                const phi = Math.acos(2 * Math.random() - 1); // Random latitude (arccos method for uniform distribution)
-                
-                // Convert to Cartesian coordinates
-                const x = SPHERE_RADIUS * Math.cos(theta) * Math.sin(phi);
-                const y = SPHERE_RADIUS * Math.sin(theta) * Math.sin(phi);
-                const z = SPHERE_RADIUS * Math.cos(phi);
+            // create ice models
+            const iceGroup = createIceGroup('iceGroup');
+            const snowballEarthGroup = createIceGroup('snowballEarthGroup');
+            const simIceGroup = createIceGroup('simIceGroup');
 
-                // Create irregular polygon
-                const numSides = Math.floor(Math.random() * 4) + 4; // 4-7 sides
-                const vertices = [];
-                const baseRadius = 0.1;
-                
-                // Create irregular vertices
-                for (let j = 0; j < numSides; j++) {
-                    const angle = (j / numSides) * Math.PI * 2;
-                    // Vary radius between 0.7 and 1.3 of base radius
-                    const radius = baseRadius * (0.3 + Math.random() * 1.9);
-                    vertices.push(new THREE.Vector2(
-                        radius * Math.cos(angle),
-                        radius * Math.sin(angle)
-                    ));
-                }
-
-                // Create geometry from vertices
-                const shape = new THREE.Shape(vertices);
-                const iceGeometry = new THREE.ShapeGeometry(shape);
-                
-                const iceMaterial = new THREE.MeshPhongMaterial({
-                    color: 0xdee2e6,
-                    // transparent: true,
-                    // opacity: 0.2,
-                    side: THREE.DoubleSide,
-                    blending: THREE.NoBlending,
-                    depthWrite: true,    // write to the depth buffer
-                    alphaTest: 0.5       // discard fragments with low alpha
-                });
-                
-                const icePatch = new THREE.Mesh(iceGeometry, iceMaterial);
-                
-                // Random rotation
-                const randomRotation = Math.random() * Math.PI * 2;
-                icePatch.rotation.z = randomRotation;
-                
-                // Position and orient ice patch
-                icePatch.position.set(x, y, z);
-                icePatch.lookAt(0, 0, 0); // Orient perpendicular to surface
-                
-                iceGroup.add(icePatch);
-
-                
-            }
-
-            iceGroup.visible = false;
             earthMesh.add(iceGroup);
-
-
-            // ------------------------------------------------------------ 
-            // Create simulation ice patches
-            // ------------------------------------------------------------ 
-            const simIceGroup = new THREE.Group();
-
-            // Generate random points on sphere
-            for (let i = 0; i < NUM_ICE_PATCHES; i++) {
-                // Random spherical coordinates
-                const theta = Math.random() * Math.PI * 2; // Random longitude (0 to 2π)
-                const phi = Math.acos(2 * Math.random() - 1); // Random latitude (arccos method for uniform distribution)
-                
-                // Convert to Cartesian coordinates
-                const x = SPHERE_RADIUS * Math.cos(theta) * Math.sin(phi);
-                const y = SPHERE_RADIUS * Math.sin(theta) * Math.sin(phi);
-                const z = SPHERE_RADIUS * Math.cos(phi);
-
-                // Create irregular polygon
-                const numSides = Math.floor(Math.random() * 4) + 4; // 4-7 sides
-                const vertices = [];
-                const baseRadius = 0.1;
-                
-                // Create irregular vertices
-                for (let j = 0; j < numSides; j++) {
-                    const angle = (j / numSides) * Math.PI * 2;
-                    // Vary radius between 0.7 and 1.3 of base radius
-                    const radius = baseRadius * (0.3 + Math.random() * 1.9);
-                    vertices.push(new THREE.Vector2(
-                        radius * Math.cos(angle),
-                        radius * Math.sin(angle)
-                    ));
-                }
-
-                // Create geometry from vertices
-                const shape = new THREE.Shape(vertices);
-                const iceGeometry = new THREE.ShapeGeometry(shape);
-                
-                const iceMaterial = new THREE.MeshPhongMaterial({
-                    color: 0xdee2e6,
-                    // transparent: true,
-                    // opacity: 0.2,
-                    side: THREE.DoubleSide,
-                    blending: THREE.NoBlending,
-                    depthWrite: true,    // write to the depth buffer
-                    alphaTest: 0.5       // discard fragments with low alpha
-                });
-                
-                const icePatch = new THREE.Mesh(iceGeometry, iceMaterial);
-                
-                // Random rotation
-                const randomRotation = Math.random() * Math.PI * 2;
-                icePatch.rotation.z = randomRotation;
-                
-                // Position and orient ice patch
-                icePatch.position.set(x, y, z);
-                icePatch.lookAt(0, 0, 0); // Orient perpendicular to surface
-                
-                simIceGroup.add(icePatch);
-
-                
-            }
-
-            simIceGroup.visible = false;
+            earthMesh.add(snowballEarthGroup);
             earthMesh.add(simIceGroup);
 
             // After creating all patches
-            console.log('SimIceGroup created with patches:', simIceGroup.children.length);
+            // console.log('SimIceGroup created with patches:', simIceGroup.children.length);
+
 
             return {
                 type: '3dObject',
@@ -368,13 +121,13 @@ export class ObjectFactory {
                 extras: {
                     needsLight: true,
                     atmosphere: atmosphereMesh,
-                    atmosphereHot: atmosphereHot,
                     atmosphereHotNonlinear: atmosphereHotNonlinear,
                     simAtmosphereHotNonlinear: simAtmosphereHotNonlinear,
                     shadowCylinder: shadowCylinder,
                     material: material,
                     iceGroup: iceGroup,
-                    simIceGroup: simIceGroup
+                    simIceGroup: simIceGroup,
+                    snowballEarthGroup: snowballEarthGroup
                 }
             };
         }
@@ -534,4 +287,6 @@ export class ObjectFactory {
             }
         };
     }
+
+
 } 

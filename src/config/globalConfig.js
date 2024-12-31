@@ -183,7 +183,7 @@ const configObjects = [
             {
                 type: "scale",
                 scale_to: 0.05,
-                at: SCENE_DURATION, 
+                at: SCENE_DURATION * 2, 
                 duration: 0.05
             },
             {
@@ -362,6 +362,21 @@ export const extraConfig = [
         id: "atmosphereHotNonlinear",
         entry: { at: 0 },
         exit: { at: 0.90 }
+    },
+    {
+        id: "snowballEarthGroup",
+        entry: { at: SCENE_DURATION * 1.1 },  
+        exit: { at: SCENE_DURATION * 1.65 },
+        entryDuration: SCENE_DURATION * 0.2,
+        exitDuration: SCENE_DURATION * 0.2,
+        startDecrease: SCENE_DURATION * 1.5,   
+        maxRadius: 0.2
+    },
+    {
+        id: "earthTexture",
+        file: 'public/assets/textures/rodinia_unpix.png',
+        entry: { at: SCENE_DURATION * 1.4 },
+        exit: { at: 0.96 }
     },
     {
         id: "shadowCylinder",
