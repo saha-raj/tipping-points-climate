@@ -182,13 +182,15 @@ const configObjects = [
         transformations: [
             {
                 type: "scale",
-                scale_to: 0.1,
-                at: 0.2, duration: 0.05
+                scale_to: 0.05,
+                at: SCENE_DURATION, 
+                duration: 0.05
             },
             {
                 type: "scale",
                 scale_to: 1,
-                at: 0.25, duration: 0.05
+                at: SCENE_DURATION * 2.5, 
+                duration: 0.05
             },
             // {
             //     type: "translation",
@@ -208,21 +210,41 @@ const configObjects = [
         ]
     },
     {
-        id: "my-annotation",
+        id: "rodinia",
         type: "annotation",
-        content: "Your annotation text here",
-        position: { x: 40, y: 20 },  // Screen coordinates
+        content: "An imagined view of what the Earth might have looked like during the Cryogenian period, 700 million years ago.",
+        position: { x: 40, y: 20 },  
         transition: {
             entry_from: {
-                x: 40, y: 20,  // Starting position
-                at: 0.53,  // When to start appearing
+                x: 40, y: 20,  
+                at: SCENE_DURATION * 2.75 + TRANSITION_DURATION,  
                 duration: 0.01,
                 opacity: 0
             },
             exit_to: {
-                x: 40, y: 20,  // Exit position (typically moves up)
-                at: 0.58,  // When to start disappearing
+                x: 40, y: 20,  
+                at: SCENE_DURATION * 3,  
                 duration: 0.01,
+                opacity: 0
+            }
+        }
+    },
+    {
+        id: "shadow",
+        type: "annotation",
+        content: "Earth's shadow has an area of $\\pi R^2$",
+        position: { x: 50, y: 13 },  // Screen coordinates
+        transition: {
+            entry_from: {
+                x: 50, y: 13,  // Starting position
+                at: SCENE_DURATION * 3.25 + TRANSITION_DURATION,  // When to start appearing
+                duration: 0.01,
+                opacity: 0
+            },
+            exit_to: {
+                x: 50, y: 13,  // Exit position (typically moves up)
+                at: SCENE_DURATION * 3.75,  // When to start disappearing
+                duration: 0.001,
                 opacity: 0
             }
         }
@@ -343,15 +365,15 @@ export const extraConfig = [
     },
     {
         id: "shadowCylinder",
-        entry: { at: 0.5 },
-        exit: { at: 0.6 }
+        entry: { at: SCENE_DURATION * 3.1 + TRANSITION_DURATION },
+        exit:  { at: SCENE_DURATION * 3.75}
     },
-    // {
-    //     id: "earthTexture",
-    //     file: 'public/assets/textures/water_world_pix.jpg',
-    //     entry: { at: 0.32 },
-    //     exit: { at: 0.88 }
-    // },
+    {
+        id: "iceGroup",
+        entry: { at: SCENE_DURATION * 3.5 },
+        exit: { at: SCENE_DURATION * 4 },
+        maxRadius: 0.6  // Maximum size of ice patches
+    },
     {
         id: "simAtmosphereHotNonlinear",
         entry: { at: 0.90 },
@@ -375,18 +397,13 @@ export const extraConfig = [
     //     entry: { at: 0.4 },
     //     exit: { at: 0.6 }    
     // },
-    {
-        id: "iceGroup",
-        entry: { at: 0.27 },
-        exit: { at: 0.35 },
-        maxRadius: 0.7  // Maximum size of ice patches
-    },
-    {
-        id: "iceGroup",
-        entry: { at: 0.55 },
-        exit: { at: 0.65 },
-        maxRadius: 0.9  // Maximum size of ice patches
-    },
+
+    // {
+    //     id: "iceGroup",
+    //     entry: { at: 0.55 },
+    //     exit: { at: 0.65 },
+    //     maxRadius: 0.9  // Maximum size of ice patches
+    // },
     {
         id: "simIceGroup",
         entry: { at: SIM_SCENE_START_AT },

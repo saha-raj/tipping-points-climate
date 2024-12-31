@@ -23,9 +23,11 @@
 /* } */
 
 .equilibrium-point-hot {
-    r: var(--dot-radius);
-    fill: #fb8500;  /* red */
-    stroke: none;
+    r: 0.4rem;
+    /* fill: #fb8500; */
+    fill: #fff;    
+    stroke: #fb8500;
+    stroke-width: 0.2rem;
 }
 
 .equilibrium-point-ice {
@@ -49,7 +51,7 @@
 }
 
 .sim-point {
-    fill: #ff9f1c;  /* A distinct orange color */
+    fill: #ff9f1c;  
     r: var(--dot-radius);
 }
 
@@ -146,6 +148,21 @@
     font-size: 0.9rem;
     font-family: var(--main-font);
 }
+
+.sim-controls-visibility {
+    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;  /* Start hidden */
+}
+
+.sim-controls-visibility[style*="opacity: 0"] {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.sim-controls-visibility[style*="opacity: 1"] {
+    visibility: visible;
+    pointer-events: auto;
+} 
 
 .sim-button {
     background-color: #4CAF50;

@@ -439,8 +439,8 @@ export class ObjectFactory {
         slider1.type = 'range';
         slider1.min = '0.3';
         slider1.max = '0.45';
-        slider1.step = '0.01';
-        slider1.value = '0.3';
+        slider1.step = '0.001';
+        slider1.value = '0.355';
         slider1.className = 'simulation-slider g-slider';
         // slider1.style.display = 'block';
         // slider1.style.width = '200px';
@@ -468,7 +468,7 @@ export class ObjectFactory {
         slider2.type = 'range';
         slider2.min = '220';
         slider2.max = '320';
-        slider2.value = '270';  // Temporarily back to hardcoded value until we fix imports
+        slider2.value = '292';  // Temporarily back to hardcoded value until we fix imports
         slider2.className = 'simulation-slider temp-slider';
         
         const slider2Value = document.createElement('span');

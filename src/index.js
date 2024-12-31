@@ -252,11 +252,11 @@ class ScrollCanvas {
 
             const { temperatures, albedos } = currentSimulation;
             const FPS = 60;
-            const FRAME_TIME = 1000 / FPS;
+            const FRAME_TIME = 5000 / FPS;
             let lastFrameTime = 0;
             let frameIndex = 0;
             const FRAMES_TOTAL = albedos.length;
-            const TEMP_THRESHOLD = 0.01;
+            const TEMP_THRESHOLD = 0.005;
             
             let animationFrame;
             const equilibriumTemp = temperatures[temperatures.length - 1];
