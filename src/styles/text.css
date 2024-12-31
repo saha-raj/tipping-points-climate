@@ -40,7 +40,7 @@ body {
     white-space: nowrap;
     text-align: left;
 }
-.text-type-intro-description {
+.text-type-intro-segment {
     font-family: var(--body-font);
     font-size: var(--body-font-size);
     color: var(--text-color);
@@ -52,19 +52,23 @@ body {
 /* Type-specific styles */
 .text-type-header {
     font-family: var(--header-font);
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 400;
     color: var(--text-color);
     white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    word-spacing: 0.2em;
 }
 
-.text-type-description {
+.text-type-segment {
     font-family: var(--body-font);
     font-size: var(--body-font-size);
     color: var(--text-color);
     font-weight: var(--body-font-weight);
     max-width: 500px;
     line-height: 1.6;
+    transform: translateY(-50%);  /* Move up by half height */
 }
 
 .text-element.text-type-annotation {

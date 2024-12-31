@@ -13,9 +13,9 @@ export class ObjectFactory {
             case '3dObject':
                 return this.create3DObject(config);
             case 'intro-header':     
-            case 'intro-description':
+            case 'intro-segment':
             case 'header':
-            case 'description':
+            case 'segment':
             case 'annotation':
                 return this.createText(config);
             case 'button':
@@ -89,12 +89,14 @@ export class ObjectFactory {
             earthMesh.rotation.z = 23.5 * Math.PI / 180;
             
             // create atmosphere models
-            const atmosphereMesh = createAtmosphereSingleLayer();
+            const atmPaleBlueDot1 = createAtmosphereSingleLayer();
+            const atmPaleBlueDot2 = createAtmosphereSingleLayer();
             const atmosphereHotNonlinear = createAtmosphereNonLinear(12, 0.1, 0xcae9ff);
             const simAtmosphereHotNonlinear = createAtmosphereNonLinear(12, 0.1, 0xcae9ff);
 
             // Add atmosphere models to earth mesh
-            earthMesh.add(atmosphereMesh);
+            earthMesh.add(atmPaleBlueDot1);
+            earthMesh.add(atmPaleBlueDot2);
             earthMesh.add(atmosphereHotNonlinear);
             earthMesh.add(simAtmosphereHotNonlinear);
 
@@ -103,12 +105,18 @@ export class ObjectFactory {
             earthMesh.add(shadowCylinder);
 
             // create ice models
+            const icePaleBlueDot = createIceGroup('icePaleBlueDot', 6, 1.01);
             const iceGroup = createIceGroup('iceGroup');
             const snowballEarthGroup = createIceGroup('snowballEarthGroup');
             const simIceGroup = createIceGroup('simIceGroup');
 
+
+
+
+            
             earthMesh.add(iceGroup);
             earthMesh.add(snowballEarthGroup);
+            earthMesh.add(icePaleBlueDot);
             earthMesh.add(simIceGroup);
 
             // After creating all patches
@@ -120,12 +128,14 @@ export class ObjectFactory {
                 object: earthMesh,
                 extras: {
                     needsLight: true,
-                    atmosphere: atmosphereMesh,
+                    atmPaleBlueDot1: atmPaleBlueDot1,
+                    atmPaleBlueDot2: atmPaleBlueDot2,
                     atmosphereHotNonlinear: atmosphereHotNonlinear,
                     simAtmosphereHotNonlinear: simAtmosphereHotNonlinear,
                     shadowCylinder: shadowCylinder,
                     material: material,
                     iceGroup: iceGroup,
+                    icePaleBlueDot: icePaleBlueDot,
                     simIceGroup: simIceGroup,
                     snowballEarthGroup: snowballEarthGroup
                 }

@@ -6,12 +6,12 @@ import {
     globalConfig, 
     sceneConfig, 
     extraConfig,
-    SIM_SCENE_START_AT,
-    SIM_SCENE_END_AT,
-    SIM_SCENE_LOCK_START_AT,
-    SIM_SCENE_LOCK_END_AT,
-    SIM_SCENE_RETURN_BACK_AT,
-    SIM_SCENE_FORWARD_TO_AT 
+    SIM_SEGMENT_START_AT,
+    SIM_SEGMENT_END_AT,
+    SIM_SEGMENT_LOCK_START_AT,
+    SIM_SEGMENT_LOCK_END_AT,
+    SIM_SEGMENT_RETURN_BACK_AT,
+    SIM_SEGMENT_FORWARD_TO_AT 
 } from './config/globalConfig.js';
 import { ObjectFactory } from './core/objects/ObjectFactory.js';
 import { DebugLogger } from './debug/DebugLogger.js';
@@ -215,7 +215,7 @@ class ScrollCanvas {
                 
                 if (regularAtmosphere && simAtmosphere) {
                     // In simulation scene
-                    if (progress >= SIM_SCENE_START_AT && progress <= SIM_SCENE_END_AT) {
+                    if (progress >= SIM_SEGMENT_START_AT && progress <= SIM_SEGMENT_END_AT) {
                         regularAtmosphere.visible = false;
                         simAtmosphere.visible = true;
                     } else {
@@ -257,6 +257,67 @@ class ScrollCanvas {
                     }
                 }
             }
+
+            // Handle atmosphere transitions
+            extraConfig.forEach(config => {
+                if (config.id === 'atmPaleBlueDot1') {
+                    const atmosphere = earth.extras.atmPaleBlueDot1;
+                    
+                    if (progress >= config.entry.at && progress <= config.exit.at) {
+                        atmosphere.visible = true;
+                        
+                        // Linear interpolation of opacity
+                        const t = (progress - config.entry.at) / (config.exit.at - config.entry.at);
+                        const opacity = config.entryOpacity + (config.exitOpacity - config.entryOpacity) * t;
+                        
+                        // Update material
+                        atmosphere.material.opacity = opacity;
+                        atmosphere.material.emissive.setHex(config.color);
+                    } else {
+                        atmosphere.visible = false;
+                    }
+                }
+            });
+            
+            extraConfig.forEach(config => {
+                if (config.id === 'atmPaleBlueDot2') {
+                    const atmosphere = earth.extras.atmPaleBlueDot2;
+                    
+                    if (progress >= config.entry.at && progress <= config.exit.at) {
+                        atmosphere.visible = true;
+                        
+                        // Linear interpolation of opacity
+                        const t = (progress - config.entry.at) / (config.exit.at - config.entry.at);
+                        const opacity = config.entryOpacity + (config.exitOpacity - config.entryOpacity) * t;
+                        
+                        // Update material
+                        atmosphere.material.opacity = opacity;
+                        atmosphere.material.emissive.setHex(config.color);
+                    } else {
+                        atmosphere.visible = false;
+                    }
+                }
+            });
+
+            extraConfig.forEach(config => {
+                if (config.id === 'icePaleBlueDot') {
+                    const iceGroup = earth.extras.icePaleBlueDot;
+                    
+                    if (progress >= config.entry.at && progress <= config.exit.at) {
+                        iceGroup.visible = true;
+                        
+                        // Linear interpolation of scale
+                        const t = (progress - config.entry.at) / (config.exit.at - config.entry.at);
+                        const scale = t * config.maxRadius;
+                        
+                        iceGroup.children.forEach(patch => {
+                            patch.scale.set(scale, scale, 1);
+                        });
+                    } else {
+                        iceGroup.visible = false;
+                    }
+                }
+            });
         };
 
         // Add animation button handler
@@ -527,7 +588,7 @@ class ScrollCanvas {
             scrollVelocity = Math.abs(window.scrollY - lastScrollY);
             lastScrollY = window.scrollY;
             
-            if (progress >= SIM_SCENE_LOCK_START_AT && progress <= SIM_SCENE_LOCK_END_AT && !forceUnlocked) {
+            if (progress >= SIM_SEGMENT_LOCK_START_AT && progress <= SIM_SEGMENT_LOCK_END_AT && !forceUnlocked) {
                 e.preventDefault();
                 e.stopPropagation();
                 
@@ -540,7 +601,7 @@ class ScrollCanvas {
             }
             
             // Reset lock when outside range on EITHER side
-            if (progress < SIM_SCENE_LOCK_START_AT || progress > SIM_SCENE_LOCK_END_AT) {
+            if (progress < SIM_SEGMENT_LOCK_START_AT || progress > SIM_SEGMENT_LOCK_END_AT) {
                 forceUnlocked = false;
                 lockedPosition = null;
             }
@@ -557,8 +618,8 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    // top: Math.floor(SIM_SCENE_RETURN_BACK_AT * scrollHeight),
-                    top: SIM_SCENE_RETURN_BACK_AT * scrollHeight,
+                    // top: Math.floor(SIM_SEGMENT_RETURN_BACK_AT * scrollHeight),
+                    top: SIM_SEGMENT_RETURN_BACK_AT * scrollHeight,
                     behavior: 'smooth'
                 });
             });
@@ -571,8 +632,8 @@ class ScrollCanvas {
                 forceUnlocked = true;
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 window.scrollTo({
-                    // top: Math.floor(SIM_SCENE_FORWARD_TO_AT * scrollHeight),
-                    top: SIM_SCENE_FORWARD_TO_AT * scrollHeight,
+                    // top: Math.floor(SIM_SEGMENT_FORWARD_TO_AT * scrollHeight),
+                    top: SIM_SEGMENT_FORWARD_TO_AT * scrollHeight,
                     behavior: 'smooth'
                 });
             });
