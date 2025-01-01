@@ -38,6 +38,14 @@ import { sceneContent } from '../content/contentForExport_2.js';
  * @property {Transformation[]} [transformations] - Array of transformations
  */
 
+/**
+ * @typedef {Object} BackgroundConfig
+ * @property {string} id - Unique identifier
+ * @property {string} file - Path to image file
+ * @property {number} entry.at - When to start showing
+ * @property {number} exit.at - When to stop showing
+ */
+
 
 
 
@@ -451,6 +459,20 @@ export const extraConfig = [
         entry: { at: SIM_SEGMENT_START_AT },
         exit: { at: SIM_SEGMENT_END_AT },
         maxRadius: 0.2  // Maximum size of ice patches
+    },
+    // {
+    //     id: "background-1",
+    //     type: "background",
+    //     file: "public/assets/backgrounds/milkyway01.jpg",
+    //     entry: { at: 0.0 },
+    //     exit: { at: 0.5 }
+    // },
+    {
+        id: "background-2",
+        type: "background",
+        file: "public/assets/backgrounds/pbd.webp",
+        entry: { at: 0 },
+        exit: { at: 1 }
     }
 ];
 

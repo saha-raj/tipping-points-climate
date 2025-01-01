@@ -17,6 +17,7 @@ import { ObjectFactory } from './core/objects/ObjectFactory.js';
 import { DebugLogger } from './debug/DebugLogger.js';
 import { DebugOverlay } from './debug/DebugOverlay.js';
 import { ClimateModel } from './core/simulation/climate-model.js';
+import { BackgroundManager } from './components/BackgroundManager.js';
 
 // Set color management before anything else
 THREE.ColorManagement.enabled = true;
@@ -28,6 +29,10 @@ class ScrollCanvas {
         this.lifecycle = new LifecycleManager();
         this.debugLogger = new DebugLogger();
         this.debugOverlay = new DebugOverlay();
+        
+        // Add console.log to verify initialization
+        this.backgroundManager = new BackgroundManager('background-container');
+        console.log('Background Manager initialized:', this.backgroundManager);
         
         this.setupScene();
         
@@ -425,12 +430,19 @@ class ScrollCanvas {
                 }
             }
         });
+
+        extraConfig.forEach(config => {
+            if (config.type === 'background') {
+                this.backgroundManager.loadBackground(config);
+            }
+        });
     }
 
     setupScene() {
         // Three.js setup
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x1B2737);
+        // this.scene.background = new THREE.Color(0x1B2737);
+        this.scene.background = null;
 
         this.camera = new THREE.PerspectiveCamera(
             45,
@@ -448,12 +460,16 @@ class ScrollCanvas {
         // Add camera lookAt - can be removed if needed
         this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
 
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ 
+            antialias: true,
+            alpha: true
+        });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setClearColor(0x000000, 0);
         this.renderer.outputColorSpace = 'srgb';
         THREE.ColorManagement.enabled = true;
-        // this.renderer.useLegacyLights = false;
+
         this.container.appendChild(this.renderer.domElement);
 
         // Create objects container
@@ -761,6 +777,8 @@ class ScrollCanvas {
                     }
                 }
             }
+
+            this.backgroundManager.updateProgress(progress);
         });
 
         // Handle resize

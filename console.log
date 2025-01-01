@@ -1,648 +1,372 @@
 three.module.js:1639 THREE.ColorManagement: .legacyMode=false renamed to .enabled=true in r150.
 set legacyMode @ three.module.js:1639
-(anonymous) @ index.js:23
-ObjectFactory.js:363 SimIceGroup created with patches: 3600
-ObjectFactory.js:412 Creating sim controls...
-ObjectFactory.js:513 Sim controls created: div.sim-controls.sim-controls-visibility
+(anonymous) @ index.js:24
+BackgroundManager.js:4 Background container: div#background-container
+index.js:35 Background Manager initialized: BackgroundManager {container: div#background-container, backgrounds: Map(0), currentBackground: null, currentProgress: 0}
+ObjectFactory.js:175 Creating sim controls...
+ObjectFactory.js:276 Sim controls created: div.sim-controls.sim-controls-visibility
 PotentialPlot.js:33 Created element: true
-ObjectFactory.js:527 Plot element: div.plot-area
-ObjectFactory.js:528 Is Node: true
-index.js:590 Ice Group Check: {progress: 0.000359810382789293, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.000359810382789293, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0008395575074172239, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0008395575074172239, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0013792730658738256, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0013792730658738256, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0019789570896137734, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0019789570896137734, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.002638609452818365, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.002638609452818365, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.003448182853412619, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.003448182853412619, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0043177244676528125, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0043177244676528125, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.005397155332928609, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.005397155332928609, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.006536554915125159, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.006536554915125159, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.007765907321065431, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.007765907321065431, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.009235133084864277, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.009235133084864277, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.01049446959762752, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.01049446959762752, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.011783789210664105, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.011783789210664105, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.014692256631438826, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.014692256631438826, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.016281419325804364, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.016281419325804364, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.017840596906797304, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.017840596906797304, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.019369791387516905, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.019369791387516905, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.020869000754863906, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.020869000754863906, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.022278258808291623, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.022278258808291623, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.023747485075365282, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.023747485075365282, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.025096772902047808, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.025096772902047808, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.026326126314537707, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.026326126314537707, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.027465524386909818, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.027465524386909818, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.028514971145362646, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.028514971145362646, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.02947446658989619, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.02947446658989619, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.030373991807684537, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.030373991807684537, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.031183565711553604, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.031183565711553604, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03193317140177673, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03193317140177673, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.032622806865254664, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.032622806865254664, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.033252476128185916, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.033252476128185916, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03385216027774456, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03385216027774456, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.034391876213657274, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.034391876213657274, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03490160502309814, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03490160502309814, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03538135475846416, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03538135475846416, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03583111736735834, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03583111736735834, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03622090974950732, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03622090974950732, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03658072305758147, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03658072305758147, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.036910549239183764, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.036910549239183764, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03721038829431421, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03721038829431421, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03751023137564316, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03751023137564316, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03778008733050026, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03778008733050026, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03801996421128253, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03801996421128253, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03825983706586629, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03825983706586629, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03846972682017671, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03846972682017671, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03867961657448712, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03867961657448712, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.038889506328797535, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.038889506328797535, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.039069408956636104, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.039069408956636104, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03924931561067318, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03924931561067318, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0393992351382384, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0393992351382384, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03954915869200213, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.03954915869200213, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.039609124892548815, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.039609124892548815, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04023879415548006, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04023879415548006, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04122827270028695, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04122827270028695, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04221775124509384, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04221775124509384, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.043716958599341584, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.043716958599341584, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04599575877028431, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04599575877028431, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04833452514177372, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.04833452514177372, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.05037345245813269, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.05037345245813269, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.05526087495542193, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.05526087495542193, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.058079391062277365, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.058079391062277365, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.060897907169132806, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.060897907169132806, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.06365645304924306, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.06365645304924306, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.06629506250206141, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.06629506250206141, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.06881373150138939, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.06881373150138939, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.07142236188013291, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.07142236188013291, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.07385107755244236, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.07385107755244236, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0760699074966399, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0760699074966399, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.07813881791327221, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.07813881791327221, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08002782167586744, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08002782167586744, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08176690591089746, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08176690591089746, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08335607061836225, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08335607061836225, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08482529487233666, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08482529487233666, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08617458672521769, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08617458672521769, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08740393812460834, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08740393812460834, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08851334907050859, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08851334907050859, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08953281474178733, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.08953281474178733, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09049230616012237, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09049230616012237, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09136185230383588, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09136185230383588, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0921714241946057, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.0921714241946057, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09289104275835697, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09289104275835697, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09358068224803341, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09358068224803341, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09421034748476616, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09421034748476616, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09481003364742406, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09481003364742406, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09534974555713827, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09534974555713827, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09585947839277763, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09585947839277763, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09633922410194515, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09633922410194515, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09639919835488885, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09639919835488885, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09717878311918682, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09717878311918682, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09804832926290033, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09804832926290033, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09894785448068867, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.09894785448068867, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10020718495415416, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10020718495415416, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10170639633460042, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10170639633460042, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1039552134052698, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1039552134052698, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10635395000350441, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10635395000350441, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10851281374715525, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10851281374715525, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10992207180058297, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.10992207180058297, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1120809274918368, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.1120809274918368, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.1120809274918368, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.11438971076305288, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.11438971076305288, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.11438971076305288, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.11669849403426893, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.11669849403426893, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.11669849403426893, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.11894731110493832, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.11894731110493832, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.11894731110493832, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.12113616197506102, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.12113616197506102, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.12113616197506102, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.12320506433929632, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.12320506433929632, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.12320506433929632, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.12548386853643756, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.12548386853643756, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.12548386853643756, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1275827580271447, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.1275827580271447, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.1275827580271447, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.12953173604268364, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.12953173604268364, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.12953173604268364, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.13127082027771364, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.13127082027771364, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.13127082027771364, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.13288996405925327, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.13288996405925327, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.13288996405925327, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.13435918831322768, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.13435918831322768, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.13435918831322768, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1357084801661087, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.1357084801661087, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.1357084801661087, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.13693782351310235, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.13693782351310235, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.13693782351310235, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.13804725056379663, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.13804725056379663, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.13804725056379663, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1390966872567532, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.1390966872567532, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.1390966872567532, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14005619477988226, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14005619477988226, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14005619477988226, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14092572481880175, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14092572481880175, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14092572481880175, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14173529670957155, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14173529670957155, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14173529670957155, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1424849104521917, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.1424849104521917, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.1424849104521917, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14317454994186812, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14317454994186812, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14317454994186812, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14380421517860087, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14380421517860087, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14380421517860087, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14440389328886177, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14440389328886177, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14440389328886177, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.144943613250973, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.144943613250973, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.144943613250973, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14545334608661237, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14545334608661237, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14545334608661237, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14593309179577987, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14593309179577987, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14593309179577987, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14638285037847554, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14638285037847554, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14638285037847554, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14641283750494738, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14641283750494738, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14641283750494738, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14653276990604078, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14653276990604078, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14653276990604078, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14728238364866092, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14728238364866092, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14728238364866092, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14839179459456117, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14839179459456117, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14839179459456117, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.14947121841398958, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.14947121841398958, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.14947121841398958, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.15070057786577723, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.15070057786577723, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1529493868840496, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1529493868840496, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.15510825062770045, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.15510825062770045, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.15702724956916456, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.15702724956916456, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1605353890609024, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1605353890609024, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1627242399310251, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1627242399310251, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.16494307792761964, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.16494307792761964, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1671019416712705, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1671019416712705, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.16920083116197765, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.16920083116197765, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17120977537806326, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17120977537806326, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17333865199524226, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17333865199524226, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17534758010653387, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17534758010653387, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17717661766858242, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17717661766858242, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17885573570306573, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.17885573570306573, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18038493420998383, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18038493420998383, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18179418421101454, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18179418421101454, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1830835179157459, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1830835179157459, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18425288700979583, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18425288700979583, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18533232693401827, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18533232693401827, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.186351792605297, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.186351792605297, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18725130977068835, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18725130977068835, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18809086878793002, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18809086878793002, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18887045355222798, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18887045355222798, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18959008016837628, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.18959008016837628, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.190219745405109, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.190219745405109, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19081943962016393, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19081943962016393, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19135914347748112, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19135914347748112, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1918688763131205, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1918688763131205, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.192348622022288, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.192348622022288, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1927983967097777, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1927983967097777, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19303826151196443, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19303826151196443, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19429760809022395, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19429760809022395, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1960666713993288, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.1960666713993288, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19861531947273162, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.19861531947273162, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.20134389030496552, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.20134389030496552, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.20437228408753585, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.20437228408753585, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.20761058775540914, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.20761058775540914, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2113885952805996, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2113885952805996, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.21531652233335533, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.21531652233335533, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.21918449123796135, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.21918449123796135, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.22293251163667996, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.22293251163667996, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.22653061250783338, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.22653061250783338, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2299488067249497, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2299488067249497, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.23339698806853787, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.23339698806853787, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.23663529173641115, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.23663529173641115, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.23966368551898148, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.23966368551898148, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24245221449936508, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24245221449936508, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24503086580403377, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24503086580403377, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24745958147634323, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24745958147634323, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24967841947293776, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.24967841947293776, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.25168734758422934, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.25168734758422934, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.25357635939922163, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.25357635939922163, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2553154355818546, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2553154355818546, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.25687462121524457, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.25687462121524457, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2582838712162753, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2582838712162753, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2607725611415284, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2607725611415284, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2618819881922227, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2618819881922227, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2629014377587074, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2629014377587074, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2638309581553646, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2638309581553646, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.26470050429907815, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.26470050429907815, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2654800890633761, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2654800890633761, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.26577992811850654, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.26577992811850654, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2664095933552393, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2664095933552393, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2676089656805551, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2676089656805551, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.269168135209151, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.269168135209151, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2711471084035588, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2711471084035588, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2739356212791484, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2739356212791484, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2763943401827237, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2763943401827237, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2794527371965599, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2794527371965599, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2826910247596392, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2826910247596392, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.28592931232271845, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.28592931232271845, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2890476513799103, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2890476513799103, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2920460741408028, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2920460741408028, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.29492458060539595, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.29492458060539595, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2978630291133448, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.2978630291133448, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3006215548624625, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3006215548624625, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3031702351454533, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3031702351454533, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.30553896046002504, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.30553896046002504, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3076978403084699, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3076978403084699, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3097067845245556, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3097067845245556, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3115358059818101, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3115358059818101, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3132149240162934, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3132149240162934, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31474413862800554, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31474413862800554, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31615337252424225, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31615337252424225, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3174426901241796, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3174426901241796, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31861209142781755, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31861209142781755, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31969153135204, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.31969153135204, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3207109648137307, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3207109648137307, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32161051418871006, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32161051418871006, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3224500571011577, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3224500571011577, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32322965797024966, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32322965797024966, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.323949284586398, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.323949284586398, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32457894982313074, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32457894982313074, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3246389240760744, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3246389240760744, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32514864080691974, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32514864080691974, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32754738545755135, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32754738545755135, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32934641978833407, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.32934641978833407, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.331295389751476, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.331295389751476, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.33333432109403344, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.33333432109403344, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3351034005079323, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3351034005079323, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.33909130181363173, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.33909130181363173, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.34143007221131966, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.34143007221131966, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3437987975258914, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3437987975258914, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.34607759367063556, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.34607759367063556, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3482664606455523, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3482664606455523, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3503653340314654, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3503653340314654, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3503653340314654, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3640681302359906, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3640681302359906, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3640681302359906, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.36520751220356873, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.36520751220356873, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.36520751220356873, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3662569650013193, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3662569650013193, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3662569650013193, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.36721645641965434, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.36721645641965434, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.36721645641965434, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3680860186681619, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3680860186681619, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3680860186681619, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3688955744541377, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3688955744541377, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3688955744541377, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3696451881967578, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3696451881967578, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3696451881967578, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.37096449292316697, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.37096449292316697, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.37096449292316697, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.37210390710033314, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.37210390710033314, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.37210390710033314, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3725536495782348, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3725536495782348, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3725536495782348, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.37348315387009795, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.37348315387009795, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.37348315387009795, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.376391647461163, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.376391647461163, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.376391647461163, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3811291302998945, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3811291302998945, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3811291302998945, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.38349788782405425, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.38349788782405425, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.38349788782405425, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.38532690928130875, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.38532690928130875, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.38532690928130875, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.39255313035967543, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.39255313035967543, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.39255313035967543, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.3952216947293776, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.3952216947293776, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.3952216947293776, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.397860304182196, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.397860304182196, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: true}
-index.js:598 Setting ice visible: {progress: 0.397860304182196, entryAt: 0.35000000000000003, exitAt: 0.4, actualVisibility: true}
-index.js:590 Ice Group Check: {progress: 0.4028076969062304, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4028076969062304, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4053563771892213, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4053563771892213, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4076951475869092, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4076951475869092, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.41186293944185165, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.41186293944185165, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.41369196089910615, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.41369196089910615, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4153710789335895, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4153710789335895, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4183095274415383, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4183095274415383, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4195988772510637, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4195988772510637, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4207682463451136, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4207682463451136, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42184768626933605, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42184768626933605, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4228671519406148, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4228671519406148, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42376666910600613, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42376666910600613, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42457622489198193, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42457622489198193, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4253558257610739, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4253558257610739, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4260754523772222, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4260754523772222, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42670511761395497, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42670511761395497, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4273047957242158, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4273047957242158, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4278445317911211, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4278445317911211, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4283542485219664, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4283542485219664, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42883401033592794, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42883401033592794, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42928375281382963, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.42928375281382963, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4296735532483756, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4296735532483756, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43003336655644975, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43003336655644975, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43036319273805207, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43036319273805207, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43069301891965434, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43069301891965434, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4309928579747848, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4309928579747848, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4312627099034434, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4312627099034434, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43150257470563014, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43150257470563014, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43174247171740493, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43174247171740493, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4319523493931198, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4319523493931198, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4321622270688347, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4321622270688347, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4323721369541377, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4323721369541377, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43255202750338073, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43255202750338073, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43273195026221184, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43273195026221184, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4330617764438141, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4330617764438141, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4332116798665853, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4332116798665853, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4333316283724727, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4333316283724727, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4334515768783601, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4334515768783601, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43357149317465943, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43357149317465943, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43369144168054685, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.43369144168054685, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4338113579768462, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4338113579768462, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4340212678621492, entryAt: 0.11000000000000001, exitAt: 0.15000000000000002, shouldBeVisible: false}
-index.js:590 Ice Group Check: {progress: 0.4340212678621492, entryAt: 0.35000000000000003, exitAt: 0.4, shouldBeVisible: false}
+ObjectFactory.js:290 Plot element: <div class=​"plot-area" style=​"position:​ absolute;​ left:​ 5%;​ top:​ 50%;​ display:​ none;​">​…​</div>​
+ObjectFactory.js:291 Is Node: true
+BackgroundManager.js:16 Image loaded: {naturalWidth: 2048, naturalHeight: 1366, src: 'http://localhost:3000/public/assets/backgrounds/milkyway01.jpg'}
+BackgroundManager.js:24 Container: {width: 1009.0908813476562, height: 722.7272338867188, display: 'block', overflow: 'visible'}
+BackgroundManager.js:34 Parent: {tag: 'BODY', display: 'block', visibility: 'visible', overflow: 'visible'}
+BackgroundManager.js:34 Parent: {tag: 'HTML', display: 'block', visibility: 'visible', overflow: 'visible'}
+BackgroundManager.js:63 Forced styles: {opacity: '1', visibility: 'visible', display: 'block', zIndex: '0'}
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 1
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
+BackgroundManager.js:86 Computed opacity: 0
