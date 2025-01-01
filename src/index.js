@@ -104,7 +104,58 @@ class ScrollCanvas {
         if (simControls) {
             const gValue = simControls.controls.gSlider.value;
             const tempValue = simControls.controls.tempSlider.value;
-            updatePotentialPlot(gValue, tempValue);
+            console.log('Initial values:', {
+                gValue,
+                tempValue,
+                hasSimControls: !!simControls,
+                hasControls: !!(simControls && simControls.controls),
+                hasSliders: !!(simControls && simControls.controls && 
+                             simControls.controls.gSlider && 
+                             simControls.controls.tempSlider)
+            });
+
+            updatePotentialPlot(gValue, tempValue);  // This creates currentSimulation
+
+            // Add this initial ice scale calculation AFTER updatePotentialPlot
+            const earth = this.objects.get('earth');
+            console.log('Earth object:', {
+                hasEarth: !!earth,
+                hasExtras: !!(earth && earth.extras),
+                hasIceGroup: !!(earth && earth.extras && earth.extras.simIceGroup),
+                simIceGroupVisible: earth?.extras?.simIceGroup?.visible,
+                hasCurrentSimulation: !!currentSimulation
+            });
+
+            if (earth && earth.extras && earth.extras.simIceGroup && currentSimulation) {
+                // Use currentSimulation.albedos[0] instead of calculating directly
+                const albedo = currentSimulation.albedos[0];
+                const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                
+                console.log('Ice calculation:', {
+                    tempValue,
+                    albedo,
+                    scale,
+                    currentSimulationExists: !!currentSimulation,
+                    simIceGroup: earth.extras.simIceGroup,
+                    simIceChildren: earth.extras.simIceGroup.children,
+                    simIceParent: earth.extras.simIceGroup.parent,
+                    simIceMatrix: earth.extras.simIceGroup.matrix,
+                    simIceWorldMatrix: earth.extras.simIceGroup.matrixWorld
+                });
+                
+                earth.extras.simIceGroup.visible = true;
+                console.log('Ice visibility after setting:', earth.extras.simIceGroup.visible);
+                earth.extras.simIceGroup.children.forEach(icePatch => {
+                    icePatch.scale.set(scale, scale, 1);
+                });
+                console.log('Ice visibility after scaling:', earth.extras.simIceGroup.visible);
+
+                // Dispatch temp-slider-change event to trigger the handler
+                const event = new CustomEvent('temp-slider-change', { 
+                    detail: { value: tempValue }
+                });
+                document.dispatchEvent(event);
+            }
         }
         
         this.bindEvents();
@@ -217,16 +268,36 @@ class ScrollCanvas {
             if (earth && earth.extras) {
                 const regularAtmosphere = earth.extras.atmosphereHotNonlinear;
                 const simAtmosphere = earth.extras.simAtmosphereHotNonlinear;
+                const simIceGroup = earth.extras.simIceGroup;
                 
                 if (regularAtmosphere && simAtmosphere) {
                     // In simulation scene
                     if (progress >= SIM_SEGMENT_START_AT && progress <= SIM_SEGMENT_END_AT) {
                         regularAtmosphere.visible = false;
                         simAtmosphere.visible = true;
+                        if (simIceGroup) {
+                            simIceGroup.visible = true;
+                            
+                            // Get initial temperature from slider
+                            const simControls = this.objects.get('sim-controls');
+                            if (simControls) {
+                                const tempValue = simControls.controls.tempSlider.value;
+                                const climateModel = new ClimateModel();
+                                const albedo = climateModel.calculateAlbedo(parseFloat(tempValue));
+                                const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                                
+                                simIceGroup.children.forEach(icePatch => {
+                                    icePatch.scale.set(scale, scale, 1);
+                                });
+                            }
+                        }
                     } else {
                         // Outside simulation scene
                         regularAtmosphere.visible = true;
                         simAtmosphere.visible = false;
+                        if (simIceGroup) {
+                            simIceGroup.visible = false;
+                        }
                     }
                 }
             }
