@@ -260,6 +260,52 @@ const configObjects = [
     },
 
     {
+        id: 'explanation-potential',
+        type: 'standalonePotentialPlot',
+        position: { x: 20, y: 30 },
+        params: {
+            g: 0.384
+        },
+        transition: {
+            entry_from: {
+                x: 20, y: 30,
+                at: DUR_SEGMENT * 15,  // Adjust these timings as needed
+                // duration: DUR_TRANS,
+                opacity: 0
+            },
+            exit_to: {
+                x: 20, y: 30,
+                at: DUR_SEGMENT * 16,  // Adjust these timings as needed
+                // duration: DUR_TRANS,
+                opacity: 0
+            }
+        }
+    },
+    {
+        id: 'explanation-temperature',
+        type: 'standaloneTemperaturePlot',
+        position: { x: 60, y: 30 },
+        params: {
+            T0: 317,
+            g: 0.384
+        },
+        transition: {
+            entry_from: {
+                x: 60, y: 30,
+                at: DUR_SEGMENT * 15,  // Adjust these timings as needed
+                // duration: DUR_TRANS,
+                opacity: 0
+            },
+            exit_to: {
+                x: 60, y: 30,
+                at: DUR_SEGMENT * 16,  // Adjust these timings as needed
+                // duration: DUR_TRANS,
+                opacity: 0
+            }
+        }
+    },
+
+    {
         id: 'return-to-story',
         type: 'button',
         content: '⌃',

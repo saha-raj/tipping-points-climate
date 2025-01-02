@@ -7,6 +7,8 @@ import { createShadowCylinder } from './shadowCylinder.js';
 import { createAtmosphereNonLinear } from './atmosphereNonLinear.js';
 import { createAtmosphereSingleLayer } from './atmosphereSingleLayer.js';
 import { SolutionPlot } from './SolutionPlot.js';
+import { StandalonePotentialPlot } from './StandalonePotentialPlot.js';
+import { StandaloneTemperaturePlot } from './StandaloneTemperaturePlot.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -27,6 +29,10 @@ export class ObjectFactory {
                 return this.createVPlot(config);
             case 'sim-solution-plot': 
                 return this.createSolutionPlot(config);
+            case 'standalonePotentialPlot':
+                return this.createStandalonePotentialPlot(config);
+            case 'standaloneTemperaturePlot':
+                return this.createStandaloneTemperaturePlot(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -312,5 +318,28 @@ export class ObjectFactory {
         };
     }
 
+    static createStandalonePotentialPlot(config) {
+        const plot = new StandalonePotentialPlot(config);
+        return {
+            id: config.id,
+            type: 'plot',
+            object: plot.element,
+            extras: {
+                plot: plot
+            }
+        };
+    }
+
+    static createStandaloneTemperaturePlot(config) {
+        const plot = new StandaloneTemperaturePlot(config);
+        return {
+            id: config.id,
+            type: 'plot',
+            object: plot.element,
+            extras: {
+                plot: plot
+            }
+        };
+    }
 
 } 

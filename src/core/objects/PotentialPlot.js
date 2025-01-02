@@ -34,8 +34,15 @@ export class PotentialPlot {
     }
 
     setupPlot(container) {
-        const width = 400; // We can make these configurable if needed
+        const width = 400;
         const height = width * 0.8;
+        const plotWidth = width - this.margins.left - this.margins.right;
+        const plotHeight = height - this.margins.top - this.margins.bottom;
+
+        // Define xScale at class level first
+        this.xScale = d3.scaleLinear()
+            .domain([220, 320])
+            .range([0, plotWidth]);
 
         const svg = d3.select(container)
             .append('svg')
@@ -63,12 +70,17 @@ export class PotentialPlot {
 
         svg.append('text')
             .attr('class', 'y-label')
-            .attr('text-anchor', 'middle')
-            .attr('transform', 'rotate(-90)')
-            .attr('x', -height/2)
-            .attr('y', 20)
-            .text('Potential');
+            .attr('text-anchor', 'start')
+            .attr('x', this.margins.left)
+            .attr('y', 25)
+            .style('font-size', '0.9rem')
+            .style('font-weight', '500')
+            .style('font-family', this.MAIN_FONT)
+            .style('fill', this.TEXT_COLOR)
+            .text('Climate Potential');
 
+        
+        
         // Update styling for axes
         plotArea.select('.x-axis')
             .style('font-size', '0.8rem')
@@ -90,6 +102,40 @@ export class PotentialPlot {
             .style('font-weight', '500')
             .style('font-family', this.MAIN_FONT)
             .style('fill', this.TEXT_COLOR);
+
+        // Add freezing point reference line FIRST
+        plotArea.append('line')
+            .attr('class', 'freezing-line')
+            .style('stroke', '#8ecae6')
+            .style('stroke-width', '1px')
+            .style('stroke-dasharray', '4,4')
+            .attr('x1', this.xScale(273))
+            .attr('x2', this.xScale(273))
+            .attr('y1', 0)
+            .attr('y2', plotHeight);
+
+        // Then add the labels
+        plotArea.append('text')
+            .attr('class', 'freezing-label-1')
+            .attr('text-anchor', 'start')
+            .attr('transform', `rotate(-90, ${this.xScale(273)}, ${plotHeight/4})`)
+            .attr('x', this.xScale(273)+14)
+            .attr('y', plotHeight/4 - 7)
+            .style('font-size', '0.7rem')
+            .style('font-family', this.MAIN_FONT)
+            .style('fill', '#8ecae6')
+            .text('Freezing');
+
+        plotArea.append('text')
+            .attr('class', 'freezing-label-2')
+            .attr('text-anchor', 'start')
+            .attr('transform', `rotate(-90, ${this.xScale(273)}, ${plotHeight/4 + 40})`)
+            .attr('x', this.xScale(273) + 70)
+            .attr('y', plotHeight/4 + 54)
+            .style('font-size', '0.7rem')
+            .style('font-family', this.MAIN_FONT)
+            .style('fill', '#8ecae6')
+            .text('Point');
 
         this.plot = { svg, plotArea, width, height };
     }

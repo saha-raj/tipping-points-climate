@@ -26,9 +26,9 @@ export class SolutionPlot {
         this.TEXT_COLOR = style.getPropertyValue('--text-color');
         this.MAIN_FONT = style.getPropertyValue('--main-font');
 
-        // Initialize data array for time series
-        this.timeSeriesData = [];
-        this.isAnimating = false;
+        // Initialize data array for time series with config temperature
+        const initialTemp = config.params?.T0 || 292;  // Use config value or fallback
+        this.timeSeriesData = [{ time: 0, temp: initialTemp }];
 
         // Setup the plot in the element
         this.setupPlot(this.element);
@@ -88,11 +88,34 @@ export class SolutionPlot {
 
         svg.append('text')
             .attr('class', 'y-label')
-            .attr('text-anchor', 'middle')
-            .attr('transform', 'rotate(-90)')
-            .attr('x', -height/2)
-            .attr('y', 20)
+            .attr('text-anchor', 'start')  // Left align
+            .attr('x', this.margins.left)  // Align with y-axis position
+            .attr('y', 25)  // Position at top
+            .style('font-size', '0.9rem')
+            .style('font-weight', '500')
+            .style('font-family', this.MAIN_FONT)
+            .style('fill', this.TEXT_COLOR)
             .text('Temperature (K)');
+
+        plotArea.append('text')
+            .attr('class', 'freezing-label-1')
+            .attr('text-anchor', 'end')  // Right align
+            .attr('x', plotWidth - 2)  // 5px from right edge
+            .attr('y', this.yScale(273) - 7)  // Slightly above line
+            .style('font-size', '0.7rem')
+            .style('font-family', this.MAIN_FONT)
+            .style('fill', '#8ecae6')
+            .text('Freezing');
+
+        plotArea.append('text')
+            .attr('class', 'freezing-label-2')
+            .attr('text-anchor', 'end')  // Right align
+            .attr('x', plotWidth - 2)  // 5px from right edge
+            .attr('y', this.yScale(273) + 14)  // Slightly below line
+            .style('font-size', '0.7rem')
+            .style('font-family', this.MAIN_FONT)
+            .style('fill', '#8ecae6')
+            .text('Point');
 
         // Style axes
         plotArea.select('.x-axis')
@@ -115,11 +138,9 @@ export class SolutionPlot {
         // Add initial point
         this.timeSeriesData = [{ time: 0, temp: 292 }];
         
-        plotArea.selectAll('.current-point').remove();
+        plotArea.selectAll('.initial-point').remove();
         plotArea.append('circle')
-            .attr('class', 'current-point')
-            .attr('r', this.DOT_RADIUS)
-            .style('fill', this.LINE_COLOR)
+            .attr('class', 'initial-point')
             .attr('cx', this.xScale(0))
             .attr('cy', this.yScale(292));
 
@@ -158,11 +179,9 @@ export class SolutionPlot {
         // Add initial point
         this.timeSeriesData = [{ time: 0, temp: initialTemp }];
         
-        plotArea.selectAll('.current-point').remove();
+        plotArea.selectAll('.initial-point').remove();
         plotArea.append('circle')
-            .attr('class', 'current-point')
-            .attr('r', this.DOT_RADIUS)
-            .style('fill', this.LINE_COLOR)
+            .attr('class', 'initial-point')
             .attr('cx', x(0))
             .attr('cy', y(initialTemp));
     }
@@ -173,9 +192,9 @@ export class SolutionPlot {
         // Remove tracking dot during slider changes
         this.removeTrackingDot();
         
-        const { plotArea, width, height } = this.plot;
-        const plotWidth = width - this.margins.left - this.margins.right;
-        const plotHeight = height - this.margins.top - this.margins.bottom;
+        const { plotArea } = this.plot;
+        const plotWidth = this.plot.width - this.margins.left - this.margins.right;
+        const plotHeight = this.plot.height - this.margins.top - this.margins.bottom;
 
         // Update scales with actual data range
         const x = d3.scaleLinear()
@@ -216,10 +235,10 @@ export class SolutionPlot {
             .attr('fill', 'none')
             .attr('d', solutionLine);
 
-        // Update current point
-        plotArea.selectAll('.current-point')
-            .attr('cx', x(solutionData.times[0]))
-            .attr('cy', y(solutionData.temperatures[0]));
+        // Update initial point position
+        plotArea.selectAll('.initial-point')
+            .attr('cx', this.xScale(solutionData.times[0]))
+            .attr('cy', this.yScale(solutionData.temperatures[0]));
 
         // Update freezing point line position with new scale
         this.plot.plotArea.select('.freezing-line')
@@ -244,7 +263,7 @@ export class SolutionPlot {
             }
 
             // Update current point position
-            plotArea.select('.current-point')
+            plotArea.select('.initial-point')
                 .attr('cx', this.xScale(solutionData.times[currentPoint]))
                 .attr('cy', this.yScale(solutionData.temperatures[currentPoint]));
 
@@ -290,8 +309,6 @@ export class SolutionPlot {
         // Add new tracking dot
         this.trackingDot = this.plot.plotArea.append('circle')
             .attr('class', 'tracking-dot')
-            .attr('r', this.DOT_RADIUS)
-            .style('fill', this.LINE_COLOR)
             .attr('cx', this.xScale(time))
             .attr('cy', this.yScale(temp));
     }
@@ -314,9 +331,6 @@ export class SolutionPlot {
     startAnimation(simulation) {
         // Clear previous animation state
         this.removeTrackingDot();
-        
-        // Remove initial point if it exists
-        this.plot.plotArea.selectAll('.initial-point').remove();
         
         // Initialize tracking dot at start position
         this.initTrackingDot(simulation.times[0], simulation.temperatures[0]);
