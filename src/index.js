@@ -124,6 +124,22 @@ class ScrollCanvas {
             
             this.objects.set(config.id, object);
             this.lifecycle.registerObject(config);
+
+            if (!object.positionLogged) {
+                const element = object?.object;
+                console.log('Plot creation:', {
+                    id: element?.id,
+                    type: object?.type,
+                    element: element,
+                    inlineStyles: element?.style ? {
+                        position: element.style.position,
+                        left: element.style.left,
+                        top: element.style.top,
+                        transform: element.style.transform
+                    } : 'No inline styles'
+                });
+                object.positionLogged = true;
+            }
         });
 
         // Initialize plot after all objects are created and registered
@@ -567,10 +583,13 @@ class ScrollCanvas {
         );
         
         // Position camera
-        this.camera.position.x = -4;
-        this.camera.position.y = 3.2;
-        this.camera.position.z = 3;
-        
+        // this.camera.position.x = -4;
+        // this.camera.position.y = 3.2;
+        // this.camera.position.z = 3;
+
+        this.camera.position.x = 0;
+        this.camera.position.y = 0;
+        this.camera.position.z = 7;
 
         // Add camera lookAt - can be removed if needed
         this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
@@ -669,13 +688,44 @@ class ScrollCanvas {
                     const look = transforms.camera_look;
                     this.camera.lookAt(look.x, look.y, look.z);
                 }
-            } else if (object.type === 'plot') {  // Handle plots
+            } else if (object.type.includes('plot')) {  // Handle all plot types
                 if (visible) {
                     object.object.style.display = 'block';
-                    object.object.style.left = `${position.x}%`;
-                    object.object.style.top = `${position.y}%`;
                     object.object.style.opacity = opacity;
                     object.object.style.transform = this.getTransformString(transforms);
+                    
+                    // Enhanced logging
+                    if (!object.positionLogged) {
+                        console.log('Plot object details:', {
+                            objectId: object.object.id,  // Log the actual element ID
+                            parentId: object.object.parentElement?.id,  // Log parent ID if it exists
+                            type: object.type,
+                            element: object.object,
+                            className: object.object.className
+                        });
+                        object.positionLogged = true;
+                    }
+                    
+                    // Check by ID instead of type
+                    switch (object.object.id) {
+                        case 'sim-v-plot':
+                            // Let CSS handle positioning
+                            break;
+                        case 'sim-solution-plot':
+                            // Let CSS handle positioning
+                            break;
+                        case 'explanation-potential':
+                            object.object.style.left = `${position.x}%`;
+                            object.object.style.top = `${position.y}%`;
+                            break;
+                        case 'explanation-temperature':
+                            object.object.style.left = `${position.x}%`;
+                            object.object.style.top = `${position.y}%`;
+                            break;
+                        default:
+                            object.object.style.left = `${position.x}%`;
+                            object.object.style.top = `${position.y}%`;
+                    }
                 }
             } else {  // Handle other DOM elements
                 if (visible) {
@@ -788,7 +838,7 @@ class ScrollCanvas {
             // Comment out debug logging
             // this.debugLogger.logProgress(progress);
             this.debugOverlay.updateProgress(progress);
-            // this.debugOverlay.updateScene(this.getCurrentScene(progress));
+            this.debugOverlay.updateScene(this.getCurrentScene(progress));
             
             this.lifecycle.updateProgress(progress);
             
@@ -948,8 +998,22 @@ class ScrollCanvas {
     }
 
     getCurrentScene(progress) {
-        // Placeholder scene calculation - adjust based on your needs
-        return Math.floor(progress * 3) + 1;
+        // Get all visible objects at current progress
+        const visibleObjects = this.lifecycle.getVisibleObjects();
+        
+        // Find the highest segment number among visible objects
+        let currentScene = 0;  // Default to scene 1
+        
+        visibleObjects.forEach(({ id }) => {
+            if (id.startsWith('segment-')) {
+                const sceneNum = parseInt(id.split('-')[1]);
+                if (!isNaN(sceneNum) && sceneNum > currentScene) {
+                    currentScene = sceneNum;
+                }
+            }
+        });
+        
+        return currentScene;
     }
 
     initSimulation() {

@@ -95,6 +95,7 @@ export class ObjectFactory {
             // earthMesh.visible = true;
 
             // Add Earth's axial tilt (23.5 degrees)
+            earthMesh.rotation.y = 60 * Math.PI / 180;
             earthMesh.rotation.z = 23.5 * Math.PI / 180;
             
             // create atmosphere models
@@ -296,22 +297,24 @@ export class ObjectFactory {
 
     static createVPlot(config) {
         const plot = new PotentialPlot(config);
-        console.log('Plot element:', plot.element);
-        console.log('Is Node:', plot.element instanceof Node);
+        const element = plot.element;
+        element.id = 'sim-v-plot';  // Set the ID explicitly
         return {
             type: 'plot',
-            object: plot.element,  // Should be a DOM element
+            object: element,
             extras: {
-                plot: plot        // Keep reference to plot object
+                plot: plot
             }
         };
     }
 
     static createSolutionPlot(config) {
         const plot = new SolutionPlot(config);
+        const element = plot.element;
+        element.id = 'sim-solution-plot';  // Set the ID explicitly
         return {
             type: 'plot',
-            object: plot.element,
+            object: element,
             extras: {
                 plot: plot
             }
@@ -320,10 +323,11 @@ export class ObjectFactory {
 
     static createStandalonePotentialPlot(config) {
         const plot = new StandalonePotentialPlot(config);
+        const element = plot.element;
+        element.id = 'explanation-potential';  // Set the ID explicitly
         return {
-            id: config.id,
             type: 'plot',
-            object: plot.element,
+            object: element,
             extras: {
                 plot: plot
             }
@@ -332,10 +336,11 @@ export class ObjectFactory {
 
     static createStandaloneTemperaturePlot(config) {
         const plot = new StandaloneTemperaturePlot(config);
+        const element = plot.element;
+        element.id = 'explanation-temperature';  // Set the ID explicitly
         return {
-            id: config.id,
             type: 'plot',
-            object: plot.element,
+            object: element,
             extras: {
                 plot: plot
             }

@@ -56,6 +56,7 @@ import { sceneContent } from '../content/contentForExport_2.js';
 
 const DUR_TRANS_FRAC = 0.2;
 const HEIGHT_MULTIPLIER = 150;
+const DELAY_FRAC_SEGMENT = 0.05;
 
 const EARTH_X = 50;  // Center of screen horizontally
 const EARTH_Y = 50;  // Center of screen vertically
@@ -73,7 +74,7 @@ export const SEGMENT_Y = 50;
 const SCROLL_dX = 0;
 const SCROLL_dY = 50;
 
-const SIM_SEGMENT_NUM = 16; // as in contentForExport.js
+const SIM_SEGMENT_NUM = 18; // as in contentForExport.js
 
 // -----------------------------------------
 // -----------------------------------------
@@ -89,6 +90,7 @@ const DUR_SEGMENT = 1 / NUM_SEGMENTS;
 
 // const DUR_SEGMENT = 1 / NUM_SEGMENTS;
 const DUR_TRANS = DUR_SEGMENT * DUR_TRANS_FRAC;
+const DELAY = DUR_SEGMENT * DELAY_FRAC_SEGMENT;
 
 export const SIM_SEGMENT_START_AT = (SIM_SEGMENT_NUM / NUM_SEGMENTS);
 export const SIM_SEGMENT_END_AT   = (SIM_SEGMENT_NUM + 1) / NUM_SEGMENTS;
@@ -192,29 +194,29 @@ const configObjects = [
             {
                 type: "scale",
                 scale_to: 0.05,
-                at: DUR_SEGMENT * 2, 
+                at: DUR_SEGMENT * 3 + DUR_TRANS + DELAY, 
                 duration: 0.02
             },
             {
                 type: "scale",
                 scale_to: 1,
-                at: DUR_SEGMENT * 2.5, 
+                at: DUR_SEGMENT * 5, 
                 duration: 0.05
             },
-            // {
-            //     type: "translation",
-            //     delta_x: 150, 
-            //     delta_y: 100,
-            //     at: 0.05, duration: 0.05
-            // },
             {
-                type: "camera_look",
-                look_x: 20,     
-                look_y: 38,     
-                look_z: 0,     
-                at: 0.9,       
-                duration: 0.05 
-            }
+                type: "translation",
+                delta_x: 0, 
+                delta_y: -40,
+                at: 0.90, duration: 0.02
+            },
+            // {
+            //     type: "camera_look",
+            //     look_x: 20,     
+            //     look_y: 38,     
+            //     look_z: 0,     
+            //     at: 0.9,       
+            //     duration: 0.05 
+            // }
 
         ]
     },
@@ -262,21 +264,19 @@ const configObjects = [
     {
         id: 'explanation-potential',
         type: 'standalonePotentialPlot',
-        position: { x: 20, y: 30 },
+        position: { x: 50, y: 50 },  // Left of center
         params: {
             g: 0.384
         },
         transition: {
             entry_from: {
-                x: 20, y: 30,
-                at: DUR_SEGMENT * 15,  // Adjust these timings as needed
-                // duration: DUR_TRANS,
+                x: 50, y: 50,  // Match the position
+                at: DUR_SEGMENT * 15,
                 opacity: 0
             },
             exit_to: {
-                x: 20, y: 30,
-                at: DUR_SEGMENT * 16,  // Adjust these timings as needed
-                // duration: DUR_TRANS,
+                x: 50, y: 50,  // Match the position
+                at: DUR_SEGMENT * 16,
                 opacity: 0
             }
         }
@@ -284,22 +284,20 @@ const configObjects = [
     {
         id: 'explanation-temperature',
         type: 'standaloneTemperaturePlot',
-        position: { x: 60, y: 30 },
+        position: { x: 50, y: 50 },  // Right of center
         params: {
             T0: 317,
             g: 0.384
         },
         transition: {
             entry_from: {
-                x: 60, y: 30,
-                at: DUR_SEGMENT * 15,  // Adjust these timings as needed
-                // duration: DUR_TRANS,
+                x: 50, y: 50,  // Match the position
+                at: DUR_SEGMENT * 16,
                 opacity: 0
             },
             exit_to: {
-                x: 60, y: 30,
-                at: DUR_SEGMENT * 16,  // Adjust these timings as needed
-                // duration: DUR_TRANS,
+                x: 50, y: 50,  // Match the position
+                at: DUR_SEGMENT * 17,
                 opacity: 0
             }
         }
@@ -389,49 +387,46 @@ const configObjects = [
         id: "sim-v-plot",
         type: "sim-v-plot",
         position: {
-            x: HEAD_X,
-            y: HEAD_Y + 40
+            x: 35,    // 35% from left
+            y: 70     // Center vertically
         },
         transition: {
             entry_from: {
-                x: HEAD_X,
-                y: HEAD_Y + SCROLL_dY,
+                x: 35,
+                y: 70,
                 at: SIM_SEGMENT_START_AT,       
-                opacity: 0,
-                // duration: 0.01 
+                opacity: 0
             },
             exit_to: {
-                x: HEAD_X,
-                y: HEAD_Y - SCROLL_dY,
+                x: 35,
+                y: 70,
                 at: SIM_SEGMENT_END_AT,       
-                opacity: 0,
-                // duration: 0.01 
+                opacity: 0
             }
         }
     },
-    // In the configObjects array, add:
-{   
-    id: "sim-solution-plot",
-    type: "sim-solution-plot",
-    position: {
-        x: 50,
-        y: 50 
-    },
-    transition: {
-        entry_from: {
-            x: 50,
-            y: 50 + SCROLL_dY,
-            at: SIM_SEGMENT_START_AT,       
-            opacity: 0
+    {   
+        id: "sim-solution-plot",
+        type: "sim-solution-plot",
+        position: {
+            x: 65,    // 65% from left
+            y: 70     // Center vertically
         },
-        exit_to: {
-            x: 50,
-            y: 50 - SCROLL_dY,
-            at: SIM_SEGMENT_END_AT,       
-            opacity: 0
+        transition: {
+            entry_from: {
+                x: 65,
+                y: 70,
+                at: SIM_SEGMENT_START_AT,       
+                opacity: 0
+            },
+            exit_to: {
+                x: 65,
+                y: 70,
+                at: SIM_SEGMENT_END_AT,       
+                opacity: 0
+            }
         }
     }
-}
 ];
 
 export const extraConfig = [
@@ -443,31 +438,31 @@ export const extraConfig = [
     },
     {
         id: "snowballEarthGroup",
-        entry: { at: DUR_SEGMENT * 1 + DUR_TRANS },  
-        exit: { at: DUR_SEGMENT * 1.5 },
-        entryDuration: DUR_SEGMENT * 0.2,
-        exitDuration: DUR_SEGMENT * 0.2,
-        startDecrease: DUR_SEGMENT * 1.7,   
+        entry: { at: DUR_SEGMENT * 1 + DUR_TRANS + DELAY },  
+        exit: { at: DUR_SEGMENT * 3 },
+        entryDuration: DUR_SEGMENT * 0.8,
+        exitDuration: DUR_SEGMENT * 0.8,
+        startDecrease: DUR_SEGMENT * 1.9,   
         maxRadius: 0.2
     },
     {
         id: "earthTexture",
         file: 'public/assets/textures/rodinia_unpix.png',
-        entry: { at: DUR_SEGMENT * 1.4 },
+        entry: { at: DUR_SEGMENT * 17 },
         exit: { at: 0.96 }
     },
     {
         id: "atmPaleBlueDot1",  // matches the name in ObjectFactory
-        entry: { at: DUR_SEGMENT * 2 + DUR_TRANS },
-        exit: { at: DUR_SEGMENT * 2 + DUR_TRANS * 2 },
+        entry: { at: DUR_SEGMENT * 15 + DUR_TRANS + DELAY },
+        exit: { at: DUR_SEGMENT * 12 + DUR_TRANS * 2 },
         color: 0xf4a261,  // or whatever color we want
         entryOpacity: 0,
         exitOpacity: 0.8
     },
     {
         id: "atmPaleBlueDot2",  // matches the name in ObjectFactory
-        entry: { at: DUR_SEGMENT * 2 + DUR_TRANS * 2},
-        exit: { at: DUR_SEGMENT * 3 - DUR_TRANS * 2},
+        entry: { at: DUR_SEGMENT * 12 + DUR_TRANS * 2},
+        exit: { at: DUR_SEGMENT * 13 - DUR_TRANS * 2},
         color: 0xf4a261,  // or whatever color we want
         entryOpacity: 0.8,
         exitOpacity: 0.2

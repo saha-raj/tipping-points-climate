@@ -39,6 +39,7 @@ body {
     color: var(--text-color);
     white-space: nowrap;
     text-align: left;
+    transform: translateY(-50%);
 }
 .text-type-intro-segment {
     font-family: var(--body-font);
@@ -92,14 +93,16 @@ body {
 
 /* New MathJax-specific styles */
 .text-element .MathJax {
-    color: inherit;  /* Inherit text color from parent */
-    font-size: inherit;  /* Inherit font size from parent */
+    color: inherit;
+    font-size: inherit;
+    text-align: left !important;
 }
 
 .text-element .MathJax-Display {
-    margin: 0.5em 0;  /* Add some vertical spacing for display equations */
-    overflow-x: auto;  /* Handle long equations */
-    max-width: 100%;  /* Prevent overflow */
+    margin: 0.5em 0;
+    overflow-x: auto;
+    max-width: 100%;
+    text-align: left !important;
 }
 
 /* Ensure inline math aligns with text */
@@ -111,12 +114,17 @@ body {
 .text-element mjx-container {
     font-size: 120%;  /* Make math 20% larger than surrounding text */
     color: inherit;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
 }
 
 /* Display math ($$...$$) - even larger for displayed equations */
 .text-element mjx-container[jax="CHTML"][display="true"] {
     margin: 1em 0;
     font-size: 130%;  /* Make display math 30% larger */
+    text-align: left !important;
+    justify-content: flex-start !important;
 }
 
 /* Inline math ($...$) */

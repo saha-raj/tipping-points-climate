@@ -14,8 +14,10 @@
 
 /* Plot containers */
 .plot-area {
-    width: 100%;
-    height: 100%;  /* Make plot fill available space */
+    position: absolute !important;
+    width: 30% !important;
+    height: auto !important;
+    text-align: center !important;  /* Center the plot horizontally */
 }
 
 /* D3 plot elements */
@@ -270,4 +272,24 @@ input[type="range"]:disabled::-moz-range-thumb {
     background: #cccccc;  /* Gray color */
     cursor: default;
 }
+
+/* Position sim-v-plot in top-right corner */
+.plot-area[id="sim-v-plot"] {
+    transform: translate(-50%, -50%) !important;
+    /* border: 2px solid red; */
+}
+
+/* Position sim-solution-plot in top-left corner */
+.plot-area[id="sim-solution-plot"] {
+    transform: translate(-50%, -50%) !important;
+    /* border: 2px solid blue; */
+}
+
+/* Center standalone plots in canvas container */
+.plot-area[id="explanation-potential"],
+.plot-area[id="explanation-temperature"] {
+    transform: translate(-50%, -50%) !important;
+    /* border: 2px solid green; */
+}
+
 

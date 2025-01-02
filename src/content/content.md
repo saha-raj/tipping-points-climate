@@ -29,42 +29,56 @@ Let us also imagine that we can observe the Earth over very long time periods, s
 [segment]
 Now we can start building a very simple model of the Earth's climate.
 
-At the very basic, our climate model will have these processes:
-- Incoming energy from the sun, affected by how much ice is present.
-- Heat energy radiated back to space, affected by greenhouse gas concentration.
-- Ice formation and melting, affected by how much heat energy is there in the system.
-- Greenhouse gas concentration. 
+Being the most basic model, it will only have these mechanisms:
+- **Incoming energy** from the sun
+- **Outgoing Energy** radiated back to space
+- **Ice** formation and melting
+- **Greenhouse gas** concentration
+
+The presence of ice and greehouse gases will influence the amount of incoming and outgoing energy, respectively.
+
 [segment]
-In the real world this is affected by many natural (and in the present day human-induced) processes. But for our simple model, we will keep this quantity independent of the other processes. This will in fact allow us to use the greenhouse gas concentration as a knob to control the climate.
+We'll also assume that the Earth is a perfect sphere with radius $R$, that ice forms uniformly over the surface, and that the greenhouse gas concentration is independent of temperature.
+
 [segment]
-Let us now build the model, one piece at a time.
+Now let's look at each of these mechanisms one by one, starting with incoming energy.
 
 ## Incoming Energy
 [segment]
 The total amount of energy that the Earth receives from the sun can be measured by the amount of energy that is intercepted by the Earth's cross-sectional area, *i.e.* the area of Earth's shadow.
 [segment]
-Solar energy at Earth's distance is about 1360 Watts per square meter ($S_0$). So the total intercepted energy equals $S_0$ multiplied by Earth's cross-sectional area. 
+Solar energy at Earth's distance is about 1360 Watts per square meter ($S_0$). So the total intercepted energy equals $S_0$ multiplied by Earth's cross-sectional area, $\pi R^2$, so that
+$$E_{in} = S_0\pi R^2$$
 [segment]
-Ice reflects a fraction (albedo, $\alpha$) of incoming energy back to space. Total incoming energy is:
-
+But not all of this intercepted energy actually reaches the surface. Some part of it is reflected back to space by the ice and clouds. Let's only consider the reflectivity of ice. If $\alpha$ is the average reflectivity of ice (albedo), then the total incoming energy can be written as:
 $$E_{in} = S_0\pi R^2 (1-\alpha)$$
+This is a very crude approximation, but it will still allow us to demonstrate the principles and mechanisms of tipping points.
 
-Ice coverage varies uniformly with temperature relative to freezing point.
+[segment]
+on the relationship between albedo and temperature
 
 ## Outgoing Energy
 [segment]
-Over geological time, Earth's energy input and output must balance. For an Earth without atmosphere, outgoing energy follows the Stefan-Boltzmann law:
+Over time, the amount of energy that enters the climate system must equal the amount of energy that leaves the system. This is true even when the climate system is storing some of that energy. 
 
+If the Earth were to behave like a perfect emitter of heat energy (which it is not) and didn't have an atmosphere to trap energy, the outgoing energy can be expressed through the Stefan-Boltzmann law:
 $$E_{out} = \sigma T^4 \cdot A $$
-[segment]
-With greenhouse gases, the outgoing energy is reduced by concentration (g):
 
-$$E_{out} = \frac{1}{g}4\pi R^2 \sigma T^4, \textrm {where } g > 0$$
+where $\sigma$ is the Stefan-Boltzmann constant, $T$ is the temperature, and $A=4\pi R^2$ is the surface area of the Earth. 
+
+[segment]
+If there is an atmosphere, some of the outgoing energy would be trapped by the atmosphere. Greenhouse gases like $\mathrm{CO}_2$ and $\mathrm{CH}_4$ are particularly effective at this. In reality, the relationship between greenhouse gas concentration and outgoing energy is complex, but we can again make crude simplifications like assuming an inverse relationship between greenhouse gas concentration and outgoing energy. This way, we can write:
+$$E_{out} = \frac{1}{g}4\pi R^2 \sigma T^4$$
+where $g$ is a positive value measure of the concentration of greenhouse gases.
 
 ## Putting it all together
 [segment]
-The rate of energy change in the system can now be written as the difference between incoming and outgoing energy:
+Now that we have two expressions for the rates of incoming and outgoing energies, we can put them together to get the net balance of energy in the system and how it changes over time. In other words, an imbalance between incoming and outgoing energies 
+$$E_{in} - E_{out}$$
+will cause the heat content of the system to change with time. We can then solve this system to find how the temperature will change over time, as well as other variables like ice that are related to temperature.
 
+[segment]
+Written as an ordinary differential equation we have:
 $$\frac{dE}{dt}=E_{in} - E_{out} =S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
 
 We can relate the temperature change to the energy change by dividing by the heat capacity of the system, $c$
@@ -72,6 +86,7 @@ We can relate the temperature change to the energy change by dividing by the hea
 $$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
 
 [segment]
+
 $$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
 This single ordinary differential equation (ODE) describes the climate model. 
 
@@ -83,7 +98,7 @@ some placeholder text
 
 ## Simulation
 [segment]
-Use the slider to change the amount of greenhouse gases in the atmosphere.
+text
 
 ## Summary
 [segment]
