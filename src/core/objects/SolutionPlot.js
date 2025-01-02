@@ -1,8 +1,9 @@
 import * as d3 from 'd3';
+import { MODEL_PARAMS } from '../simulation/constants.js';
 
 export class SolutionPlot {
     constructor(config) {
-        // Create container element
+        // Create container element first
         this.element = document.createElement('div');
         this.element.className = 'plot-area';
         this.element.style.position = 'absolute';
@@ -17,7 +18,7 @@ export class SolutionPlot {
         this.config = config;
         this.margins = { top: 40, right: 40, bottom: 60, left: 60 };
 
-        // Get CSS variables (same as PotentialPlot for consistency)
+        // Get CSS variables
         const style = getComputedStyle(document.documentElement);
         this.DOT_RADIUS = style.getPropertyValue('--dot-radius');
         this.LINE_COLOR = style.getPropertyValue('--plot-line-color');
@@ -25,17 +26,12 @@ export class SolutionPlot {
         this.TEXT_COLOR = style.getPropertyValue('--text-color');
         this.MAIN_FONT = style.getPropertyValue('--main-font');
 
-        // Initialize data array
+        // Initialize data array for time series
         this.timeSeriesData = [];
+        this.isAnimating = false;
 
-        // Setup the plot
+        // Setup the plot in the element
         this.setupPlot(this.element);
-        
-        // Add this new line to initialize the axes and point
-        this.initializeAxesAndPoint(292); // Default temperature from slider
-
-        // Initialize with default values from config
-        this.initializeState(config.initialTemp);
     }
 
     setupPlot(container) {
@@ -49,6 +45,30 @@ export class SolutionPlot {
 
         const plotArea = svg.append('g')
             .attr('transform', `translate(${this.margins.left},${this.margins.top})`);
+
+        // Set up initial scales
+        const plotWidth = width - this.margins.left - this.margins.right;
+        const plotHeight = height - this.margins.top - this.margins.bottom;
+
+        // Initialize scales with default ranges
+        this.xScale = d3.scaleLinear()
+            .domain([0, 20])
+            .range([0, plotWidth]);
+
+        this.yScale = d3.scaleLinear()
+            .domain([220, 320])
+            .range([plotHeight, 0]);
+
+        // Add freezing point reference line
+        plotArea.append('line')
+            .attr('class', 'freezing-line')
+            .style('stroke', '#8ecae6')  // Light blue color
+            .style('stroke-width', '1px')
+            .style('stroke-dasharray', '4,4')  // Create dashed line
+            .attr('x1', 0)
+            .attr('x2', plotWidth)
+            .attr('y1', this.yScale(273))  // Now yScale is defined
+            .attr('y2', this.yScale(273));
 
         // Add axes
         plotArea.append('g')
@@ -74,7 +94,7 @@ export class SolutionPlot {
             .attr('y', 20)
             .text('Temperature (K)');
 
-        // Update styling for axes
+        // Style axes
         plotArea.select('.x-axis')
             .style('font-size', '0.8rem')
             .style('font-family', this.MAIN_FONT)
@@ -85,94 +105,28 @@ export class SolutionPlot {
             .style('font-family', this.MAIN_FONT)
             .style('color', this.TEXT_COLOR);
 
-        // Update labels with correct styling
+        // Style labels
         svg.selectAll('.x-label, .y-label')
             .style('font-size', '0.9rem')
             .style('font-weight', '500')
             .style('font-family', this.MAIN_FONT)
             .style('fill', this.TEXT_COLOR);
 
+        // Add initial point
+        this.timeSeriesData = [{ time: 0, temp: 292 }];
+        
+        plotArea.selectAll('.current-point').remove();
+        plotArea.append('circle')
+            .attr('class', 'current-point')
+            .attr('r', this.DOT_RADIUS)
+            .style('fill', this.LINE_COLOR)
+            .attr('cx', this.xScale(0))
+            .attr('cy', this.yScale(292));
+
         this.plot = { svg, plotArea, width, height };
     }
 
-    updatePlot(newTemp, timeStep) {
-        console.log('updatePlot called with:', { newTemp, timeStep });
-        console.log('Before push:', this.timeSeriesData);
-        
-        // Add new data point
-        this.timeSeriesData.push({ time: timeStep, temp: newTemp });
-        console.log('After push:', this.timeSeriesData);
-
-        const { svg, plotArea, width, height } = this.plot;
-        const plotWidth = width - this.margins.left - this.margins.right;
-        const plotHeight = height - this.margins.top - this.margins.bottom;
-
-        // Update scales
-        const x = d3.scaleLinear()
-            .domain([0, Math.max(20, d3.max(this.timeSeriesData, d => d.time))])
-            .range([0, plotWidth]);
-
-        const y = d3.scaleLinear()
-            .domain([220, 320])  // Same range as temperature slider
-            .range([plotHeight, 0]);
-
-        // Update axes
-        plotArea.select('.x-axis')
-            .call(d3.axisBottom(x)
-                .ticks(5)
-                .tickFormat(d => Math.round(d)));
-        
-        plotArea.select('.y-axis')
-            .call(d3.axisLeft(y)
-                .ticks(5)
-                .tickFormat(d => Math.round(d)));
-
-        // Debug the actual data structure
-        console.log('Data structure:', JSON.stringify(this.timeSeriesData[0]));
-        
-        // Create line generator
-        const line = d3.line()
-            .x(d => x(d.time))
-            .y(d => y(d.temp));
-
-        // Proper D3 enter/update/exit pattern
-        let path = plotArea.selectAll('.temp-line').data([this.timeSeriesData]);
-        
-        // Enter new path if it doesn't exist
-        path.enter()
-            .append('path')
-            .attr('class', 'temp-line')
-            .style('fill', 'none')
-            .style('stroke', this.LINE_COLOR)
-            .style('stroke-width', this.LINE_WIDTH)
-            .merge(path)  // Merge with update selection
-            .attr('d', line);
-
-        // Update or create current point
-        let point = plotArea.selectAll('.current-point').data([this.timeSeriesData[this.timeSeriesData.length - 1]]);
-        
-        if (point.empty()) {
-            point = plotArea.append('circle')
-                .attr('class', 'current-point')
-                .attr('r', this.DOT_RADIUS)
-                .style('fill', this.LINE_COLOR);
-        }
-
-        point
-            .attr('cx', d => x(d.time))
-            .attr('cy', d => y(d.temp));
-    }
-
-    reset() {
-        console.log('Reset called. Current data:', this.timeSeriesData);
-        this.timeSeriesData = [];
-        const { plotArea } = this.plot;
-        plotArea.selectAll('.temp-line, .current-point').remove();
-        console.log('After reset:', this.timeSeriesData);
-    }
-
     initializeAxesAndPoint(initialTemp) {
-        console.log('Initializing with temp:', initialTemp);
         const { plotArea, width, height } = this.plot;
         const plotWidth = width - this.margins.left - this.margins.right;
         const plotHeight = height - this.margins.top - this.margins.bottom;
@@ -186,6 +140,10 @@ export class SolutionPlot {
             .domain([220, 320])
             .range([plotHeight, 0]);
 
+        // Store scales for later use
+        this.xScale = x;
+        this.yScale = y;
+
         // Draw initial axes
         plotArea.select('.x-axis')
             .call(d3.axisBottom(x)
@@ -200,6 +158,7 @@ export class SolutionPlot {
         // Add initial point
         this.timeSeriesData = [{ time: 0, temp: initialTemp }];
         
+        plotArea.selectAll('.current-point').remove();
         plotArea.append('circle')
             .attr('class', 'current-point')
             .attr('r', this.DOT_RADIUS)
@@ -208,53 +167,177 @@ export class SolutionPlot {
             .attr('cy', y(initialTemp));
     }
 
-    initializeState(initialTemp) {
-        // Set initial visualization state based on temperature
-        const isIce = initialTemp < 273;
+    updatePlot(solutionData) {
+        if (!solutionData || !solutionData.times || !solutionData.temperatures) return;
         
-        // Update initial point and data
-        this.timeSeriesData = [{ time: 0, temp: initialTemp }];
+        // Remove tracking dot during slider changes
+        this.removeTrackingDot();
         
-        const { plotArea } = this.plot;
-        const plotWidth = this.plot.width - this.margins.left - this.margins.right;
-        const plotHeight = this.plot.height - this.margins.top - this.margins.bottom;
+        const { plotArea, width, height } = this.plot;
+        const plotWidth = width - this.margins.left - this.margins.right;
+        const plotHeight = height - this.margins.top - this.margins.bottom;
 
-        // Set up initial scales
+        // Update scales with actual data range
         const x = d3.scaleLinear()
-            .domain([0, 20])
+            .domain([0, d3.max(solutionData.times)])
             .range([0, plotWidth]);
 
         const y = d3.scaleLinear()
             .domain([220, 320])
             .range([plotHeight, 0]);
 
-        // Draw initial axes
+        this.xScale = x;
+        this.yScale = y;
+
+        // Update axes with nice tick values
         plotArea.select('.x-axis')
             .call(d3.axisBottom(x)
                 .ticks(5)
-                .tickFormat(d => Math.round(d)));
-        
+                .tickFormat(d => Math.round(d/1000000))); // Convert to thousands for readability
+
         plotArea.select('.y-axis')
             .call(d3.axisLeft(y)
                 .ticks(5)
                 .tickFormat(d => Math.round(d)));
 
-        // Add initial point
-        plotArea.append('circle')
-            .attr('class', 'current-point')
-            .attr('r', this.DOT_RADIUS)
-            .style('fill', this.LINE_COLOR)
-            .attr('cx', x(0))
-            .attr('cy', y(initialTemp));
+        // Create solution line
+        const solutionLine = d3.line()
+            .x((d, i) => x(solutionData.times[i]))
+            .y(d => y(d));
+
+        // Update the solution curve
+        plotArea.selectAll('.solution-line').remove();
+        plotArea.append('path')
+            .datum(solutionData.temperatures)
+            .attr('class', 'solution-line')
+            .attr('stroke', this.LINE_COLOR)
+            .attr('stroke-width', this.LINE_WIDTH)
+            .attr('stroke-linecap', 'round')
+            .attr('fill', 'none')
+            .attr('d', solutionLine);
+
+        // Update current point
+        plotArea.selectAll('.current-point')
+            .attr('cx', x(solutionData.times[0]))
+            .attr('cy', y(solutionData.temperatures[0]));
+
+        // Update freezing point line position with new scale
+        this.plot.plotArea.select('.freezing-line')
+            .attr('x2', plotWidth)
+            .attr('y1', y(273))
+            .attr('y2', y(273));
     }
 
-    updateParameter(param, value) {
-        // Update parameter without resetting visualization state
-        this[param] = value;
+    animateToEquilibrium(solutionData, callback) {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+
+        const { plotArea } = this.plot;
+        const totalPoints = solutionData.temperatures.length;
+        let currentPoint = 0;
+
+        const animate = () => {
+            if (currentPoint >= totalPoints || !this.isAnimating) {
+                this.isAnimating = false;
+                if (callback) callback();
+                return;
+            }
+
+            // Update current point position
+            plotArea.select('.current-point')
+                .attr('cx', this.xScale(solutionData.times[currentPoint]))
+                .attr('cy', this.yScale(solutionData.temperatures[currentPoint]));
+
+            // Update line up to current point
+            const currentLine = d3.line()
+                .x((d, i) => this.xScale(solutionData.times[i]))
+                .y(d => this.yScale(d));
+
+            plotArea.selectAll('.solution-line').remove();
+            plotArea.append('path')
+                .datum(solutionData.temperatures.slice(0, currentPoint + 1))
+                .attr('class', 'solution-line')
+                .attr('stroke', this.LINE_COLOR)
+                .attr('stroke-width', this.LINE_WIDTH)
+                .attr('stroke-linecap', 'round')
+                .attr('d', currentLine);
+
+            currentPoint++;
+            requestAnimationFrame(animate);
+        };
+
+        animate();
+    }
+
+    stopAnimation() {
+        this.isAnimating = false;
+    }
+
+    reset() {
+        const { plotArea } = this.plot;
+        this.stopAnimation();
+        this.timeSeriesData = [];
+        plotArea.selectAll('.solution-line').remove();
         
-        // Only update what needs to change
-        if (param === 'g') {
-            this.updateGDependentElements(value);
+        // Reset to initial state
+        const initialTemp = this.timeSeriesData[0]?.temp || 292;
+        this.initializeAxesAndPoint(initialTemp);
+    }
+
+    initTrackingDot(time, temp) {
+        this.removeTrackingDot();
+        
+        // Add new tracking dot
+        this.trackingDot = this.plot.plotArea.append('circle')
+            .attr('class', 'tracking-dot')
+            .attr('r', this.DOT_RADIUS)
+            .style('fill', this.LINE_COLOR)
+            .attr('cx', this.xScale(time))
+            .attr('cy', this.yScale(temp));
+    }
+
+    updateTrackingDot(time, temp) {
+        if (this.trackingDot) {
+            this.trackingDot
+                .attr('cx', this.xScale(time))
+                .attr('cy', this.yScale(temp));
         }
     }
-} 
+
+    removeTrackingDot() {
+        if (this.trackingDot) {
+            this.trackingDot.remove();
+            this.trackingDot = null;
+        }
+    }
+
+    startAnimation(simulation) {
+        // Clear previous animation state
+        this.removeTrackingDot();
+        
+        // Remove initial point if it exists
+        this.plot.plotArea.selectAll('.initial-point').remove();
+        
+        // Initialize tracking dot at start position
+        this.initTrackingDot(simulation.times[0], simulation.temperatures[0]);
+        
+        // Store simulation data for animation
+        this.animationData = simulation;
+        this.currentIndex = 0;
+    }
+
+    animateToPoint(time, temp) {
+        if (!this.animationData) return;
+        
+        this.currentIndex++;
+        
+        // Just update the tracking dot position
+        this.updateTrackingDot(time, temp);
+    }
+
+    finishAnimation() {
+        // Clean up animation state
+        this.animationData = null;
+        this.currentIndex = 0;
+    }
+}

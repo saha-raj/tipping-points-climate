@@ -362,7 +362,30 @@ const configObjects = [
                 // duration: 0.01 
             }
         }
+    },
+    // In the configObjects array, add:
+{   
+    id: "sim-solution-plot",
+    type: "sim-solution-plot",
+    position: {
+        x: 50,
+        y: 50 
+    },
+    transition: {
+        entry_from: {
+            x: 50,
+            y: 50 + SCROLL_dY,
+            at: SIM_SEGMENT_START_AT,       
+            opacity: 0
+        },
+        exit_to: {
+            x: 50,
+            y: 50 - SCROLL_dY,
+            at: SIM_SEGMENT_END_AT,       
+            opacity: 0
+        }
     }
+}
 ];
 
 export const extraConfig = [

@@ -23,6 +23,8 @@ import { BackgroundManager } from './components/BackgroundManager.js';
 THREE.ColorManagement.enabled = true;
 THREE.ColorManagement.legacyMode = false;
 
+let currentSimulation = null;  // Move this to top level if not already there
+
 class ScrollCanvas {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
@@ -73,6 +75,30 @@ class ScrollCanvas {
             }
         };
 
+        const updateSolutionPlot = (simulation) => {
+            const simSolutionPlot = this.objects.get('sim-solution-plot');
+            if (simSolutionPlot && simSolutionPlot.extras.plot && simulation) {
+                // Find index where we're close enough to equilibrium
+                const TEMP_THRESHOLD = 0.05;  // Define threshold for "close enough"
+                const equilibriumTemp = simulation.temperatures[simulation.temperatures.length - 1];
+                
+                // Find first index where we're within threshold of equilibrium
+                const equilibriumIndex = simulation.temperatures.findIndex(temp => 
+                    Math.abs(temp - equilibriumTemp) < TEMP_THRESHOLD
+                );
+
+                // If we found a valid index, use it to trim the data
+                const endIndex = equilibriumIndex !== -1 ? equilibriumIndex + 1 : simulation.temperatures.length;
+                
+                const solutionData = {
+                    times: simulation.times.slice(0, endIndex),
+                    temperatures: simulation.temperatures.slice(0, endIndex)
+                };
+                
+                simSolutionPlot.extras.plot.updatePlot(solutionData);
+            }
+        };
+
         let simControls = null;
         
         // Create and add objects
@@ -115,6 +141,7 @@ class ScrollCanvas {
             });
 
             updatePotentialPlot(gValue, tempValue);  // This creates currentSimulation
+            updateSolutionPlot(currentSimulation);   // Add this line to initialize solution plot
 
             // Add this initial ice scale calculation AFTER updatePotentialPlot
             const earth = this.objects.get('earth');
@@ -245,6 +272,9 @@ class ScrollCanvas {
                     }
                 });
             }
+
+            // Add this after potential plot update
+            updateSolutionPlot(currentSimulation);
         });
 
         document.addEventListener('temp-slider-change', (event) => {
@@ -252,6 +282,9 @@ class ScrollCanvas {
             const tempValue = event.detail.value;
             const gValue = simControls.controls.gSlider.value;
             updatePotentialPlot(gValue, tempValue);
+
+            // Add this after potential plot update
+            updateSolutionPlot(currentSimulation);
         });
 
         // Modify updateObjects to handle atmosphere switching
@@ -402,10 +435,13 @@ class ScrollCanvas {
 
             const earth = this.objects.get('earth');
             const simVPlot = this.objects.get('sim-v-plot');
+            const simSolutionPlot = this.objects.get('sim-solution-plot');
             const simControls = this.objects.get('sim-controls');
             
             if (!earth || !earth.extras || !earth.extras.simIceGroup || 
-                !simVPlot || !simVPlot.extras.plot || !simControls) return;
+                !simVPlot || !simVPlot.extras.plot || 
+                !simSolutionPlot || !simSolutionPlot.extras.plot ||
+                !simControls) return;
 
             const tempSlider = simControls.controls.tempSlider;
             const gValue = simControls.controls.gSlider.value;
@@ -424,25 +460,25 @@ class ScrollCanvas {
             const FRAME_TIME = 5000 / FPS;
             let lastFrameTime = 0;
             let frameIndex = 0;
-            const FRAMES_TOTAL = albedos.length;
-            const TEMP_THRESHOLD = 0.005;
-            
-            let animationFrame;
+            const TEMP_THRESHOLD = 0.05;  // Use same threshold as plot update
             const equilibriumTemp = temperatures[temperatures.length - 1];
+            const equilibriumIndex = temperatures.findIndex(temp => 
+                Math.abs(temp - equilibriumTemp) < TEMP_THRESHOLD
+            );
+            const endIndex = equilibriumIndex !== -1 ? equilibriumIndex + 1 : temperatures.length;
+
+            let animationFrame;
 
             // Force remove any existing tracking dot before starting
             simVPlot.extras.plot.removeTrackingDot();
             
             const animate = (currentTime) => {
-                // Skip frame if too early
                 if (currentTime - lastFrameTime < FRAME_TIME) {
                     animationFrame = requestAnimationFrame(animate);
                     return;
                 }
                 
-                const currentTemp = temperatures[frameIndex];
-                
-                if (frameIndex < FRAMES_TOTAL && Math.abs(currentTemp - equilibriumTemp) > TEMP_THRESHOLD) {
+                if (frameIndex < endIndex && Math.abs(temperatures[frameIndex] - equilibriumTemp) > TEMP_THRESHOLD) {
                     // Update ice
                     const albedo = albedos[frameIndex];
                     const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
@@ -451,33 +487,41 @@ class ScrollCanvas {
                     });
                     
                     // Update tracking dot
-                    const currentPotential = climateModel.calculatePotential(currentTemp, parseFloat(gValue));
-                    simVPlot.extras.plot.updateTrackingDot(currentTemp, currentPotential);
+                    const currentPotential = climateModel.calculatePotential(temperatures[frameIndex], parseFloat(gValue));
+                    simVPlot.extras.plot.updateTrackingDot(temperatures[frameIndex], currentPotential);
                     
                     // Update slider position
-                    tempSlider.value = currentTemp;
+                    tempSlider.value = temperatures[frameIndex];
                     
-                    // Increment frame
+                    // Add solution plot update
+                    simSolutionPlot.extras.plot.animateToPoint(
+                        currentSimulation.times[frameIndex],
+                        temperatures[frameIndex]
+                    );
+                    
                     frameIndex++;
                     lastFrameTime = currentTime;
-                    
                     animationFrame = requestAnimationFrame(animate);
                 } else {
-                    // Animation complete
+                    // Animation complete - use final values at endIndex
                     cancelAnimationFrame(animationFrame);
                     tempSlider.disabled = false;
                     
-                    // Set final values
-                    tempSlider.value = equilibriumTemp;
-                    const finalPotential = climateModel.calculatePotential(equilibriumTemp, parseFloat(gValue));
-                    simVPlot.extras.plot.updateTrackingDot(equilibriumTemp, finalPotential);
+                    // Set final values using endIndex
+                    const finalTemp = temperatures[endIndex - 1];
+                    tempSlider.value = finalTemp;
+                    const finalPotential = climateModel.calculatePotential(finalTemp, parseFloat(gValue));
+                    simVPlot.extras.plot.updateTrackingDot(finalTemp, finalPotential);
+                    
+                    simSolutionPlot.extras.plot.finishAnimation();
                 }
             };
 
-            // Initialize tracking dot at starting position
+            // Initialize both plots
             const initialTemp = temperatures[0];
             const initialPotential = climateModel.calculatePotential(initialTemp, parseFloat(gValue));
             simVPlot.extras.plot.initTrackingDot(initialTemp, initialPotential);
+            simSolutionPlot.extras.plot.startAnimation(currentSimulation);
 
             animationFrame = requestAnimationFrame(animate);
         });

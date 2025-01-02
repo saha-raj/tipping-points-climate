@@ -6,6 +6,7 @@ import { createIceGroup } from './ice.js';
 import { createShadowCylinder } from './shadowCylinder.js';
 import { createAtmosphereNonLinear } from './atmosphereNonLinear.js';
 import { createAtmosphereSingleLayer } from './atmosphereSingleLayer.js';
+import { SolutionPlot } from './SolutionPlot.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -24,6 +25,8 @@ export class ObjectFactory {
                 return this.createSimControls(config);
             case 'sim-v-plot':
                 return this.createVPlot(config);
+            case 'sim-solution-plot': 
+                return this.createSolutionPlot(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -294,6 +297,17 @@ export class ObjectFactory {
             object: plot.element,  // Should be a DOM element
             extras: {
                 plot: plot        // Keep reference to plot object
+            }
+        };
+    }
+
+    static createSolutionPlot(config) {
+        const plot = new SolutionPlot(config);
+        return {
+            type: 'plot',
+            object: plot.element,
+            extras: {
+                plot: plot
             }
         };
     }
