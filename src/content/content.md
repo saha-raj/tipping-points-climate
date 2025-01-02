@@ -82,24 +82,44 @@ Written as an ordinary differential equation we have:
 $$\frac{dE}{dt}=E_{in} - E_{out} =S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
 
 We can relate the temperature change to the energy change by dividing by the heat capacity of the system, $c$
-
 $$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
 
+This single ordinary differential equation (ODE) describes the climate model. This is the *simplest* possible model of the climate system. 
+
+## Climate States
 [segment]
+We can now solve the model to find how the temperature will change over time, as well as other variables like ice that are related to temperature.
 
-$$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
-This single ordinary differential equation (ODE) describes the climate model. 
+Depending on the initial Temperature and the greenhouse gas concentration, the model will settle into one of two stable states - a *hothouse* state or a *snowball* state.
 
-This is the *simplest* possible model of the climate system.
-
-## explain simulation controls
 [segment]
-some placeholder text
+The stability of these two climate states are related to the relative strenghts of the amplifying and stabilizing mechanisms in the climate system, viz. the ice-albedo feedback and the greenhouse gas feedbacks. We call this the 'climate potential'.
+
+In our model, the shape of the potential is determined only by the greenhouse gas concentration, $g$. 
+
+[segment]
+For some values of $g$, the potential has two stable states - one at low temperatures and one at high temperatures. This means that depending on the initial conditions, the climate will settle into one or the other state.
+
+[segment]
+For other values of $g$, the potential has only one stable state - a single valley. This means that regardless of the initial conditions, the climate will settle into that single stable state.
+
 
 ## Simulation
 [segment]
-text
+We can now simulate the model and examine what its stable states are by varying the initial temperature and greenhouse gas concentration, using these sliders.
 
-## Summary
 [segment]
-Earth's climate balances solar input with energy reflection and retention. Ice acts as a positive feedback mechanism - more ice increases energy loss, lowering temperature and creating more ice. This cycle works similarly in reverse. These amplifying trends are ultimately limited by total Earth coverage.
+&nbsp;
+
+## The Modern Climate
+[segment]
+The modern climate, starting with the *Holocene* epoch, and going further back to the start of the *Pleistocene* epoch, has been in an intermediate state - *quasi-stable* state that we don't really see in our very crude climate model. In fact, our climate state is nestled somewhere in the region of instability that we see in this model. 
+
+The complex biossphere-climate system has carved out a zone of stability in a larger region of instability. Even here, the climate has oscillated between glacial and interglacial periods all through the Pleistocene epoch. 
+
+## References
+[segment]
+[1] Ref 1
+
+[2] Ref 2
+

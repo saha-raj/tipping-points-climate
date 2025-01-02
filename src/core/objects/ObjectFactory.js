@@ -95,8 +95,11 @@ export class ObjectFactory {
             // earthMesh.visible = true;
 
             // Add Earth's axial tilt (23.5 degrees)
-            earthMesh.rotation.y = 60 * Math.PI / 180;
             earthMesh.rotation.z = 23.5 * Math.PI / 180;
+            
+            
+            // earthMesh.rotation.x = 45 * Math.PI / 180;
+            // earthMesh.rotation.z = 10 * Math.PI / 180;
             
             // create atmosphere models
             const atmPaleBlueDot1 = createAtmosphereSingleLayer();
@@ -112,11 +115,15 @@ export class ObjectFactory {
 
             // create shadow cylinder
             const shadowCylinder = createShadowCylinder(4, 1.01);
+            // const shadowCylinder = createShadowCylinder(4, 1.01, new THREE.Vector3(-7, -10, 20), earthMesh);
+
             earthMesh.add(shadowCylinder);
 
             // create ice models
             const icePaleBlueDot = createIceGroup('icePaleBlueDot', 6, 1.01);
-            const iceGroup = createIceGroup('iceGroup');
+            const iceGroup = createIceGroup('iceGroup');    
+            const iceGroup2 = createIceGroup('iceGroup2');
+
             const snowballEarthGroup = createIceGroup('snowballEarthGroup');
             const simIceGroup = createIceGroup('simIceGroup');
 
@@ -128,6 +135,7 @@ export class ObjectFactory {
             earthMesh.add(snowballEarthGroup);
             earthMesh.add(icePaleBlueDot);
             earthMesh.add(simIceGroup);
+            earthMesh.add(iceGroup2);
 
             // After creating all patches
             // console.log('SimIceGroup created with patches:', simIceGroup.children.length);
@@ -147,7 +155,8 @@ export class ObjectFactory {
                     iceGroup: iceGroup,
                     icePaleBlueDot: icePaleBlueDot,
                     simIceGroup: simIceGroup,
-                    snowballEarthGroup: snowballEarthGroup
+                    snowballEarthGroup: snowballEarthGroup,
+                    iceGroup2: iceGroup2
                 }
             };
         }

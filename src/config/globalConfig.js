@@ -74,7 +74,7 @@ export const SEGMENT_Y = 50;
 const SCROLL_dX = 0;
 const SCROLL_dY = 50;
 
-const SIM_SEGMENT_NUM = 18; // as in contentForExport.js
+const SIM_SEGMENT_NUM = 21; // as in contentForExport.js
 
 // -----------------------------------------
 // -----------------------------------------
@@ -201,13 +201,20 @@ const configObjects = [
                 type: "scale",
                 scale_to: 1,
                 at: DUR_SEGMENT * 5, 
-                duration: 0.05
+                duration: 0.02
             },
             {
                 type: "translation",
                 delta_x: 0, 
                 delta_y: -40,
                 at: 0.90, duration: 0.02
+            },
+            {
+                type: "translation",
+                delta_x: 0, 
+                delta_y: 0,
+                at: DUR_SEGMENT * 22, 
+                duration: 0.02
             },
             // {
             //     type: "camera_look",
@@ -228,13 +235,36 @@ const configObjects = [
         transition: {
             entry_from: {
                 x: 40, y: 20,  
-                at: DUR_SEGMENT * 2.75 + DUR_TRANS,  
+                at: DUR_SEGMENT * 2.5 + DUR_TRANS,  
                 duration: 0.01,
                 opacity: 0
             },
             exit_to: {
                 x: 40, y: 20,  
-                at: DUR_SEGMENT * 3,  
+                at: DUR_SEGMENT * 3 + DUR_TRANS,  
+                duration: 0.01,
+                opacity: 0
+            }
+        }
+    },
+    {
+        id: "paleBlueDot",
+        type: "annotation",
+        content: `The background image was taken by the Voyager 1 spacecraft in 1990, looking back at Earth from a distance of 3.7 billion miles.
+
+The astronomer Carl Sagan called this image "a pale blue dot".`,
+
+        position: { x: 60, y: 45 },  
+        transition: {
+            entry_from: {
+                x: 60, y: 45,  
+                at: DUR_SEGMENT * 3.5 + DUR_TRANS,  
+                duration: 0.01,
+                opacity: 0
+            },
+            exit_to: {
+                x: 60, y: 45,  
+                at: DUR_SEGMENT * 4 + DUR_TRANS,  
                 duration: 0.01,
                 opacity: 0
             }
@@ -248,13 +278,13 @@ const configObjects = [
         transition: {
             entry_from: {
                 x: 50, y: 13,  // Starting position
-                at: DUR_SEGMENT * 3.25 + DUR_TRANS,  // When to start appearing
+                at: DUR_SEGMENT * 8 + DUR_TRANS,  // When to start appearing
                 duration: 0.01,
                 opacity: 0
             },
             exit_to: {
                 x: 50, y: 13,  // Exit position (typically moves up)
-                at: DUR_SEGMENT * 3.75,  // When to start disappearing
+                at: DUR_SEGMENT * 9,  // When to start disappearing
                 duration: 0.001,
                 opacity: 0
             }
@@ -271,12 +301,12 @@ const configObjects = [
         transition: {
             entry_from: {
                 x: 50, y: 50,  // Match the position
-                at: DUR_SEGMENT * 15,
+                at: DUR_SEGMENT * 17,
                 opacity: 0
             },
             exit_to: {
                 x: 50, y: 50,  // Match the position
-                at: DUR_SEGMENT * 16,
+                at: DUR_SEGMENT * 19,
                 opacity: 0
             }
         }
@@ -320,7 +350,7 @@ const configObjects = [
         },
         transition: {
             entry_from: {
-                at: SIM_SEGMENT_START_AT + DUR_TRANS,
+                at: SIM_SEGMENT_START_AT - DUR_TRANS,
                 opacity: 0,
                 duration: 0.001
             },
@@ -348,7 +378,7 @@ const configObjects = [
         },
         transition: {
             entry_from: {
-                at: SIM_SEGMENT_START_AT + DUR_TRANS,
+                at: SIM_SEGMENT_START_AT - DUR_TRANS,
                 opacity: 0,
                 duration: 0.001
             },
@@ -363,8 +393,8 @@ const configObjects = [
         id: "sim-controls",
         type: "sim-controls",
         position: {
-            x: HEAD_X,    // Position on right side of screen
-            y: HEAD_Y + 20     // Vertically centered
+            x: HEAD_X,    
+            y: HEAD_Y + 10     
         },
         transition: {
             entry_from: {
@@ -387,18 +417,18 @@ const configObjects = [
         id: "sim-v-plot",
         type: "sim-v-plot",
         position: {
-            x: 35,    // 35% from left
+            x: 25,    // 35% from left
             y: 70     // Center vertically
         },
         transition: {
             entry_from: {
-                x: 35,
+                x: 25,
                 y: 70,
                 at: SIM_SEGMENT_START_AT,       
                 opacity: 0
             },
             exit_to: {
-                x: 35,
+                x: 25,
                 y: 70,
                 at: SIM_SEGMENT_END_AT,       
                 opacity: 0
@@ -409,18 +439,18 @@ const configObjects = [
         id: "sim-solution-plot",
         type: "sim-solution-plot",
         position: {
-            x: 65,    // 65% from left
+            x: 75,    // 65% from left
             y: 70     // Center vertically
         },
         transition: {
             entry_from: {
-                x: 65,
+                x: 75,
                 y: 70,
                 at: SIM_SEGMENT_START_AT,       
                 opacity: 0
             },
             exit_to: {
-                x: 65,
+                x: 75,
                 y: 70,
                 at: SIM_SEGMENT_END_AT,       
                 opacity: 0
@@ -448,43 +478,74 @@ export const extraConfig = [
     {
         id: "earthTexture",
         file: 'public/assets/textures/rodinia_unpix.png',
-        entry: { at: DUR_SEGMENT * 17 },
+        entry: { at: DUR_SEGMENT * 2.2 },
         exit: { at: 0.96 }
     },
     {
         id: "atmPaleBlueDot1",  // matches the name in ObjectFactory
-        entry: { at: DUR_SEGMENT * 15 + DUR_TRANS + DELAY },
-        exit: { at: DUR_SEGMENT * 12 + DUR_TRANS * 2 },
+        entry: { at: DUR_SEGMENT * 4 },
+        exit: { at: DUR_SEGMENT * 4.5},
         color: 0xf4a261,  // or whatever color we want
         entryOpacity: 0,
         exitOpacity: 0.8
     },
     {
         id: "atmPaleBlueDot2",  // matches the name in ObjectFactory
-        entry: { at: DUR_SEGMENT * 12 + DUR_TRANS * 2},
-        exit: { at: DUR_SEGMENT * 13 - DUR_TRANS * 2},
+        entry: { at: DUR_SEGMENT * 4.5},
+        exit: { at: DUR_SEGMENT * 5},
         color: 0xf4a261,  // or whatever color we want
         entryOpacity: 0.8,
         exitOpacity: 0.2
     },
     {
-        id: "icePaleBlueDot",
-        entry: { at: DUR_SEGMENT * 3 - DUR_TRANS * 2 },
-        exit: { at: DUR_SEGMENT * 3 - DUR_TRANS },
+        id: "shadowCylinder",
+        entry: { at: DUR_SEGMENT * 8 + DUR_TRANS },
+        exit:  { at: DUR_SEGMENT * 9.5}
+    },
+    {
+        id: "iceGroup2",
+        entry: { at: DUR_SEGMENT * 10 },
+        exit: { at: DUR_SEGMENT * 11.9 },
+        maxRadius: 0.3  // Maximum size of ice patches
+    },
+
+    // {
+    //     id: "icePaleBlueDot",
+    //     entry: { at: DUR_SEGMENT * 4.5 },
+    //     exit: { at: DUR_SEGMENT * 5 },
+    //     maxRadius: 0.6  // Maximum size of ice patches
+    // },
+    // {
+    //     id: "icePaleBlueDot",
+    //     entry: { at: DUR_SEGMENT * 4.5 },  
+    //     exit: { at: DUR_SEGMENT * 5 },
+    //     entryDuration: DUR_SEGMENT * 0.01,
+    //     exitDuration: DUR_SEGMENT * 0.01,
+    //     startDecrease: DUR_SEGMENT * 4.75,   
+    //     maxRadius: 0.2
+    // },
+
+
+
+
+
+    {
+        id: "iceGroup",
+        entry: { at: DUR_SEGMENT * 4.5 },
+        exit: { at: DUR_SEGMENT * 5 },
         maxRadius: 0.6  // Maximum size of ice patches
     },
 
-    {
-        id: "shadowCylinder",
-        entry: { at: DUR_SEGMENT * 3.1 + DUR_TRANS },
-        exit:  { at: DUR_SEGMENT * 3.75}
-    },
-    {
-        id: "iceGroup",
-        entry: { at: DUR_SEGMENT * 3.5 },
-        exit: { at: DUR_SEGMENT * 4 },
-        maxRadius: 0.6  // Maximum size of ice patches
-    },
+
+
+
+
+    // {
+    //     id: "iceGroup",
+    //     entry: { at: DUR_SEGMENT * 3.5 },
+    //     exit: { at: DUR_SEGMENT * 4 },
+    //     maxRadius: 0.6  // Maximum size of ice patches
+    // },
 
 
     
@@ -542,7 +603,7 @@ export const extraConfig = [
 
 // Override positions
 const textConfigOverrides = {
-    'segment-16': {
+    'segment-21': {
         position: { x: SEGMENT_X, y: SEGMENT_Y-25},  
     }
 };

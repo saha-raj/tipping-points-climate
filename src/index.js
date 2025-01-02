@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import * as d3 from 'd3';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { LifecycleManager } from './core/lifecycle/LifecycleManager.js';
 import { 
     globalConfig, 
@@ -443,6 +444,27 @@ class ScrollCanvas {
                     }
                 }
             });
+
+            extraConfig.forEach(config => {
+                if (config.id === 'iceGroup2') {
+                    const earth = this.objects.get('earth');
+                    if (earth && earth.extras && earth.extras.iceGroup2) {
+                        const iceGroup2 = earth.extras.iceGroup2;
+                        
+                        if (progress >= config.entry.at && progress <= config.exit.at) {
+                            iceGroup2.visible = true;
+                            const t = (progress - config.entry.at) / (config.exit.at - config.entry.at);
+                            const scale = t * config.maxRadius;
+                            
+                            iceGroup2.children.forEach(patch => {
+                                patch.scale.set(scale, scale, 1);
+                            });
+                        } else {
+                            iceGroup2.visible = false;
+                        }
+                    }
+                }
+            });
         };
 
         // Add animation button handler
@@ -567,6 +589,14 @@ class ScrollCanvas {
                 this.backgroundManager.loadBackground(config);
             }
         });
+
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.controls.enableZoom = false;
+        this.controls.enablePan = false;
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.05;
+        this.controls.rotateSpeed = 0.5;
+        this.controls.enabled = false;
     }
 
     setupScene() {
@@ -583,13 +613,13 @@ class ScrollCanvas {
         );
         
         // Position camera
-        // this.camera.position.x = -4;
-        // this.camera.position.y = 3.2;
-        // this.camera.position.z = 3;
+        this.camera.position.x = -4;
+        this.camera.position.y = 3.2;
+        this.camera.position.z = 3;
 
-        this.camera.position.x = 0;
-        this.camera.position.y = 0;
-        this.camera.position.z = 7;
+        // this.camera.position.x = 0;
+        // this.camera.position.y = 0;
+        // this.camera.position.z = 7;
 
         // Add camera lookAt - can be removed if needed
         this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
@@ -612,9 +642,22 @@ class ScrollCanvas {
         // Add lighting for 3D objects
         // const ambientLight = new THREE.AmbientLight(0x404040);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        // original
         directionalLight.position.set(-10, 0, 0);
+
+        // new
+        // directionalLight.position.set(-7, -10, 20);
+
         // this.scene.add(ambientLight);
         this.scene.add(directionalLight);
+
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.controls.enableZoom = false;
+        this.controls.enablePan = false;
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.05;
+        this.controls.rotateSpeed = 0.5;
+        this.controls.enabled = false;
     }
 
     setupObjects() {
@@ -995,6 +1038,8 @@ class ScrollCanvas {
         
         this.updateObjects();
         this.renderer.render(this.scene, this.camera);
+
+        this.controls.update();
     }
 
     getCurrentScene(progress) {
