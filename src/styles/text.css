@@ -46,7 +46,7 @@ body {
     font-size: var(--body-font-size);
     color: var(--text-color);
     font-weight: var(--body-font-weight);
-    max-width: 500px;
+    max-width: clamp(300px, 40vw, 500px);
     line-height: 1.6;
 }
 
@@ -67,7 +67,7 @@ body {
     font-size: var(--body-font-size);
     color: var(--text-color);
     font-weight: var(--body-font-weight);
-    max-width: 500px;
+    max-width: clamp(300px, 30vw, 500px);
     line-height: 1.6;
     transform: translateY(-50%);  /* Move up by half height */
 }
@@ -171,3 +171,16 @@ body {
     50% { transform: translateY(10px); transform: rotate(180deg); }
 }
 
+/* Media queries for smaller screens */
+@media screen and (max-width: 768px) {
+    .text-type-segment, 
+    .text-type-intro-segment {
+        padding: 0 15px;  /* Add some padding on smaller screens */
+    }
+    
+    .text-type-header,
+    .text-type-intro-header {
+        white-space: normal;  /* Allow text to wrap on small screens */
+        padding: 0 15px;
+    }
+}
