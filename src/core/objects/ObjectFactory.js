@@ -12,6 +12,7 @@ import { StandaloneTemperaturePlot } from './StandaloneTemperaturePlot.js';
 import { StandaloneAnimatedSolutionPlot } from './StandaloneAnimatedSolutionPlot.js';
 import { StandaloneAnimatedPotentialPlot } from './StandaloneAnimatedPotentialPlot.js';
 import { StandaloneAnimatedHysteresisPlot } from './StandaloneAnimatedHysteresisPlot.js';
+import { StandaloneAlbedoPlot } from './StandaloneAlbedoPlot.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -42,6 +43,8 @@ export class ObjectFactory {
                 return this.createAnimatedPotentialPlot(config);
             case 'animatedHysteresisPlot':
                 return this.createAnimatedHysteresisPlot(config);
+            case 'albedoPlot':
+                return this.createAlbedoPlot(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -231,7 +234,7 @@ export class ObjectFactory {
         slider1.min = '0.3';
         slider1.max = '0.45';
         slider1.step = '0.001';
-        slider1.value = '0.327';
+        slider1.value = '0.36';
         slider1.className = 'simulation-slider g-slider';
         // slider1.style.display = 'block';
         // slider1.style.width = '200px';
@@ -259,7 +262,7 @@ export class ObjectFactory {
         slider2.type = 'range';
         slider2.min = '220';
         slider2.max = '320';
-        slider2.value = '292';  
+        slider2.value = '310';  
         slider2.className = 'simulation-slider temp-slider';
         
         const slider2Value = document.createElement('span');
@@ -395,6 +398,19 @@ export class ObjectFactory {
         const plot = new StandaloneAnimatedHysteresisPlot(config);
         const element = plot.element;
         element.id = 'animated-hysteresis-plot';
+        return {
+            type: 'plot',
+            object: element,
+            extras: {
+                plot: plot
+            }
+        };
+    }
+
+    static createAlbedoPlot(config) {
+        const plot = new StandaloneAlbedoPlot(config);
+        const element = plot.element;
+        element.id = 'albedo-plot';
         return {
             type: 'plot',
             object: element,

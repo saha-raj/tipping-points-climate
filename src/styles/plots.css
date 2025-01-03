@@ -296,6 +296,7 @@ input[type="range"]:disabled::-moz-range-thumb {
 
 .plot-area[id="animated-potential-plot"],
 .plot-area[id="animated-hysteresis-plot"],
+.plot-area[id="albedo-plot"],
 .plot-area[id="animated-solution-plot"] {
     transform: translate(-50%, -50%) !important;
     /* border: 2px solid green; */

@@ -2,9 +2,7 @@ export const sceneContent = {
     "header-0": "Tipping Points in Climate",
     "segment-0": `An interactive visualization to explore how small shifts in key variables can trigger large changes in Earth's climate. 
 
-This simple model with just *three* interacting components demonstrates the principal mechanism behind extreme climatic shifts - the balance between amplifying and stabilizing mechanisms in the climate system.
-
-The modern climate exists in a moderate intermediate state, maintained in large part by the stabilizing role of the climate-biosphere system.`,
+This simple model demonstrates the principal mechanisms behind extreme climatic shifts - the balance between amplifying and stabilizing mechanisms in the climate system.`,
 
     "header-1": "Snowball and Hothouse Earths",
     "segment-1": `More than once in Earth's history, the planet was likely completely covered in ice. These are the so-called *Snowball Earth* events that happened during the late Proterozoic and early Cambrian periods, between 700 and 600 million years ago.`,
@@ -42,61 +40,71 @@ The presence of ice and greehouse gases will influence the amount of incoming an
 $$E_{in} = S_0\\pi R^2$$`,
 
     "segment-10": `But not all of this intercepted energy actually reaches the surface. Some part of it is reflected back to space by the ice and clouds. Let's only consider the reflectivity of ice. If $\\alpha$ is the average reflectivity of ice (albedo), then the total incoming energy can be written as:
-$$E_{in} = S_0\\pi R^2 (1-\\alpha)$$
-This is a very crude approximation, but it will still allow us to demonstrate the principles and mechanisms of tipping points.`,
+$$E_{in} = S_0\\pi R^2 (1-\\alpha(T))$$
+where the albedo is a function of temperature $T$. This is a very crude approximation, but it will still allow us to demonstrate the principles and mechanisms of tipping points.`,
 
-    "segment-11": `on the relationship between albedo and temperature`,
-
-    "header-12": "Outgoing Energy",
-    "segment-12": `Over time, the amount of energy that enters the climate system must equal the amount of energy that leaves the system. This is true even when the climate system is storing some of that energy. 
+    "header-11": "Outgoing Energy",
+    "segment-11": `Over time, the amount of energy that enters the climate system must equal the amount of energy that leaves the system. This is true even when the climate system is storing some of that energy. 
 
 If the Earth were to behave like a perfect emitter of heat energy (which it is not) and didn't have an atmosphere to trap energy, the outgoing energy can be expressed through the Stefan-Boltzmann law:
 $$E_{out} = \\sigma T^4 \\cdot A $$
 
 where $\\sigma$ is the Stefan-Boltzmann constant, $T$ is the temperature, and $A=4\\pi R^2$ is the surface area of the Earth.`,
 
-    "segment-13": `If there is an atmosphere, some of the outgoing energy would be trapped by the atmosphere. Greenhouse gases like $\\mathrm{CO}_2$ and $\\mathrm{CH}_4$ are particularly effective at this. In reality, the relationship between greenhouse gas concentration and outgoing energy is complex, but we can again make crude simplifications like assuming an inverse relationship between greenhouse gas concentration and outgoing energy. This way, we can write:
+    "segment-12": `If there is an atmosphere, some of the outgoing energy would be trapped by the atmosphere. Greenhouse gases like $\\mathrm{CO}_2$ and $\\mathrm{CH}_4$ are particularly effective at this. In reality, the relationship between greenhouse gas concentration and outgoing energy is complex, but we can again make crude simplifications like assuming an inverse relationship between greenhouse gas concentration and outgoing energy. This way, we can write:
 $$E_{out} = \\frac{1}{g}4\\pi R^2 \\sigma T^4$$
 where $g$ is a positive value measure of the concentration of greenhouse gases.`,
 
-    "header-14": "Putting it all together",
-    "segment-14": `Now that we have two expressions for the rates of incoming and outgoing energies, we can put them together to get the net balance of energy in the system and how it changes over time. In other words, an imbalance between incoming and outgoing energies 
+    "header-13": "Putting it all together",
+    "segment-13": `Now that we have two expressions for the rates of incoming and outgoing energies, we can put them together to get the net balance of energy in the system and how it changes over time. In other words, an imbalance between incoming and outgoing energies 
 $$E_{in} - E_{out}$$
 will cause the heat content of the system to change with time. We can then solve this system to find how the temperature will change over time, as well as other variables like ice that are related to temperature.`,
 
-    "segment-15": `Written as an ordinary differential equation we have:
-$$\\frac{dE}{dt}=E_{in} - E_{out} =S_0\\pi R^2 (1-\\alpha(T))-\\frac{1}{g}4\\pi R^2 \\sigma T^4$$
+    "segment-14": `Written as an ordinary differential equation we have:
+$$\\frac{dE}{dt}=E_{in} - E_{out}$$
 
 We can relate the temperature change to the energy change by dividing by the heat capacity of the system, $c$
 $$c\\frac{dT}{dt}=S_0\\pi R^2 (1-\\alpha(T))-\\frac{1}{g}4\\pi R^2 \\sigma T^4$$
 
 This single ordinary differential equation (ODE) describes the climate model. This is the *simplest* possible model of the climate system.`,
 
-    "header-16": "Climate States",
-    "segment-16": `We can now solve the model to find how the temperature will change over time, as well as other variables like ice that are related to temperature.
+    "header-15": "Climate States",
+    "segment-15": `We can now solve the model to find how the temperature will change over time, as well as other variables like ice that are related to temperature.
 
 Depending on the initial Temperature and the greenhouse gas concentration, the model will settle into one of two stable states - a *hothouse* state or a *snowball* state.`,
 
-    "segment-17": `The stability of these two climate states are related to the relative strenghts of the amplifying and stabilizing mechanisms in the climate system, viz. the ice-albedo feedback and the greenhouse gas feedbacks. We call this the 'climate potential'.
+    "segment-16": `For the *same* starting condition, the model's temperature could evolve along different paths. 
 
-In our model, the shape of the potential is determined only by the greenhouse gas concentration, $g$.`,
+When the greenhouse gas concentration is **very** high, the temperature will come to a high stable temperature state.
+
+When the greenhouse gas concentration is **very** low, the temperature will come to a low stable temperature state.`,
+
+    "segment-17": `However, there's a range of greenhouse gas concentrations for which the model has two stable states - the *snowball* and *hothouse* states. Depending on the initial conditions, the climate will settle into one or the other state.
+
+The propensity for the climate to settle into one or the other state can be visualized with the help of the *climate potential*. In this landscape, the valleys represent the stable states of the climate system, and the hills represent the unstable states.`,
 
     "segment-18": `For some values of $g$, the potential has two stable states - one at low temperatures and one at high temperatures. This means that depending on the initial conditions, the climate will settle into one or the other state.`,
 
     "segment-19": `For other values of $g$, the potential has only one stable state - a single valley. This means that regardless of the initial conditions, the climate will settle into that single stable state.`,
 
-    "header-20": "Simulation",
-    "segment-20": `We can now simulate the model and examine what its stable states are by varying the initial temperature and greenhouse gas concentration, using these sliders.`,
+    "segment-20": `If we could dial the greenhouse gas concentration slowly, allowing the climate to always settle into its stable equilibrium state, we'll see a large and abrupt transition between the climate states when some tipping point is reached.`,
 
-    "segment-21": `&nbsp;`,
+    "segment-21": `This *hysteresis* diagram illustrates another fundamental property of tipping points - **irreversibility**. 
 
-    "header-22": "The Modern Climate",
-    "segment-22": `The modern climate, starting with the *Holocene* epoch, and going further back to the start of the *Pleistocene* epoch, has been in an intermediate state - *quasi-stable* state that we don't really see in our very crude climate model. In fact, our climate state is nestled somewhere in the region of instability that we see in this model. 
+Note, how changing the greenhouse gas concentration in the reverse direction does not cause the climate to return to the original state at the same temperature point!`,
+
+    "header-22": "Simulation",
+    "segment-22": `We can now simulate the model and examine what its stable states are by varying the initial temperature and greenhouse gas concentration, using these sliders.`,
+
+    "segment-23": `Use the sliders to dial the initial temperature and greenhouse gas concentration to see how the climate evolves over time.`,
+
+    "header-24": "The Modern Climate",
+    "segment-24": `The modern climate, starting with the *Holocene* epoch, and going further back to the start of the *Pleistocene* epoch, has been in an intermediate state - *quasi-stable* state that we don't really see in our very crude climate model. In fact, our climate state is nestled somewhere in the region of instability that we see in this model. 
 
 The complex biossphere-climate system has carved out a zone of stability in a larger region of instability. Even here, the climate has oscillated between glacial and interglacial periods all through the Pleistocene epoch.`,
 
-    "header-23": "References",
-    "segment-23": `[1] Ref 1
+    "header-25": "References",
+    "segment-25": `[1] Ref 1
 
 [2] Ref 2`
 };

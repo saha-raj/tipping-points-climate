@@ -85,7 +85,7 @@ body {
     max-width: 300px;
     white-space: normal;
     transition: opacity 0.3s ease-in-out;
-    transform: translate(0, -50%) !important;
+    transform: translate(-50%, -50%) !important;
 }
 
 /* Optional: Add a subtle animation for when annotations fade in */

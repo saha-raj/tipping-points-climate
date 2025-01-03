@@ -74,7 +74,7 @@ export const SEGMENT_Y = 50;
 const SCROLL_dX = 0;
 const SCROLL_dY = 50;
 
-const SIM_SEGMENT_NUM = 21; // as in contentForExport.js
+const SIM_SEGMENT_NUM = 23; // as in contentForExport.js
 
 // -----------------------------------------
 // -----------------------------------------
@@ -231,18 +231,18 @@ const configObjects = [
         id: "rodinia",
         type: "annotation",
         content: "An imagined view of what the Earth might have looked like during the Cryogenian period, 700 million years ago.",
-        position: { x: 40, y: 20 },  
+        position: { x: 50, y: 20 },  
         transition: {
             entry_from: {
-                x: 40, y: 20,  
-                at: DUR_SEGMENT * 2.5 + DUR_TRANS,  
-                duration: 0.01,
+                x: 50, y: 20,  
+                at: DUR_SEGMENT * 6 + DUR_TRANS,  
+                duration: 0.001,
                 opacity: 0
             },
             exit_to: {
-                x: 40, y: 20,  
-                at: DUR_SEGMENT * 3 + DUR_TRANS,  
-                duration: 0.01,
+                x: 50, y: 20,  
+                at: DUR_SEGMENT * 7 + DUR_TRANS,  
+                duration: 0.001,
                 opacity: 0
             }
         }
@@ -250,22 +250,22 @@ const configObjects = [
     {
         id: "paleBlueDot",
         type: "annotation",
-        content: `The background image was taken by the Voyager 1 spacecraft in 1990, looking back at Earth from a distance of 3.7 billion miles.
+        content: `The background image was taken by the Voyager-1 spacecraft in 1990, looking back at Earth from a distance of 3.7 billion miles.
 
 The astronomer Carl Sagan called this image "a pale blue dot".`,
 
-        position: { x: 60, y: 50 },  
+        position: { x: 70, y: 50 },  
         transition: {
             entry_from: {
-                x: 60, y: 50,  
+                x: 70, y: 50,  
                 at: DUR_SEGMENT * 3.5 + DUR_TRANS,  
-                duration: 0.01,
+                duration: 0.001,
                 opacity: 0
             },
             exit_to: {
-                x: 60, y: 50,  
-                at: DUR_SEGMENT * 4 + DUR_TRANS,  
-                duration: 0.01,
+                x: 70, y: 50,  
+                at: DUR_SEGMENT * 4.5 + DUR_TRANS,  
+                duration: 0.001,
                 opacity: 0
             }
         }
@@ -274,18 +274,40 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         id: "shadow",
         type: "annotation",
         content: "Earth's shadow has an area of $\\pi R^2$",
-        position: { x: 50, y: 13 },  // Screen coordinates
+        position: { x: 50, y: 20 },  // Screen coordinates
         transition: {
             entry_from: {
-                x: 50, y: 13,  // Starting position
+                x: 50, y: 20,  // Starting position
                 at: DUR_SEGMENT * 8 + DUR_TRANS,  // When to start appearing
-                duration: 0.01,
+                duration: 0.001,
                 opacity: 0
             },
             exit_to: {
-                x: 50, y: 13,  // Exit position (typically moves up)
+                x: 50, y: 20,  // Exit position (typically moves up)
                 at: DUR_SEGMENT * 9,  // When to start disappearing
                 duration: 0.001,
+                opacity: 0
+            }
+        }
+    },
+    {   
+        id: "albedo-plot",
+        type: "albedoPlot",
+        position: {
+            x: 50,    
+            y: 50     
+        },
+        transition: {
+            entry_from: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 10,
+                opacity: 0
+            },
+            exit_to: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 11,
                 opacity: 0
             }
         }
@@ -377,13 +399,40 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             entry_from: {
                 x: 50,
                 y: 50,
-                at: DUR_SEGMENT * 18,
+                at: DUR_SEGMENT * 17,
                 opacity: 0
             },
             exit_to: {
                 x: 50,
                 y: 50,
                 at: DUR_SEGMENT * 19,
+                opacity: 0
+            }
+        }
+    },
+    {   
+        id: "animated-potential-plot-2",
+        type: "animatedPotentialPlot",
+        position: {
+            x: 50,    
+            y: 50     
+        },
+        params: {     
+            g_start: 0.45,
+            g_end: 0.3,
+            cycle_duration: 5000  // ms for one complete cycle
+        },
+        transition: {
+            entry_from: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 19,
+                opacity: 0
+            },
+            exit_to: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 20,
                 opacity: 0
             }
         }
@@ -406,13 +455,13 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             entry_from: {
                 x: 50,
                 y: 50,
-                at: DUR_SEGMENT * 19,
+                at: DUR_SEGMENT * 20,
                 opacity: 0
             },
             exit_to: {
                 x: 50,
                 y: 50,
-                at: DUR_SEGMENT * 20,
+                at: DUR_SEGMENT * 22,
                 opacity: 0
             }
         }
@@ -478,19 +527,19 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         type: "sim-controls",
         position: {
             x: HEAD_X,    
-            y: HEAD_Y + 10     
+            y: HEAD_Y + 20     
         },
         transition: {
             entry_from: {
                 x: HEAD_X,
-                y: HEAD_Y + SCROLL_dY,
+                y: HEAD_Y + 20 + SCROLL_dY,
                 at: SIM_SEGMENT_START_AT,        
                 opacity: 0,
                 // duration: 0.01 
             },
             exit_to: {
                 x: HEAD_X,
-                y: HEAD_Y - SCROLL_dY,
+                y: HEAD_Y + 20 - SCROLL_dY,
                 at: SIM_SEGMENT_END_AT,
                 opacity: 0,
                 // duration: 0.01 
@@ -590,7 +639,7 @@ export const extraConfig = [
     {
         id: "iceGroup2",
         entry: { at: DUR_SEGMENT * 10 },
-        exit: { at: DUR_SEGMENT * 11.9 },
+        exit: { at: DUR_SEGMENT * 10.9 },
         maxRadius: 0.3  // Maximum size of ice patches
     },
 
@@ -691,29 +740,29 @@ export const extraConfig = [
                 startAt: DUR_SEGMENT * 10,      // When to start moving (progress 0-1)
                 endAt: DUR_SEGMENT * 10 + DUR_TRANS*2,        // When to end moving
                 startOffset: 0,      // Starting vertical offset
-                endOffset: 500,      // Ending vertical offset
+                endOffset: 1100,      // Ending vertical offset
             },
             {
-                startAt: DUR_SEGMENT * 12,      // Another movement period
-                endAt: DUR_SEGMENT * 12 + DUR_TRANS*2,
-                startOffset: 500,    // Start from where last movement ended
+                startAt: DUR_SEGMENT * 11,      // Another movement period
+                endAt: DUR_SEGMENT * 11 + DUR_TRANS*2,
+                startOffset: 1100,    // Start from where last movement ended
                 endOffset: 0,        // Return to original position
             },
             {
                 startAt: DUR_SEGMENT * 16,      // Another movement period
                 endAt: DUR_SEGMENT * 16 + DUR_TRANS*2,
                 startOffset: 0,    // Start from where last movement ended
-                endOffset: 1300,        // Return to original position
+                endOffset: 1100,        // Return to original position
             },
             {
                 startAt: DUR_SEGMENT * (SIM_SEGMENT_NUM-1),      // Another movement period
                 endAt: DUR_SEGMENT * (SIM_SEGMENT_NUM-1) + DUR_TRANS*2,
-                startOffset: 1300,    // Start from where last movement ended
+                startOffset: 1100,    // Start from where last movement ended
                 endOffset: 500,        // Return to original position
             },
             {
                 startAt: DUR_SEGMENT * (SIM_SEGMENT_NUM+1),      // Another movement period
-                endAt: DUR_SEGMENT * (SIM_SEGMENT_NUM+1) + DUR_TRANS*2,
+                endAt: DUR_SEGMENT * (SIM_SEGMENT_NUM+1) + DUR_TRANS*1,
                 startOffset: 500,    // Start from where last movement ended
                 endOffset: 0,        // Return to original position
             }
@@ -723,8 +772,8 @@ export const extraConfig = [
 
 // Override positions
 const textConfigOverrides = {
-    'segment-21': {
-        position: { x: SEGMENT_X, y: SEGMENT_Y-25},  
+    'segment-23': {
+        position: { x: SEGMENT_X, y: SEGMENT_Y-28},  
     }
 };
 

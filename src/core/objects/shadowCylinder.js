@@ -10,7 +10,7 @@ export function createShadowCylinder(cylinderLength = 4, sphereRadius = 1.01) {
     const cylinderMaterial = new THREE.MeshBasicMaterial({
         color: 0x000000,
         transparent: true,
-        opacity: 0.3,
+        opacity: 0.15,
         side: THREE.DoubleSide
     });
     const shadowCylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);

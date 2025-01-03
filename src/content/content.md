@@ -3,9 +3,7 @@
 [segment]
 An interactive visualization to explore how small shifts in key variables can trigger large changes in Earth's climate. 
 
-This simple model with just *three* interacting components demonstrates the principal mechanism behind extreme climatic shifts - the balance between amplifying and stabilizing mechanisms in the climate system.
-
-The modern climate exists in a moderate intermediate state, maintained in large part by the stabilizing role of the climate-biosphere system.
+This simple model demonstrates the principal mechanisms behind extreme climatic shifts - the balance between amplifying and stabilizing mechanisms in the climate system.
 
 ## Snowball and Hothouse Earths
 [segment]
@@ -51,11 +49,9 @@ Solar energy at Earth's distance is about 1360 Watts per square meter ($S_0$). S
 $$E_{in} = S_0\pi R^2$$
 [segment]
 But not all of this intercepted energy actually reaches the surface. Some part of it is reflected back to space by the ice and clouds. Let's only consider the reflectivity of ice. If $\alpha$ is the average reflectivity of ice (albedo), then the total incoming energy can be written as:
-$$E_{in} = S_0\pi R^2 (1-\alpha)$$
-This is a very crude approximation, but it will still allow us to demonstrate the principles and mechanisms of tipping points.
+$$E_{in} = S_0\pi R^2 (1-\alpha(T))$$
+where the albedo is a function of temperature $T$. This is a very crude approximation, but it will still allow us to demonstrate the principles and mechanisms of tipping points.
 
-[segment]
-on the relationship between albedo and temperature
 
 ## Outgoing Energy
 [segment]
@@ -79,7 +75,7 @@ will cause the heat content of the system to change with time. We can then solve
 
 [segment]
 Written as an ordinary differential equation we have:
-$$\frac{dE}{dt}=E_{in} - E_{out} =S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
+$$\frac{dE}{dt}=E_{in} - E_{out}$$
 
 We can relate the temperature change to the energy change by dividing by the heat capacity of the system, $c$
 $$c\frac{dT}{dt}=S_0\pi R^2 (1-\alpha(T))-\frac{1}{g}4\pi R^2 \sigma T^4$$
@@ -93,9 +89,16 @@ We can now solve the model to find how the temperature will change over time, as
 Depending on the initial Temperature and the greenhouse gas concentration, the model will settle into one of two stable states - a *hothouse* state or a *snowball* state.
 
 [segment]
-The stability of these two climate states are related to the relative strenghts of the amplifying and stabilizing mechanisms in the climate system, viz. the ice-albedo feedback and the greenhouse gas feedbacks. We call this the 'climate potential'.
+For the *same* starting condition, the model's temperature could evolve along different paths. 
 
-In our model, the shape of the potential is determined only by the greenhouse gas concentration, $g$. 
+When the greenhouse gas concentration is **very** high, the temperature will come to a high stable temperature state.
+
+When the greenhouse gas concentration is **very** low, the temperature will come to a low stable temperature state.
+
+[segment]
+However, there's a range of greenhouse gas concentrations for which the model has two stable states - the *snowball* and *hothouse* states. Depending on the initial conditions, the climate will settle into one or the other state.
+
+The propensity for the climate to settle into one or the other state can be visualized with the help of the *climate potential*. In this landscape, the valleys represent the stable states of the climate system, and the hills represent the unstable states.
 
 [segment]
 For some values of $g$, the potential has two stable states - one at low temperatures and one at high temperatures. This means that depending on the initial conditions, the climate will settle into one or the other state.
@@ -103,13 +106,20 @@ For some values of $g$, the potential has two stable states - one at low tempera
 [segment]
 For other values of $g$, the potential has only one stable state - a single valley. This means that regardless of the initial conditions, the climate will settle into that single stable state.
 
+[segment]
+If we could dial the greenhouse gas concentration slowly, allowing the climate to always settle into its stable equilibrium state, we'll see a large and abrupt transition between the climate states when some tipping point is reached.
+
+[segment]
+This *hysteresis* diagram illustrates another fundamental property of tipping points - **irreversibility**. 
+
+Note, how changing the greenhouse gas concentration in the reverse direction does not cause the climate to return to the original state at the same temperature point!
 
 ## Simulation
 [segment]
 We can now simulate the model and examine what its stable states are by varying the initial temperature and greenhouse gas concentration, using these sliders.
 
 [segment]
-&nbsp;
+Use the sliders to dial the initial temperature and greenhouse gas concentration to see how the climate evolves over time.
 
 ## The Modern Climate
 [segment]
