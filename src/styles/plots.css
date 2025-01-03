@@ -278,13 +278,13 @@ input[type="range"]:disabled::-moz-range-thumb {
 /* Position sim-v-plot in top-right corner */
 .plot-area[id="sim-v-plot"] {
     transform: translate(-50%, -50%) !important;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 /* Position sim-solution-plot in top-left corner */
 .plot-area[id="sim-solution-plot"] {
     transform: translate(-50%, -50%) !important;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
 }
 
 /* Center standalone plots in canvas container */
@@ -294,4 +294,11 @@ input[type="range"]:disabled::-moz-range-thumb {
     /* border: 2px solid green; */
 }
 
+.plot-area[id="animated-potential-plot"],
+.plot-area[id="animated-solution-plot"] {
+    transform: translate(-50%, -50%) !important;
+    /* border: 2px solid green; */
+}
+
+/*  */
 

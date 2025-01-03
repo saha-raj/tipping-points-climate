@@ -311,22 +311,50 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             }
         }
     },
-    {
-        id: 'explanation-temperature',
-        type: 'standaloneTemperaturePlot',
-        position: { x: 50, y: 50 },  // Right of center
-        params: {
-            T0: 317,
-            g: 0.384
+    // {
+    //     id: 'explanation-temperature',
+    //     type: 'standaloneTemperaturePlot',
+    //     position: { x: 50, y: 50 },  // Right of center
+    //     params: {
+    //         T0: 317,
+    //         g: 0.384
+    //     },
+    //     transition: {
+    //         entry_from: {
+    //             x: 50, y: 50,  // Match the position
+    //             at: DUR_SEGMENT * 16,
+    //             opacity: 0
+    //         },
+    //         exit_to: {
+    //             x: 50, y: 50,  // Match the position
+    //             at: DUR_SEGMENT * 17,
+    //             opacity: 0
+    //         }
+    //     }
+    // },
+    {   
+        id: "animated-solution-plot",
+        type: "animatedSolutionPlot",  // new type
+        position: {
+            x: 50,    
+            y: 50     
+        },
+        params: {     // Add animation parameters
+            g_start: 0.3,
+            g_end: 0.45,
+            T0: 290,  // Initial temperature
+            cycle_duration: 5000  // ms for one complete cycle
         },
         transition: {
             entry_from: {
-                x: 50, y: 50,  // Match the position
-                at: DUR_SEGMENT * 16,
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 16,  // Example segment
                 opacity: 0
             },
             exit_to: {
-                x: 50, y: 50,  // Match the position
+                x: 50,
+                y: 50,
                 at: DUR_SEGMENT * 17,
                 opacity: 0
             }

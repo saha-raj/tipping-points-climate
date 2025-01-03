@@ -19,6 +19,7 @@ import { DebugLogger } from './debug/DebugLogger.js';
 import { DebugOverlay } from './debug/DebugOverlay.js';
 import { ClimateModel } from './core/simulation/climate-model.js';
 import { BackgroundManager } from './components/BackgroundManager.js';
+import { StandaloneAnimatedSolutionPlot } from './core/objects/StandaloneAnimatedSolutionPlot.js';
 
 // Set color management before anything else
 THREE.ColorManagement.enabled = true;
@@ -628,6 +629,27 @@ class ScrollCanvas {
         this.controls.dampingFactor = 0.05;
         this.controls.rotateSpeed = 0.5;
         this.controls.enabled = false;
+
+        // Add this after other object lifecycle handling
+        document.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = window.scrollY / scrollHeight;
+            
+            // Handle animated solution plot lifecycle
+            globalConfig.forEach(config => {
+                if (config.type === 'animatedSolutionPlot') {
+                    const plot = this.objects.get(config.id);
+                    if (plot && plot.extras && plot.extras.plot) {
+                        if (progress >= config.transition.entry_from.at && 
+                            progress <= config.transition.exit_to.at) {
+                            plot.extras.plot.startAnimation();
+                        } else {
+                            plot.extras.plot.stopAnimation();
+                        }
+                    }
+                }
+            });
+        });
     }
 
     setupScene() {

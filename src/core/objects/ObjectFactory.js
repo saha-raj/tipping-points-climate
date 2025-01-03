@@ -9,6 +9,7 @@ import { createAtmosphereSingleLayer } from './atmosphereSingleLayer.js';
 import { SolutionPlot } from './SolutionPlot.js';
 import { StandalonePotentialPlot } from './StandalonePotentialPlot.js';
 import { StandaloneTemperaturePlot } from './StandaloneTemperaturePlot.js';
+import { StandaloneAnimatedSolutionPlot } from './StandaloneAnimatedSolutionPlot.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -33,6 +34,8 @@ export class ObjectFactory {
                 return this.createStandalonePotentialPlot(config);
             case 'standaloneTemperaturePlot':
                 return this.createStandaloneTemperaturePlot(config);
+            case 'animatedSolutionPlot':
+                return this.createAnimatedSolutionPlot(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -347,6 +350,19 @@ export class ObjectFactory {
         const plot = new StandaloneTemperaturePlot(config);
         const element = plot.element;
         element.id = 'explanation-temperature';  // Set the ID explicitly
+        return {
+            type: 'plot',
+            object: element,
+            extras: {
+                plot: plot
+            }
+        };
+    }
+
+    static createAnimatedSolutionPlot(config) {
+        const plot = new StandaloneAnimatedSolutionPlot(config);
+        const element = plot.element;
+        element.id = 'animated-solution-plot';
         return {
             type: 'plot',
             object: element,
