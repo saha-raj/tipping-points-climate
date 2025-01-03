@@ -38,7 +38,8 @@ class ScrollCanvas {
         console.log('Background Manager initialized:', this.backgroundManager);
         
         this.setupScene();
-        
+
+
         // Store simulation results at class level
         let currentSimulation = null;
 
@@ -465,6 +466,36 @@ class ScrollCanvas {
                     }
                 }
             });
+
+            // Handle Earth screen-space movements
+            // const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            // const progress = window.scrollY / scrollHeight;
+            
+            extraConfig.forEach(config => {
+                if (config.id === "earthScreenMovement") {
+                    let finalOffset = 0; // Track the final offset from all completed movements
+
+                    config.movements.forEach(movement => {
+                        if (progress >= movement.startAt) {
+                            if (progress <= movement.endAt) {
+                                // During movement: interpolate
+                                const movementProgress = (progress - movement.startAt) / (movement.endAt - movement.startAt);
+                                const eased = easeInOutCubic(movementProgress);
+                                const currentOffset = movement.startOffset + (movement.endOffset - movement.startOffset) * eased;
+                                finalOffset = currentOffset;
+                            } else {
+                                // After movement: maintain final position
+                                finalOffset = movement.endOffset;
+                            }
+                        }
+                    });
+
+                    // Apply the final calculated offset
+                    if (finalOffset !== 0) {
+                        this.moveEarthInScreenSpace(finalOffset);
+                    }
+                }
+            });
         };
 
         // Add animation button handler
@@ -620,6 +651,9 @@ class ScrollCanvas {
         // this.camera.position.x = 0;
         // this.camera.position.y = 0;
         // this.camera.position.z = 7;
+
+        // this.scene.position.set(0, 1, 0);
+
 
         // Add camera lookAt - can be removed if needed
         this.camera.lookAt(0, 0, 0);  // Look at origin/center of scene
@@ -1103,9 +1137,35 @@ class ScrollCanvas {
             window.location.reload();
         }, 500);
     }
+
+    moveEarthInScreenSpace(verticalOffset) {
+        const earth = this.objects.get('earth');
+        if (!earth || !earth.object) return;
+        
+        // Get current position in world space
+        const worldPos = new THREE.Vector3();
+        earth.object.getWorldPosition(worldPos);
+        
+        // Project current position to NDC (Normalized Device Coordinates)
+        const screenPos = worldPos.clone().project(this.camera);
+        
+        // Adjust Y in screen space (NDC coordinates are in range -1 to 1)
+        screenPos.y += verticalOffset / 1000; 
+        
+        // Keep X and Z unchanged
+        const newWorldPos = screenPos.unproject(this.camera);
+        
+        // Update only the Y position
+        earth.object.position.y = newWorldPos.y;
+    }
 }
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new ScrollCanvas('canvas-container');
 });
+
+// Add this easing function (optional, but makes movement smoother)
+function easeInOutCubic(x) {
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+}

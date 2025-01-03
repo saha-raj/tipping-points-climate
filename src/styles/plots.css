@@ -118,6 +118,8 @@
     flex-direction: column;
     gap: 10px;
     margin: 0px;
+    width: 100%; 
+
 }
 .slider-group label {
     display: block;
@@ -141,14 +143,14 @@
 
 
 .sim-controls {
-    background: #313949 !important;
-    padding: 20px !important;
+    /* background: #313949 !important; */
+    /* padding: 20px !important; */
     border-radius: 8px !important;
     color: var(--text-color);
     font-family: var(--main-font);
 
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     align-items: flex-start !important;
     gap: 20px !important;
 }
@@ -289,7 +291,7 @@ input[type="range"]:disabled::-moz-range-thumb {
 .plot-area[id="explanation-potential"],
 .plot-area[id="explanation-temperature"] {
     transform: translate(-50%, -50%) !important;
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 
 

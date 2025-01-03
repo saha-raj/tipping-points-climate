@@ -203,19 +203,19 @@ const configObjects = [
                 at: DUR_SEGMENT * 5, 
                 duration: 0.02
             },
-            {
-                type: "translation",
-                delta_x: 0, 
-                delta_y: -40,
-                at: 0.90, duration: 0.02
-            },
-            {
-                type: "translation",
-                delta_x: 0, 
-                delta_y: 0,
-                at: DUR_SEGMENT * 22, 
-                duration: 0.02
-            },
+            // {
+            //     type: "translation",
+            //     delta_x: 0, 
+            //     delta_y: -40,
+            //     at: 0.90, duration: 0.02
+            // },
+            // {
+            //     type: "translation",
+            //     delta_x: 0, 
+            //     delta_y: 0,
+            //     at: DUR_SEGMENT * 22, 
+            //     duration: 0.02
+            // },
             // {
             //     type: "camera_look",
             //     look_x: 20,     
@@ -254,16 +254,16 @@ const configObjects = [
 
 The astronomer Carl Sagan called this image "a pale blue dot".`,
 
-        position: { x: 60, y: 45 },  
+        position: { x: 60, y: 50 },  
         transition: {
             entry_from: {
-                x: 60, y: 45,  
+                x: 60, y: 50,  
                 at: DUR_SEGMENT * 3.5 + DUR_TRANS,  
                 duration: 0.01,
                 opacity: 0
             },
             exit_to: {
-                x: 60, y: 45,  
+                x: 60, y: 50,  
                 at: DUR_SEGMENT * 4 + DUR_TRANS,  
                 duration: 0.01,
                 opacity: 0
@@ -598,6 +598,41 @@ export const extraConfig = [
         file: "public/assets/backgrounds/pbd.webp",
         entry: { at: 0 },
         exit: { at: 1 }
+    },
+    {
+        id: "earthScreenMovement",
+        movements: [
+            {
+                startAt: DUR_SEGMENT * 10,      // When to start moving (progress 0-1)
+                endAt: DUR_SEGMENT * 10 + DUR_TRANS*2,        // When to end moving
+                startOffset: 0,      // Starting vertical offset
+                endOffset: 500,      // Ending vertical offset
+            },
+            {
+                startAt: DUR_SEGMENT * 12,      // Another movement period
+                endAt: DUR_SEGMENT * 12 + DUR_TRANS*2,
+                startOffset: 500,    // Start from where last movement ended
+                endOffset: 0,        // Return to original position
+            },
+            {
+                startAt: DUR_SEGMENT * 16,      // Another movement period
+                endAt: DUR_SEGMENT * 16 + DUR_TRANS*2,
+                startOffset: 0,    // Start from where last movement ended
+                endOffset: 1300,        // Return to original position
+            },
+            {
+                startAt: DUR_SEGMENT * (SIM_SEGMENT_NUM-1),      // Another movement period
+                endAt: DUR_SEGMENT * (SIM_SEGMENT_NUM-1) + DUR_TRANS*2,
+                startOffset: 1300,    // Start from where last movement ended
+                endOffset: 500,        // Return to original position
+            },
+            {
+                startAt: DUR_SEGMENT * (SIM_SEGMENT_NUM+1),      // Another movement period
+                endAt: DUR_SEGMENT * (SIM_SEGMENT_NUM+1) + DUR_TRANS*2,
+                startOffset: 500,    // Start from where last movement ended
+                endOffset: 0,        // Return to original position
+            }
+        ]
     }
 ];
 

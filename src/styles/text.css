@@ -78,12 +78,14 @@ body {
     font-size: 14px;
     line-height: 1.4;
     padding-left: 10px;
+    padding-right: 10px;
     background: rgba(40, 58, 82, 0.6);
     border-radius: 4px;
     pointer-events: none;
     max-width: 300px;
     white-space: normal;
     transition: opacity 0.3s ease-in-out;
+    transform: translate(0, -50%) !important;
 }
 
 /* Optional: Add a subtle animation for when annotations fade in */
@@ -141,6 +143,7 @@ body {
     opacity: 0.1;
     transition: transform 0.3s ease, opacity 0.3s ease;
     background: transparent;
+    transform: translate(-50%, 0);
 }
 
 /* .scroll-button-up {
@@ -153,7 +156,7 @@ body {
 }
 
 .scroll-button-down {
-    transform: rotate(180deg);  
+    transform: translate(-50%, 0) rotate(180deg);  
 }
 
 .scroll-button-down:hover {
@@ -162,13 +165,13 @@ body {
 }
 
 @keyframes bounceUp {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 @keyframes bounceDown {
-    0%, 100% { transform: translateY(0); transform: rotate(180deg); }
-    50% { transform: translateY(10px); transform: rotate(180deg); }
+    0%, 100% { transform: translateX(-50%) rotate(180deg) translateY(0); }
+    50% { transform: translateX(-50%) rotate(180deg) translateY(10px); }
 }
 
 /* Media queries for smaller screens */
