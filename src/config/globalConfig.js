@@ -291,26 +291,26 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         }
     },
 
-    {
-        id: 'explanation-potential',
-        type: 'standalonePotentialPlot',
-        position: { x: 50, y: 50 },  // Left of center
-        params: {
-            g: 0.384
-        },
-        transition: {
-            entry_from: {
-                x: 50, y: 50,  // Match the position
-                at: DUR_SEGMENT * 17,
-                opacity: 0
-            },
-            exit_to: {
-                x: 50, y: 50,  // Match the position
-                at: DUR_SEGMENT * 19,
-                opacity: 0
-            }
-        }
-    },
+    // {
+    //     id: 'explanation-potential',
+    //     type: 'standalonePotentialPlot',
+    //     position: { x: 50, y: 50 },  // Left of center
+    //     params: {
+    //         g: 0.384
+    //     },
+    //     transition: {
+    //         entry_from: {
+    //             x: 50, y: 50,  // Match the position
+    //             at: DUR_SEGMENT * 17,
+    //             opacity: 0
+    //         },
+    //         exit_to: {
+    //             x: 50, y: 50,  // Match the position
+    //             at: DUR_SEGMENT * 19,
+    //             opacity: 0
+    //         }
+    //     }
+    // },
     // {
     //     id: 'explanation-temperature',
     //     type: 'standaloneTemperaturePlot',
@@ -361,6 +361,33 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         }
     },
 
+    {   
+        id: "animated-potential-plot",
+        type: "animatedPotentialPlot",
+        position: {
+            x: 50,    
+            y: 50     
+        },
+        params: {     
+            g_start: 0.3,
+            g_end: 0.45,
+            cycle_duration: 5000  // ms for one complete cycle
+        },
+        transition: {
+            entry_from: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 18,
+                opacity: 0
+            },
+            exit_to: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 19,
+                opacity: 0
+            }
+        }
+    },
     {
         id: 'return-to-story',
         type: 'button',

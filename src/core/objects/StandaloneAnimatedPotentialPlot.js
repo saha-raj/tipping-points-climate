@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { ClimateModel } from '../simulation/climate-model.js';
 
-export class StandaloneAnimatedSolutionPlot {
+export class StandaloneAnimatedPotentialPlot {
     constructor(config) {
         // Create container element
         this.element = document.createElement('div');
@@ -13,10 +13,10 @@ export class StandaloneAnimatedSolutionPlot {
             this.element.style.left = `${config.position.x}%`;
             this.element.style.top = `${config.position.y}%`;
         }
-        
+
         // Store config and set margins
         this.config = config;
-        this.margins = { top: 40, right: 50, bottom: 60, left: 50 };
+        this.margins = { top: 40, right: 40, bottom: 60, left: 40 };
 
         // Get CSS variables
         const style = getComputedStyle(document.documentElement);
@@ -33,11 +33,16 @@ export class StandaloneAnimatedSolutionPlot {
         this.animate = this.animate.bind(this);
         
         // Initialize animation
-        this.animationStartTime = null;
         this.isAnimating = false;
+        this.animationStartTime = null;
         this.climateModel = new ClimateModel();
-        this.frameRate = 60; // frames per second
-        this.startAnimation();
+        this.frameRate = 60;
+        
+        // Draw initial state
+        this.drawPotentialCurve(this.config.params.g_start);
+        
+        // Add visibility observer
+        this.setupVisibilityObserver();
     }
 
     setupPlot() {
@@ -49,8 +54,8 @@ export class StandaloneAnimatedSolutionPlot {
             .attr('width', '100%')
             .attr('height', '100%')
             .attr('viewBox', `0 0 ${width} ${height}`)
-            .style('display', 'block')
-            .style('margin', 'auto');
+            .style('display', 'block')  // Remove any default inline spacing
+            .style('margin', 'auto');   // Center within container
 
         const plotArea = svg.append('g')
             .attr('transform', `translate(${this.margins.left},${this.margins.top})`);
@@ -60,11 +65,11 @@ export class StandaloneAnimatedSolutionPlot {
         const plotHeight = height - this.margins.top - this.margins.bottom;
 
         this.xScale = d3.scaleLinear()
-            .domain([0, 300])  // Show 0-300 time steps
+            .domain([220, 320])
             .range([0, plotWidth]);
 
         this.yScale = d3.scaleLinear()
-            .domain([220, 320])
+            .domain([-100, 100])  // Adjust based on potential values
             .range([plotHeight, 0]);
 
         // Add axes
@@ -85,18 +90,19 @@ export class StandaloneAnimatedSolutionPlot {
             .attr('text-anchor', 'middle')
             .attr('x', width/2)
             .attr('y', height - 10)
-            .text('Time Steps');
+            .text('Temperature (K)');
 
+        // Add new top-aligned label
         svg.append('text')
             .attr('class', 'y-label')
-            .attr('text-anchor', 'start')
-            .attr('x', this.margins.left)
-            .attr('y', 25)
+            .attr('text-anchor', 'start')  // Left align
+            .attr('x', this.margins.left)  // Align with y-axis position
+            .attr('y', 25)  // Position at top
             .style('font-size', '0.9rem')
             .style('font-weight', '500')
             .style('font-family', this.MAIN_FONT)
             .style('fill', this.TEXT_COLOR)
-            .text('Temperature (K)');
+            .text('Climate Potential');
 
         // Add freezing point reference line
         plotArea.append('line')
@@ -104,17 +110,17 @@ export class StandaloneAnimatedSolutionPlot {
             .style('stroke', '#8ecae6')
             .style('stroke-width', '1px')
             .style('stroke-dasharray', '4,4')
-            .attr('x1', 0)
-            .attr('x2', plotWidth)
-            .attr('y1', this.yScale(273))
-            .attr('y2', this.yScale(273));
+            .attr('x1', this.xScale(273))
+            .attr('x2', this.xScale(273))
+            .attr('y1', 0)
+            .attr('y2', plotHeight);
 
-        // Add freezing point labels
         plotArea.append('text')
             .attr('class', 'freezing-label-1')
-            .attr('text-anchor', 'end')  // Right align
-            .attr('x', plotWidth - 2)  // 5px from right edge
-            .attr('y', this.yScale(273) - 7)  // Slightly above line
+            .attr('text-anchor', 'start')  // Bottom of rotated text
+            .attr('transform', `rotate(-90, ${this.xScale(273)}, ${plotHeight/4})`)  // Rotate around point
+            .attr('x', this.xScale(273)+14)
+            .attr('y', plotHeight/4 - 7)  // Position in top quarter
             .style('font-size', '0.7rem')
             .style('font-family', this.MAIN_FONT)
             .style('fill', '#8ecae6')
@@ -122,75 +128,80 @@ export class StandaloneAnimatedSolutionPlot {
 
         plotArea.append('text')
             .attr('class', 'freezing-label-2')
-            .attr('text-anchor', 'end')  // Right align
-            .attr('x', plotWidth - 2)  // 5px from right edge
-            .attr('y', this.yScale(273) + 14)  // Slightly below line
+            .attr('text-anchor', 'start')  // Bottom of rotated text
+            .attr('transform', `rotate(-90, ${this.xScale(273)}, ${plotHeight/4 + 40})`)  // 40px below first text
+            .attr('x', this.xScale(273) + 70)
+            .attr('y', plotHeight/4 + 54)
             .style('font-size', '0.7rem')
             .style('font-family', this.MAIN_FONT)
             .style('fill', '#8ecae6')
             .text('Point');
 
         this.plot = { svg, plotArea, width, height };
-        
-        // Initialize path
-        this.path = plotArea.append('path')
-            .attr('class', 'solution-line')
-            .attr('fill', 'none')
-            .attr('stroke', this.LINE_COLOR)
-            .attr('stroke-width', this.LINE_WIDTH);
     }
 
-    drawTemperatureEvolution(T0, g) {
-        // Remove previous path, point, and g-label
-        this.plot.plotArea.selectAll('.solution-line, .initial-point, .g-label').remove();
+    drawPotentialCurve(g) {
+        // Remove previous elements
+        this.plot.plotArea.selectAll('.potential-line, .equilibrium-point-unstable, .equilibrium-point-hot, .equilibrium-point-ice, .g-label').remove();
 
-        const simulation = this.climateModel.simulateTemperature(
-            T0, 
-            g,
-            300,     
-            100000   
-        );
+        const climateModel = this.climateModel;
+        const temps = climateModel.generateTempRange();
+        const potentialValues = temps.map(T => climateModel.calculatePotential(T, g));
 
-        // Use findStableEquilibrium to get the equilibrium temperature
-        const equilibriumTemp = this.climateModel.findStableEquilibrium(g);
-        if (!equilibriumTemp) {
-            console.error('No stable equilibrium found');
-            return;
-        }
+        // Update y-scale based on data extent
+        this.yScale.domain(d3.extent(potentialValues));
 
-        // Find where we get close to equilibrium
-        const TEMP_THRESHOLD = 0.00001;
-        const equilibriumIndex = simulation.temperatures.findIndex(temp => 
-            Math.abs(temp - equilibriumTemp) < TEMP_THRESHOLD
-        );
-        const endIndex = equilibriumIndex !== -1 ? equilibriumIndex + 1 : simulation.temperatures.length;
+        // Update y-axis with new scale
+        this.plot.plotArea.select('.y-axis')
+            .call(d3.axisLeft(this.yScale)
+                .ticks(5)
+                .tickFormat(d => Math.round(d)));
 
-        const tempLine = d3.line()
-            .x((d, i) => this.xScale(i))
-            .y(d => this.yScale(d));
+        // Draw potential curve
+        const line = d3.line()
+            .x(d => this.xScale(d[0]))
+            .y(d => this.yScale(d[1]));
 
-        // Draw the line
         this.plot.plotArea.append('path')
-            .datum(simulation.temperatures.slice(0, endIndex))
-            .attr('class', 'solution-line')
-            .attr('fill', 'none')
-            .attr('stroke', this.LINE_COLOR)
-            .attr('stroke-width', this.LINE_WIDTH)
-            .attr('d', tempLine);
+            .datum(temps.map((t, i) => [t, potentialValues[i]]))
+            .attr('class', 'potential-line')
+            .attr('d', line)
+            .style('fill', 'none')
+            .style('stroke', this.LINE_COLOR)
+            .style('stroke-width', this.LINE_WIDTH);
 
-        // Add initial temperature point
-        this.plot.plotArea.append('circle')
-            .attr('class', 'initial-point')
-            .attr('cx', this.xScale(0))
-            .attr('cy', this.yScale(T0));
+        // Find and mark equilibrium points
+        const equilibria = climateModel.findEquilibrium(null, g);
+        const rates = temps.map(t => climateModel.calculateDeltaT(t, g));
 
-        // Add g value label at end of line
-        const lastTemp = simulation.temperatures[endIndex - 1];
-        // console.log('g value:', g, 'formatted:', g.toFixed(3)); // Debug log
+        // Add equilibrium points
+        equilibria.forEach(temp => {
+            const potential = climateModel.calculatePotential(temp, g);
+            
+            // Find index of closest temperature in the array
+            const i = temps.findIndex(t => Math.abs(t - temp) < 0.1);
+            
+            // Calculate slope of rate at equilibrium point
+            const slope = (rates[i+1] - rates[i]) / (temps[i+1] - temps[i]);
+            const isStable = slope < 0;  // Stable if rate decreases with temperature
+
+            let className;
+            if (!isStable) {
+                className = 'equilibrium-point-unstable';
+            } else {
+                // For stable points, classify as hot or ice based on temperature
+                className = temp > 273 ? 'equilibrium-point-hot' : 'equilibrium-point-ice';
+            }
+
+            this.plot.plotArea.append('circle')
+                .attr('class', className)
+                .attr('cx', this.xScale(temp))
+                .attr('cy', this.yScale(potential));
+        });
+
+        // Add g value label
         this.plot.plotArea.append('text')
             .attr('class', 'g-label')
-            .attr('x', this.xScale(endIndex - 1) + 5)
-            .attr('y', this.yScale(lastTemp)+4)
             .attr('text-anchor', 'start')
             .style('font-size', '0.8rem')
             .style('font-family', this.MAIN_FONT)
@@ -198,15 +209,32 @@ export class StandaloneAnimatedSolutionPlot {
             .text(`g = ${g.toFixed(2)}`);
     }
 
-    startAnimation() {
-        this.isAnimating = true;
+    setupVisibilityObserver() {
+        // Create intersection observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.resetAndStartAnimation();
+                }
+            });
+        }, { threshold: 0.1 }); // Start when 10% visible
+
+        // Start observing the plot element
+        observer.observe(this.element);
+    }
+
+    resetAndStartAnimation() {
         this.animationStartTime = null;
         this.lastFrameTime = 0;
+        this.isAnimating = true;
+        // Draw initial state
+        this.drawPotentialCurve(this.config.params.g_start);
         requestAnimationFrame(this.animate);
     }
 
-    stopAnimation() {
-        this.isAnimating = false;
+    startAnimation() {
+        // This is now handled by resetAndStartAnimation
+        // Left for compatibility
     }
 
     animate(timestamp) {
@@ -217,7 +245,6 @@ export class StandaloneAnimatedSolutionPlot {
             this.lastFrameTime = timestamp;
         }
 
-        // Control frame rate
         const frameInterval = 1000 / this.frameRate;
         const elapsed = timestamp - this.lastFrameTime;
         
@@ -228,7 +255,6 @@ export class StandaloneAnimatedSolutionPlot {
         
         const progress = (timestamp - this.animationStartTime) / this.config.params.cycle_duration;
         
-        // Stop at end of cycle
         if (progress >= 1) {
             this.isAnimating = false;
             return;
@@ -241,7 +267,7 @@ export class StandaloneAnimatedSolutionPlot {
             return;
         }
         
-        this.drawTemperatureEvolution(this.config.params.T0, g);
+        this.drawPotentialCurve(g);
         
         this.lastFrameTime = timestamp;
         requestAnimationFrame(this.animate);
@@ -249,6 +275,6 @@ export class StandaloneAnimatedSolutionPlot {
 
     interpolateG(progress) {
         const { g_start, g_end } = this.config.params;
-        return g_start + (g_end - g_start) * progress;  // Linear interpolation
+        return g_start + (g_end - g_start) * progress;
     }
 } 
