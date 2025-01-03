@@ -399,7 +399,8 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             T0: 230,
             g_start: 0.45,
             g_end: 0.3,
-            cycle_duration: 5000  // ms for one complete cycle
+            cycle_duration: 5000,  // ms for one complete cycle
+            fade_duration: 10000
         },
         transition: {
             entry_from: {

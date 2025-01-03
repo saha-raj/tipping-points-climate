@@ -43,6 +43,13 @@ export class StandaloneAnimatedHysteresisPlot {
         
         // Add visibility observer
         this.setupVisibilityObserver();
+
+        // Add fade duration parameter
+        this.fadeDuration = 10000; // milliseconds for line segments to fade out
+        this.lineSegments = []; // Store line segments with their creation times
+
+        // Add direction tracking
+        this.direction = 1; // 1 for forward, -1 for backward
     }
 
     setupPlot() {
@@ -203,40 +210,59 @@ export class StandaloneAnimatedHysteresisPlot {
             return null;
         }
 
-        // Store the point in our points array
-        this.points.push([g, equilibriumTemp]);
+        // Store the point in our points array with timestamp
+        const currentTime = Date.now();
+        this.points.push({
+            point: [g, equilibriumTemp],
+            timestamp: currentTime
+        });
 
-        // Draw all points and connect them with a line
+        // Remove old points based on fade duration
+        const cutoffTime = currentTime - this.fadeDuration;
+        this.points = this.points.filter(p => p.timestamp >= cutoffTime);
+
+        // Clear existing elements
         this.plot.plotArea.selectAll('.equilibrium-point, .equilibrium-line, .tracking-dot').remove();
 
-        // Draw the line connecting all points
-        const line = d3.line()
-            .x(d => this.xScale(d[0]))
-            .y(d => this.yScale(d[1]));
+        // Draw line segments with opacity based on age
+        this.points.forEach((point, i) => {
+            if (i > 0) {
+                const prevPoint = this.points[i - 1];
+                const age = currentTime - point.timestamp;
+                const opacity = Math.max(0, 1 - age / this.fadeDuration);
 
-        this.plot.plotArea.append('path')
-            .attr('class', 'equilibrium-line')
-            .attr('d', line(this.points))
-            .attr('fill', 'none')
-            .attr('stroke', this.LINE_COLOR)
-            .attr('stroke-width', this.LINE_WIDTH);
+                this.plot.plotArea.append('path')
+                    .attr('class', 'equilibrium-line')
+                    .attr('d', d3.line()([
+                        [this.xScale(prevPoint.point[0]), this.yScale(prevPoint.point[1])],
+                        [this.xScale(point.point[0]), this.yScale(point.point[1])]
+                    ]))
+                    .attr('fill', 'none')
+                    .attr('stroke', this.LINE_COLOR)
+                    .attr('stroke-width', this.LINE_WIDTH)
+                    .style('opacity', opacity);
+            }
+        });
 
-        // Draw all points
-        this.points.forEach(point => {
+        // Draw points with fading
+        this.points.forEach(({point, timestamp}) => {
+            const age = currentTime - timestamp;
+            const opacity = Math.max(0, 1 - age / this.fadeDuration);
+
             this.plot.plotArea.append('circle')
                 .attr('class', 'equilibrium-point')
                 .attr('cx', this.xScale(point[0]))
                 .attr('cy', this.yScale(point[1]))
                 .attr('r', 2)
-                .style('fill', this.LINE_COLOR);
+                .style('fill', this.LINE_COLOR)
+                .style('opacity', opacity);
         });
 
-        // Add tracking dot at current point, using CSS class styling
+        // Add tracking dot at current point
         this.plot.plotArea.append('circle')
             .attr('class', 'tracking-dot')
             .attr('cx', this.xScale(g))
-            .attr('cy', this.yScale(equilibriumTemp))
-            .attr('r', 4);  // Remove inline styles and let CSS handle appearance
+            .attr('cy', this.yScale(equilibriumTemp));
 
         return equilibriumTemp;
     }
@@ -281,12 +307,26 @@ export class StandaloneAnimatedHysteresisPlot {
         
         const progress = (timestamp - this.animationStartTime) / this.config.params.cycle_duration;
         
-        if (progress >= 1) {
-            this.isAnimating = false;
-            return;
+        // Calculate g based on direction
+        let g;
+        if (this.direction === 1) {
+            g = this.g_start + (this.g_end - this.g_start) * progress;
+            if (progress >= 1) {
+                // Switch direction and reset animation time
+                this.direction = -1;
+                this.animationStartTime = timestamp;
+                g = this.g_end; // Ensure we hit the exact end value
+            }
+        } else {
+            g = this.g_end - (this.g_end - this.g_start) * progress;
+            if (progress >= 1) {
+                // Switch direction and reset animation time
+                this.direction = 1;
+                this.animationStartTime = timestamp;
+                g = this.g_start; // Ensure we hit the exact start value
+            }
         }
-        
-        const g = this.g_start + (this.g_end - this.g_start) * progress;
+
         const gRounded = Math.round(g * 10000) / 10000;
         
         const newTemp = this.drawEquilibriumPoint(gRounded, this.currentTemp);
