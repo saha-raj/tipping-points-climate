@@ -1,7 +1,7 @@
 export class BackgroundManager {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
-        console.log('Background container:', this.container);
+        // console.log('Background container:', this.container);
         this.backgrounds = new Map();
         this.currentBackground = null;
         this.currentProgress = 0;

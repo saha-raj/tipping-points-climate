@@ -86,8 +86,6 @@ This single ordinary differential equation (ODE) describes the climate model. Th
 [segment]
 We can now solve the model to find how the temperature will change over time, as well as other variables like ice that are related to temperature.
 
-Depending on the initial Temperature and the greenhouse gas concentration, the model will settle into one of two stable states - a *hothouse* state or a *snowball* state.
-
 [segment]
 For the *same* starting condition, the model's temperature could evolve along different paths. 
 
@@ -129,7 +127,14 @@ The complex biossphere-climate system has carved out a zone of stability in a la
 
 ## References
 [segment]
+To be added
+
 [1] Ref 1
 
 [2] Ref 2
+
+## About the author
+[segment]
+Raj Saha, PhD
+
 

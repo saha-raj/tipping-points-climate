@@ -69,9 +69,7 @@ $$c\\frac{dT}{dt}=S_0\\pi R^2 (1-\\alpha(T))-\\frac{1}{g}4\\pi R^2 \\sigma T^4$$
 This single ordinary differential equation (ODE) describes the climate model. This is the *simplest* possible model of the climate system.`,
 
     "header-15": "Climate States",
-    "segment-15": `We can now solve the model to find how the temperature will change over time, as well as other variables like ice that are related to temperature.
-
-Depending on the initial Temperature and the greenhouse gas concentration, the model will settle into one of two stable states - a *hothouse* state or a *snowball* state.`,
+    "segment-15": `We can now solve the model to find how the temperature will change over time, as well as other variables like ice that are related to temperature.`,
 
     "segment-16": `For the *same* starting condition, the model's temperature could evolve along different paths. 
 
@@ -104,7 +102,12 @@ Note, how changing the greenhouse gas concentration in the reverse direction doe
 The complex biossphere-climate system has carved out a zone of stability in a larger region of instability. Even here, the climate has oscillated between glacial and interglacial periods all through the Pleistocene epoch.`,
 
     "header-25": "References",
-    "segment-25": `[1] Ref 1
+    "segment-25": `To be added
 
-[2] Ref 2`
+[1] Ref 1
+
+[2] Ref 2`,
+
+    "header-26": "About the author",
+    "segment-26": `Raj Saha, PhD`
 };

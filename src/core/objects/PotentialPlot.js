@@ -30,7 +30,7 @@ export class PotentialPlot {
         this.setupPlot(this.element);
 
         // Debug check
-        console.log('Created element:', this.element instanceof Node);
+        // console.log('Created element:', this.element instanceof Node);
     }
 
     setupPlot(container) {

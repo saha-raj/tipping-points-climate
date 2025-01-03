@@ -203,7 +203,7 @@ export class ObjectFactory {
     }
 
     static createSimControls(config) {
-        console.log("Creating sim controls...");
+        // console.log("Creating sim controls...");
         const container = document.createElement('div');
         container.className = 'sim-controls sim-controls-visibility';  // Add visibility class
         
@@ -304,7 +304,7 @@ export class ObjectFactory {
         container.appendChild(sliderGroup);
         container.appendChild(runButton);
         
-        console.log("Sim controls created:", container);
+        // console.log("Sim controls created:", container);
         return {
             type: 'sim-controls',
             element: container,

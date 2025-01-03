@@ -420,7 +420,7 @@ export class ObjectFactory {
             earthMesh.add(simIceGroup);
 
             // After creating all patches
-            console.log('SimIceGroup created with patches:', simIceGroup.children.length);
+            // console.log('SimIceGroup created with patches:', simIceGroup.children.length);
 
 
 
@@ -477,7 +477,7 @@ export class ObjectFactory {
     }
 
     static createSimControls(config) {
-        console.log("Creating sim controls...");
+        // console.log("Creating sim controls...");
         const container = document.createElement('div');
         container.className = 'sim-controls sim-controls-visibility';  // Add visibility class
         
@@ -578,7 +578,7 @@ export class ObjectFactory {
         container.appendChild(sliderGroup);
         container.appendChild(runButton);
         
-        console.log("Sim controls created:", container);
+        // console.log("Sim controls created:", container);
         return {
             type: 'sim-controls',
             element: container,
@@ -592,8 +592,8 @@ export class ObjectFactory {
 
     static createVPlot(config) {
         const plot = new PotentialPlot(config);
-        console.log('Plot element:', plot.element);
-        console.log('Is Node:', plot.element instanceof Node);
+        // console.log('Plot element:', plot.element);
+        // console.log('Is Node:', plot.element instanceof Node);
         return {
             type: 'plot',
             object: plot.element,  // Should be a DOM element

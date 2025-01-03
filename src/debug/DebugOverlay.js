@@ -8,10 +8,10 @@ export class DebugOverlay {
         overlay.id = 'debug-overlay';
         overlay.style.cssText = `
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
             background: rgba(0, 0, 0, 0.7);
-            color: white;
+            color: #8d99ae;
             padding: 10px;
             border-radius: 5px;
             font-family: monospace;

@@ -12,7 +12,8 @@ import {
     SIM_SEGMENT_LOCK_START_AT,
     SIM_SEGMENT_LOCK_END_AT,
     SIM_SEGMENT_RETURN_BACK_AT,
-    SIM_SEGMENT_FORWARD_TO_AT 
+    SIM_SEGMENT_FORWARD_TO_AT,
+    DUR_TRANS
 } from './config/globalConfig.js';
 import { ObjectFactory } from './core/objects/ObjectFactory.js';
 import { DebugLogger } from './debug/DebugLogger.js';
@@ -36,7 +37,7 @@ class ScrollCanvas {
         
         // Add console.log to verify initialization
         this.backgroundManager = new BackgroundManager('background-container');
-        console.log('Background Manager initialized:', this.backgroundManager);
+        // console.log('Background Manager initialized:', this.backgroundManager);
         
         this.setupScene();
 
@@ -130,17 +131,17 @@ class ScrollCanvas {
 
             if (!object.positionLogged) {
                 const element = object?.object;
-                console.log('Plot creation:', {
-                    id: element?.id,
-                    type: object?.type,
-                    element: element,
-                    inlineStyles: element?.style ? {
-                        position: element.style.position,
-                        left: element.style.left,
-                        top: element.style.top,
-                        transform: element.style.transform
-                    } : 'No inline styles'
-                });
+                // console.log('Plot creation:', {
+                //     id: element?.id,
+                //     type: object?.type,
+                //     element: element,
+                //     inlineStyles: element?.style ? {
+                //         position: element.style.position,
+                //         left: element.style.left,
+                //         top: element.style.top,
+                //         transform: element.style.transform
+                //     } : 'No inline styles'
+                // });
                 object.positionLogged = true;
             }
         });
@@ -149,52 +150,52 @@ class ScrollCanvas {
         if (simControls) {
             const gValue = simControls.controls.gSlider.value;
             const tempValue = simControls.controls.tempSlider.value;
-            console.log('Initial values:', {
-                gValue,
-                tempValue,
-                hasSimControls: !!simControls,
-                hasControls: !!(simControls && simControls.controls),
-                hasSliders: !!(simControls && simControls.controls && 
-                             simControls.controls.gSlider && 
-                             simControls.controls.tempSlider)
-            });
+            // console.log('Initial values:', {
+            //     gValue,
+            //     tempValue,
+            //     hasSimControls: !!simControls,
+            //     hasControls: !!(simControls && simControls.controls),
+            //     hasSliders: !!(simControls && simControls.controls && 
+            //                  simControls.controls.gSlider && 
+            //                  simControls.controls.tempSlider)
+            // });
 
             updatePotentialPlot(gValue, tempValue);  // This creates currentSimulation
             updateSolutionPlot(currentSimulation);   // Add this line to initialize solution plot
 
             // Add this initial ice scale calculation AFTER updatePotentialPlot
             const earth = this.objects.get('earth');
-            console.log('Earth object:', {
-                hasEarth: !!earth,
-                hasExtras: !!(earth && earth.extras),
-                hasIceGroup: !!(earth && earth.extras && earth.extras.simIceGroup),
-                simIceGroupVisible: earth?.extras?.simIceGroup?.visible,
-                hasCurrentSimulation: !!currentSimulation
-            });
+            // console.log('Earth object:', {
+            //     hasEarth: !!earth,
+            //     hasExtras: !!(earth && earth.extras),
+            //     hasIceGroup: !!(earth && earth.extras && earth.extras.simIceGroup),
+            //     simIceGroupVisible: earth?.extras?.simIceGroup?.visible,
+            //     hasCurrentSimulation: !!currentSimulation
+            // });
 
             if (earth && earth.extras && earth.extras.simIceGroup && currentSimulation) {
                 // Use currentSimulation.albedos[0] instead of calculating directly
                 const albedo = currentSimulation.albedos[0];
                 const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
                 
-                console.log('Ice calculation:', {
-                    tempValue,
-                    albedo,
-                    scale,
-                    currentSimulationExists: !!currentSimulation,
-                    simIceGroup: earth.extras.simIceGroup,
-                    simIceChildren: earth.extras.simIceGroup.children,
-                    simIceParent: earth.extras.simIceGroup.parent,
-                    simIceMatrix: earth.extras.simIceGroup.matrix,
-                    simIceWorldMatrix: earth.extras.simIceGroup.matrixWorld
-                });
+                // console.log('Ice calculation:', {
+                //     tempValue,
+                //     albedo,
+                //     scale,
+                //     currentSimulationExists: !!currentSimulation,
+                //     simIceGroup: earth.extras.simIceGroup,
+                //     simIceChildren: earth.extras.simIceGroup.children,
+                //     simIceParent: earth.extras.simIceGroup.parent,
+                //     simIceMatrix: earth.extras.simIceGroup.matrix,
+                //     simIceWorldMatrix: earth.extras.simIceGroup.matrixWorld
+                // });
                 
                 earth.extras.simIceGroup.visible = true;
-                console.log('Ice visibility after setting:', earth.extras.simIceGroup.visible);
+                // console.log('Ice visibility after setting:', earth.extras.simIceGroup.visible);
                 earth.extras.simIceGroup.children.forEach(icePatch => {
                     icePatch.scale.set(scale, scale, 1);
                 });
-                console.log('Ice visibility after scaling:', earth.extras.simIceGroup.visible);
+                // console.log('Ice visibility after scaling:', earth.extras.simIceGroup.visible);
 
                 // Dispatch temp-slider-change event to trigger the handler
                 const event = new CustomEvent('temp-slider-change', { 
@@ -650,6 +651,36 @@ class ScrollCanvas {
                 }
             });
         });
+
+        // Add navigation link
+        const navLink = document.createElement('a');
+        navLink.textContent = 'Go To Simulation';
+        navLink.className = 'nav-link';
+        navLink.href = '#';
+        navLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            window.scrollTo({
+                top: 0.865 * scrollHeight,
+                behavior: 'smooth'
+            });
+        });
+        document.body.appendChild(navLink);
+
+        // Add scroll listener to hide/show nav link
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = window.scrollY / scrollHeight;
+            
+            // Hide nav link in simulation scene
+            if (progress >= SIM_SEGMENT_START_AT && progress <= SIM_SEGMENT_END_AT) {
+                navLink.style.opacity = '0';
+                navLink.style.pointerEvents = 'none';
+            } else {
+                navLink.style.opacity = '1';
+                navLink.style.pointerEvents = 'auto';
+            }
+        });
     }
 
     setupScene() {
@@ -795,13 +826,13 @@ class ScrollCanvas {
                     
                     // Enhanced logging
                     if (!object.positionLogged) {
-                        console.log('Plot object details:', {
-                            objectId: object.object.id,  // Log the actual element ID
-                            parentId: object.object.parentElement?.id,  // Log parent ID if it exists
-                            type: object.type,
-                            element: object.object,
-                            className: object.object.className
-                        });
+                        // console.log('Plot object details:', {
+                        //     objectId: object.object.id,  // Log the actual element ID
+                        //     parentId: object.object.parentElement?.id,  // Log parent ID if it exists
+                        //     type: object.type,
+                        //     element: object.object,
+                        //     className: object.object.className
+                        // });
                         object.positionLogged = true;
                     }
                     

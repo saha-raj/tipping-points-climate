@@ -89,8 +89,8 @@ const DUR_SEGMENT = 1 / NUM_SEGMENTS;
 
 
 // const DUR_SEGMENT = 1 / NUM_SEGMENTS;
-const DUR_TRANS = DUR_SEGMENT * DUR_TRANS_FRAC;
-const DELAY = DUR_SEGMENT * DELAY_FRAC_SEGMENT;
+export const DUR_TRANS = DUR_SEGMENT * DUR_TRANS_FRAC;
+export const DELAY = DUR_SEGMENT * DELAY_FRAC_SEGMENT;
 
 export const SIM_SEGMENT_START_AT = (SIM_SEGMENT_NUM / NUM_SEGMENTS);
 export const SIM_SEGMENT_END_AT   = (SIM_SEGMENT_NUM + 1) / NUM_SEGMENTS;
@@ -405,7 +405,7 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             exit_to: {
                 x: 50,
                 y: 50,
-                at: DUR_SEGMENT * 19,
+                at: DUR_SEGMENT * 19 - DUR_TRANS,
                 opacity: 0
             }
         }
