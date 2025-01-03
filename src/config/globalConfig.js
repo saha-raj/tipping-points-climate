@@ -388,6 +388,34 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             }
         }
     },
+    {   
+        id: "animated-hysteresis-plot",
+        type: "animatedHysteresisPlot",
+        position: {
+            x: 50,    
+            y: 50     
+        },
+        params: {     
+            T0: 230,
+            g_start: 0.45,
+            g_end: 0.3,
+            cycle_duration: 5000  // ms for one complete cycle
+        },
+        transition: {
+            entry_from: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 19,
+                opacity: 0
+            },
+            exit_to: {
+                x: 50,
+                y: 50,
+                at: DUR_SEGMENT * 20,
+                opacity: 0
+            }
+        }
+    },
     {
         id: 'return-to-story',
         type: 'button',
@@ -512,6 +540,7 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             }
         }
     }
+    
 ];
 
 export const extraConfig = [

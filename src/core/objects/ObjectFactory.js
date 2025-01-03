@@ -11,6 +11,7 @@ import { StandalonePotentialPlot } from './StandalonePotentialPlot.js';
 import { StandaloneTemperaturePlot } from './StandaloneTemperaturePlot.js';
 import { StandaloneAnimatedSolutionPlot } from './StandaloneAnimatedSolutionPlot.js';
 import { StandaloneAnimatedPotentialPlot } from './StandaloneAnimatedPotentialPlot.js';
+import { StandaloneAnimatedHysteresisPlot } from './StandaloneAnimatedHysteresisPlot.js';
 
 export class ObjectFactory {
     static createObject(config) {
@@ -39,6 +40,8 @@ export class ObjectFactory {
                 return this.createAnimatedSolutionPlot(config);
             case 'animatedPotentialPlot':
                 return this.createAnimatedPotentialPlot(config);
+            case 'animatedHysteresisPlot':
+                return this.createAnimatedHysteresisPlot(config);
             default:
                 console.warn(`Unknown object type: ${config.type}`);
                 return null;
@@ -379,6 +382,19 @@ export class ObjectFactory {
         const plot = new StandaloneAnimatedPotentialPlot(config);
         const element = plot.element;
         element.id = 'animated-potential-plot';
+        return {
+            type: 'plot',
+            object: element,
+            extras: {
+                plot: plot
+            }
+        };
+    }
+
+    static createAnimatedHysteresisPlot(config) {
+        const plot = new StandaloneAnimatedHysteresisPlot(config);
+        const element = plot.element;
+        element.id = 'animated-hysteresis-plot';
         return {
             type: 'plot',
             object: element,
