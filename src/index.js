@@ -654,7 +654,7 @@ class ScrollCanvas {
 
         // Add navigation link
         const navLink = document.createElement('a');
-        navLink.textContent = 'Go To Simulation';
+        navLink.textContent = 'Go To Interactive Simulation';
         navLink.className = 'nav-link';
         navLink.href = '#';
         navLink.addEventListener('click', (e) => {
