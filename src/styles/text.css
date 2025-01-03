@@ -15,7 +15,7 @@
     --annotation-color: #C4C5BE;
 }
 html, body {
-    overscroll-behavior: none;  /* prevents bounce/rubber-band effect on some browsers */
+    /* overscroll-behavior: none;   */
     min-height: 100vh;  /* Ensure minimum height */
 
 }
