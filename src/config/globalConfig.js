@@ -417,7 +417,7 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         id: "sim-v-plot",
         type: "sim-v-plot",
         position: {
-            x: 25,    // 35% from left
+            x: 30,    // 35% from left
             y: 70     // Center vertically
         },
         transition: {
@@ -439,7 +439,7 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         id: "sim-solution-plot",
         type: "sim-solution-plot",
         position: {
-            x: 75,    // 65% from left
+            x: 70,    // 65% from left
             y: 70     // Center vertically
         },
         transition: {

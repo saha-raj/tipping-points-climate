@@ -16,7 +16,7 @@ export class SolutionPlot {
 
         // Store config and set margins
         this.config = config;
-        this.margins = { top: 40, right: 40, bottom: 60, left: 60 };
+        this.margins = { top: 40, right: 40, bottom: 60, left: 40 };
 
         // Get CSS variables
         const style = getComputedStyle(document.documentElement);
@@ -39,9 +39,15 @@ export class SolutionPlot {
         const height = width * 0.8;
 
         const svg = d3.select(container)
+            // .append('svg')
+            // .attr('width', width)
+            // .attr('height', height);
             .append('svg')
-            .attr('width', width)
-            .attr('height', height);
+            .attr('width', '100%')
+            .attr('height', '100%')
+            .attr('viewBox', `0 0 ${width} ${height}`)
+            .style('display', 'block')  // Remove any default inline spacing
+            .style('margin', 'auto');   // Center within container
 
         const plotArea = svg.append('g')
             .attr('transform', `translate(${this.margins.left},${this.margins.top})`);

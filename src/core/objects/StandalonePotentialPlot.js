@@ -16,7 +16,8 @@ export class StandalonePotentialPlot {
 
         // Store config and set margins (same as other plots)
         this.config = config;
-        this.margins = { top: 40, right: 40, bottom: 60, left: 60 };
+        // this.margins = { top: 40, right: 40, bottom: 60, left: 60 };
+        this.margins = { top: 40, right: 40, bottom: 60, left: 40 };
 
         // Get CSS variables (same as other plots)
         const style = getComputedStyle(document.documentElement);
@@ -39,8 +40,11 @@ export class StandalonePotentialPlot {
 
         const svg = d3.select(this.element)
             .append('svg')
-            .attr('width', width)
-            .attr('height', height);
+            .attr('width', '100%')
+            .attr('height', '100%')
+            .attr('viewBox', `0 0 ${width} ${height}`)
+            .style('display', 'block')  // Remove any default inline spacing
+            .style('margin', 'auto');   // Center within container
 
         const plotArea = svg.append('g')
             .attr('transform', `translate(${this.margins.left},${this.margins.top})`);

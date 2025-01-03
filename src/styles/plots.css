@@ -15,7 +15,7 @@
 /* Plot containers */
 .plot-area {
     position: absolute !important;
-    width: 30% !important;
+    width: 35% !important;
     height: auto !important;
     text-align: center !important;  /* Center the plot horizontally */
 }
@@ -276,20 +276,20 @@ input[type="range"]:disabled::-moz-range-thumb {
 /* Position sim-v-plot in top-right corner */
 .plot-area[id="sim-v-plot"] {
     transform: translate(-50%, -50%) !important;
-    /* border: 2px solid red; */
+    border: 2px solid red;
 }
 
 /* Position sim-solution-plot in top-left corner */
 .plot-area[id="sim-solution-plot"] {
     transform: translate(-50%, -50%) !important;
-    /* border: 2px solid blue; */
+    border: 2px solid blue;
 }
 
 /* Center standalone plots in canvas container */
 .plot-area[id="explanation-potential"],
 .plot-area[id="explanation-temperature"] {
     transform: translate(-50%, -50%) !important;
-    /* border: 2px solid green; */
+    border: 2px solid green;
 }
 
 
