@@ -20,9 +20,9 @@ const C = PHYSICAL_CONSTANTS.ATMOSPHERE_HEIGHT *
 export const MODEL_PARAMS = {
     HEAT_CAPACITY: C,  // C = 10⁷ J/(m²·K)
     // Albedo parameters
-    A1: 0.58,  // a₁: maximum albedo
-    A2: 0.47,  // a₂: albedo parameter
-    T_CRIT: 283,  // T*: critical temperature (K)
+    A1: 0.6,  // a₁: maximum albedo
+    A2: 0.55,  // a₂: albedo parameter
+    T_CRIT: 273,  // T*: critical temperature (K)
     DELTA_T: 18,  // ΔT: temperature range for transition (K)
     
     DEFAULT_GREENHOUSE: 0.4,  // g = 1-γ: greenhouse gas concentration parameter

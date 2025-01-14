@@ -102,12 +102,31 @@ Note, how changing the greenhouse gas concentration in the reverse direction doe
 The complex biossphere-climate system has carved out a zone of stability in a larger region of instability. Even here, the climate has oscillated between glacial and interglacial periods all through the Pleistocene epoch.`,
 
     "header-25": "References",
-    "segment-25": `To be added
+    "segment-25": `[1] Budyko MI (1969) *Effect of solar radiation variations on climate of Earth*. Tellus 21(5):611–619
 
-[1] Ref 1
+[2] Sellers WD (1969) *A global climate model based on the energy balance of the Earth–atmosphere system*. J Appl Meteorol 8:392–400`,
 
-[2] Ref 2`,
+    "header-26": "Author",
+    "segment-26": `Raj Saha, PhD
 
-    "header-26": "About the author",
-    "segment-26": `Raj Saha, PhD`
+
+**Publications**
+
+Saha, R., *Millennial-scale oscillations between sea ice and convective deep water formation*,
+Paleoceanography, 30, 1540–1555, doi:10.1002/2015PA002809.
+
+Roberts, A. and Saha, R., *Relaxation oscillations in an idealized ocean circulation model*,
+Climate Dynamics, 48: 2123. doi:10.1007/s00382-016-3195-3.
+
+Rial, J. and Saha, R., *Modeling Abrupt Climate Change as the Interaction Between Sea Ice Ex-
+tent and Mean Ocean Temperature Under Orbital Insolation Forcing*, Abrupt Climate Change:
+Mechanisms, Patterns, and Impacts, American Geophysical Union, Washington, D. C..
+doi:10.1029/2010GM001027.
+
+Rial, J. and Saha, R., *Understanding Abrupt Climate Change: The Importance of Orbital Inso-
+lation*. Climate Change Congress Meeting, Copenhagen. Vol. 1, pp 94-97. doi:10.1088/1755-
+1307/6/1/012013.
+
+Rial, J. and Saha, R., *Stochastic Resonance, Frequency Modulation and the Mechanisms of
+Abrupt Climate Change in the Arctic*, First International Symposium on Arctic Research.`
 };

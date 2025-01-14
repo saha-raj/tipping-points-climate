@@ -362,8 +362,8 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             y: 50     
         },
         params: {     // Add animation parameters
-            g_start: 0.3,
-            g_end: 0.45,
+            g_start: 0.2,
+            g_end: 0.4,
             T0: 290,  // Initial temperature
             cycle_duration: 5000  // ms for one complete cycle
         },
@@ -391,8 +391,8 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             y: 50     
         },
         params: {     
-            g_start: 0.3,
-            g_end: 0.45,
+            g_start: 0.2,
+            g_end: 0.4,
             cycle_duration: 5000  // ms for one complete cycle
         },
         transition: {
@@ -418,8 +418,8 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
             y: 50     
         },
         params: {     
-            g_start: 0.45,
-            g_end: 0.3,
+            g_start: 0.4,
+            g_end: 0.2,
             cycle_duration: 5000  // ms for one complete cycle
         },
         transition: {
@@ -446,8 +446,8 @@ The astronomer Carl Sagan called this image "a pale blue dot".`,
         },
         params: {     
             T0: 230,
-            g_start: 0.45,
-            g_end: 0.3,
+            g_start: 0.4,
+            g_end: 0.2,
             cycle_duration: 5000,  // ms for one complete cycle
             fade_duration: 10000
         },

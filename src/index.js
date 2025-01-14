@@ -28,6 +28,9 @@ THREE.ColorManagement.legacyMode = false;
 
 let currentSimulation = null;  // Move this to top level if not already there
 
+const albedoMAX = 0.6;
+const albedoMIN = 0.1;
+
 class ScrollCanvas {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
@@ -176,7 +179,7 @@ class ScrollCanvas {
             if (earth && earth.extras && earth.extras.simIceGroup && currentSimulation) {
                 // Use currentSimulation.albedos[0] instead of calculating directly
                 const albedo = currentSimulation.albedos[0];
-                const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                const scale = Math.min(Math.max((albedo - albedoMIN) / (albedoMAX - albedoMIN), 0), 1);
                 
                 // console.log('Ice calculation:', {
                 //     tempValue,
@@ -337,7 +340,7 @@ class ScrollCanvas {
                                 const tempValue = simControls.controls.tempSlider.value;
                                 const climateModel = new ClimateModel();
                                 const albedo = climateModel.calculateAlbedo(parseFloat(tempValue));
-                                const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                                const scale = Math.min(Math.max((albedo - albedoMIN) / (albedoMAX - albedoMIN), 0), 1);
                                 
                                 simIceGroup.children.forEach(icePatch => {
                                     icePatch.scale.set(scale, scale, 1);
@@ -552,7 +555,7 @@ class ScrollCanvas {
                 if (frameIndex < endIndex && Math.abs(temperatures[frameIndex] - equilibriumTemp) > TEMP_THRESHOLD) {
                     // Update ice
                     const albedo = albedos[frameIndex];
-                    const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                    const scale = Math.min(Math.max((albedo - albedoMIN) / (albedoMAX - albedoMIN), 0), 1);
                     simIceGroup.children.forEach(icePatch => {
                         icePatch.scale.set(scale, scale, 1);
                     });
@@ -606,7 +609,7 @@ class ScrollCanvas {
             if (earth && earth.extras && earth.extras.simIceGroup) {
                 const climateModel = new ClimateModel();
                 const albedo = climateModel.calculateAlbedo(parseFloat(tempValue));
-                const scale = Math.min(Math.max((albedo - 0.13) / (0.57 - 0.13), 0), 1);
+                const scale = Math.min(Math.max((albedo - albedoMIN) / (albedoMAX - albedoMIN), 0), 1);
                 
                 // Only update if not in animation
                 if (!earth.extras.simIceGroup.children[0]?.userData.isAnimating) {

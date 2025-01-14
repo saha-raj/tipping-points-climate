@@ -38,8 +38,8 @@ export class StandaloneAnimatedHysteresisPlot {
         this.climateModel = new ClimateModel();
         this.frameRate = 60;
         this.currentTemp = config.params.T0 || 230;
-        this.g_start = config.params.g_start || 0.3;
-        this.g_end = config.params.g_end || 0.45;
+        this.g_start = config.params.g_start || 0.2;
+        this.g_end = config.params.g_end || 0.4;
         
         // Add visibility observer
         this.setupVisibilityObserver();
@@ -72,7 +72,7 @@ export class StandaloneAnimatedHysteresisPlot {
         const plotHeight = height - this.margins.top - this.margins.bottom;
 
         this.xScale = d3.scaleLinear()
-            .domain([0.3, 0.45])  // g range
+            .domain([0.2, 0.4])  // g range
             .range([0, plotWidth]);
 
         this.yScale = d3.scaleLinear()
@@ -287,6 +287,7 @@ export class StandaloneAnimatedHysteresisPlot {
         this.points = [];  // Initialize empty points array
         this.plot.plotArea.selectAll('.equilibrium-point, .equilibrium-line, .tracking-dot').remove();
         requestAnimationFrame(this.animate);
+        this.direction = 1;
     }
 
     animate(timestamp) {
